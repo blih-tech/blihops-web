@@ -154,6 +154,16 @@ Recommended VS Code extensions: `.vscode/extensions.json`. Format on save: `.vsc
 | Client form mocks → future API client | Auth, SMTP, media secrets                   |
 | SEO (metadata, sitemap, robots)       | Skills / Talent product apps (teasers only) |
 
+## Deploy (staging)
+
+Hosted on **Vercel**. Merge to `main` → auto deploy.
+
+| Branch | Deploy                      |
+| ------ | --------------------------- |
+| `main` | Staging (Vercel Production) |
+
+Dashboard: https://vercel.com/blihs-projects/blihops-w
+
 ## Questions
 
 Unsure about a change? Open a draft PR early or ask in the team channel before large refactors.
