@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>blihops-web — Product Requirements (Web PRD)</title>
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --surface: #ffffff;
+      --surface-2: #f0f2f5;
+      --border: #e2e6ec;
+      --text: #1a1f27;
+      --muted: #5b6573;
+      --heading: #0f141b;
+      --accent: #0d6e6e;
+      --accent-soft: #e6f4f4;
+      --accent-2: #1a56a8;
+      --ok: #0f7a3a;
+      --ok-bg: #e8f7ee;
+      --warn: #9a6700;
+      --warn-bg: #fff6e0;
+      --radius: 12px;
+      --shadow: 0 1px 2px rgba(16, 24, 40, 0.04), 0 4px 16px rgba(16, 24, 40, 0.04);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .wrap { max-width: 920px; margin: 0 auto; padding: 48px 20px 96px; }
+    header {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 28px 22px;
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      font-size: 1.85rem;
+      letter-spacing: -0.03em;
+      color: var(--heading);
+    }
+    .lead { margin: 0; color: var(--muted); max-width: 62ch; font-size: 1.05rem; }
+    .meta {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin-top: 18px;
+    }
+    .chip {
+      display: inline-flex; align-items: center;
+      padding: 5px 11px; border-radius: 999px;
+      background: var(--surface-2); border: 1px solid var(--border);
+      color: var(--muted); font-size: 0.84rem;
+    }
+    .chip strong { color: var(--accent); font-weight: 600; margin-right: 4px; }
+    h2 {
+      font-size: 1.2rem;
+      margin: 40px 0 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      color: var(--heading);
+      letter-spacing: -0.02em;
+    }
+    h3 {
+      font-size: 1rem;
+      margin: 22px 0 8px;
+      color: var(--heading);
+    }
+    p, li { color: var(--muted); }
+    p { margin: 0 0 12px; }
+    ul, ol { padding-left: 1.2rem; margin: 0 0 12px; }
+    li { margin: 5px 0; }
+    strong { color: var(--text); }
+    a { color: var(--accent-2); }
+    code, .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.88em;
+    }
+    code {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      padding: 1px 6px;
+      border-radius: 6px;
+      color: #1e2a3a;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.92rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      margin: 12px 0 16px;
+    }
+    th, td {
+      text-align: left;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    th {
+      background: var(--surface-2);
+      color: var(--heading);
+      font-weight: 600;
+    }
+    tr:last-child td { border-bottom: 0; }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      box-shadow: var(--shadow);
+    }
+    .grid { display: grid; gap: 12px; }
+    @media (min-width: 720px) {
+      .grid-2 { grid-template-columns: 1fr 1fr; }
+      .grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+    }
+    .note {
+      border-left: 3px solid var(--accent);
+      background: var(--accent-soft);
+      color: #234;
+      padding: 12px 14px;
+      border-radius: 0 10px 10px 0;
+      margin: 14px 0;
+    }
+    .note.warn {
+      border-left-color: var(--warn);
+      background: var(--warn-bg);
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.74rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+      color: var(--muted);
+      margin-right: 4px;
+    }
+    .tag.ok { background: var(--ok-bg); border-color: #b7e4c7; color: var(--ok); }
+    .tree {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.84rem;
+      line-height: 1.55;
+      color: #2a3648;
+      white-space: pre;
+      overflow-x: auto;
+      box-shadow: var(--shadow);
+    }
+    .flow {
+      display: grid;
+      gap: 10px;
+      margin: 12px 0;
+    }
+    @media (min-width: 720px) {
+      .flow { grid-template-columns: 1fr auto 1fr auto 1fr; align-items: stretch; }
+    }
+    .flow .box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+      box-shadow: var(--shadow);
+    }
+    .flow .arrow {
+      display: flex; align-items: center; justify-content: center;
+      color: var(--accent); font-weight: 700;
+    }
+    footer {
+      margin-top: 48px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      color: #7a8494;
+      font-size: 0.9rem;
+    }
+    .toc {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      box-shadow: var(--shadow);
+    }
+    .toc ol { margin: 0; color: var(--muted); }
+    .toc a { text-decoration: none; }
+    .toc a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>blihops-web — Product Requirements</h1>
+      <p class="lead">
+        PRD for the public marketing website. Rebuild from a clean slate; the monorepo
+        <code>apps/web</code> is reference only. This document covers the web app only —
+        not the API or admin CMS repos.
+      </p>
+      <div class="meta">
+        <span class="chip"><strong>Repo</strong> blihops-web</span>
+        <span class="chip"><strong>Scope</strong> Marketing frontend</span>
+        <span class="chip"><strong>Status</strong> Draft v1</span>
+        <span class="chip"><strong>Date</strong> 2026-07-09</span>
+      </div>
+    </header>
+
+    <nav class="toc" aria-label="Table of contents">
+      <h3 style="margin-top:0">Contents</h3>
+      <ol>
+        <li><a href="#goals">Goals &amp; non-goals</a></li>
+        <li><a href="#stack">Tech stack</a></li>
+        <li><a href="#architecture">Architecture</a></li>
+        <li><a href="#pages">Pages &amp; routes</a></li>
+        <li><a href="#content">Content model</a></li>
+        <li><a href="#forms">Forms (pre-API)</a></li>
+        <li><a href="#phases">Delivery phases</a></li>
+        <li><a href="#success">Success criteria</a></li>
+        <li><a href="#decisions">Decision log</a></li>
+      </ol>
+    </nav>
+
+    <!-- 1 -->
+    <h2 id="goals">1. Goals &amp; non-goals</h2>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3 style="margin-top:0"><span class="tag ok">Goals</span></h3>
+        <ul>
+          <li>Ship a standalone marketing site for Blihop / blihops.com</li>
+          <li>Full public page set (services, about, pilot, content, careers, product teasers, legal, contact)</li>
+          <li>Static-first content so the site works with no backend</li>
+          <li>Clear boundary so a future API can replace mocks without rewriting pages</li>
+          <li>Polished, modern UI with intentional motion — redesign freely</li>
+          <li>Strong SEO defaults (metadata, sitemap, robots, semantic HTML)</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0"><span class="tag">Non-goals (this repo)</span></h3>
+        <ul>
+          <li>Admin CMS UI</li>
+          <li>Backend / database / email / media storage</li>
+          <li>Auth / JWT / admin sessions</li>
+          <li>Full Skills or Talent products (teaser pages + outbound links only)</li>
+          <li>Pixel-perfect port of the monorepo site</li>
+          <li>Monorepo package dependencies (<code>@repo/*</code>)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <h2 id="stack">2. Tech stack</h2>
+    <table>
+      <thead>
+        <tr><th>Layer</th><th>Choice</th><th>Notes</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Framework</td>
+          <td><strong>Next.js</strong> (App Router)</td>
+          <td>SSR/SSG, file-based routes, metadata API</td>
+        </tr>
+        <tr>
+          <td>UI library</td>
+          <td><strong>React</strong> + <strong>TypeScript</strong></td>
+          <td>Strict TS</td>
+        </tr>
+        <tr>
+          <td>Styling</td>
+          <td><strong>Tailwind CSS</strong></td>
+          <td>Utility-first; design tokens in theme config</td>
+        </tr>
+        <tr>
+          <td>Motion</td>
+          <td><strong>Framer Motion</strong> + smooth scroll (e.g. Lenis)</td>
+          <td>Polished, not 3D-heavy</td>
+        </tr>
+        <tr>
+          <td>Forms</td>
+          <td><strong>react-hook-form</strong> + <strong>zod</strong></td>
+          <td>Shared schemas; mock submitters first</td>
+        </tr>
+        <tr>
+          <td>Content (v1)</td>
+          <td>Static modules / JSON under <code>content/</code></td>
+          <td>No DB; CMS-shaped for later API swap</td>
+        </tr>
+        <tr>
+          <td>Deploy</td>
+          <td>Vercel (or any Node host)</td>
+          <td>Standalone-friendly if needed later</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">
+      No Three.js, Spline, TipTap, Prisma, or monorepo UI packages in this repo.
+      Keep the marketing bundle lean.
+    </div>
+
+    <!-- 3 -->
+    <h2 id="architecture">3. Architecture</h2>
+    <p>
+      <strong>Approach A — App Router + content modules + API boundary.</strong>
+      Pages stay thin. Data and form submissions go through <code>lib/api</code> and
+      <code>lib/forms</code>. Today those modules use static/mock implementations;
+      later they call the real backend with the same function shapes.
+    </p>
+
+    <div class="flow">
+      <div class="box">
+        <strong>Pages / sections</strong>
+        <p style="margin:8px 0 0">Render UI only. Call data helpers and form submitters.</p>
+      </div>
+      <div class="arrow">→</div>
+      <div class="box">
+        <strong>lib/api + content/</strong>
+        <p style="margin:8px 0 0">Mock GETs from static content. Later: HTTP to API.</p>
+      </div>
+      <div class="arrow">→</div>
+      <div class="box">
+        <strong>lib/forms</strong>
+        <p style="margin:8px 0 0">Validate → mock POST (log + success). Later: real POST.</p>
+      </div>
+    </div>
+
+    <h3>Target folder layout</h3>
+    <div class="tree">blihops-web/
+├── docs/
+│   └── web-prd.html          ← this document
+├── public/                   # static assets, favicons
+├── src/
+│   ├── app/                  # routes only (App Router)
+│   │   ├── (marketing)/      # route group — shared marketing layout
+│   │   │   ├── page.tsx
+│   │   │   ├── what-we-offer/
+│   │   │   ├── how-we-work/
+│   │   │   ├── who-we-are/
+│   │   │   ├── pilot/
+│   │   │   ├── insights/
+│   │   │   ├── case-studies/
+│   │   │   ├── careers/
+│   │   │   ├── skills/
+│   │   │   ├── talent/
+│   │   │   ├── contact/
+│   │   │   ├── privacy/
+│   │   │   └── terms-of-service/
+│   │   ├── layout.tsx
+│   │   ├── not-found.tsx
+│   │   ├── sitemap.ts
+│   │   └── robots.ts
+│   ├── components/
+│   │   ├── layout/           # Header, Footer, shell
+│   │   ├── sections/         # page sections (hero, CTA, …)
+│   │   ├── ui/               # buttons, inputs, cards
+│   │   └── motion/           # shared animation wrappers
+│   ├── content/              # static site copy + mock CMS data
+│   │   ├── site.ts
+│   │   ├── home.ts
+│   │   ├── services.ts
+│   │   ├── insights/
+│   │   ├── case-studies/
+│   │   ├── roles.ts
+│   │   └── …
+│   ├── lib/
+│   │   ├── api/              # getInsights(), getCaseStudy(slug), …
+│   │   ├── forms/            # schemas + submitPilot(), …
+│   │   └── utils/
+│   └── styles/
+└── package.json</div>
+
+    <h3>Rules</h3>
+    <ul>
+      <li>Pages must not import raw content files if an <code>lib/api</code> helper exists — always go through the boundary.</li>
+      <li>No secrets in the web app. Env vars are public site config only (e.g. site URL, product app URLs).</li>
+      <li>Components are presentational; business/data logic lives in <code>lib/</code>.</li>
+      <li>Prefer server components for static pages; client components only for forms, motion, and interactive UI.</li>
+    </ul>
+
+    <!-- 4 -->
+    <h2 id="pages">4. Pages &amp; routes</h2>
+    <p>v1 includes the full public surface (plus contact, which was missing before).</p>
+    <table>
+      <thead>
+        <tr><th>Route</th><th>Purpose</th><th>Data (v1)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>/</code></td><td>Landing — hero, value, services preview, process, trust, testimonials, CTA</td><td>Static content modules</td></tr>
+        <tr><td><code>/what-we-offer</code></td><td>Services catalog</td><td>Static</td></tr>
+        <tr><td><code>/how-we-work</code></td><td>Delivery process, trust, security/compliance</td><td>Static</td></tr>
+        <tr><td><code>/who-we-are</code></td><td>About — vision, mission, story, values</td><td>Static</td></tr>
+        <tr><td><code>/pilot</code></td><td>Free pilot funnel + FAQ + form</td><td>Static FAQ; form → mock POST</td></tr>
+        <tr><td><code>/insights</code></td><td>Blog / insights list</td><td>Mock list from <code>content/</code></td></tr>
+        <tr><td><code>/insights/[slug]</code></td><td>Insight article detail + SEO metadata</td><td>Mock by slug</td></tr>
+        <tr><td><code>/case-studies</code></td><td>Case studies list</td><td>Mock list</td></tr>
+        <tr><td><code>/case-studies/[slug]</code></td><td>Case study detail + SEO metadata</td><td>Mock by slug</td></tr>
+        <tr><td><code>/careers</code></td><td>Culture, benefits, open roles, apply form</td><td>Mock roles; form → mock POST</td></tr>
+        <tr><td><code>/skills</code></td><td>E-learning product teaser; outbound CTA</td><td>Static + env product URL</td></tr>
+        <tr><td><code>/talent</code></td><td>Talent marketplace teaser; outbound CTA</td><td>Static + env product URL</td></tr>
+        <tr><td><code>/contact</code></td><td>Contact page + form (fixes footer gap)</td><td>Form → mock POST</td></tr>
+        <tr><td><code>/privacy</code></td><td>Privacy policy</td><td>Static legal copy</td></tr>
+        <tr><td><code>/terms-of-service</code></td><td>Terms of service</td><td>Static legal copy</td></tr>
+        <tr><td><code>/sitemap.xml</code></td><td>SEO sitemap</td><td>Generated</td></tr>
+        <tr><td><code>/robots.txt</code></td><td>Crawler rules</td><td>Generated</td></tr>
+      </tbody>
+    </table>
+    <div class="note">
+      Navigation (header/footer) must only link to routes that exist. Primary CTA points to
+      <code>/pilot</code>. Contact is a first-class page, not a dead footer link.
+    </div>
+
+    <!-- 5 -->
+    <h2 id="content">5. Content model</h2>
+    <p>
+      v1 content lives in the repo under <code>content/</code>. Shape it like a future CMS so
+      swapping to API responses is a mapping change, not a redesign.
+    </p>
+    <div class="grid grid-2">
+      <div class="card">
+        <h3 style="margin-top:0">Marketing copy</h3>
+        <ul>
+          <li>Site-wide: nav labels, footer, brand, CTAs</li>
+          <li>Per-page: heroes, sections, FAQs</li>
+          <li>Legal: privacy, terms</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">CMS-shaped (mock)</h3>
+        <ul>
+          <li><strong>Insight</strong> — title, slug, excerpt, body (HTML or MD), cover, publishedAt, SEO</li>
+          <li><strong>Case study</strong> — same core fields + outcome metrics if needed</li>
+          <li><strong>Open role</strong> — title, slug, location, type, description, active</li>
+          <li><strong>Testimonial / partner</strong> — optional homepage social proof</li>
+        </ul>
+      </div>
+    </div>
+    <h3>API boundary (example signatures)</h3>
+    <div class="tree">// lib/api — same shapes now and later
+getInsights(): Promise&lt;InsightSummary[]&gt;
+getInsightBySlug(slug: string): Promise&lt;Insight | null&gt;
+getCaseStudies(): Promise&lt;CaseStudySummary[]&gt;
+getCaseStudyBySlug(slug: string): Promise&lt;CaseStudy | null&gt;
+getOpenRoles(): Promise&lt;OpenRole[]&gt;
+getTestimonials(): Promise&lt;Testimonial[]&gt;
+getPartners(): Promise&lt;Partner[]&gt;</div>
+    <p>
+      Implementations: v1 read from <code>content/</code>. Future: <code>fetch</code> against the backend
+      with the same return types.
+    </p>
+
+    <!-- 6 -->
+    <h2 id="forms">6. Forms (pre-API)</h2>
+    <table>
+      <thead>
+        <tr><th>Form</th><th>Where</th><th>v1 behavior</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Pilot lead</td>
+          <td><code>/pilot</code></td>
+          <td>Validate with zod → mock submit logs body → success UI</td>
+        </tr>
+        <tr>
+          <td>Career application</td>
+          <td><code>/careers</code></td>
+          <td>Validate → mock submit logs body → success UI (resume upload optional later)</td>
+        </tr>
+        <tr>
+          <td>Contact</td>
+          <td><code>/contact</code></td>
+          <td>Validate → mock submit logs body → success UI</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="note">
+      <strong>GET vs POST (v1):</strong> all reads use mock/static data.
+      All writes use a mock request body, <code>console.log</code> (or equivalent dev logger),
+      and show a clear success state. No real persistence until the API exists.
+    </div>
+    <h3>Form submitter boundary</h3>
+    <div class="tree">// lib/forms
+submitPilot(data: PilotInput): Promise&lt;{ ok: true }&gt;
+submitRoleApplication(data: RoleApplicationInput): Promise&lt;{ ok: true }&gt;
+submitContact(data: ContactInput): Promise&lt;{ ok: true }&gt;
+
+// v1: validate → log → resolve success
+// later: POST /v1/... and map errors to form state</div>
+
+    <!-- 7 -->
+    <h2 id="phases">7. Delivery phases</h2>
+    <table>
+      <thead>
+        <tr><th>Phase</th><th>Focus</th><th>Done when</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>P0 — Scaffold</strong></td>
+          <td>Next.js + Tailwind + TS layout, header/footer, design tokens</td>
+          <td>App runs; empty shell looks intentional</td>
+        </tr>
+        <tr>
+          <td><strong>P1 — Core pages</strong></td>
+          <td>Home, what-we-offer, how-we-work, who-we-are, pilot (static), legal</td>
+          <td>All core routes render with real copy</td>
+        </tr>
+        <tr>
+          <td><strong>P2 — Content hub</strong></td>
+          <td>Insights + case studies list/detail from <code>content/</code> via <code>lib/api</code></td>
+          <td>Slug routes work; 404 for unknown slugs</td>
+        </tr>
+        <tr>
+          <td><strong>P3 — Careers + contact + teasers</strong></td>
+          <td>Careers, contact, skills, talent; mock forms wired</td>
+          <td>Full nav complete; forms show success after log</td>
+        </tr>
+        <tr>
+          <td><strong>P4 — Polish</strong></td>
+          <td>Motion, SEO metadata, sitemap/robots, not-found, responsive QA</td>
+          <td>Production-ready marketing shell</td>
+        </tr>
+        <tr>
+          <td><strong>Later — API wire-up</strong></td>
+          <td>Swap mock <code>lib/api</code> + form submitters to real backend</td>
+          <td>No page rewrites required</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 8 -->
+    <h2 id="success">8. Success criteria</h2>
+    <ul>
+      <li>Repo is standalone — no monorepo or <code>@repo/*</code> dependencies</li>
+      <li>Every listed v1 route works and is linked from nav where appropriate</li>
+      <li>Content and forms go through <code>lib/api</code> / <code>lib/forms</code> only</li>
+      <li>Mock GETs and mock POSTs behave as specified (log + success for writes)</li>
+      <li>Mobile-first responsive layout; polished motion without 3D bloat</li>
+      <li>SEO basics: titles, descriptions, sitemap, robots, sensible headings</li>
+      <li>Lighthouse-friendly defaults (no unused heavy deps)</li>
+    </ul>
+
+    <!-- 9 -->
+    <h2 id="decisions">9. Decision log</h2>
+    <table>
+      <thead>
+        <tr><th>Topic</th><th>Decision</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Rebuild approach</td><td>Redesign freely; old site is reference only</td></tr>
+        <tr><td>Core stack</td><td>Next.js App Router + Tailwind + TypeScript</td></tr>
+        <tr><td>Data strategy</td><td>Static content first; API later</td></tr>
+        <tr><td>Architecture</td><td>App Router + content modules + <code>lib/api</code> boundary</td></tr>
+        <tr><td>Page scope (v1)</td><td>Full public set including contact, careers, content hub, product teasers</td></tr>
+        <tr><td>Motion</td><td>Polished (Framer Motion + smooth scroll); no 3D stack</td></tr>
+        <tr><td>Forms pre-API</td><td>Mock GET data; mock POST body → log → success UI</td></tr>
+        <tr><td>Out of scope here</td><td>API repo, admin CMS, DB, media pipeline, auth</td></tr>
+      </tbody>
+    </table>
+
+    <div class="note warn">
+      When the backend repo is ready, only <code>lib/api/*</code> and <code>lib/forms/*</code>
+      implementations should change. Page and component contracts stay stable.
+    </div>
+
+    <footer>
+      blihops-web PRD · web app only · agreed planning session 2026-07-09
+    </footer>
+  </div>
+</body>
+</html>
