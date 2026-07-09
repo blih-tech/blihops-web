@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter, Source_Serif_4, JetBrains_Mono } from 'next/font/google';
+import { Header } from '@/components/layout/Header';
 import './globals.css';
 
 const fontSans = Inter({
@@ -32,6 +33,7 @@ export default function RootLayout({
       <body
         className={`${fontSans.variable} ${fontSerif.variable} ${fontMono.variable} antialiased`}
       >
+        <Header />
         {children}
       </body>
     </html>
