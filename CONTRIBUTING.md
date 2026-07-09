@@ -133,6 +133,18 @@ Day to day: rely on editor Format on Save (Prettier). Run `pnpm format` if CI fa
 
 Match existing patterns in the repo. Prefer small, readable components over large one-off files.
 
+## Local quality gates
+
+After `pnpm install`, Husky hooks are installed automatically (`prepare`).
+
+| Hook         | What it checks                                  |
+| ------------ | ----------------------------------------------- |
+| `pre-commit` | lint-staged (ESLint + Prettier on staged files) |
+| `commit-msg` | Conventional Commits (`feat:`, `fix:`, …)       |
+| `pre-push`   | Branch name (`feature/`, `fix/`, `chore/`, …)   |
+
+Recommended VS Code extensions: `.vscode/extensions.json`. Format on save: `.vscode/settings.json`.
+
 ## What belongs in this repo
 
 | In scope                              | Out of scope                                |
@@ -141,6 +153,16 @@ Match existing patterns in the repo. Prefer small, readable components over larg
 | Static / mock content                 | Database access                             |
 | Client form mocks → future API client | Auth, SMTP, media secrets                   |
 | SEO (metadata, sitemap, robots)       | Skills / Talent product apps (teasers only) |
+
+## Deploy (staging)
+
+Hosted on **Vercel**. Merge to `main` → auto deploy.
+
+| Branch | Deploy                      |
+| ------ | --------------------------- |
+| `main` | Staging (Vercel Production) |
+
+Dashboard: https://vercel.com/blihs-projects/blihops-w
 
 ## Questions
 
