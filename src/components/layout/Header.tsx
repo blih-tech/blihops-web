@@ -139,7 +139,7 @@ export function Header() {
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-50 border-border bg-background/70 backdrop-blur-2xl supports-[backdrop-filter]:bg-background/60"
+      className="sticky top-0 z-50 border-border bg-background"
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
         <Link

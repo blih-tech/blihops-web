@@ -10,7 +10,7 @@ type LogoProps = {
 export function Logo({ className, priority = false }: LogoProps) {
   return (
     <Image
-      src="/blihops-logo-light.png"
+      src="/blihops-logo-2.png"
       alt="BlihOps"
       width={140}
       height={32}
