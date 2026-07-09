@@ -24,14 +24,14 @@ Thanks for helping build the Blihop marketing site. This guide covers setup, bra
 
 Create branches from up-to-date `main`. Use short kebab-case after the prefix.
 
-| Type | Pattern | Example |
-|------|---------|---------|
-| Feature | `feature/<name>` | `feature/pilot-form` |
-| Bug fix | `fix/<name>` | `fix/header-overflow` |
-| Chore / tooling | `chore/<name>` | `chore/prettier-setup` |
-| Docs | `docs/<name>` | `docs/contributing` |
-| CI | `ci/<name>` | `ci/pr-checks` |
-| Hotfix (production) | `hotfix/<name>` | `hotfix/broken-cta` |
+| Type                | Pattern          | Example                |
+| ------------------- | ---------------- | ---------------------- |
+| Feature             | `feature/<name>` | `feature/pilot-form`   |
+| Bug fix             | `fix/<name>`     | `fix/header-overflow`  |
+| Chore / tooling     | `chore/<name>`   | `chore/prettier-setup` |
+| Docs                | `docs/<name>`    | `docs/contributing`    |
+| CI                  | `ci/<name>`      | `ci/pr-checks`         |
+| Hotfix (production) | `hotfix/<name>`  | `hotfix/broken-cta`    |
 
 ```bash
 git checkout main
@@ -55,23 +55,23 @@ type(scope): short description
 
 ### Types
 
-| Type | Use when |
-|------|----------|
-| `feat` | New user-facing feature |
-| `fix` | Bug fix |
-| `docs` | Documentation only |
-| `chore` | Tooling, deps, config (no product behavior) |
-| `refactor` | Code change that is not a fix or feature |
-| `style` | Formatting / Prettier (no logic change) |
-| `test` | Tests |
-| `ci` | CI workflow changes |
+| Type       | Use when                                    |
+| ---------- | ------------------------------------------- |
+| `feat`     | New user-facing feature                     |
+| `fix`      | Bug fix                                     |
+| `docs`     | Documentation only                          |
+| `chore`    | Tooling, deps, config (no product behavior) |
+| `refactor` | Code change that is not a fix or feature    |
+| `style`    | Formatting / Prettier (no logic change)     |
+| `test`     | Tests                                       |
+| `ci`       | CI workflow changes                         |
 
 ### Rules
 
 - Use imperative mood: “add”, not “added” or “adds”
 - Keep the subject under ~72 characters
 - No period at the end of the subject
-- Optional body after a blank line for *why* (not *what*)
+- Optional body after a blank line for _why_ (not _what_)
 
 ### Examples
 
@@ -89,7 +89,7 @@ Do **not** use slash style for commits (`feat/message`). That pattern is for **b
 ## Pull requests
 
 1. Push your branch and open a PR into **`main`**.
-2. Fill in a short summary of *what* changed and *why*.
+2. Fill in a short summary of _what_ changed and _why_.
 3. Keep PRs focused — one concern per PR when possible.
 4. Ensure checks pass before requesting review:
 
@@ -114,14 +114,14 @@ Do **not** use slash style for commits (`feat/message`). That pattern is for **b
 
 ## Scripts reference
 
-| Command | When to use |
-|---------|-------------|
-| `pnpm dev` | Local development |
-| `pnpm lint` | Before push / in CI |
-| `pnpm typecheck` | Before push / in CI |
-| `pnpm format` | Fix formatting locally |
-| `pnpm format:check` | Verify formatting (CI) |
-| `pnpm build` | Confirm production build |
+| Command             | When to use              |
+| ------------------- | ------------------------ |
+| `pnpm dev`          | Local development        |
+| `pnpm lint`         | Before push / in CI      |
+| `pnpm typecheck`    | Before push / in CI      |
+| `pnpm format`       | Fix formatting locally   |
+| `pnpm format:check` | Verify formatting (CI)   |
+| `pnpm build`        | Confirm production build |
 
 Day to day: rely on editor Format on Save (Prettier). Run `pnpm format` if CI fails on formatting.
 
@@ -135,12 +135,12 @@ Match existing patterns in the repo. Prefer small, readable components over larg
 
 ## What belongs in this repo
 
-| In scope | Out of scope |
-|----------|--------------|
-| Marketing pages & UI | Admin CMS app |
-| Static / mock content | Database access |
-| Client form mocks → future API client | Auth, SMTP, media secrets |
-| SEO (metadata, sitemap, robots) | Skills / Talent product apps (teasers only) |
+| In scope                              | Out of scope                                |
+| ------------------------------------- | ------------------------------------------- |
+| Marketing pages & UI                  | Admin CMS app                               |
+| Static / mock content                 | Database access                             |
+| Client form mocks → future API client | Auth, SMTP, media secrets                   |
+| SEO (metadata, sitemap, robots)       | Skills / Talent product apps (teasers only) |
 
 ## Questions
 

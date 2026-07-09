@@ -6,18 +6,18 @@ Standalone Next.js frontend. No admin CMS, no database, and no backend live in t
 
 ## Stack
 
-| Layer | Choice |
-|-------|--------|
-| Framework | Next.js (App Router) |
-| UI | React · TypeScript · Tailwind CSS |
-| Package manager | **pnpm only** |
+| Layer           | Choice                            |
+| --------------- | --------------------------------- |
+| Framework       | Next.js (App Router)              |
+| UI              | React · TypeScript · Tailwind CSS |
+| Package manager | **pnpm only**                     |
 
 ## Requirements
 
-| Tool | Version |
-|------|---------|
-| Node.js | **22.x** |
-| pnpm | **11.x** (pinned via `packageManager` in `package.json`) |
+| Tool    | Version                                                  |
+| ------- | -------------------------------------------------------- |
+| Node.js | **22.x**                                                 |
+| pnpm    | **11.x** (pinned via `packageManager` in `package.json`) |
 
 - **npm and yarn are blocked** — installs must use pnpm.
 - Volta / nvm are **not required**. Install Node 22 from [nodejs.org](https://nodejs.org/), then use Corepack for pnpm.
@@ -41,14 +41,14 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Scripts
 
-| Command | Description |
-|---------|-------------|
-| `pnpm dev` | Start development server |
-| `pnpm build` | Production build |
-| `pnpm start` | Serve production build |
-| `pnpm lint` | Run ESLint |
-| `pnpm typecheck` | TypeScript check (`tsc --noEmit`) |
-| `pnpm format` | Format codebase with Prettier |
+| Command             | Description                         |
+| ------------------- | ----------------------------------- |
+| `pnpm dev`          | Start development server            |
+| `pnpm build`        | Production build                    |
+| `pnpm start`        | Serve production build              |
+| `pnpm lint`         | Run ESLint                          |
+| `pnpm typecheck`    | TypeScript check (`tsc --noEmit`)   |
+| `pnpm format`       | Format codebase with Prettier       |
 | `pnpm format:check` | Check formatting (CI / before push) |
 
 ## Project structure
@@ -69,13 +69,13 @@ blihops-web/
 
 ## Tooling
 
-| Concern | How we enforce it |
-|---------|-------------------|
-| Same Node major | `engines.node` + `.npmrc` `engine-strict` + `.nvmrc` |
-| Same pnpm | `packageManager` field + Corepack |
-| pnpm only | `preinstall` → `only-allow pnpm` |
-| Consistent style | EditorConfig + Prettier |
-| Quality | `lint` · `typecheck` · `format:check` · `build` |
+| Concern          | How we enforce it                                    |
+| ---------------- | ---------------------------------------------------- |
+| Same Node major  | `engines.node` + `.npmrc` `engine-strict` + `.nvmrc` |
+| Same pnpm        | `packageManager` field + Corepack                    |
+| pnpm only        | `preinstall` → `only-allow pnpm`                     |
+| Consistent style | EditorConfig + Prettier                              |
+| Quality          | `lint` · `typecheck` · `format:check` · `build`      |
 
 Wrong Node/pnpm version or `npm install` / `yarn` should fail at install time.
 
@@ -85,8 +85,8 @@ Branch naming, commit messages, and PR process are in **[CONTRIBUTING.md](./CONT
 
 ## Related
 
-| Repo | Role |
-|------|------|
-| **blihops-web** (this) | Marketing frontend |
-| `blihop-api` | Integrations + CMS API *(planned)* |
-| `blihop-admin` | Admin CMS frontend *(planned)* |
+| Repo                   | Role                               |
+| ---------------------- | ---------------------------------- |
+| **blihops-web** (this) | Marketing frontend                 |
+| `blihop-api`           | Integrations + CMS API _(planned)_ |
+| `blihop-admin`         | Admin CMS frontend _(planned)_     |
