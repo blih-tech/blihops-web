@@ -95,7 +95,7 @@ export function Hero() {
           customVariants={heroMotionVariants}
           className="font-sans mx-auto max-w-lg text-center text-base leading-relaxed tracking-normal text-muted-foreground sm:text-lg"
         >
-          Managed pods for support, back-office, and automation — <br />
+          Managed pods for support, back-office, and automation <br />
           clear ownership and measurable performance.
         </TimelineAnimation>
 
