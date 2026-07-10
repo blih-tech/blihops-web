@@ -14,6 +14,7 @@ import { AnimatePresence, motion } from 'motion/react';
 
 import { Logo } from '@/components/layout/Logo';
 import { MegaMenu, type MegaMenuLink } from '@/components/layout/MegaMenu';
+import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -141,7 +142,7 @@ export function Header() {
       ref={headerRef}
       className="sticky top-0 z-50 border-border bg-background"
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
+      <SectionWrapper className="flex h-16 items-center justify-between gap-4">
         <Link
           href="/"
           className="flex shrink-0 items-center gap-2"
@@ -271,12 +272,13 @@ export function Header() {
             )}
           </button>
         </div>
-      </div>
+      </SectionWrapper>
 
       {mobileOpen ? (
         <div className="border-t border-border bg-background md:hidden">
-          <nav
-            className="mx-auto flex max-h-[calc(100dvh-4rem)] max-w-6xl flex-col overflow-y-auto px-4 py-3 sm:px-6"
+          <SectionWrapper
+            as="nav"
+            className="flex max-h-[calc(100dvh-4rem)] flex-col overflow-y-auto py-3"
             aria-label="Mobile"
           >
             {primaryLinks.map((link) => (
@@ -341,7 +343,7 @@ export function Header() {
                 Get free pilot
               </Link>
             </div>
-          </nav>
+          </SectionWrapper>
         </div>
       ) : null}
     </header>
