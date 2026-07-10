@@ -6,17 +6,17 @@ import './globals.css';
 
 const fontSans = Inter({
   subsets: ['latin'],
-  variable: '--font-sans',
+  variable: '--font-inter',
 });
 
 const fontSerif = Source_Serif_4({
   subsets: ['latin'],
-  variable: '--font-serif',
+  variable: '--font-source-serif',
 });
 
 const fontMono = JetBrains_Mono({
   subsets: ['latin'],
-  variable: '--font-mono',
+  variable: '--font-jetbrains',
 });
 
 export const metadata: Metadata = {

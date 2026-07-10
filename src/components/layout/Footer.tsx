@@ -86,10 +86,10 @@ export function Footer() {
             />
             <div className="absolute inset-0 bg-foreground/55" aria-hidden />
             <div className="absolute inset-0 flex flex-col justify-center p-8 sm:p-12 md:p-16">
-              <h2 className="mb-3 max-w-2xl text-3xl font-semibold tracking-tight text-primary-foreground sm:text-4xl md:text-5xl">
+              <h2 className="font-heading mb-3 max-w-2xl text-3xl font-semibold tracking-tight text-primary-foreground sm:text-4xl md:text-5xl">
                 Ready to get relief from operational overwhelm?
               </h2>
-              <p className="mb-6 max-w-xl text-sm text-primary-foreground/90 sm:text-base">
+              <p className="font-sans mb-6 max-w-xl text-sm text-primary-foreground/90 sm:text-base">
                 Free 2-week pilot. Clear deliverables. Prove value before you
                 commit.
               </p>
@@ -211,10 +211,10 @@ export function Footer() {
                 customVariants={footerMotionVariants}
                 className="space-y-4 lg:text-right"
               >
-                <h3 className="text-base font-medium text-foreground">
+                <h3 className="font-heading text-base font-medium text-foreground">
                   Stay ahead of operational chaos
                 </h3>
-                <p className="max-w-md text-sm text-muted-foreground lg:ml-auto">
+                <p className="font-sans max-w-md text-sm text-muted-foreground lg:ml-auto">
                   Tips on outsourcing, SLAs, and scaling ops with AI delivered
                   straight to your inbox.
                 </p>

@@ -67,7 +67,7 @@ export function Hero() {
           timelineRef={sectionRef}
           once={false}
           customVariants={heroMotionVariants}
-          className="mx-auto flex w-fit items-center gap-2.5 rounded-md border border-border bg-card px-3 py-1.5 text-xs font-medium tracking-wide text-foreground uppercase shadow-sm"
+          className="mx-auto flex w-fit items-center gap-2.5 rounded-md border border-border bg-card px-3 py-1.5 text-xs font-medium tracking-wide text-foreground uppercase"
         >
           <span className="relative flex size-2">
             <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-75" />
@@ -93,7 +93,7 @@ export function Hero() {
           timelineRef={sectionRef}
           once={false}
           customVariants={heroMotionVariants}
-          className="mx-auto max-w-lg text-center text-base leading-relaxed tracking-normal text-muted-foreground sm:text-lg"
+          className="font-sans mx-auto max-w-lg text-center text-base leading-relaxed tracking-normal text-muted-foreground sm:text-lg"
         >
           Managed pods for support, back-office, and automation — <br />
           clear ownership and measurable performance.
