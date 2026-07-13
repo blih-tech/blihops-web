@@ -7,8 +7,6 @@ import type { Variants } from 'motion/react';
 
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
 import { HeroBackdrop } from '@/components/sections/shared/HeroBackdrop';
-import { LogoCloud } from '@/components/sections/shared/LogoCloud';
-import { HeroVideo } from '@/components/sections/what-we-offer/HeroVideo';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -18,8 +16,8 @@ const motionVariants: Variants = {
     y: 0,
     opacity: 1,
     transition: {
-      delay: i * 0.12,
-      duration: 0.5,
+      delay: i * 0.1,
+      duration: 0.45,
       ease: [0.22, 1, 0.36, 1],
     },
   }),
@@ -30,54 +28,60 @@ const motionVariants: Variants = {
   },
 };
 
-const POSTER =
-  'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&h=900&fit=crop&q=80';
-// Sample open MP4 (placeholder until final asset)
-const VIDEO =
-  'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4';
-
-export function WhatWeOfferHero() {
+export function HowWeWorkHero() {
   const sectionRef = useRef<HTMLElement>(null);
 
   return (
     <section
       ref={sectionRef}
       className="relative w-full py-16 md:py-24"
-      aria-label="What we offer"
+      aria-label="How we work"
     >
       <HeroBackdrop />
 
-      <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
+      <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
         <TimelineAnimation
-          as="h1"
+          as="p"
           animationNum={0}
           timelineRef={sectionRef}
           once={false}
           customVariants={motionVariants}
-          className="font-heading max-w-3xl text-4xl font-semibold tracking-tight text-balance text-foreground sm:text-5xl lg:text-6xl"
+          className="font-sans text-xs font-medium tracking-widest text-muted-foreground uppercase"
         >
-          Intelligent outsourcing for growing businesses.
+          How we work
+        </TimelineAnimation>
+
+        <TimelineAnimation
+          as="h1"
+          animationNum={1}
+          timelineRef={sectionRef}
+          once={false}
+          customVariants={motionVariants}
+          className="mt-4 font-heading text-4xl font-semibold tracking-tight text-balance text-foreground sm:text-5xl lg:text-6xl"
+        >
+          From overwhelmed to in control
         </TimelineAnimation>
 
         <TimelineAnimation
           as="p"
-          animationNum={1}
+          animationNum={2}
           timelineRef={sectionRef}
           once={false}
           customVariants={motionVariants}
           className="mt-5 max-w-2xl font-sans text-base leading-relaxed text-muted-foreground sm:text-lg"
         >
-          Support, back-office, IT, AI automation, and reporting with documented
-          SOPs, defined SLAs, and automation built in from day one.
+          Every engagement follows a clear path: discovery, design, dedicated
+          pods, SLA tracking, and continuous optimization. You always know what
+          is happening and how it is performing.
         </TimelineAnimation>
 
         <TimelineAnimation
           as="div"
-          animationNum={2}
+          animationNum={3}
           timelineRef={sectionRef}
           once={false}
           customVariants={motionVariants}
-          className="mt-8"
+          className="mt-8 flex flex-wrap items-center justify-center gap-3"
         >
           <Link
             href="/pilot"
@@ -92,30 +96,14 @@ export function WhatWeOfferHero() {
               className="transition-transform group-hover/cta:translate-x-0.5"
             />
           </Link>
+          <Link
+            href="/what-we-offer"
+            className={buttonVariants({ size: 'lg', variant: 'outline' })}
+          >
+            View services
+          </Link>
         </TimelineAnimation>
       </div>
-
-      <TimelineAnimation
-        as="div"
-        animationNum={3}
-        timelineRef={sectionRef}
-        once={false}
-        customVariants={motionVariants}
-        className="relative mx-auto mt-12 max-w-4xl md:mt-14"
-      >
-        <LogoCloud />
-      </TimelineAnimation>
-
-      <TimelineAnimation
-        as="div"
-        animationNum={4}
-        timelineRef={sectionRef}
-        once={false}
-        customVariants={motionVariants}
-        className="relative mx-auto mt-10 w-full max-w-5xl md:mt-12"
-      >
-        <HeroVideo poster={POSTER} src={VIDEO} />
-      </TimelineAnimation>
     </section>
   );
 }
