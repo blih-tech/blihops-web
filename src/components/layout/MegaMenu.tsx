@@ -72,6 +72,7 @@ export function MegaMenu({
         'w-[min(42rem,calc(100vw-2rem))] min-w-[26rem] overflow-hidden rounded-2xl border border-border bg-background shadow-lg',
         className,
       )}
+      data-lenis-prevent
     >
       <div className="grid sm:grid-cols-[1.15fr_0.85fr]">
         <div className="flex flex-col p-2">

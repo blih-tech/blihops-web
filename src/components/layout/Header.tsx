@@ -284,6 +284,7 @@ export function Header() {
           <SectionWrapper
             as="nav"
             className="flex max-h-[calc(100dvh-4rem)] flex-col overflow-y-auto py-3"
+            data-lenis-prevent
             aria-label="Mobile"
           >
             {primaryLinks.map((link) => (

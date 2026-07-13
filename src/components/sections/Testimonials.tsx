@@ -69,6 +69,7 @@ export function Testimonials() {
           once={false}
           customVariants={motionVariants}
           className="relative border-y border-border"
+          data-lenis-prevent
         >
           <ul className="sr-only">
             {testimonials.map((t) => (
