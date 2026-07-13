@@ -15,6 +15,7 @@ import { AnimatePresence, motion } from 'motion/react';
 import { Logo } from '@/components/layout/Logo';
 import { MegaMenu, type MegaMenuLink } from '@/components/layout/MegaMenu';
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
+import { UnderConstruction } from '@/components/UnderConstruction';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -49,9 +50,13 @@ function NavHighlight() {
   );
 }
 
-function PreviewPanel({ className }: { className: string }) {
+function MenuUnderConstructionPreview({ title }: { title: string }) {
   return (
-    <div className={`size-full min-h-36 rounded-xl ${className}`} aria-hidden />
+    <UnderConstruction
+      className="min-h-36 h-full rounded-xl"
+      title={title}
+      description="This page is being built. Check back soon."
+    />
   );
 }
 
@@ -62,7 +67,7 @@ const whoWeAreLinks: MegaMenuLink[] = [
       'Learn about our mission, values, and the team driving engineering excellence at BlihOps.',
     href: '/who-we-are',
     icon: Building2,
-    preview: <PreviewPanel className="bg-primary" />,
+    preview: <MenuUnderConstructionPreview title="Who we are" />,
   },
   {
     text: 'Case studies',
@@ -70,14 +75,14 @@ const whoWeAreLinks: MegaMenuLink[] = [
       'Real outcomes from engineering partnerships and delivery work.',
     href: '/case-studies',
     icon: Newspaper,
-    preview: <PreviewPanel className="bg-chart-2" />,
+    preview: <MenuUnderConstructionPreview title="Case studies" />,
   },
   {
     text: 'Latest insights',
     shortDescription: 'Ideas and perspectives on building software that lasts.',
     href: '/insights',
     icon: Lightbulb,
-    preview: <PreviewPanel className="bg-chart-4" />,
+    preview: <MenuUnderConstructionPreview title="Latest insights" />,
   },
 ];
 
