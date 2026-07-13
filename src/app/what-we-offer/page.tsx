@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import { Approach } from '@/components/sections/what-we-offer/Approach';
 import { WhatWeOfferHero } from '@/components/sections/what-we-offer/Hero';
+import { ServicesList } from '@/components/sections/what-we-offer/ServicesList';
 
 export const metadata: Metadata = {
   title: 'What We Offer',
@@ -19,6 +20,7 @@ export default function WhatWeOfferPage() {
       <SectionWrapper>
         <WhatWeOfferHero />
         <Approach />
+        <ServicesList />
       </SectionWrapper>
     </main>
   );
