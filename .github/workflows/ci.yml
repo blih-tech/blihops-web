@@ -41,6 +41,9 @@ jobs:
             exit 1
           fi
 
+      - name: Supply chain audit
+        run: pnpm audit --audit-level=high
+
       - name: Lint
         run: pnpm lint
 
