@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { AnimatePresence, motion } from 'motion/react';
@@ -39,6 +39,14 @@ export function Services() {
   const sectionRef = useRef<HTMLElement>(null);
   const [activeId, setActiveId] = useState(services[0]?.id ?? '');
   const [direction, setDirection] = useState(0);
+
+  // Warm the browser cache so rapid hover swaps don't flash empty
+  useEffect(() => {
+    for (const service of services) {
+      const img = new window.Image();
+      img.src = service.image;
+    }
+  }, []);
 
   const activeIndex = Math.max(
     0,
@@ -257,31 +265,18 @@ function ServiceListItem({
 
 function ServicePreview({ service }: { service: ServiceItem }) {
   const Icon = service.icon;
-  const [imgFailed, setImgFailed] = useState(false);
 
   return (
     <div className="relative flex h-full flex-col">
-      <div className="absolute inset-0">
-        {!imgFailed ? (
-          <Image
-            src={service.image}
-            alt=""
-            fill
-            className="object-cover"
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            onError={() => setImgFailed(true)}
-          />
-        ) : (
-          <div
-            className="flex size-full items-center justify-center bg-muted"
-            aria-hidden
-          >
-            <Icon
-              className="size-12 text-foreground md:size-14"
-              strokeWidth={1.25}
-            />
-          </div>
-        )}
+      <div className="absolute inset-0 bg-muted">
+        <Image
+          src={service.image}
+          alt=""
+          fill
+          priority
+          className="object-cover"
+          sizes="(max-width: 1024px) 100vw, 50vw"
+        />
       </div>
 
       <div className="relative z-10 mt-auto flex items-start gap-3 border-t border-border/60 bg-card/90 px-5 py-4 backdrop-blur-sm md:px-6 md:py-5">

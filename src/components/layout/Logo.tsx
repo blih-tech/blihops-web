@@ -10,12 +10,12 @@ type LogoProps = {
 export function Logo({ className, priority = false }: LogoProps) {
   return (
     <Image
-      src="/blihops-logo-2.png"
+      src="/blihops-logo-main.png"
       alt="BlihOps"
       width={140}
       height={32}
       priority={priority}
-      className={cn('h-8 w-auto', className)}
+      className={cn('h-20 w-auto', className)}
     />
   );
 }

@@ -68,7 +68,7 @@ export function Testimonials() {
           timelineRef={sectionRef}
           once={false}
           customVariants={motionVariants}
-          className="relative border border-border"
+          className="relative border-y border-border"
         >
           <ul className="sr-only">
             {testimonials.map((t) => (

@@ -4,6 +4,7 @@ import { Problem } from '@/components/sections/Problem';
 import { Services } from '@/components/sections/Services';
 import { Solution } from '@/components/sections/Solution';
 import { Testimonials } from '@/components/sections/Testimonials';
+import { Trust } from '@/components/sections/Trust';
 
 export default function Home() {
   return (
@@ -13,8 +14,9 @@ export default function Home() {
         <Problem />
         <Solution />
         <Services />
+        <Trust />
+        <Testimonials />
       </SectionWrapper>
-      <Testimonials />
     </main>
   );
 }
