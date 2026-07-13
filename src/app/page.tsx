@@ -3,6 +3,7 @@ import { HeroWrapper } from '@/components/sections/HeroWrapper';
 import { Problem } from '@/components/sections/Problem';
 import { Services } from '@/components/sections/Services';
 import { Solution } from '@/components/sections/Solution';
+import { Testimonials } from '@/components/sections/Testimonials';
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
         <Solution />
         <Services />
       </SectionWrapper>
+      <Testimonials />
     </main>
   );
 }
