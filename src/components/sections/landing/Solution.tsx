@@ -1,8 +1,9 @@
 'use client';
 
 import { useRef, type ReactNode } from 'react';
+import NumberFlow from '@number-flow/react';
 import { SparklesIcon } from 'lucide-react';
-import type { Variants } from 'motion/react';
+import { useInView, type Variants } from 'motion/react';
 
 import { DecorIcon } from '@/components/decor-icon';
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
@@ -131,16 +132,7 @@ export function Solution() {
           <GridPlus className="top-0 right-0 translate-x-1/2" />
           <GridPlus className="top-0 left-1/2 max-lg:hidden" />
           <div className="grid grid-cols-1 lg:grid-cols-2">
-            <div className="relative grid grid-cols-2 border-b border-border bg-muted lg:border-r">
-              <GridPlus className="top-0 left-1/2" />
-              <GridPlus className="bottom-0 left-1/2" />
-              <StatBlock
-                value="25–40%"
-                label="Cost reduction"
-                className="border-r border-border"
-              />
-              <StatBlock value="10–20 hrs" label="Reclaimed / week" />
-            </div>
+            <StatsRow />
             <QuoteCell className="border-b border-border" />
           </div>
         </div>
@@ -226,12 +218,44 @@ function FeatureCell({
   );
 }
 
+function StatsRow() {
+  const statsRef = useRef<HTMLDivElement>(null);
+  const statsInView = useInView(statsRef, { once: true, margin: '-15% 0px' });
+
+  return (
+    <div
+      ref={statsRef}
+      className="relative grid grid-cols-2 border-b border-border bg-muted lg:border-r"
+    >
+      <GridPlus className="top-0 left-1/2" />
+      <GridPlus className="bottom-0 left-1/2" />
+      <StatBlock
+        value={statsInView ? 40 : 0}
+        prefix="25–"
+        suffix="%"
+        label="Cost reduction"
+        className="border-r border-border"
+      />
+      <StatBlock
+        value={statsInView ? 20 : 0}
+        prefix="10–"
+        suffix=" hrs"
+        label="Reclaimed / week"
+      />
+    </div>
+  );
+}
+
 function StatBlock({
   value,
+  prefix,
+  suffix,
   label,
   className,
 }: {
-  value: string;
+  value: number;
+  prefix?: string;
+  suffix?: string;
   label: string;
   className?: string;
 }) {
@@ -242,8 +266,21 @@ function StatBlock({
         className,
       )}
     >
-      <p className="font-heading text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
-        {value}
+      <p className="font-heading text-3xl font-semibold tracking-tight text-foreground tabular-nums md:text-4xl">
+        <NumberFlow
+          value={value}
+          prefix={prefix}
+          suffix={suffix}
+          trend={1}
+          transformTiming={{
+            duration: 900,
+            easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+          }}
+          spinTiming={{
+            duration: 900,
+            easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+          }}
+        />
       </p>
       <p className="font-sans text-sm text-muted-foreground">{label}</p>
     </div>

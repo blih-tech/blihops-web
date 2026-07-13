@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import {
   Building2,
   ChevronDown,
@@ -29,6 +30,12 @@ const trailingLinks = [
   { id: 'skills', name: 'Skills', href: '/skills' },
   { id: 'talent', name: 'Talent', href: '/talent' },
 ] as const;
+
+const aboutHrefs = ['/who-we-are', '/case-studies', '/insights'] as const;
+
+function isRouteActive(pathname: string, href: string) {
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
 
 const navItemClass =
   'relative z-10 rounded-md px-3.5 py-1.5 text-sm font-medium text-foreground/80 transition-colors hover:text-foreground';
@@ -87,6 +94,7 @@ const whoWeAreLinks: MegaMenuLink[] = [
 ];
 
 export function Header() {
+  const pathname = usePathname();
   const [whoOpen, setWhoOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileWhoOpen, setMobileWhoOpen] = useState(false);
@@ -95,7 +103,15 @@ export function Header() {
   const whoCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const menuId = useId();
 
-  const activeNavId = whoOpen ? (hoveredNavId ?? 'about') : hoveredNavId;
+  const routeActiveId =
+    primaryLinks.find((link) => isRouteActive(pathname, link.href))?.id ??
+    trailingLinks.find((link) => isRouteActive(pathname, link.href))?.id ??
+    (aboutHrefs.some((href) => isRouteActive(pathname, href)) ? 'about' : null);
+
+  // Hover wins while interacting; otherwise keep highlight on the current route
+  const activeNavId = whoOpen
+    ? (hoveredNavId ?? 'about')
+    : (hoveredNavId ?? routeActiveId);
 
   const clearWhoCloseTimer = useCallback(() => {
     if (whoCloseTimer.current) {
@@ -164,21 +180,23 @@ export function Header() {
             if (!whoOpen) setHoveredNavId(null);
           }}
         >
-          {primaryLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                navItemClass,
-                activeNavId === link.id && 'text-foreground',
-              )}
-              onMouseEnter={() => setHoveredNavId(link.id)}
-              onFocus={() => setHoveredNavId(link.id)}
-            >
-              {activeNavId === link.id ? <NavHighlight /> : null}
-              <span className="relative z-10">{link.name}</span>
-            </Link>
-          ))}
+          {primaryLinks.map((link) => {
+            const isActive = activeNavId === link.id;
+            const isCurrent = routeActiveId === link.id;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={isCurrent ? 'page' : undefined}
+                className={cn(navItemClass, isActive && 'text-foreground')}
+                onMouseEnter={() => setHoveredNavId(link.id)}
+                onFocus={() => setHoveredNavId(link.id)}
+              >
+                {isActive ? <NavHighlight /> : null}
+                <span className="relative z-10">{link.name}</span>
+              </Link>
+            );
+          })}
 
           <div
             className="relative"
@@ -190,6 +208,7 @@ export function Header() {
               aria-expanded={whoOpen}
               aria-controls={menuId}
               aria-haspopup="true"
+              aria-current={routeActiveId === 'about' ? 'page' : undefined}
               onFocus={openWho}
               onMouseEnter={() => setHoveredNavId('about')}
               className={cn(
@@ -232,21 +251,23 @@ export function Header() {
             </AnimatePresence>
           </div>
 
-          {trailingLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className={cn(
-                navItemClass,
-                activeNavId === link.id && 'text-foreground',
-              )}
-              onMouseEnter={() => setHoveredNavId(link.id)}
-              onFocus={() => setHoveredNavId(link.id)}
-            >
-              {activeNavId === link.id ? <NavHighlight /> : null}
-              <span className="relative z-10">{link.name}</span>
-            </Link>
-          ))}
+          {trailingLinks.map((link) => {
+            const isActive = activeNavId === link.id;
+            const isCurrent = routeActiveId === link.id;
+            return (
+              <Link
+                key={link.href}
+                href={link.href}
+                aria-current={isCurrent ? 'page' : undefined}
+                className={cn(navItemClass, isActive && 'text-foreground')}
+                onMouseEnter={() => setHoveredNavId(link.id)}
+                onFocus={() => setHoveredNavId(link.id)}
+              >
+                {isActive ? <NavHighlight /> : null}
+                <span className="relative z-10">{link.name}</span>
+              </Link>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-2">
@@ -287,23 +308,36 @@ export function Header() {
             data-lenis-prevent
             aria-label="Mobile"
           >
-            {primaryLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={closeAll}
-                className="border-b border-border py-3.5 text-sm font-semibold text-foreground"
-              >
-                {link.name}
-              </Link>
-            ))}
+            {primaryLinks.map((link) => {
+              const isCurrent = routeActiveId === link.id;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={closeAll}
+                  aria-current={isCurrent ? 'page' : undefined}
+                  className={cn(
+                    'border-b border-border py-3.5 text-sm font-semibold',
+                    isCurrent
+                      ? 'bg-muted/50 text-foreground'
+                      : 'text-foreground',
+                  )}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
 
             <div className="border-b border-border">
               <button
                 type="button"
                 aria-expanded={mobileWhoOpen}
+                aria-current={routeActiveId === 'about' ? 'page' : undefined}
                 onClick={() => setMobileWhoOpen((v) => !v)}
-                className="flex w-full items-center justify-between py-3.5 text-sm font-semibold text-foreground"
+                className={cn(
+                  'flex w-full items-center justify-between py-3.5 text-sm font-semibold text-foreground',
+                  routeActiveId === 'about' && 'bg-muted/50',
+                )}
               >
                 About
                 <ChevronDown
@@ -315,30 +349,48 @@ export function Header() {
               </button>
               {mobileWhoOpen ? (
                 <div className="flex flex-col gap-1 pb-3 pl-2">
-                  {whoWeAreLinks.map((item) => (
-                    <Link
-                      key={item.href}
-                      href={item.href}
-                      onClick={closeAll}
-                      className="rounded-lg px-3 py-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                    >
-                      {item.text}
-                    </Link>
-                  ))}
+                  {whoWeAreLinks.map((item) => {
+                    const isCurrent = isRouteActive(pathname, item.href);
+                    return (
+                      <Link
+                        key={item.href}
+                        href={item.href}
+                        onClick={closeAll}
+                        aria-current={isCurrent ? 'page' : undefined}
+                        className={cn(
+                          'rounded-lg px-3 py-2.5 text-sm transition-colors hover:bg-muted hover:text-foreground',
+                          isCurrent
+                            ? 'bg-muted text-foreground'
+                            : 'text-muted-foreground',
+                        )}
+                      >
+                        {item.text}
+                      </Link>
+                    );
+                  })}
                 </div>
               ) : null}
             </div>
 
-            {trailingLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={closeAll}
-                className="border-b border-border py-3.5 text-sm font-semibold text-foreground"
-              >
-                {link.name}
-              </Link>
-            ))}
+            {trailingLinks.map((link) => {
+              const isCurrent = routeActiveId === link.id;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={closeAll}
+                  aria-current={isCurrent ? 'page' : undefined}
+                  className={cn(
+                    'border-b border-border py-3.5 text-sm font-semibold',
+                    isCurrent
+                      ? 'bg-muted/50 text-foreground'
+                      : 'text-foreground',
+                  )}
+                >
+                  {link.name}
+                </Link>
+              );
+            })}
 
             <div className="pt-4 pb-2">
               <Link

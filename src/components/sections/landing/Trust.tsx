@@ -1,7 +1,8 @@
 'use client';
 
 import { useRef } from 'react';
-import type { Variants } from 'motion/react';
+import NumberFlow from '@number-flow/react';
+import { useInView, type Variants } from 'motion/react';
 
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
 import { cn } from '@/lib/utils';
@@ -26,21 +27,32 @@ const motionVariants: Variants = {
 
 const stats = [
   {
-    value: '25–40%',
+    id: 'cost',
+    value: 40,
+    prefix: '25–',
+    suffix: '%',
     label: 'Typical cost reduction vs in-house or Western outsourcing',
   },
   {
-    value: '90%',
+    id: 'sla',
+    value: 90,
+    prefix: '',
+    suffix: '%',
     label: 'SLA compliance across active delivery pods',
   },
   {
-    value: '15-day',
+    id: 'pilot',
+    value: 15,
+    prefix: '',
+    suffix: '-day',
     label: 'Average pilot-to-live deployment window',
   },
 ] as const;
 
 export function Trust() {
   const sectionRef = useRef<HTMLElement>(null);
+  const statsRef = useRef<HTMLDivElement>(null);
+  const statsInView = useInView(statsRef, { once: true, margin: '-15% 0px' });
 
   return (
     <section
@@ -88,23 +100,40 @@ export function Trust() {
         timelineRef={sectionRef}
         once={false}
         customVariants={motionVariants}
-        className="grid grid-cols-1 gap-1.5 md:grid-cols-3 md:gap-2"
       >
-        {stats.map((stat) => (
-          <div
-            key={stat.value}
-            className={cn(
-              'flex flex-col items-center justify-center gap-3 rounded-xl border border-border bg-muted px-6 py-12 text-center',
-            )}
-          >
-            <p className="font-heading text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
-              {stat.value}
-            </p>
-            <p className="max-w-[16rem] font-sans text-sm leading-relaxed text-muted-foreground">
-              {stat.label}
-            </p>
-          </div>
-        ))}
+        <div
+          ref={statsRef}
+          className="grid grid-cols-1 gap-1.5 md:grid-cols-3 md:gap-2"
+        >
+          {stats.map((stat) => (
+            <div
+              key={stat.id}
+              className={cn(
+                'flex flex-col items-center justify-center gap-3 rounded-xl border border-border bg-muted px-6 py-12 text-center',
+              )}
+            >
+              <p className="font-heading text-4xl font-semibold tracking-tight text-foreground tabular-nums md:text-5xl">
+                <NumberFlow
+                  value={statsInView ? stat.value : 0}
+                  prefix={stat.prefix}
+                  suffix={stat.suffix}
+                  trend={1}
+                  transformTiming={{
+                    duration: 900,
+                    easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+                  }}
+                  spinTiming={{
+                    duration: 900,
+                    easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+                  }}
+                />
+              </p>
+              <p className="max-w-[16rem] font-sans text-sm leading-relaxed text-muted-foreground">
+                {stat.label}
+              </p>
+            </div>
+          ))}
+        </div>
       </TimelineAnimation>
     </section>
   );
