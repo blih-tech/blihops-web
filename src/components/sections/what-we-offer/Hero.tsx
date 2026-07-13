@@ -1,0 +1,118 @@
+'use client';
+
+import { useRef } from 'react';
+import Link from 'next/link';
+import { ArrowRightIcon } from 'lucide-react';
+import type { Variants } from 'motion/react';
+
+import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
+import { HeroVideo } from '@/components/sections/what-we-offer/HeroVideo';
+import { LogoCloud } from '@/components/sections/shared/LogoCloud';
+import { buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+
+const motionVariants: Variants = {
+  visible: (i: number) => ({
+    filter: 'blur(0px)',
+    y: 0,
+    opacity: 1,
+    transition: {
+      delay: i * 0.12,
+      duration: 0.5,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  }),
+  hidden: {
+    filter: 'blur(10px)',
+    y: 16,
+    opacity: 0,
+  },
+};
+
+const POSTER =
+  'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&h=900&fit=crop&q=80';
+// Sample open MP4 (placeholder until final asset)
+const VIDEO =
+  'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4';
+
+export function WhatWeOfferHero() {
+  const sectionRef = useRef<HTMLElement>(null);
+
+  return (
+    <section
+      ref={sectionRef}
+      className="relative w-full py-16 md:py-24"
+      aria-label="What we offer"
+    >
+      <div className="mx-auto flex max-w-4xl flex-col items-center text-center">
+        <TimelineAnimation
+          as="h1"
+          animationNum={0}
+          timelineRef={sectionRef}
+          once={false}
+          customVariants={motionVariants}
+          className="font-heading max-w-3xl text-4xl font-semibold tracking-tight text-balance text-foreground sm:text-5xl lg:text-6xl"
+        >
+          Intelligent outsourcing for growing businesses.
+        </TimelineAnimation>
+
+        <TimelineAnimation
+          as="p"
+          animationNum={1}
+          timelineRef={sectionRef}
+          once={false}
+          customVariants={motionVariants}
+          className="mt-5 max-w-2xl font-sans text-base leading-relaxed text-muted-foreground sm:text-lg"
+        >
+          Support, back-office, IT, AI automation, and reporting with documented
+          SOPs, defined SLAs, and automation built in from day one.
+        </TimelineAnimation>
+
+        <TimelineAnimation
+          as="div"
+          animationNum={2}
+          timelineRef={sectionRef}
+          once={false}
+          customVariants={motionVariants}
+          className="mt-8"
+        >
+          <Link
+            href="/pilot"
+            className={cn(
+              buttonVariants({ size: 'lg' }),
+              'group/cta bg-primary hover:bg-primary',
+            )}
+          >
+            Get free pilot
+            <ArrowRightIcon
+              data-icon="inline-end"
+              className="transition-transform group-hover/cta:translate-x-0.5"
+            />
+          </Link>
+        </TimelineAnimation>
+      </div>
+
+      <TimelineAnimation
+        as="div"
+        animationNum={3}
+        timelineRef={sectionRef}
+        once={false}
+        customVariants={motionVariants}
+        className="mx-auto mt-12 max-w-4xl md:mt-14"
+      >
+        <LogoCloud />
+      </TimelineAnimation>
+
+      <TimelineAnimation
+        as="div"
+        animationNum={4}
+        timelineRef={sectionRef}
+        once={false}
+        customVariants={motionVariants}
+        className="mx-auto mt-10 w-full max-w-5xl md:mt-12"
+      >
+        <HeroVideo poster={POSTER} src={VIDEO} />
+      </TimelineAnimation>
+    </section>
+  );
+}

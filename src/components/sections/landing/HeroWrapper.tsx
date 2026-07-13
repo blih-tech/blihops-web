@@ -1,5 +1,5 @@
-import { Hero } from '@/components/sections/Hero';
-import { LogosSection } from '@/components/sections/LogosSection';
+import { Hero } from '@/components/sections/landing/Hero';
+import { LogosSection } from '@/components/sections/landing/LogosSection';
 
 export function HeroWrapper() {
   return (
