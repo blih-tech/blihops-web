@@ -135,7 +135,7 @@ export function ProcessTimeline() {
             timelineRef={sectionRef}
             once={false}
             customVariants={headerVariants}
-            className="mb-4 inline-flex items-center rounded-full border border-border bg-muted/40 px-3 py-1 font-sans text-xs font-medium text-muted-foreground"
+            className="mb-4 inline-flex items-center rounded-sm border border-border bg-muted/40 px-3 py-1 font-sans text-xs font-medium text-muted-foreground"
           >
             Process
           </TimelineAnimation>
