@@ -1,10 +1,10 @@
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
-import { HeroWrapper } from '@/components/sections/HeroWrapper';
-import { Problem } from '@/components/sections/Problem';
-import { Services } from '@/components/sections/Services';
-import { Solution } from '@/components/sections/Solution';
-import { Testimonials } from '@/components/sections/Testimonials';
-import { Trust } from '@/components/sections/Trust';
+import { HeroWrapper } from '@/components/sections/landing/HeroWrapper';
+import { Problem } from '@/components/sections/landing/Problem';
+import { Services } from '@/components/sections/landing/Services';
+import { Solution } from '@/components/sections/landing/Solution';
+import { Testimonials } from '@/components/sections/landing/Testimonials';
+import { Trust } from '@/components/sections/landing/Trust';
 
 export default function Home() {
   return (

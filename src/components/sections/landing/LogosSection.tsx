@@ -1,4 +1,4 @@
-import { LogoCloud } from '@/components/sections/LogoCloud';
+import { LogoCloud } from '@/components/sections/shared/LogoCloud';
 
 export function LogosSection() {
   return (
