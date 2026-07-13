@@ -1,8 +1,10 @@
 import type { Metadata } from 'next';
 
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
+import { Commitments } from '@/components/sections/how-we-work/Commitments';
 import { HowWeWorkHero } from '@/components/sections/how-we-work/Hero';
 import { ProcessTimeline } from '@/components/sections/how-we-work/ProcessTimeline';
+import { Security } from '@/components/sections/how-we-work/Security';
 
 export const metadata: Metadata = {
   title: 'How We Work',
@@ -19,6 +21,8 @@ export default function HowWeWorkPage() {
       <SectionWrapper>
         <HowWeWorkHero />
         <ProcessTimeline />
+        <Commitments />
+        <Security />
       </SectionWrapper>
     </main>
   );
