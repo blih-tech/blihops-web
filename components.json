@@ -25,6 +25,7 @@
     "@ui-layouts": "https://ui-layouts.com/r/{name}.json",
     "@efferd": "https://efferd.com/r/{name}.json",
     "@magicui": "https://magicui.design/r/{name}",
-    "@tailark": "https://tailark.com/r/{name}.json"
+    "@tailark": "https://tailark.com/r/{name}.json",
+    "@shadcnblocks": "https://shadcnblocks.com/r/{name}.json"
   }
 }
