@@ -26,6 +26,7 @@
     "@efferd": "https://efferd.com/r/{name}.json",
     "@magicui": "https://magicui.design/r/{name}",
     "@tailark": "https://tailark.com/r/{name}.json",
-    "@shadcnblocks": "https://shadcnblocks.com/r/{name}.json"
+    "@shadcnblocks": "https://shadcnblocks.com/r/{name}.json",
+    "@react-bits": "https://reactbits.dev/r/{name}.json"
   }
 }

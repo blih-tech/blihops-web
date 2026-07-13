@@ -14,7 +14,7 @@ export function SectionWrapper<T extends ElementType = 'div'>({
   className,
   ...props
 }: SectionWrapperProps<T>) {
-  const Component = as || 'div';
+  const Component = (as ?? 'div') as ElementType;
 
   return (
     <Component

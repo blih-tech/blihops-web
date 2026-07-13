@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 
+import { AboutUsMegaMenu } from '@/components/layout/AboutUsMegaMenu';
 import { Logo } from '@/components/layout/Logo';
 import { MegaMenu, type MegaMenuLink } from '@/components/layout/MegaMenu';
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
@@ -74,7 +75,7 @@ const whoWeAreLinks: MegaMenuLink[] = [
       'Learn about our mission, values, and the team driving engineering excellence at BlihOps.',
     href: '/who-we-are',
     icon: Building2,
-    preview: <MenuUnderConstructionPreview title="Who we are" />,
+    preview: <AboutUsMegaMenu />,
   },
   {
     text: 'Case studies',

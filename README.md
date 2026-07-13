@@ -1,6 +1,6 @@
 # blihops-web
 
-Public marketing website for **Blihop** ([blihops.com](https://blihops.com)).
+Public marketing website for **Blihop** ([blihops.com](https://blihops-w.vercel.app/)).
 
 Standalone Next.js frontend. No admin CMS, no database, and no backend live in this repo. Content is static-first; forms and CMS data will talk to a separate API later.
 
