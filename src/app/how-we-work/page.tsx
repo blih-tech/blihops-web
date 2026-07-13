@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import { HowWeWorkHero } from '@/components/sections/how-we-work/Hero';
+import { ProcessTimeline } from '@/components/sections/how-we-work/ProcessTimeline';
 
 export const metadata: Metadata = {
   title: 'How We Work',
@@ -17,6 +18,7 @@ export default function HowWeWorkPage() {
     <main className="min-h-screen bg-background text-foreground">
       <SectionWrapper>
         <HowWeWorkHero />
+        <ProcessTimeline />
       </SectionWrapper>
     </main>
   );
