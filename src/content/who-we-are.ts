@@ -17,6 +17,17 @@ export type StoryContent = {
   };
 };
 
+export type VisionMissionContent = {
+  eyebrow: string;
+  heading: string;
+  vision: string;
+  mission: string;
+  drivers: Array<{
+    title: string;
+    description: string;
+  }>;
+};
+
 export const story: StoryContent = {
   eyebrow: 'Our story',
   heading: 'Born from the operations we',
@@ -43,4 +54,27 @@ export const story: StoryContent = {
     alt: 'BlihOps team at work in the Addis Ababa office',
     caption: 'Addis Ababa, Ethiopia',
   },
+};
+
+export const visionMission: VisionMissionContent = {
+  eyebrow: 'Vision & mission',
+  heading: 'Where we\u2019re going. How we get there.',
+  vision:
+    'To make Ethiopia a global destination for intelligent outsourcing, powered by AI and African talent.',
+  mission:
+    'We run modern operations globally so founders and leaders can focus on building their vision.',
+  drivers: [
+    {
+      title: 'Reliable systems',
+      description: 'Documented processes and accountable delivery.',
+    },
+    {
+      title: 'AI-assisted operations',
+      description: 'Automation that strengthens human ownership and QA.',
+    },
+    {
+      title: 'African talent',
+      description: 'Skilled teams from Ethiopia serving global businesses.',
+    },
+  ],
 };

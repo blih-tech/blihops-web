@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import { Story } from '@/components/sections/who-we-are/Story';
 import { WhoWeAreHero } from '@/components/sections/who-we-are/Hero';
+import { VisionMission } from '@/components/sections/who-we-are/VisionMission';
 
 export const metadata: Metadata = {
   title: 'About BlihOps — Ethiopia\u2019s AI-Powered Outsourcing Company',
@@ -25,6 +26,7 @@ export default function WhoWeArePage() {
       <SectionWrapper>
         <WhoWeAreHero />
         <Story />
+        <VisionMission />
       </SectionWrapper>
     </main>
   );
