@@ -28,6 +28,21 @@ export type VisionMissionContent = {
   }>;
 };
 
+export type CoreValue = {
+  title: string;
+  description: string;
+};
+
+export type EthiopiaAdvantage = {
+  highlight: string;
+  label: string;
+};
+
+export type LeadershipPrinciple = {
+  title: string;
+  description: string;
+};
+
 export const story: StoryContent = {
   eyebrow: 'Our story',
   heading: 'Born from the operations we',
@@ -78,3 +93,52 @@ export const visionMission: VisionMissionContent = {
     },
   ],
 };
+
+export const coreValues: CoreValue[] = [
+  {
+    title: 'Intelligence',
+    description: 'We examine every process for smarter, data-led ways to work.',
+  },
+  {
+    title: 'Talent',
+    description:
+      'We invest in skilled Ethiopian professionals and long-term growth.',
+  },
+  {
+    title: 'Reliability',
+    description: 'We honor SLAs, commitments, and reporting cadences.',
+  },
+  {
+    title: 'Quality',
+    description: 'Every output passes defined standards and quality gates.',
+  },
+  {
+    title: 'Efficiency',
+    description:
+      'We remove wasted time, cost, and effort through better systems.',
+  },
+];
+
+export const ethiopiaAdvantages: EthiopiaAdvantage[] = [
+  { highlight: '40-60%', label: 'Lower operating costs' },
+  { highlight: 'Global', label: 'English-speaking talent' },
+  { highlight: 'GMT+3', label: 'Business-hour overlap' },
+  { highlight: 'Emerging', label: 'Outsourcing hub' },
+  { highlight: 'AI-first', label: 'Workforce model' },
+];
+
+export const leadershipPrinciples: LeadershipPrinciple[] = [
+  {
+    title: 'Delivery ownership',
+    description: 'A pod lead owns priorities, workload, and escalation.',
+  },
+  {
+    title: 'Quality ownership',
+    description: 'QA checks standards and closes gaps before they spread.',
+  },
+  {
+    title: 'Performance visibility',
+    description:
+      'Weekly reporting keeps progress, risks, and next actions clear.',
+  },
+];
