@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
+import { Story } from '@/components/sections/who-we-are/Story';
 import { WhoWeAreHero } from '@/components/sections/who-we-are/Hero';
 
 export const metadata: Metadata = {
@@ -23,6 +24,7 @@ export default function WhoWeArePage() {
     <main className="min-h-screen bg-background text-foreground">
       <SectionWrapper>
         <WhoWeAreHero />
+        <Story />
       </SectionWrapper>
     </main>
   );
