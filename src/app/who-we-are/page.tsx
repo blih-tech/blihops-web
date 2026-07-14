@@ -1,9 +1,12 @@
 import type { Metadata } from 'next';
 
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
+import { CoreValues } from '@/components/sections/who-we-are/CoreValues';
+import { Leadership } from '@/components/sections/who-we-are/Leadership';
 import { Story } from '@/components/sections/who-we-are/Story';
 import { WhoWeAreHero } from '@/components/sections/who-we-are/Hero';
 import { VisionMission } from '@/components/sections/who-we-are/VisionMission';
+import { WhyEthiopia } from '@/components/sections/who-we-are/WhyEthiopia';
 
 export const metadata: Metadata = {
   title: 'About BlihOps — Ethiopia\u2019s AI-Powered Outsourcing Company',
@@ -27,6 +30,9 @@ export default function WhoWeArePage() {
         <WhoWeAreHero />
         <Story />
         <VisionMission />
+        <CoreValues />
+        <WhyEthiopia />
+        <Leadership />
       </SectionWrapper>
     </main>
   );
