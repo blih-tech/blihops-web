@@ -17,7 +17,6 @@ import { AboutUsMegaMenu } from '@/components/layout/AboutUsMegaMenu';
 import { Logo } from '@/components/layout/Logo';
 import { MegaMenu, type MegaMenuLink } from '@/components/layout/MegaMenu';
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
-import { UnderConstruction } from '@/components/UnderConstruction';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -58,16 +57,6 @@ function NavHighlight() {
   );
 }
 
-function MenuUnderConstructionPreview({ title }: { title: string }) {
-  return (
-    <UnderConstruction
-      className="min-h-36 h-full rounded-xl"
-      title={title}
-      description="This page is being built. Check back soon."
-    />
-  );
-}
-
 const whoWeAreLinks: MegaMenuLink[] = [
   {
     text: 'Who we are',
@@ -83,14 +72,24 @@ const whoWeAreLinks: MegaMenuLink[] = [
       'Real outcomes from engineering partnerships and delivery work.',
     href: '/case-studies',
     icon: Newspaper,
-    preview: <MenuUnderConstructionPreview title="Case studies" />,
+    preview: (
+      <AboutUsMegaMenu
+        title="Case studies"
+        description="Real challenges, focused teams, and clear operational progress."
+      />
+    ),
   },
   {
     text: 'Latest insights',
     shortDescription: 'Ideas and perspectives on building software that lasts.',
     href: '/insights',
     icon: Lightbulb,
-    preview: <MenuUnderConstructionPreview title="Latest insights" />,
+    preview: (
+      <AboutUsMegaMenu
+        title="Latest insights"
+        description="Practical thinking on automation, quality, reporting, and delivery."
+      />
+    ),
   },
 ];
 
