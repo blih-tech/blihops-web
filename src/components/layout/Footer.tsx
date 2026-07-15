@@ -3,7 +3,7 @@
 import { useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, ArrowUp, Mail } from 'lucide-react';
+import { ArrowRight, ArrowUp } from 'lucide-react';
 import type { Variants } from 'motion/react';
 
 import { Logo } from '@/components/layout/Logo';
@@ -144,13 +144,13 @@ export function Footer() {
                       once={false}
                       customVariants={footerMotionVariants}
                     >
-                      <SocialIcon label="GitHub" href="#">
+                      <SocialIcon label="Facebook" href="#">
                         <svg
                           viewBox="0 0 24 24"
                           className="size-4 fill-current"
                           aria-hidden
                         >
-                          <path d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.8 1.2 1.9 1.2 3.2 0 4.7-2.8 5.7-5.5 6 .4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .3z" />
+                          <path d="M24 12.1C24 5.4 18.6 0 12 0S0 5.4 0 12.1C0 18.1 4.4 23 10.1 24v-8.4h-3v-3.5h3V9.4c0-3 1.8-4.7 4.6-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9v2.3h3.3l-.5 3.5h-2.8V24C19.6 23 24 18.1 24 12.1z" />
                         </svg>
                       </SocialIcon>
                     </TimelineAnimation>
@@ -195,11 +195,31 @@ export function Footer() {
                       once={false}
                       customVariants={footerMotionVariants}
                     >
-                      <SocialIcon label="Email" href="mailto:hello@blihops.com">
-                        <Mail className="size-4" />
+                      <SocialIcon label="YouTube" href="#">
+                        <svg
+                          viewBox="0 0 24 24"
+                          className="size-4 fill-current"
+                          aria-hidden
+                        >
+                          <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z" />
+                        </svg>
                       </SocialIcon>
                     </TimelineAnimation>
                   </div>
+                  <TimelineAnimation
+                    as="div"
+                    animationNum={6}
+                    timelineRef={contentRef}
+                    once={false}
+                    customVariants={footerMotionVariants}
+                  >
+                    <a
+                      href="mailto:blih.marketing2023@gmail.com"
+                      className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                      blih.marketing2023@gmail.com
+                    </a>
+                  </TimelineAnimation>
                 </div>
               </div>
 
