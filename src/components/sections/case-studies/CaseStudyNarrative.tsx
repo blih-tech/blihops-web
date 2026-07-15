@@ -1,10 +1,11 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useRef } from 'react';
 import type { Variants } from 'motion/react';
 
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
 import type { CaseStudy } from '@/content/case-studies';
+import { useActiveSection } from '@/hooks/use-active-section';
 import { cn } from '@/lib/utils';
 
 const narrativeVariants: Variants = {
@@ -62,7 +63,9 @@ function parseChapters(contentHtml: string): Chapter[] {
 export function CaseStudyNarrative({ study }: { study: CaseStudy }) {
   const sectionRef = useRef<HTMLElement>(null);
   const chapters = parseChapters(study.contentHtml);
-  const [activeChapter, setActiveChapter] = useState(chapters[0]?.id);
+  const [activeChapter, setActiveChapter] = useActiveSection(
+    chapters.map((chapter) => chapter.id).join(','),
+  );
 
   if (chapters.length === 0) return null;
 
@@ -106,8 +109,9 @@ export function CaseStudyNarrative({ study }: { study: CaseStudy }) {
                       activeChapter === chapter.id ? 'location' : undefined
                     }
                     className={cn(
-                      'group flex items-baseline gap-3 font-sans text-sm text-muted-foreground transition-colors hover:text-foreground',
-                      activeChapter === chapter.id && 'text-foreground',
+                      'group flex items-baseline gap-3 font-sans text-sm text-muted-foreground transition-[color,transform] duration-300 hover:text-foreground',
+                      activeChapter === chapter.id &&
+                        'translate-x-1.5 text-foreground',
                     )}
                   >
                     <span className="font-mono text-[11px] tracking-widest text-primary">
