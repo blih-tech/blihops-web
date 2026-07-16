@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { AnimatePresence, motion } from 'motion/react';
 import type { Variants } from 'motion/react';
+import { useTranslations } from 'next-intl';
 
 import { DecorIcon } from '@/components/decor-icon';
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
@@ -35,10 +36,31 @@ const highlightTransition = {
   damping: 30,
 };
 
+const serviceMessageKeys = {
+  'customer-support': 'customerSupport',
+  'back-office': 'backOffice',
+  'it-software': 'itSoftware',
+  'ai-automation': 'aiAutomation',
+  'data-reporting': 'dataReporting',
+} as const;
+
 export function Services() {
   const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations('Home.services');
+  const tServices = useTranslations('Shared.services');
   const [activeId, setActiveId] = useState(services[0]?.id ?? '');
   const [direction, setDirection] = useState(0);
+  const localizedServices = services.map((service) => {
+    const key =
+      serviceMessageKeys[service.id as keyof typeof serviceMessageKeys];
+
+    return {
+      ...service,
+      title: tServices(`${key}.title`),
+      shortDescription: tServices(`${key}.shortDescription`),
+      details: tServices(`${key}.details`),
+    };
+  });
 
   // Warm the browser cache so rapid hover swaps don't flash empty
   useEffect(() => {
@@ -50,14 +72,14 @@ export function Services() {
 
   const activeIndex = Math.max(
     0,
-    services.findIndex((s) => s.id === activeId),
+    localizedServices.findIndex((s) => s.id === activeId),
   );
-  const active = services[activeIndex] ?? services[0];
+  const active = localizedServices[activeIndex] ?? localizedServices[0];
 
   if (!active) return null;
 
   const select = (id: string) => {
-    const next = services.findIndex((s) => s.id === id);
+    const next = localizedServices.findIndex((s) => s.id === id);
     if (next === -1 || next === activeIndex) return;
     setDirection(next > activeIndex ? 1 : -1);
     setActiveId(id);
@@ -67,7 +89,7 @@ export function Services() {
     <section
       ref={sectionRef}
       className="flex w-full flex-col gap-16 py-16 md:gap-20 md:py-24"
-      aria-label="Services"
+      aria-label={t('ariaLabel')}
     >
       <div className="mx-auto max-w-3xl space-y-3 text-center">
         <TimelineAnimation
@@ -78,7 +100,7 @@ export function Services() {
           customVariants={motionVariants}
           className="font-sans text-xs font-medium tracking-widest text-muted-foreground uppercase"
         >
-          Intelligent Outsourcing Services
+          {t('eyebrow')}
         </TimelineAnimation>
         <TimelineAnimation
           as="h2"
@@ -88,7 +110,7 @@ export function Services() {
           customVariants={motionVariants}
           className="font-heading text-3xl font-semibold tracking-tight text-foreground md:text-5xl"
         >
-          Everything your operations need. Nothing they don&apos;t.
+          {t('title')}
         </TimelineAnimation>
         <TimelineAnimation
           as="p"
@@ -98,8 +120,7 @@ export function Services() {
           customVariants={motionVariants}
           className="font-sans text-sm leading-relaxed text-muted-foreground md:text-base"
         >
-          Every service ships with SLAs, weekly reporting, and built-in
-          automation.
+          {t('description')}
         </TimelineAnimation>
       </div>
 
@@ -114,9 +135,9 @@ export function Services() {
         <ul
           className="relative flex flex-col gap-1"
           role="listbox"
-          aria-label="Service list"
+          aria-label={t('serviceListAriaLabel')}
         >
-          {services.map((service) => (
+          {localizedServices.map((service) => (
             <ServiceListItem
               key={service.id}
               service={service}
@@ -157,9 +178,9 @@ export function Services() {
           <div
             className="flex shrink-0 items-center justify-center gap-2"
             role="tablist"
-            aria-label="Service slides"
+            aria-label={t('serviceSlidesAriaLabel')}
           >
-            {services.map((service) => {
+            {localizedServices.map((service) => {
               const isActive = service.id === active.id;
               return (
                 <button
@@ -167,7 +188,9 @@ export function Services() {
                   type="button"
                   role="tab"
                   aria-selected={isActive}
-                  aria-label={`Show ${service.title}`}
+                  aria-label={t('showServiceAriaLabel', {
+                    title: service.title,
+                  })}
                   onClick={() => select(service.id)}
                   className={cn(
                     'h-1.5 rounded-full transition-all duration-300',
@@ -265,6 +288,7 @@ function ServiceListItem({
 
 function ServicePreview({ service }: { service: ServiceItem }) {
   const Icon = service.icon;
+  const tActions = useTranslations('Shared.actions');
 
   return (
     <div className="relative flex h-full flex-col">
@@ -294,7 +318,7 @@ function ServicePreview({ service }: { service: ServiceItem }) {
             href={service.href}
             className="mt-2 inline-block font-sans text-xs font-medium text-primary hover:underline"
           >
-            Learn more
+            {tActions('learnMore')}
           </Link>
         </div>
       </div>

@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import NumberFlow from '@number-flow/react';
 import { useInView, type Variants } from 'motion/react';
+import { useTranslations } from 'next-intl';
 
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
 import { cn } from '@/lib/utils';
@@ -31,21 +32,21 @@ const stats = [
     value: 40,
     prefix: '25–',
     suffix: '%',
-    label: 'Typical cost reduction vs in-house or Western outsourcing',
+    labelKey: 'costReduction',
   },
   {
     id: 'sla',
     value: 90,
     prefix: '',
     suffix: '%',
-    label: 'SLA compliance across active delivery pods',
+    labelKey: 'slaCompliance',
   },
   {
     id: 'pilot',
     value: 15,
     prefix: '',
-    suffix: '-day',
-    label: 'Average pilot-to-live deployment window',
+    suffix: '',
+    labelKey: 'deploymentWindow',
   },
 ] as const;
 
@@ -53,12 +54,13 @@ export function Trust() {
   const sectionRef = useRef<HTMLElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
   const statsInView = useInView(statsRef, { once: true, margin: '-15% 0px' });
+  const t = useTranslations('Home.trust');
 
   return (
     <section
       ref={sectionRef}
       className="flex w-full flex-col gap-12 py-16 md:gap-16 md:py-24"
-      aria-label="Trust and proof"
+      aria-label={t('ariaLabel')}
     >
       <div className="mx-auto max-w-3xl space-y-3 text-center">
         <TimelineAnimation
@@ -69,7 +71,7 @@ export function Trust() {
           customVariants={motionVariants}
           className="font-sans text-xs font-medium tracking-widest text-muted-foreground uppercase"
         >
-          Trust &amp; Proof
+          {t('eyebrow')}
         </TimelineAnimation>
         <TimelineAnimation
           as="h2"
@@ -79,7 +81,7 @@ export function Trust() {
           customVariants={motionVariants}
           className="font-heading text-3xl font-semibold tracking-tight text-foreground md:text-5xl"
         >
-          Built for reliability, security, and clear ownership
+          {t('title')}
         </TimelineAnimation>
         <TimelineAnimation
           as="p"
@@ -89,8 +91,7 @@ export function Trust() {
           customVariants={motionVariants}
           className="font-sans text-sm leading-relaxed text-muted-foreground md:text-base"
         >
-          SLA-backed delivery, GDPR-aware processes, and ISO-aligned quality —
-          run by Ethiopia-based pods with weekly reporting you can act on.
+          {t('description')}
         </TimelineAnimation>
       </div>
 
@@ -116,7 +117,9 @@ export function Trust() {
                 <NumberFlow
                   value={statsInView ? stat.value : 0}
                   prefix={stat.prefix}
-                  suffix={stat.suffix}
+                  suffix={
+                    stat.id === 'pilot' ? t('stats.daySuffix') : stat.suffix
+                  }
                   trend={1}
                   transformTiming={{
                     duration: 900,
@@ -129,7 +132,7 @@ export function Trust() {
                 />
               </p>
               <p className="max-w-[16rem] font-sans text-sm leading-relaxed text-muted-foreground">
-                {stat.label}
+                {t(`stats.${stat.labelKey}`)}
               </p>
             </div>
           ))}

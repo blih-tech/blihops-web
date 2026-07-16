@@ -6,7 +6,14 @@ import { Solution } from '@/components/sections/landing/Solution';
 import { Testimonials } from '@/components/sections/landing/Testimonials';
 import { Trust } from '@/components/sections/landing/Trust';
 
-export default function Home() {
+export default async function Home({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <main className="min-h-screen bg-background text-foreground">
       <SectionWrapper>
@@ -20,3 +27,4 @@ export default function Home() {
     </main>
   );
 }
+import { setRequestLocale } from 'next-intl/server';

@@ -332,6 +332,7 @@
       "stats": {
         "percentageRange": "{min}-{max}%",
         "hoursRange": "{min}-{max} hrs",
+        "hoursSuffix": " hrs",
         "costReduction": "Cost reduction",
         "reclaimedPerWeek": "Reclaimed / week"
       },
@@ -382,13 +383,16 @@
         "costReduction": "Typical cost reduction vs. in-house or Western outsourcing",
         "slaCompliance": "SLA compliance across active delivery pods",
         "deploymentWindow": "Average pilot-to-live deployment window",
-        "dayValue": "{count}-day"
+        "dayValue": "{count}-day",
+        "daySuffix": "-day"
       }
     },
     "testimonials": {
       "ariaLabel": "Customer testimonials",
       "title": "What our clients say",
       "description": "See how teams run operations with structure, SLAs, and clear ownership.",
+      "screenReader": "{name}, {role} at {company}: {quote}",
+      "attribution": "{role}, {company}",
       "items": {
         "sarahChen": {
           "quote": "BlihOps took support off our plate in two weeks. SLAs are real - we finally see response times every Monday.",

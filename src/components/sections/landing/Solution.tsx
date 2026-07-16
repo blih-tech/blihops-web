@@ -4,6 +4,7 @@ import { useRef, type ReactNode } from 'react';
 import NumberFlow from '@number-flow/react';
 import { SparklesIcon } from 'lucide-react';
 import { useInView, type Variants } from 'motion/react';
+import { useTranslations } from 'next-intl';
 
 import { DecorIcon } from '@/components/decor-icon';
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
@@ -53,12 +54,13 @@ const globeConfig = {
 
 export function Solution() {
   const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations('Home.solution');
 
   return (
     <section
       ref={sectionRef}
       className="flex w-full flex-col gap-12 py-16 md:py-24"
-      aria-label="The BlihOps model"
+      aria-label={t('ariaLabel')}
     >
       <div className="mx-auto max-w-3xl space-y-3 text-center">
         <TimelineAnimation
@@ -69,7 +71,7 @@ export function Solution() {
           customVariants={motionVariants}
           className="font-sans text-xs font-medium tracking-widest text-muted-foreground uppercase"
         >
-          The BlihOps Model
+          {t('eyebrow')}
         </TimelineAnimation>
         <TimelineAnimation
           as="h2"
@@ -79,7 +81,7 @@ export function Solution() {
           customVariants={motionVariants}
           className="font-heading text-3xl font-semibold tracking-tight text-foreground md:text-5xl"
         >
-          Structured pods. AI workflows. SLA accountability.
+          {t('title')}
         </TimelineAnimation>
         <TimelineAnimation
           as="p"
@@ -89,8 +91,7 @@ export function Solution() {
           customVariants={motionVariants}
           className="font-sans text-sm leading-relaxed text-muted-foreground md:text-base mx-auto max-w-lg"
         >
-          Dedicated pods, AI-assisted workflows, and measured SLAs so operations
-          run with ownership, not chaos.
+          {t('description')}
         </TimelineAnimation>
       </div>
 
@@ -114,14 +115,14 @@ export function Solution() {
         <div className="relative grid grid-cols-1 lg:grid-cols-2">
           <FeatureCell
             visual={<PodMock />}
-            title="Dedicated Delivery Pods"
-            description="Operators, QA, and a pod lead structured around your workflow live in 1–2 weeks."
+            title={t('features.deliveryPods.title')}
+            description={t('features.deliveryPods.description')}
             className="border-b border-border lg:border-r"
           />
           <FeatureCell
             visual={<IntegrationsMock />}
-            title="AI-Assisted Workflows"
-            description="Map, automate, and eliminate busywork without losing human ownership or QA."
+            title={t('features.aiWorkflows.title')}
+            description={t('features.aiWorkflows.description')}
             className="border-b border-border"
           />
         </div>
@@ -148,14 +149,14 @@ export function Solution() {
                   <Globe className="max-w-70 opacity-90" config={globeConfig} />
                 </div>
               }
-              title="Global Delivery, Clear Ownership"
-              description="Ethiopia-based teams with documented SOPs, weekly reporting, and a single accountable pod lead."
+              title={t('features.globalDelivery.title')}
+              description={t('features.globalDelivery.description')}
               className="border-b border-border lg:border-r lg:border-b-0"
             />
             <FeatureCell
               visual={<SlaMock />}
-              title="SLA-Backed & Continuously Improved"
-              description="Tiered response, measured delivery, and monthly optimization pilot to scale without reset."
+              title={t('features.slaImprovement.title')}
+              description={t('features.slaImprovement.description')}
               className="group/sla"
             />
           </div>
@@ -221,6 +222,7 @@ function FeatureCell({
 function StatsRow() {
   const statsRef = useRef<HTMLDivElement>(null);
   const statsInView = useInView(statsRef, { once: true, margin: '-15% 0px' });
+  const t = useTranslations('Home.solution.stats');
 
   return (
     <div
@@ -233,14 +235,14 @@ function StatsRow() {
         value={statsInView ? 40 : 0}
         prefix="25–"
         suffix="%"
-        label="Cost reduction"
+        label={t('costReduction')}
         className="border-r border-border"
       />
       <StatBlock
         value={statsInView ? 20 : 0}
         prefix="10–"
-        suffix=" hrs"
-        label="Reclaimed / week"
+        suffix={t('hoursSuffix')}
+        label={t('reclaimedPerWeek')}
       />
     </div>
   );
@@ -288,6 +290,8 @@ function StatBlock({
 }
 
 function QuoteCell({ className }: { className?: string }) {
+  const t = useTranslations('Home.solution.quote');
+
   return (
     <div
       className={cn(
@@ -299,13 +303,12 @@ function QuoteCell({ className }: { className?: string }) {
         <div className="w-0.5 shrink-0 self-stretch rounded-full bg-background/40" />
         <div className="space-y-4">
           <p className="font-sans text-sm leading-relaxed text-background md:text-[15px]">
-            Structure and SLAs changed how we run client work. Automation alone
-            reclaimed hours of manual ops every week.
+            {t('text')}
           </p>
           <p className="font-sans text-sm text-background/70">
-            <span className="font-medium text-background">Operations lead</span>
+            <span className="font-medium text-background">{t('role')}</span>
             <span className="mx-1.5">·</span>
-            Growth-stage SaaS
+            {t('companyType')}
           </p>
         </div>
       </div>
@@ -314,6 +317,8 @@ function QuoteCell({ className }: { className?: string }) {
 }
 
 function PodMock() {
+  const t = useTranslations('Home.solution.podMock');
+
   return (
     <div className="relative w-full max-w-62">
       <div className="rounded-xl border border-border bg-card p-5 shadow-md">
@@ -332,19 +337,19 @@ function PodMock() {
           </div>
         </div>
         <p className="font-mono text-[10px] tracking-wide text-muted-foreground uppercase">
-          POD-04 · Support
+          POD-04 · {t('support')}
         </p>
         <p className="mt-1 font-heading text-2xl font-semibold tracking-tight text-foreground">
-          SLA Live
+          {t('slaLive')}
         </p>
         <p className="mt-0.5 font-sans text-xs text-muted-foreground">
-          Response under 1 hour
+          {t('responseTime', { count: 1 })}
         </p>
         <div className="mt-5 space-y-2.5 border-t border-border pt-4">
           {[
-            { label: 'Lead', w: 'w-16' },
-            { label: 'QA', w: 'w-20' },
-            { label: 'Ops', w: 'w-24' },
+            { label: t('lead'), w: 'w-16' },
+            { label: t('qa'), w: 'w-20' },
+            { label: t('operations'), w: 'w-24' },
           ].map((row) => (
             <div key={row.label} className="flex items-center gap-3">
               <span className="w-10 font-sans text-xs text-muted-foreground">
@@ -362,10 +367,12 @@ function PodMock() {
 }
 
 function IntegrationsMock() {
+  const t = useTranslations('Home.solution.automationMock');
+  const stepLabels = t.raw('steps') as [string, string, string];
   const steps = [
-    { label: 'Ingest', done: true },
-    { label: 'Route', done: true },
-    { label: 'QA', done: false },
+    { label: stepLabels[0], done: true },
+    { label: stepLabels[1], done: true },
+    { label: stepLabels[2], done: false },
   ];
 
   return (
@@ -381,10 +388,10 @@ function IntegrationsMock() {
             </div>
             <div>
               <p className="font-sans text-sm font-semibold text-foreground">
-                Auto-workflow
+                {t('title')}
               </p>
               <p className="font-mono text-[10px] tracking-wide text-muted-foreground uppercase">
-                Layer 02 · Active
+                {t('layerStatus', { number: '02' })}
               </p>
             </div>
           </div>
@@ -393,7 +400,7 @@ function IntegrationsMock() {
               <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-60" />
               <span className="relative inline-flex size-1.5 rounded-full bg-primary" />
             </span>
-            Running
+            {t('running')}
           </span>
         </div>
 
@@ -425,7 +432,7 @@ function IntegrationsMock() {
         <div className="space-y-3 rounded-xl border border-border/70 bg-muted/30 p-3.5">
           <div className="flex items-center justify-between">
             <p className="font-sans text-xs text-muted-foreground">
-              Automation coverage
+              {t('coverage')}
             </p>
             <p className="font-mono text-xs font-medium text-foreground">68%</p>
           </div>
@@ -434,10 +441,10 @@ function IntegrationsMock() {
           </div>
           <div className="flex items-center justify-between pt-0.5">
             <p className="font-sans text-[11px] text-muted-foreground">
-              12 rules live
+              {t('rulesLive', { count: 12 })}
             </p>
             <p className="font-sans text-[11px] font-medium text-foreground">
-              −4.2 hrs / day
+              {t('hoursSaved', { hours: 4.2 })}
             </p>
           </div>
         </div>
@@ -447,6 +454,8 @@ function IntegrationsMock() {
 }
 
 function SlaMock() {
+  const t = useTranslations('Home.solution.slaMock');
+
   return (
     <div className="relative w-full max-w-62">
       <div className="absolute inset-x-3 top-0 h-full translate-y-1.5 rounded-xl border border-border bg-card opacity-40 shadow-xs transition-all duration-300 ease-out group-hover/sla:translate-y-3 group-hover/sla:scale-[0.96] group-hover/sla:opacity-60" />
@@ -454,12 +463,11 @@ function SlaMock() {
       <div className="relative rounded-xl border border-border bg-card p-5 shadow-md transition-transform duration-300 ease-out group-hover/sla:-translate-y-1 group-hover/sla:shadow-lg">
         <p className="font-sans text-sm font-semibold text-foreground">
           <span className="rounded-sm bg-amber-200/80 px-1 text-foreground dark:bg-amber-400/30">
-            SLA
-          </span>{' '}
-          Adherence
+            {t('title')}
+          </span>
         </p>
         <p className="mt-1 font-sans text-xs text-muted-foreground">
-          This week · all active pods
+          {t('period')}
         </p>
         <div className="mt-4 h-2.5 overflow-hidden rounded-full bg-muted">
           <div className="h-full w-[90%] rounded-full bg-linear-to-r from-primary to-chart-2" />
@@ -469,13 +477,17 @@ function SlaMock() {
             <p className="font-heading text-lg font-semibold text-foreground">
               90%
             </p>
-            <p className="font-sans text-xs text-muted-foreground">Met</p>
+            <p className="font-sans text-xs text-muted-foreground">
+              {t('met')}
+            </p>
           </div>
           <div className="text-right">
             <p className="font-heading text-lg font-semibold text-foreground">
               10%
             </p>
-            <p className="font-sans text-xs text-muted-foreground">Watch</p>
+            <p className="font-sans text-xs text-muted-foreground">
+              {t('watch')}
+            </p>
           </div>
         </div>
       </div>

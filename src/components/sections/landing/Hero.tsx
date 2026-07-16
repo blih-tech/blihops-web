@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { Link } from '@/i18n/navigation';
 import { ArrowRightIcon } from 'lucide-react';
 import type { Variants } from 'motion/react';
+import { useTranslations } from 'next-intl';
 
 import { BookCallButton } from '@/components/BookCallButton';
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
@@ -31,6 +32,8 @@ const heroMotionVariants: Variants = {
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations('Home.hero');
+  const tActions = useTranslations('Shared.actions');
 
   return (
     <section
@@ -52,7 +55,7 @@ export function Hero() {
             <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-75" />
             <span className="relative inline-flex size-2 rounded-full bg-primary" />
           </span>
-          <span>Outsourcing, intelligently.</span>
+          <span>{t('eyebrow')}</span>
         </TimelineAnimation>
 
         <TimelineAnimation
@@ -63,7 +66,7 @@ export function Hero() {
           customVariants={heroMotionVariants}
           className="font-heading max-w-3xl text-center text-4xl font-semibold tracking-tight text-foreground text-balance sm:text-5xl lg:text-6xl"
         >
-          We Run Your Operations <br /> With Structure & SLAs
+          {t('title')}
         </TimelineAnimation>
 
         <TimelineAnimation
@@ -74,8 +77,7 @@ export function Hero() {
           customVariants={heroMotionVariants}
           className="font-sans mx-auto max-w-lg text-center text-base leading-relaxed tracking-normal text-muted-foreground sm:text-lg"
         >
-          Managed pods for support, back-office, and automation <br />
-          clear ownership and measurable performance.
+          {t('description')}
         </TimelineAnimation>
 
         <TimelineAnimation
@@ -98,7 +100,7 @@ export function Hero() {
               'group/cta bg-primary hover:bg-primary',
             )}
           >
-            Get a 2-week pilot
+            {tActions('getPilot')}
             <ArrowRightIcon
               data-icon="inline-end"
               className="transition-transform group-hover/cta:translate-x-0.5"
