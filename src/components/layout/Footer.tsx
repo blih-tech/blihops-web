@@ -69,6 +69,7 @@ export function Footer() {
   const isPilotPage = pathname === '/pilot';
   const isContactPage = pathname === '/contact';
   const isSkillsPage = pathname === '/skills';
+  const isTalentPage = pathname === '/talent';
 
   return (
     <footer className="bg-background font-sans text-foreground">
@@ -97,14 +98,18 @@ export function Footer() {
                   ? 'Not ready to apply? Let’s talk it through.'
                   : isSkillsPage
                     ? 'Ready to build skills that lead somewhere?'
-                    : 'Ready to get relief from operational overwhelm?'}
+                    : isTalentPage
+                      ? 'Ready to make your verified skills visible?'
+                      : 'Ready to get relief from operational overwhelm?'}
               </h2>
               <p className="font-sans mb-6 max-w-xl text-sm text-primary-foreground/90 sm:text-base">
                 {isPilotPage
                   ? 'Book a discovery call to discuss your workflow, questions, and fit.'
                   : isSkillsPage
                     ? 'Explore practical tracks, complete assessments, and prepare for BlihOps talent opportunities.'
-                    : 'A focused 2-week pilot. Clear deliverables. Prove value before you commit.'}
+                    : isTalentPage
+                      ? 'Join the pool and hear from us when there is a relevant match. Placement is not guaranteed.'
+                      : 'A focused 2-week pilot. Clear deliverables. Prove value before you commit.'}
               </p>
               {isPilotPage ? (
                 <BookCallButton
@@ -121,6 +126,19 @@ export function Footer() {
                   )}
                 >
                   Explore BlihOps Skills
+                  <span className="flex size-7 items-center justify-center rounded-md bg-primary-foreground text-primary">
+                    <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-0.5" />
+                  </span>
+                </a>
+              ) : isTalentPage ? (
+                <a
+                  href="https://talent.blihops.com"
+                  className={cn(
+                    buttonVariants({ size: 'lg' }),
+                    'group/cta w-fit gap-3 bg-primary hover:bg-primary',
+                  )}
+                >
+                  Explore BlihOps Talent
                   <span className="flex size-7 items-center justify-center rounded-md bg-primary-foreground text-primary">
                     <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-0.5" />
                   </span>
@@ -270,18 +288,22 @@ export function Footer() {
                     ? 'Prefer a conversation first?'
                     : isSkillsPage
                       ? 'Build skill. Show evidence.'
-                      : isContactPage
-                        ? 'Ready to prove the workflow?'
-                        : 'Choose how you want to begin'}
+                      : isTalentPage
+                        ? 'Be ready when the fit is right.'
+                        : isContactPage
+                          ? 'Ready to prove the workflow?'
+                          : 'Choose how you want to begin'}
                 </h3>
                 <p className="font-sans max-w-md text-sm text-muted-foreground lg:ml-auto">
                   {isPilotPage
                     ? 'Book a discovery call and we’ll help clarify the right next step.'
                     : isSkillsPage
                       ? 'Choose a practical track and start building verified, opportunity-ready ability.'
-                      : isContactPage
-                        ? 'Start with one focused process and clear success measures.'
-                        : 'Test one workflow or talk through your operational needs first.'}
+                      : isTalentPage
+                        ? 'Keep your verified profile current so relevant opportunities can find you.'
+                        : isContactPage
+                          ? 'Start with one focused process and clear success measures.'
+                          : 'Test one workflow or talk through your operational needs first.'}
                 </p>
                 <div className="flex flex-wrap gap-3 lg:justify-end">
                   {isSkillsPage ? (
@@ -293,6 +315,17 @@ export function Footer() {
                       )}
                     >
                       Explore BlihOps Skills
+                      <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-0.5" />
+                    </a>
+                  ) : isTalentPage ? (
+                    <a
+                      href="https://talent.blihops.com"
+                      className={cn(
+                        buttonVariants({ size: 'lg' }),
+                        'group/cta h-12 rounded-none',
+                      )}
+                    >
+                      Explore BlihOps Talent
                       <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-0.5" />
                     </a>
                   ) : !isPilotPage ? (
@@ -307,7 +340,7 @@ export function Footer() {
                       <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-0.5" />
                     </Link>
                   ) : null}
-                  {!isContactPage && !isSkillsPage ? (
+                  {!isContactPage && !isSkillsPage && !isTalentPage ? (
                     <BookCallButton
                       calLink="blih-marketing-fzifjy/blih-ops-desicovery-call"
                       namespace="blih-ops-desicovery-call"
