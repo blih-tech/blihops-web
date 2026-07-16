@@ -4,6 +4,7 @@ import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import {
+  ArrowRight,
   Building2,
   ChevronDown,
   Lightbulb,
@@ -13,6 +14,7 @@ import {
 } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 
+import { BookCallButton } from '@/components/BookCallButton';
 import { AboutUsMegaMenu } from '@/components/layout/AboutUsMegaMenu';
 import { Logo } from '@/components/layout/Logo';
 import { MegaMenu, type MegaMenuLink } from '@/components/layout/MegaMenu';
@@ -271,14 +273,23 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <BookCallButton
+            calLink="blih-marketing-fzifjy/blih-ops-desicovery-call"
+            namespace="blih-ops-desicovery-call"
+            className="hidden h-8 rounded-md border border-border bg-background px-3 text-foreground hover:bg-muted hover:text-foreground xl:inline-flex"
+          />
           <Link
             href="/pilot"
             className={cn(
               buttonVariants({ size: 'sm' }),
-              'hidden sm:inline-flex',
+              'group/cta hidden sm:inline-flex',
             )}
           >
-            Get free pilot
+            Get a 2-week pilot
+            <ArrowRight
+              className="size-3.5 transition-transform group-hover/cta:translate-x-0.5"
+              aria-hidden="true"
+            />
           </Link>
 
           <button
@@ -392,14 +403,24 @@ export function Header() {
               );
             })}
 
-            <div className="pt-4 pb-2">
+            <div className="space-y-2 pt-4 pb-2">
               <Link
                 href="/pilot"
                 onClick={closeAll}
-                className={cn(buttonVariants(), 'w-full')}
+                className={cn(buttonVariants(), 'group/cta w-full')}
               >
-                Get free pilot
+                Get a 2-week pilot
+                <ArrowRight
+                  className="size-4 transition-transform group-hover/cta:translate-x-0.5"
+                  aria-hidden="true"
+                />
               </Link>
+              <BookCallButton
+                calLink="blih-marketing-fzifjy/blih-ops-desicovery-call"
+                namespace="blih-ops-desicovery-call"
+                onClick={closeAll}
+                className="w-full border border-border bg-background text-foreground hover:bg-muted hover:text-foreground"
+              />
             </div>
           </SectionWrapper>
         </div>
