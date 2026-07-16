@@ -1,4 +1,3 @@
-import type { Metadata } from 'next';
 import { Link } from '@/i18n/navigation';
 import { ArrowRightIcon, MapPinIcon } from 'lucide-react';
 import * as motion from 'motion/react-client';
@@ -6,6 +5,7 @@ import * as motion from 'motion/react-client';
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import { CareersHero } from '@/components/sections/careers/Hero';
 import { careerRoles } from '@/content/careers';
+import { createGenerateMetadata } from '@/i18n/metadata';
 
 const sectionReveal = {
   initial: { opacity: 0, y: 18, filter: 'blur(10px)' },
@@ -14,18 +14,7 @@ const sectionReveal = {
   transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
 } as const;
 
-export const metadata: Metadata = {
-  title: 'Careers',
-  description:
-    'Explore open roles at BlihOps and help build reliable, AI-enabled operations from Addis Ababa for teams around the world.',
-  alternates: { canonical: '/careers' },
-  openGraph: {
-    title: 'Careers at BlihOps',
-    description:
-      'Build your career with a team combining skilled African talent, reliable systems, and practical AI.',
-    url: '/careers',
-  },
-};
+export const generateMetadata = createGenerateMetadata('careers', '/careers');
 
 export default function CareersPage() {
   return (

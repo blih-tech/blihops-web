@@ -12,6 +12,7 @@ import {
   X,
 } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
+import { useTranslations } from 'next-intl';
 
 import { BookCallButton } from '@/components/BookCallButton';
 import { AboutUsMegaMenu } from '@/components/layout/AboutUsMegaMenu';
@@ -23,14 +24,14 @@ import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 const primaryLinks = [
-  { id: 'services', name: 'Services', href: '/what-we-offer' },
-  { id: 'process', name: 'Process', href: '/how-we-work' },
+  { id: 'services', href: '/what-we-offer' },
+  { id: 'process', href: '/how-we-work' },
 ] as const;
 
 const trailingLinks = [
-  { id: 'careers', name: 'Careers', href: '/careers' },
-  { id: 'skills', name: 'Skills', href: '/skills' },
-  { id: 'talent', name: 'Talent', href: '/talent' },
+  { id: 'careers', href: '/careers' },
+  { id: 'skills', href: '/skills' },
+  { id: 'talent', href: '/talent' },
 ] as const;
 
 const aboutHrefs = ['/who-we-are', '/case-studies', '/insights'] as const;
@@ -59,44 +60,10 @@ function NavHighlight() {
   );
 }
 
-const whoWeAreLinks: MegaMenuLink[] = [
-  {
-    text: 'Who we are',
-    shortDescription:
-      'Learn about our mission, values, and the team driving engineering excellence at BlihOps.',
-    href: '/who-we-are',
-    icon: Building2,
-    preview: <AboutUsMegaMenu />,
-  },
-  {
-    text: 'Case studies',
-    shortDescription:
-      'Real outcomes from engineering partnerships and delivery work.',
-    href: '/case-studies',
-    icon: Newspaper,
-    preview: (
-      <AboutUsMegaMenu
-        title="Case studies"
-        description="Real challenges, focused teams, and clear operational progress."
-      />
-    ),
-  },
-  {
-    text: 'Latest insights',
-    shortDescription: 'Ideas and perspectives on building software that lasts.',
-    href: '/insights',
-    icon: Lightbulb,
-    preview: (
-      <AboutUsMegaMenu
-        title="Latest insights"
-        description="Practical thinking on automation, quality, reporting, and delivery."
-      />
-    ),
-  },
-];
-
 export function Header() {
   const pathname = usePathname();
+  const t = useTranslations('Shared.header');
+  const tActions = useTranslations('Shared.actions');
   const [whoOpen, setWhoOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileWhoOpen, setMobileWhoOpen] = useState(false);
@@ -104,6 +71,40 @@ export function Header() {
   const headerRef = useRef<HTMLElement>(null);
   const whoCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const menuId = useId();
+
+  const whoWeAreLinks: MegaMenuLink[] = [
+    {
+      text: t('aboutMenu.whoWeAre.label'),
+      shortDescription: t('aboutMenu.whoWeAre.description'),
+      href: '/who-we-are',
+      icon: Building2,
+      preview: <AboutUsMegaMenu />,
+    },
+    {
+      text: t('aboutMenu.caseStudies.label'),
+      shortDescription: t('aboutMenu.caseStudies.description'),
+      href: '/case-studies',
+      icon: Newspaper,
+      preview: (
+        <AboutUsMegaMenu
+          title={t('aboutMenu.caseStudies.label')}
+          description={t('aboutMenu.caseStudies.previewDescription')}
+        />
+      ),
+    },
+    {
+      text: t('aboutMenu.insights.label'),
+      shortDescription: t('aboutMenu.insights.description'),
+      href: '/insights',
+      icon: Lightbulb,
+      preview: (
+        <AboutUsMegaMenu
+          title={t('aboutMenu.insights.label')}
+          description={t('aboutMenu.insights.previewDescription')}
+        />
+      ),
+    },
+  ];
 
   const routeActiveId =
     primaryLinks.find((link) => isRouteActive(pathname, link.href))?.id ??
@@ -169,7 +170,7 @@ export function Header() {
         <Link
           href="/"
           className="flex shrink-0 items-center gap-2"
-          aria-label="Blihop homepage"
+          aria-label={t('homeAriaLabel')}
           onClick={closeAll}
         >
           <Logo priority className="h-8 w-auto" />
@@ -177,7 +178,7 @@ export function Header() {
 
         <nav
           className="relative hidden items-center rounded-md border border-border bg-transparent p-1 md:flex"
-          aria-label="Primary"
+          aria-label={t('primaryNavAriaLabel')}
           onMouseLeave={() => {
             if (!whoOpen) setHoveredNavId(null);
           }}
@@ -195,7 +196,7 @@ export function Header() {
                 onFocus={() => setHoveredNavId(link.id)}
               >
                 {isActive ? <NavHighlight /> : null}
-                <span className="relative z-10">{link.name}</span>
+                <span className="relative z-10">{t(`links.${link.id}`)}</span>
               </Link>
             );
           })}
@@ -221,7 +222,7 @@ export function Header() {
             >
               {activeNavId === 'about' ? <NavHighlight /> : null}
               <span className="relative z-10 inline-flex items-center gap-1">
-                About
+                {t('links.about')}
                 <ChevronDown
                   className={cn(
                     'size-3.5 transition-transform duration-200',
@@ -243,10 +244,13 @@ export function Header() {
                 >
                   <MegaMenu
                     id={menuId}
-                    label="About menu"
+                    label={t('aboutMenu.ariaLabel')}
                     links={whoWeAreLinks}
                     onNavigate={() => setWhoOpen(false)}
-                    additionalLink={{ href: '/contact', label: 'Contact' }}
+                    additionalLink={{
+                      href: '/contact',
+                      label: t('aboutMenu.contact'),
+                    }}
                   />
                 </motion.div>
               ) : null}
@@ -266,7 +270,7 @@ export function Header() {
                 onFocus={() => setHoveredNavId(link.id)}
               >
                 {isActive ? <NavHighlight /> : null}
-                <span className="relative z-10">{link.name}</span>
+                <span className="relative z-10">{t(`links.${link.id}`)}</span>
               </Link>
             );
           })}
@@ -286,7 +290,7 @@ export function Header() {
               'group/cta hidden sm:inline-flex',
             )}
           >
-            Get a 2-week pilot
+            {tActions('getPilot')}
             <ArrowRight
               className="size-3.5 transition-transform group-hover/cta:translate-x-0.5"
               aria-hidden="true"
@@ -296,7 +300,9 @@ export function Header() {
           <button
             type="button"
             className="inline-flex size-9 items-center justify-center rounded-md border border-border bg-background text-foreground md:hidden"
-            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+            aria-label={
+              mobileOpen ? t('closeMenuAriaLabel') : t('openMenuAriaLabel')
+            }
             aria-expanded={mobileOpen}
             onClick={() => {
               setMobileOpen((v) => !v);
@@ -318,7 +324,7 @@ export function Header() {
             as="nav"
             className="flex max-h-[calc(100dvh-4rem)] flex-col overflow-y-auto py-3"
             data-lenis-prevent
-            aria-label="Mobile"
+            aria-label={t('mobileNavAriaLabel')}
           >
             {primaryLinks.map((link) => {
               const isCurrent = routeActiveId === link.id;
@@ -335,7 +341,7 @@ export function Header() {
                       : 'text-foreground',
                   )}
                 >
-                  {link.name}
+                  {t(`links.${link.id}`)}
                 </Link>
               );
             })}
@@ -351,7 +357,7 @@ export function Header() {
                   routeActiveId === 'about' && 'bg-muted/50',
                 )}
               >
-                About
+                {t('links.about')}
                 <ChevronDown
                   className={cn(
                     'size-4 transition-transform',
@@ -399,7 +405,7 @@ export function Header() {
                       : 'text-foreground',
                   )}
                 >
-                  {link.name}
+                  {t(`links.${link.id}`)}
                 </Link>
               );
             })}
@@ -410,7 +416,7 @@ export function Header() {
                 onClick={closeAll}
                 className={cn(buttonVariants(), 'group/cta w-full')}
               >
-                Get a 2-week pilot
+                {tActions('getPilot')}
                 <ArrowRight
                   className="size-4 transition-transform group-hover/cta:translate-x-0.5"
                   aria-hidden="true"

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Inter, Source_Serif_4, JetBrains_Mono } from 'next/font/google';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
-import { setRequestLocale } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { Footer } from '@/components/layout/Footer';
 import { Header } from '@/components/layout/Header';
@@ -23,49 +23,58 @@ const fontMono = JetBrains_Mono({
   variable: '--font-jetbrains',
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL('https://blihops.com'),
-  title: {
-    default: 'BlihOps, AI-Powered Outsourcing',
-    template: '%s | BlihOps',
-  },
-  description:
-    'Blih Intelligent Operations — Ethiopia’s AI-powered outsourcing company. Managed customer support, back-office, IT, and automation with clear SLAs and a free 2-week pilot.',
-  applicationName: 'BlihOps',
-  keywords: [
-    'BlihOps',
-    'outsourcing',
-    'AI outsourcing',
-    'BPO',
-    'customer support',
-    'back-office',
-    'Ethiopia',
-    'managed services',
-  ],
-  authors: [{ name: 'Blih Intelligent Operations PLC' }],
-  creator: 'BlihOps',
-  publisher: 'Blih Intelligent Operations PLC',
-  openGraph: {
-    type: 'website',
-    locale: 'en_US',
-    url: 'https://blihops.com',
-    siteName: 'BlihOps',
-    title: 'BlihOps — AI-Powered Outsourcing',
-    description:
-      'Managed operations with structure, automation, and SLA accountability. Serving Europe, Middle East & Africa from Addis Ababa.',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'BlihOps — AI-Powered Outsourcing',
-    description:
-      'Managed operations with structure, automation, and SLA accountability.',
-    creator: '@blihops',
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
+type LocaleLayoutProps = Readonly<{
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}>;
+
+export async function generateMetadata({
+  params,
+}: Pick<LocaleLayoutProps, 'params'>): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'Metadata.global' });
+
+  return {
+    metadataBase: new URL('https://blihops.com'),
+    title: {
+      default: t('defaultTitle'),
+      template: t('titleTemplate', { title: '%s' }),
+    },
+    description: t('description'),
+    applicationName: 'BlihOps',
+    keywords: ['BlihOps', ...(t.raw('keywords') as string[])],
+    authors: [{ name: 'Blih Intelligent Operations PLC' }],
+    creator: 'BlihOps',
+    publisher: 'Blih Intelligent Operations PLC',
+    alternates: {
+      canonical: `/${locale}`,
+      languages: Object.fromEntries(
+        routing.locales.map((supportedLocale) => [
+          supportedLocale,
+          `/${supportedLocale}`,
+        ]),
+      ),
+    },
+    openGraph: {
+      type: 'website',
+      locale: locale === 'de' ? 'de_DE' : 'en_US',
+      url: `/${locale}`,
+      siteName: 'BlihOps',
+      title: t('openGraphTitle'),
+      description: t('openGraphDescription'),
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: t('twitterTitle'),
+      description: t('twitterDescription'),
+      creator: '@blihops',
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -74,10 +83,7 @@ export function generateStaticParams() {
 export default async function LocaleLayout({
   children,
   params,
-}: Readonly<{
-  children: React.ReactNode;
-  params: Promise<{ locale: string }>;
-}>) {
+}: LocaleLayoutProps) {
   const { locale } = await params;
 
   if (!hasLocale(routing.locales, locale)) {

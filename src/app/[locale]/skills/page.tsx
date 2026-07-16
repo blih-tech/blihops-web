@@ -1,4 +1,3 @@
-import type { Metadata } from 'next';
 import { Link } from '@/i18n/navigation';
 import { ArrowRightIcon, CheckIcon } from 'lucide-react';
 import * as motion from 'motion/react-client';
@@ -8,6 +7,7 @@ import { HeroBackdrop } from '@/components/sections/shared/HeroBackdrop';
 import { buttonVariants } from '@/components/ui/button';
 import { skillTracks } from '@/content/skills';
 import { cn } from '@/lib/utils';
+import { createGenerateMetadata } from '@/i18n/metadata';
 
 const skillsPlatformUrl = 'https://skills.blihops.com';
 
@@ -27,18 +27,7 @@ function heroReveal(delay: number) {
   } as const;
 }
 
-export const metadata: Metadata = {
-  title: 'Skills',
-  description:
-    'Explore practical BlihOps learning tracks designed to build, assess, and verify skills for real operational opportunities.',
-  alternates: { canonical: '/skills' },
-  openGraph: {
-    title: 'BlihOps Skills',
-    description:
-      'Build practical skills, complete real assessments, and prepare for opportunities in the BlihOps talent pool.',
-    url: '/skills',
-  },
-};
+export const generateMetadata = createGenerateMetadata('skills', '/skills');
 
 const pathway = [
   {

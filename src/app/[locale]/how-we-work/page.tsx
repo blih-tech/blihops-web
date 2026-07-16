@@ -1,19 +1,14 @@
-import type { Metadata } from 'next';
-
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import { Commitments } from '@/components/sections/how-we-work/Commitments';
 import { HowWeWorkHero } from '@/components/sections/how-we-work/Hero';
 import { ProcessTimeline } from '@/components/sections/how-we-work/ProcessTimeline';
 import { Security } from '@/components/sections/how-we-work/Security';
+import { createGenerateMetadata } from '@/i18n/metadata';
 
-export const metadata: Metadata = {
-  title: 'How We Work',
-  description:
-    'See how BlihOps delivers intelligent operations — from discovery and SOPs to dedicated pods, SLA tracking, and continuous optimization.',
-  alternates: {
-    canonical: '/how-we-work',
-  },
-};
+export const generateMetadata = createGenerateMetadata(
+  'process',
+  '/how-we-work',
+);
 
 export default function HowWeWorkPage() {
   return (

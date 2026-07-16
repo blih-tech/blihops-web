@@ -1,4 +1,3 @@
-import type { Metadata } from 'next';
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { ArrowUpRightIcon } from 'lucide-react';
@@ -6,15 +5,9 @@ import { ArrowUpRightIcon } from 'lucide-react';
 import { BookCallButton } from '@/components/BookCallButton';
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import { ContactForm } from '@/components/sections/contact/ContactForm';
+import { createGenerateMetadata } from '@/i18n/metadata';
 
-export const metadata: Metadata = {
-  title: 'Contact',
-  description:
-    'Contact BlihOps about managed outsourcing, AI automation, partnerships, or a general enquiry.',
-  alternates: {
-    canonical: '/contact',
-  },
-};
+export const generateMetadata = createGenerateMetadata('contact', '/contact');
 
 const contactDetails = [
   ['Response time', 'Within one business day'],

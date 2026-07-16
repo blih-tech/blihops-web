@@ -1,4 +1,3 @@
-import type { Metadata } from 'next';
 import { Link } from '@/i18n/navigation';
 import {
   ArrowRightIcon,
@@ -13,6 +12,7 @@ import { HeroBackdrop } from '@/components/sections/shared/HeroBackdrop';
 import { buttonVariants } from '@/components/ui/button';
 import { talentOpportunities } from '@/content/talent';
 import { cn } from '@/lib/utils';
+import { createGenerateMetadata } from '@/i18n/metadata';
 
 const talentPlatformUrl = 'https://talent.blihops.com';
 
@@ -32,18 +32,7 @@ function heroReveal(delay: number) {
   } as const;
 }
 
-export const metadata: Metadata = {
-  title: 'Talent',
-  description:
-    'Join the BlihOps talent pool, build a verified professional profile, and be considered when your skills match an opportunity.',
-  alternates: { canonical: '/talent' },
-  openGraph: {
-    title: 'BlihOps Talent',
-    description:
-      'Turn verified skills into visibility for relevant BlihOps and partner opportunities.',
-    url: '/talent',
-  },
-};
+export const generateMetadata = createGenerateMetadata('talent', '/talent');
 
 const matchingSteps = [
   {

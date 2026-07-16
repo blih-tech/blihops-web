@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Link, usePathname } from '@/i18n/navigation';
 import { ArrowRight, ArrowUp } from 'lucide-react';
 import type { Variants } from 'motion/react';
+import { useTranslations } from 'next-intl';
 
 import { BookCallButton } from '@/components/BookCallButton';
 import { Logo } from '@/components/layout/Logo';
@@ -33,12 +34,12 @@ const footerMotionVariants: Variants = {
 };
 
 const footerLinks = [
-  { label: 'Services', href: '/what-we-offer' },
-  { label: 'Process', href: '/how-we-work' },
-  { label: 'About', href: '/who-we-are' },
-  { label: 'Careers', href: '/careers' },
-  { label: 'Insights', href: '/insights' },
-  { label: 'Contact', href: '/contact' },
+  { key: 'services', href: '/what-we-offer' },
+  { key: 'process', href: '/how-we-work' },
+  { key: 'about', href: '/who-we-are' },
+  { key: 'careers', href: '/careers' },
+  { key: 'insights', href: '/insights' },
+  { key: 'contact', href: '/contact' },
 ] as const;
 
 function SocialIcon({
@@ -63,12 +64,30 @@ function SocialIcon({
 
 export function Footer() {
   const pathname = usePathname();
+  const t = useTranslations('Shared.footer');
+  const tActions = useTranslations('Shared.actions');
   const ctaRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const isPilotPage = pathname === '/pilot';
   const isContactPage = pathname === '/contact';
   const isSkillsPage = pathname === '/skills';
   const isTalentPage = pathname === '/talent';
+  const bannerVariant = isPilotPage
+    ? 'pilot'
+    : isSkillsPage
+      ? 'skills'
+      : isTalentPage
+        ? 'talent'
+        : 'default';
+  const promptVariant = isPilotPage
+    ? 'pilot'
+    : isSkillsPage
+      ? 'skills'
+      : isTalentPage
+        ? 'talent'
+        : isContactPage
+          ? 'contact'
+          : 'default';
 
   return (
     <footer className="bg-background font-sans text-foreground">
@@ -93,22 +112,10 @@ export function Footer() {
             <div className="absolute inset-0 bg-foreground/55" aria-hidden />
             <div className="absolute inset-0 flex flex-col justify-center p-8 sm:p-12 md:p-16">
               <h2 className="font-heading mb-3 max-w-2xl text-3xl font-semibold tracking-tight text-primary-foreground sm:text-4xl md:text-5xl">
-                {isPilotPage
-                  ? 'Not ready to apply? Let’s talk it through.'
-                  : isSkillsPage
-                    ? 'Ready to build skills that lead somewhere?'
-                    : isTalentPage
-                      ? 'Ready to make your verified skills visible?'
-                      : 'Ready to get relief from operational overwhelm?'}
+                {t(`${bannerVariant}.bannerTitle`)}
               </h2>
               <p className="font-sans mb-6 max-w-xl text-sm text-primary-foreground/90 sm:text-base">
-                {isPilotPage
-                  ? 'Book a discovery call to discuss your workflow, questions, and fit.'
-                  : isSkillsPage
-                    ? 'Explore practical tracks, complete assessments, and prepare for BlihOps talent opportunities.'
-                    : isTalentPage
-                      ? 'Join the pool and hear from us when there is a relevant match. Placement is not guaranteed.'
-                      : 'A focused 2-week pilot. Clear deliverables. Prove value before you commit.'}
+                {t(`${bannerVariant}.bannerDescription`)}
               </p>
               {isPilotPage ? (
                 <BookCallButton
@@ -124,7 +131,7 @@ export function Footer() {
                     'group/cta w-fit gap-3 bg-primary hover:bg-primary',
                   )}
                 >
-                  Explore BlihOps Skills
+                  {tActions('exploreSkills')}
                   <span className="flex size-7 items-center justify-center rounded-md bg-primary-foreground text-primary">
                     <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-0.5" />
                   </span>
@@ -137,7 +144,7 @@ export function Footer() {
                     'group/cta w-fit gap-3 bg-primary hover:bg-primary',
                   )}
                 >
-                  Explore BlihOps Talent
+                  {tActions('exploreTalent')}
                   <span className="flex size-7 items-center justify-center rounded-md bg-primary-foreground text-primary">
                     <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-0.5" />
                   </span>
@@ -150,7 +157,7 @@ export function Footer() {
                     'group/cta w-fit gap-3 bg-primary hover:bg-primary',
                   )}
                 >
-                  Get a 2-week pilot
+                  {tActions('getPilot')}
                   <span className="flex size-7 items-center justify-center rounded-md bg-primary-foreground text-primary">
                     <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-0.5" />
                   </span>
@@ -185,7 +192,7 @@ export function Footer() {
                     customVariants={footerMotionVariants}
                     className="text-xs font-medium tracking-wider text-muted-foreground uppercase"
                   >
-                    Connect
+                    {t('connect')}
                   </TimelineAnimation>
                   <div className="flex flex-wrap gap-3">
                     <TimelineAnimation
@@ -195,7 +202,10 @@ export function Footer() {
                       once={false}
                       customVariants={footerMotionVariants}
                     >
-                      <SocialIcon label="Facebook" href="#">
+                      <SocialIcon
+                        label={t('socialAriaLabels.facebook')}
+                        href="#"
+                      >
                         <svg
                           viewBox="0 0 24 24"
                           className="size-4 fill-current"
@@ -212,7 +222,7 @@ export function Footer() {
                       once={false}
                       customVariants={footerMotionVariants}
                     >
-                      <SocialIcon label="X" href="#">
+                      <SocialIcon label={t('socialAriaLabels.x')} href="#">
                         <svg
                           viewBox="0 0 24 24"
                           className="size-4 fill-current"
@@ -229,7 +239,10 @@ export function Footer() {
                       once={false}
                       customVariants={footerMotionVariants}
                     >
-                      <SocialIcon label="LinkedIn" href="#">
+                      <SocialIcon
+                        label={t('socialAriaLabels.linkedIn')}
+                        href="#"
+                      >
                         <svg
                           viewBox="0 0 24 24"
                           className="size-4 fill-current"
@@ -246,7 +259,10 @@ export function Footer() {
                       once={false}
                       customVariants={footerMotionVariants}
                     >
-                      <SocialIcon label="YouTube" href="#">
+                      <SocialIcon
+                        label={t('socialAriaLabels.youTube')}
+                        href="#"
+                      >
                         <svg
                           viewBox="0 0 24 24"
                           className="size-4 fill-current"
@@ -283,26 +299,10 @@ export function Footer() {
                 className="space-y-4 lg:text-right"
               >
                 <h3 className="font-heading text-base font-medium text-foreground">
-                  {isPilotPage
-                    ? 'Prefer a conversation first?'
-                    : isSkillsPage
-                      ? 'Build skill. Show evidence.'
-                      : isTalentPage
-                        ? 'Be ready when the fit is right.'
-                        : isContactPage
-                          ? 'Ready to prove the workflow?'
-                          : 'Choose how you want to begin'}
+                  {t(`${promptVariant}.promptTitle`)}
                 </h3>
                 <p className="font-sans max-w-md text-sm text-muted-foreground lg:ml-auto">
-                  {isPilotPage
-                    ? 'Book a discovery call and we’ll help clarify the right next step.'
-                    : isSkillsPage
-                      ? 'Choose a practical track and start building verified, opportunity-ready ability.'
-                      : isTalentPage
-                        ? 'Keep your verified profile current so relevant opportunities can find you.'
-                        : isContactPage
-                          ? 'Start with one focused process and clear success measures.'
-                          : 'Test one workflow or talk through your operational needs first.'}
+                  {t(`${promptVariant}.promptDescription`)}
                 </p>
                 <div className="flex flex-wrap gap-3 lg:justify-end">
                   {isSkillsPage ? (
@@ -313,7 +313,7 @@ export function Footer() {
                         'group/cta h-12 rounded-none',
                       )}
                     >
-                      Explore BlihOps Skills
+                      {tActions('exploreSkills')}
                       <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-0.5" />
                     </a>
                   ) : isTalentPage ? (
@@ -324,7 +324,7 @@ export function Footer() {
                         'group/cta h-12 rounded-none',
                       )}
                     >
-                      Explore BlihOps Talent
+                      {tActions('exploreTalent')}
                       <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-0.5" />
                     </a>
                   ) : !isPilotPage ? (
@@ -335,7 +335,7 @@ export function Footer() {
                         'group/cta h-12 rounded-none',
                       )}
                     >
-                      Get a 2-week pilot
+                      {tActions('getPilot')}
                       <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-0.5" />
                     </Link>
                   ) : null}
@@ -356,7 +356,7 @@ export function Footer() {
               timelineRef={contentRef}
               once={false}
               customVariants={footerMotionVariants}
-              aria-label="Footer"
+              aria-label={t('navigationAriaLabel')}
               className="grid grid-cols-2 gap-4 border-t border-border py-8 text-sm font-medium text-muted-foreground sm:grid-cols-3 lg:grid-cols-6"
             >
               {footerLinks.map((link) => (
@@ -365,7 +365,7 @@ export function Footer() {
                   href={link.href}
                   className="transition-colors hover:text-foreground"
                 >
-                  {link.label}
+                  {t(`links.${link.key}`)}
                 </Link>
               ))}
             </TimelineAnimation>
@@ -382,7 +382,7 @@ export function Footer() {
                 BlihOps
               </span>
               <span className="text-sm text-muted-foreground">
-                © {new Date().getFullYear()} BlihOps. All rights reserved.
+                {t('copyright', { year: new Date().getFullYear() })}
               </span>
               <button
                 type="button"
@@ -395,7 +395,7 @@ export function Footer() {
                 }}
                 className="group/top inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
-                Back to top
+                {t('backToTop')}
                 <span className="flex size-9 items-center justify-center rounded-md border border-border bg-background text-foreground transition-colors group-hover/top:border-primary group-hover/top:bg-primary group-hover/top:text-primary-foreground">
                   <ArrowUp className="size-4 transition-transform group-hover/top:-translate-y-0.5" />
                 </span>

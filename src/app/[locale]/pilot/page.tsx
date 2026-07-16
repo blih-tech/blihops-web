@@ -1,19 +1,12 @@
-import type { Metadata } from 'next';
 import Image from 'next/image';
 import { ChevronDownIcon } from 'lucide-react';
 
 import { BookCallButton } from '@/components/BookCallButton';
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import { PilotForm } from '@/components/sections/pilot/PilotForm';
+import { createGenerateMetadata } from '@/i18n/metadata';
 
-export const metadata: Metadata = {
-  title: 'Get a 2-Week Pilot',
-  description:
-    'Test one workflow with a free two-week BlihOps pilot. Define the scope, success measures, delivery team, and reporting before you scale.',
-  alternates: {
-    canonical: '/pilot',
-  },
-};
+export const generateMetadata = createGenerateMetadata('pilot', '/pilot');
 
 const pilotSteps = [
   {

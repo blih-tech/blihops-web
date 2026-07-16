@@ -1,18 +1,13 @@
-import type { Metadata } from 'next';
-
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import { CaseStudiesArchive } from '@/components/sections/case-studies/CaseStudiesArchive';
 import { CaseStudiesHero } from '@/components/sections/case-studies/CaseStudiesHero';
 import { caseStudies } from '@/content/case-studies';
+import { createGenerateMetadata } from '@/i18n/metadata';
 
-export const metadata: Metadata = {
-  title: 'Case Studies',
-  description:
-    'Explore how BlihOps improves customer support, back-office operations, software delivery, automation, and reporting.',
-  alternates: {
-    canonical: '/case-studies',
-  },
-};
+export const generateMetadata = createGenerateMetadata(
+  'caseStudies',
+  '/case-studies',
+);
 
 export default function CaseStudiesPage() {
   return (
