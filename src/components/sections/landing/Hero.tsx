@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { ArrowRightIcon } from 'lucide-react';
 import type { Variants } from 'motion/react';
 

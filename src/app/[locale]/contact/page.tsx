@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { ArrowUpRightIcon } from 'lucide-react';
 
 import { BookCallButton } from '@/components/BookCallButton';

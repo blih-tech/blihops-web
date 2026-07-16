@@ -2,8 +2,7 @@
 
 import { useRef } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { Link, usePathname } from '@/i18n/navigation';
 import { ArrowRight, ArrowUp } from 'lucide-react';
 import type { Variants } from 'motion/react';
 

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { ArrowRightIcon, MapPinIcon } from 'lucide-react';
 import * as motion from 'motion/react-client';
 

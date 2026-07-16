@@ -6,7 +6,7 @@ import {
   type ReactNode,
   type SVGProps,
 } from 'react';
-import Link from 'next/link';
+import { Link } from '@/i18n/navigation';
 import { ArrowRight } from 'lucide-react';
 import { motion } from 'motion/react';
 
