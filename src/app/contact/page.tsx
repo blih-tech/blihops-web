@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowUpRightIcon } from 'lucide-react';
 
+import { BookCallButton } from '@/components/BookCallButton';
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import { ContactForm } from '@/components/sections/contact/ContactForm';
 
@@ -68,6 +69,17 @@ export default function ContactPage() {
                 >
                   blih.marketing2023@gmail.com
                 </a>
+
+                <div className="mt-8 flex flex-wrap items-center gap-4">
+                  <span className="text-sm text-muted-foreground">
+                    Prefer to talk?
+                  </span>
+                  <BookCallButton
+                    calLink="blih-marketing-fzifjy/blih-ops-desicovery-call"
+                    namespace="blih-ops-desicovery-call"
+                    className="h-10 rounded-md border border-border bg-background px-4 text-foreground hover:bg-muted hover:text-foreground"
+                  />
+                </div>
 
                 <dl className="mt-12 border-t border-border/80">
                   {contactDetails.map(([term, detail], index) => (
