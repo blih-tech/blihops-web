@@ -1,0 +1,1339 @@
+{
+  "Metadata": {
+    "global": {
+      "defaultTitle": "BlihOps, AI-gestütztes Outsourcing",
+      "titleTemplate": "{title} | BlihOps",
+      "description": "Blih Intelligent Operations - Äthiopiens Unternehmen für AI-gestütztes Outsourcing. Managed Customer Support, Back-Office, IT und Automatisierung mit klaren SLAs und einem kostenlosen 2-wöchigen Pilotprojekt.",
+      "keywords": [
+        "Outsourcing",
+        "AI-Outsourcing",
+        "BPO",
+        "Customer Support",
+        "Back-Office",
+        "Äthiopien",
+        "Managed Services"
+      ],
+      "openGraphTitle": "BlihOps - AI-gestütztes Outsourcing",
+      "openGraphDescription": "Managed Operations mit Struktur, Automatisierung und SLA-Verbindlichkeit. Für Europa, den Nahen Osten und Afrika aus Addis Ababa.",
+      "twitterTitle": "BlihOps - AI-gestütztes Outsourcing",
+      "twitterDescription": "Managed Operations mit Struktur, Automatisierung und SLA-Verbindlichkeit."
+    },
+    "services": {
+      "title": "Unser Angebot",
+      "description": "Entdecken Sie die Services von BlihOps: Customer Support, Back-Office, IT und Software, AI-Automatisierung und Datenverarbeitung - mit SLAs, SOPs und einem kostenlosen Pilotprojekt."
+    },
+    "process": {
+      "title": "Unsere Arbeitsweise",
+      "description": "Erfahren Sie, wie BlihOps intelligente Abläufe bereitstellt - von der Analyse und SOPs bis zu dedizierten Pods, SLA-Tracking und kontinuierlicher Optimierung."
+    },
+    "about": {
+      "title": "Über BlihOps - Äthiopiens Unternehmen für AI-gestütztes Outsourcing",
+      "description": "Blih Intelligent Operations kombiniert AI, qualifizierte afrikanische Fachkräfte und zuverlässige Systeme, um Abläufe für wachsende Unternehmen in Europa, dem Nahen Osten und Asien zu übernehmen.",
+      "openGraphTitle": "Über BlihOps - Äthiopiens Unternehmen für AI-gestütztes Outsourcing",
+      "openGraphDescription": "AI-integrierte Abläufe, die zuverlässige Systeme mit qualifizierten afrikanischen Fachkräften verbinden. Managed Pods, definierte SLAs und wöchentliche Berichte."
+    },
+    "caseStudies": {
+      "title": "Fallstudien",
+      "description": "Erfahren Sie, wie BlihOps Customer Support, Back-Office-Abläufe, Softwarebereitstellung, Automatisierung und Reporting verbessert."
+    },
+    "insights": {
+      "title": "Einblicke",
+      "description": "Praxisnahe Orientierung von BlihOps zu Prozessdesign, AI-Automatisierung, Kundenerlebnis, Reporting und Leistungserbringung."
+    },
+    "contact": {
+      "title": "Kontakt",
+      "description": "Kontaktieren Sie BlihOps zu Managed Outsourcing, AI-Automatisierung, Partnerschaften oder allgemeinen Anfragen."
+    },
+    "pilot": {
+      "title": "2-wöchiges Pilotprojekt starten",
+      "description": "Testen Sie einen Workflow mit einem kostenlosen zweiwöchigen BlihOps-Pilotprojekt. Definieren Sie Umfang, Erfolgskriterien, Bereitstellungsteam und Reporting, bevor Sie skalieren."
+    },
+    "careers": {
+      "title": "Karriere",
+      "description": "Entdecken Sie offene Stellen bei BlihOps und gestalten Sie von Addis Ababa aus zuverlässige, AI-gestützte Abläufe für Teams auf der ganzen Welt.",
+      "openGraphTitle": "Karriere bei BlihOps",
+      "openGraphDescription": "Bauen Sie Ihre Karriere in einem Team auf, das qualifizierte afrikanische Fachkräfte, zuverlässige Systeme und praxisnahe AI verbindet."
+    },
+    "skills": {
+      "title": "Skills",
+      "description": "Entdecken Sie praxisnahe BlihOps-Lernpfade, mit denen Sie Kompetenzen für reale operative Chancen aufbauen, bewerten und nachweisen können.",
+      "openGraphTitle": "BlihOps Skills",
+      "openGraphDescription": "Bauen Sie praktische Kompetenzen auf, absolvieren Sie reale Assessments und bereiten Sie sich auf Chancen im BlihOps-Talentpool vor."
+    },
+    "talent": {
+      "title": "Talent",
+      "description": "Werden Sie Teil des BlihOps-Talentpools, erstellen Sie ein verifiziertes berufliches Profil und kommen Sie in Betracht, wenn Ihre Kompetenzen zu einer Chance passen.",
+      "openGraphTitle": "BlihOps Talent",
+      "openGraphDescription": "Machen Sie verifizierte Kompetenzen für passende Chancen bei BlihOps und Partnern sichtbar."
+    }
+  },
+  "ServicesPage": {
+    "hero": {
+      "ariaLabel": "Unser Angebot",
+      "eyebrow": "BlihOps-Leistungen",
+      "title": "Intelligentes Outsourcing für wachsende Unternehmen.",
+      "description": "Support, Back-Office, IT, AI-Automatisierung und Reporting mit dokumentierten SOPs, definierten SLAs und von Anfang an integrierter Automatisierung.",
+      "playVideoAriaLabel": "Video abspielen"
+    },
+    "approach": {
+      "ariaLabel": "Unser Ansatz",
+      "eyebrow": "Unser Ansatz",
+      "title": "Outsourcing, intelligent umgesetzt",
+      "description": "Die meisten Outsourcing-Unternehmen stellen Ihnen Personal und hoffen, dass es funktioniert. Wir bieten Ihnen ein System: Prozessdesign, AI, qualifizierte Pods und Reporting vor der Skalierung.",
+      "steps": {
+        "processFirst": {
+          "title": "Der Prozess zuerst",
+          "description": "SOPs, SLAs und KPIs werden definiert, bevor jemand eine Aufgabe bearbeitet. Wir erfassen Workflows, Automatisierungsebenen und Erfolgskennzahlen im Voraus."
+        },
+        "aiWhereItCounts": {
+          "title": "AI dort, wo sie zählt",
+          "description": "Automatisierung übernimmt repetitive Arbeit - Weiterleitung, Validierung und Routineaufgaben -, damit Menschen sich auf Urteilsvermögen, Sorgfalt und komplexe Entscheidungen konzentrieren können."
+        },
+        "dedicatedPods": {
+          "title": "Dedizierte Pods",
+          "description": "Mitarbeitende, QA und eine Pod-Leitung, strukturiert um Ihren Workflow. Qualifizierte Fachkräfte, die sich wie eine Erweiterung Ihres Teams anfühlen, nicht wie die Warteschlange eines Dienstleisters."
+        },
+        "fullVisibility": {
+          "title": "Vollständige Transparenz",
+          "description": "Wöchentliches Reporting, gemessene SLAs und kontinuierliche Verbesserung. Sie wissen jederzeit, wie die Abläufe funktionieren und wo wir als Nächstes optimieren."
+        }
+      }
+    },
+    "servicesList": {
+      "ariaLabel": "Unsere Services",
+      "eyebrow": "Was wir leisten",
+      "title": "Fünf Kompetenzen. Ein Partner.",
+      "description": "Jeder Service umfasst dokumentierte SOPs, definierte SLAs, geschulte Pods und Automatisierung dort, wo sie zählt.",
+      "whoThisIsForLabel": "Für wen dies geeignet ist:"
+    }
+  },
+  "ProcessPage": {
+    "hero": {
+      "ariaLabel": "Unsere Arbeitsweise",
+      "eyebrow": "Unsere Arbeitsweise",
+      "title": "Von der Überlastung zur Kontrolle",
+      "description": "Jede Zusammenarbeit folgt einem klaren Weg: Analyse, Konzeption, dedizierte Pods, SLA-Tracking und kontinuierliche Optimierung. Sie wissen jederzeit, was geschieht und wie die Leistung ausfällt."
+    },
+    "timeline": {
+      "ariaLabel": "Prozessablauf",
+      "eyebrow": "Prozess",
+      "title": "Ein strukturierter Weg vom Chaos zur Kontrolle",
+      "description": "Fünf klare Phasen. Dokumentierte SOPs. Gemessene SLAs. Kontinuierliche Verbesserung als fester Bestandteil jeder Zusammenarbeit.",
+      "steps": {
+        "discoveryAssessment": {
+          "title": "Analyse & Bewertung",
+          "description": "Wir prüfen Ihre Abläufe, erfassen Schwachstellen und identifizieren, wo Sie Zeit, Qualität und Geld verlieren."
+        },
+        "solutionDesign": {
+          "title": "Lösungskonzept & SOPs",
+          "description": "Wir konzipieren SOPs, SLA-Stufen, KPIs und Automatisierungsebenen. Sie genehmigen den Entwurf vor dem Go-live."
+        },
+        "teamAssembly": {
+          "title": "Teamzusammenstellung & Schulung",
+          "description": "Ein dedizierter Pod wird ausgewählt, in Ihren SOPs geschult und auf Ihre Qualitätsstandards abgestimmt."
+        },
+        "goLive": {
+          "title": "Go-live & SLA-Tracking",
+          "description": "Die Abläufe starten mit gemessenen SLAs, Qualitätsüberwachung und Ihrem ersten Leistungsbericht in Woche eins."
+        },
+        "continuousOptimization": {
+          "title": "Kontinuierliche Optimierung",
+          "description": "Monatliche Reviews vertiefen die Automatisierung, verbessern Prozesse und skalieren Kapazitäten, ohne die Struktur neu aufzusetzen."
+        }
+      }
+    },
+    "commitments": {
+      "ariaLabel": "Unsere Zusagen",
+      "eyebrow": "Unsere Zusagen",
+      "title": "Worauf Sie sich immer verlassen können",
+      "description": "Klare Verantwortung, gemessene Leistung und Standards, die auch bei der Skalierung Bestand haben.",
+      "items": {
+        "accountManager": {
+          "title": "Dedizierte Kundenbetreuung",
+          "description": "Eine zentrale Ansprechperson, die Ihr Unternehmen, Ihre Ziele und Ihre Präferenzen kennt."
+        },
+        "weeklyReporting": {
+          "title": "Transparentes wöchentliches Reporting",
+          "description": "SLA-Erfüllung, Leistungsvolumen, Qualitätsbewertungen und Optimierungserkenntnisse in jeder Woche."
+        },
+        "gdprAware": {
+          "title": "DSGVO-bewusste Abläufe",
+          "description": "DSGVO-bewusste Verfahren für europäische Märkte. Ihre Daten werden mit Sorgfalt behandelt."
+        },
+        "flexibleScaling": {
+          "title": "Flexible Skalierung",
+          "description": "Skalieren Sie je nach Bedarf nach oben oder unten. Keine langfristige Bindung. Unser Modell passt sich Ihnen an."
+        },
+        "isoAligned": {
+          "title": "ISO-konforme Standards",
+          "description": "Die Abläufe folgen Prozessen, die an ISO 9001 und ISO 27001 ausgerichtet sind. Sicherheit und Qualität sind fest integriert."
+        },
+        "qualityAssurance": {
+          "title": "Qualitätssicherungsrahmen",
+          "description": "Definierte Qualitätsstufen sorgen dafür, dass Fehler erkannt werden, bevor sie Sie erreichen, nicht danach."
+        }
+      }
+    },
+    "security": {
+      "ariaLabel": "Sicherheit und Compliance",
+      "eyebrow": "Sicheres Outsourcing",
+      "title": "Sicherheit und Compliance, auf die Sie vertrauen können",
+      "description": "Kontrollierter Zugriff, dokumentierte Handhabung und compliance-orientierte Prozesse. Für Europa und den Nahen Osten ist Sicherheit keine Option. Für uns ebenso wenig.",
+      "points": [
+        "An ISO 9001 & ISO 27001 ausgerichtete Abläufe",
+        "DSGVO-bewusste Outsourcing-Verfahren",
+        "Sichere Datenverarbeitung und Zugriffsprotokolle",
+        "NDA und Vertraulichkeit für jedes Teammitglied",
+        "Regelmäßige Compliance-Prüfungen und Sicherheitsaudits"
+      ]
+    }
+  },
+  "AboutPage": {
+    "hero": {
+      "ariaLabel": "Über BlihOps",
+      "eyebrow": "Über Blih Intelligent Operations",
+      "title": "Outsourcing, intelligent umgesetzt. Von Äthiopien in die Welt.",
+      "description": "AI-integrierte Abläufe, die zuverlässige Systeme mit qualifizierten afrikanischen Fachkräften verbinden - Managed Pods, definierte SLAs und wöchentliches Reporting für wachsende Unternehmen in Europa, dem Nahen Osten und Asien."
+    },
+    "story": {
+      "ariaLabel": "Unsere Geschichte",
+      "eyebrow": "Unsere Geschichte",
+      "heading": "Entstanden aus den Abläufen, von denen wir",
+      "headingAccent": "uns wünschten, jemand würde sie übernehmen",
+      "pullQuote": "Wir sahen bei jedem wachsenden Unternehmen, mit dem wir arbeiteten, dasselbe Problem: brillante Gründer, die unter operativen Aufgaben begraben waren. Sie brauchten nicht mehr Personal. Sie brauchten ein intelligentes System. Also haben wir eines aufgebaut.",
+      "paragraphs": [
+        "Blih Intelligent Operations entstand innerhalb von Blih Marketing & Communications, einer etablierten Agentur in Addis Ababa, die aus eigener Erfahrung gelernt hat, was für den Aufbau skalierbarer Abläufe erforderlich ist. Nachdem wir jahrelang interne SOPs, KPIs, Automatisierungsworkflows und AI-Integrationen perfektioniert hatten, erkannten wir, dass die für uns entwickelten Rahmenwerke die Arbeitsweise anderer Unternehmen verändern könnten.",
+        "Wir gründeten BlihOps, um wachsenden Unternehmen weltweit intelligente Abläufe bereitzustellen. Nicht nur Personal. Nicht nur Technologie. Ein vollständiges System, in dem menschliche Fachkompetenz und AI zusammenarbeiten, um bessere Ergebnisse, schnellere Bereitstellung und messbare Resultate zu erzielen.",
+        "Heute betreuen wir internationale KMU in Europa, dem Nahen Osten und Asien. Wir vereinen Business Process Outsourcing, IT und Software sowie AI-Automatisierung unter einer Marke, weil Ihre Abläufe nicht sauber in eine einzige Kategorie passen und Ihr Outsourcing-Partner dies ebenfalls nicht tun sollte."
+      ],
+      "stats": {
+        "combinedServices": {
+          "value": "BPO + IT + AI",
+          "label": "Unter einem Dach"
+        },
+        "sla": {
+          "value": "SLA",
+          "label": "Abgesicherte Bereitstellung"
+        }
+      },
+      "imageAlt": "BlihOps-Team bei der Arbeit im Büro in Addis Ababa",
+      "imageCaption": "Addis Ababa, Äthiopien",
+      "headquartersCaption": "BlihOps-Hauptsitz"
+    },
+    "visionMission": {
+      "eyebrow": "Vision & Mission",
+      "heading": "Wohin wir gehen. Wie wir dorthin gelangen.",
+      "visionLabel": "Vision",
+      "vision": "Äthiopien zu einem globalen Standort für intelligentes Outsourcing zu machen, getragen von AI und afrikanischen Fachkräften.",
+      "missionLabel": "Mission",
+      "mission": "Wir steuern moderne Abläufe weltweit, damit Gründer und Führungskräfte sich auf die Verwirklichung ihrer Vision konzentrieren können.",
+      "drivers": {
+        "reliableSystems": {
+          "title": "Zuverlässige Systeme",
+          "description": "Dokumentierte Prozesse und verantwortliche Leistungserbringung."
+        },
+        "aiAssistedOperations": {
+          "title": "AI-gestützte Abläufe",
+          "description": "Automatisierung, die menschliche Verantwortung und QA stärkt."
+        },
+        "africanTalent": {
+          "title": "Afrikanische Fachkräfte",
+          "description": "Qualifizierte Teams aus Äthiopien für globale Unternehmen."
+        }
+      }
+    },
+    "coreValues": {
+      "eyebrow": "Was uns antreibt",
+      "title": "Fünf Werte, die jeden Ablauf prägen.",
+      "items": {
+        "intelligence": {
+          "title": "Intelligenz",
+          "description": "Wir prüfen jeden Prozess auf intelligentere, datengestützte Arbeitsweisen."
+        },
+        "talent": {
+          "title": "Fachkompetenz",
+          "description": "Wir investieren in qualifizierte äthiopische Fachkräfte und langfristiges Wachstum."
+        },
+        "reliability": {
+          "title": "Zuverlässigkeit",
+          "description": "Wir erfüllen SLAs, Zusagen und Reporting-Zyklen."
+        },
+        "quality": {
+          "title": "Qualität",
+          "description": "Jedes Ergebnis durchläuft definierte Standards und Qualitätsstufen."
+        },
+        "efficiency": {
+          "title": "Effizienz",
+          "description": "Wir reduzieren verschwendete Zeit, Kosten und Aufwand durch bessere Systeme."
+        }
+      }
+    },
+    "ethiopia": {
+      "eyebrow": "Warum Äthiopien",
+      "title": "Ein neuer operativer Standort mit globalen Vorteilen.",
+      "description": "Qualifizierte Fachkräfte, abgestimmte Arbeitszeiten und ein AI-natives Bereitstellungsmodell bilden eine starke Basis für internationale Abläufe.",
+      "imageAlt": "Nächtliche Skyline von Addis Ababa",
+      "advantages": {
+        "lowerCosts": {
+          "highlight": "40–60 %",
+          "label": "Niedrigere Betriebskosten"
+        },
+        "englishTalent": {
+          "highlight": "Global",
+          "label": "Englischsprachige Fachkräfte"
+        },
+        "timeOverlap": {
+          "highlight": "GMT+3",
+          "label": "Überschneidung der Geschäftszeiten"
+        },
+        "outsourcingHub": {
+          "highlight": "Aufstrebend",
+          "label": "Outsourcing-Standort"
+        },
+        "workforceModel": {
+          "highlight": "AI-first",
+          "label": "Personalmodell"
+        }
+      }
+    },
+    "leadership": {
+      "eyebrow": "Führung & Verantwortung",
+      "title": "Klare Verantwortung auf jeder Ebene.",
+      "description": "Kunden wissen jederzeit, wer für Bereitstellung, Qualität und Leistung verantwortlich ist.",
+      "principles": {
+        "deliveryOwnership": {
+          "title": "Verantwortung für die Bereitstellung",
+          "description": "Eine Pod-Leitung verantwortet Prioritäten, Arbeitslast und Eskalation."
+        },
+        "qualityOwnership": {
+          "title": "Verantwortung für die Qualität",
+          "description": "QA prüft Standards und schließt Lücken, bevor sie sich ausweiten."
+        },
+        "performanceVisibility": {
+          "title": "Leistungstransparenz",
+          "description": "Wöchentliches Reporting schafft Klarheit über Fortschritte, Risiken und nächste Maßnahmen."
+        }
+      }
+    }
+  },
+  "CaseStudiesPage": {
+    "hero": {
+      "eyebrow": "Fallstudien",
+      "title": "Ergebnisse statt Versprechen.",
+      "description": "Reale Herausforderungen. Fokussierte Teams. Klare operative Fortschritte."
+    },
+    "archive": {
+      "ariaLabel": "Fallstudienarchiv",
+      "filterLabel": "Nach Service filtern",
+      "filterAriaLabel": "Fallstudien nach Service filtern",
+      "all": "Alle",
+      "count": "{count, plural, one {# Projekt} other {# Projekte}}",
+      "empty": "Für diesen Service sind noch keine Fallstudien vorhanden.",
+      "readAriaLabel": "Fallstudie lesen: {title}",
+      "outcomeLabel": "Ergebnis:"
+    },
+    "studies": {
+      "scalingSupportAcrossChannels": {
+        "title": "Customer Support kanalübergreifend skalieren",
+        "client": "Europäische SaaS-Plattform",
+        "excerpt": "Ein dedizierter Supportbetrieb, ausgerichtet auf klare Reaktionsziele, Eskalationswege und wöchentliche Qualitätsprüfungen.",
+        "outcome": "Schnellere Reaktionszeiten und konsistentere Servicequalität"
+      },
+      "streamliningDocumentProcessing": {
+        "title": "Dokumentenverarbeitung optimieren",
+        "client": "Regionale Logistikgruppe",
+        "excerpt": "Aus einer fragmentierten Dokumentenwarteschlange wurde ein kontrollierter Workflow mit klarer Verantwortung, Validierung und täglicher Transparenz.",
+        "outcome": "Sauberere Daten und weniger Verzögerungen bei der Verarbeitung"
+      },
+      "engineeringSupportForProductRoadmap": {
+        "title": "Entwicklungsunterstützung für eine Produkt-Roadmap",
+        "client": "B2B-Softwareunternehmen",
+        "excerpt": "Ein integriertes Engineering- und QA-Team erhöhte die Bereitstellungskapazität und bewahrte zugleich die Standards und den Sprint-Rhythmus des Kunden.",
+        "outcome": "Konstantere Bereitstellung und verbesserte Produktstabilität"
+      },
+      "automatingRepetitiveOperations": {
+        "title": "Repetitive Abläufe automatisieren",
+        "client": "Versicherungsdienstleister",
+        "excerpt": "Praxisnahe Automatisierung reduzierte repetitive Erfassungsarbeit, während Beurteilung und Ausnahmen bei geschulten Mitarbeitenden verblieben.",
+        "outcome": "Weniger manueller Aufwand und kürzere Durchlaufzeiten"
+      },
+      "turningDataIntoClearDecisions": {
+        "title": "Daten in klare Entscheidungen verwandeln",
+        "client": "Dienstleistungsunternehmen mit mehreren Standorten",
+        "excerpt": "Getrennte Berichte wurden in einer verlässlichen Übersicht über Arbeitslast, Qualität und Teamleistung zusammengeführt.",
+        "outcome": "Bessere Transparenz und fundiertere Entscheidungen"
+      },
+      "optimizingProviderOnboarding": {
+        "title": "Onboarding von Leistungserbringern optimieren",
+        "client": "Netzwerk für Gesundheitsdienstleistungen",
+        "excerpt": "Ein dokumentierter Onboarding-Prozess verbesserte Übergaben, Dokumentenqualität und Transparenz über jeden aktiven Fall hinweg.",
+        "outcome": "Reibungsloseres Onboarding und weniger Nachbearbeitungsschleifen"
+      },
+      "qualitySystemForCustomerConversations": {
+        "title": "Ein Qualitätssystem für jedes Kundengespräch",
+        "client": "Marke im digitalen Handel",
+        "excerpt": "Ein gemeinsamer Bewertungsrahmen verknüpfte Kundengespräche mit Coaching-Prioritäten und operativem Reporting.",
+        "outcome": "Gezielteres Coaching auf Basis konsistenter QA-Daten"
+      },
+      "softwareSupportWithClearOwnership": {
+        "title": "Software-Support mit klarer Verantwortung",
+        "client": "Finanztechnologieunternehmen",
+        "excerpt": "Ein strukturierter Wartungsworkflow gab Produktverantwortlichen verlässliche Triage, klare Verantwortung und Transparenz über Releases.",
+        "outcome": "Klarere Triage und besser planbare Problemlösung"
+      }
+    }
+  },
+  "InsightsPage": {
+    "hero": {
+      "eyebrow": "Einblicke",
+      "title": "Praxisnahe Impulse für bessere Abläufe.",
+      "description": "Erfahrungsberichte zu Servicedesign, Automatisierung, Qualität, Reporting und Bereitstellung."
+    },
+    "archive": {
+      "ariaLabel": "Einblicke-Archiv",
+      "filterLabel": "Nach Kategorie filtern",
+      "filterAriaLabel": "Einblicke nach Kategorie filtern",
+      "all": "Alle",
+      "count": "{count, plural, one {# Artikel} other {# Artikel}}",
+      "empty": "In dieser Kategorie sind noch keine Einblicke vorhanden.",
+      "readAriaLabel": "Einblick lesen: {title}",
+      "byLabel": "Von:"
+    },
+    "categories": {
+      "operationsDesign": "Prozessdesign",
+      "aiAutomation": "AI & Automatisierung",
+      "customerExperience": "Kundenerlebnis",
+      "dataReporting": "Daten & Reporting",
+      "teamDelivery": "Team & Bereitstellung"
+    },
+    "author": "BlihOps-Redaktion",
+    "articles": {
+      "designingOutsourcingPilot": {
+        "title": "Ein Outsourcing-Pilotprojekt konzipieren, das Mehrwert belegt",
+        "excerpt": "Ein aussagekräftiges Pilotprojekt prüft das Betriebsmodell, nicht nur, ob ein anderes Team einige Aufgaben erledigen kann.",
+        "readTime": "6 Min. Lesezeit"
+      },
+      "whatToAutomateFirst": {
+        "title": "Was in Back-Office-Abläufen zuerst automatisiert werden sollte",
+        "excerpt": "Die beste erste Automatisierung ist selten der größte Workflow. Es ist der wiederholbare Schritt mit klaren Regeln und sichtbaren Ausnahmen.",
+        "readTime": "7 Min. Lesezeit"
+      },
+      "slasNeedOperatingCadence": {
+        "title": "Warum SLAs einen operativen Rhythmus benötigen",
+        "excerpt": "Ein Ziel auf dem Papier steuert keinen Service. Teams benötigen einen wiederkehrenden Prozess, um Leistung, Risiken und Verantwortung zu prüfen.",
+        "readTime": "5 Min. Lesezeit"
+      },
+      "humanInTheLoop": {
+        "title": "Human-in-the-Loop ist ein Betriebsmodell",
+        "excerpt": "Menschliche Prüfung funktioniert nur, wenn Konfidenz, Ausnahmen, Befugnisse und Feedback als ein System konzipiert werden.",
+        "readTime": "8 Min. Lesezeit"
+      },
+      "qualityScorecard": {
+        "title": "Eine praxistaugliche Qualitäts-Scorecard entwickeln",
+        "excerpt": "Eine Scorecard sollte gute Arbeit leichter erkennbar und coachbar machen, statt jedes Gespräch auf eine Zahl zu reduzieren.",
+        "readTime": "6 Min. Lesezeit"
+      },
+      "operationalReporting": {
+        "title": "Operatives Reporting, das tatsächlich genutzt wird",
+        "excerpt": "Nützliches Reporting reduziert Unsicherheit und weist auf eine Entscheidung hin. Mehr Diagramme schaffen nicht automatisch mehr Transparenz.",
+        "readTime": "5 Min. Lesezeit"
+      },
+      "embeddedPod": {
+        "title": "Wie sich ein integrierter Pod einem Produktteam anschließt",
+        "excerpt": "Externe Bereitstellungskapazität funktioniert am besten, wenn sie die Standards des Teams übernimmt, statt einen parallelen Prozess einzuführen.",
+        "readTime": "7 Min. Lesezeit"
+      },
+      "sharedInboxToQueue": {
+        "title": "Vom gemeinsamen Posteingang zur kontrollierten Warteschlange",
+        "excerpt": "Eine Warteschlange wird beherrschbar, wenn jedes Element einen Status, eine verantwortliche Person, eine Definition der Bearbeitungsreife und einen Ausnahmeweg hat.",
+        "readTime": "6 Min. Lesezeit"
+      }
+    }
+  },
+  "Shared": {
+    "actions": {
+      "bookCall": "Gespräch vereinbaren",
+      "getPilot": "2-wöchiges Pilotprojekt starten",
+      "getFreePilot": "Kostenloses Pilotprojekt starten",
+      "learnMore": "Mehr erfahren",
+      "goHome": "Zur Startseite",
+      "exploreSkills": "BlihOps Skills entdecken",
+      "exploreTalent": "BlihOps Talent entdecken"
+    },
+    "header": {
+      "homeAriaLabel": "BlihOps-Startseite",
+      "primaryNavAriaLabel": "Hauptnavigation",
+      "mobileNavAriaLabel": "Mobile Navigation",
+      "openMenuAriaLabel": "Menü öffnen",
+      "closeMenuAriaLabel": "Menü schließen",
+      "links": {
+        "services": "Leistungen",
+        "process": "Prozess",
+        "about": "Über uns",
+        "careers": "Karriere",
+        "skills": "Skills",
+        "talent": "Talent"
+      },
+      "aboutMenu": {
+        "ariaLabel": "Über-uns-Menü",
+        "whoWeAre": {
+          "label": "Wer wir sind",
+          "description": "Erfahren Sie mehr über unsere Mission, unsere Werte und das Team, das technische Exzellenz bei BlihOps vorantreibt.",
+          "previewDescription": "Mission, Werte und das Team hinter BlihOps."
+        },
+        "caseStudies": {
+          "label": "Fallstudien",
+          "description": "Reale Ergebnisse aus technischen Partnerschaften und Bereitstellungsprojekten.",
+          "previewDescription": "Reale Herausforderungen, fokussierte Teams und klare operative Fortschritte."
+        },
+        "insights": {
+          "label": "Neueste Einblicke",
+          "description": "Ideen und Perspektiven für langlebige Software.",
+          "previewDescription": "Praxisnahe Impulse zu Automatisierung, Qualität, Reporting und Bereitstellung."
+        },
+        "contact": "Kontakt"
+      }
+    },
+    "footer": {
+      "connect": "Vernetzen",
+      "navigationAriaLabel": "Fußzeile",
+      "links": {
+        "services": "Leistungen",
+        "process": "Prozess",
+        "about": "Über uns",
+        "careers": "Karriere",
+        "insights": "Einblicke",
+        "contact": "Kontakt"
+      },
+      "socialAriaLabels": {
+        "facebook": "Facebook",
+        "x": "X",
+        "linkedIn": "LinkedIn",
+        "youTube": "YouTube"
+      },
+      "copyright": "© {year} BlihOps. Alle Rechte vorbehalten.",
+      "backToTop": "Nach oben",
+      "default": {
+        "bannerTitle": "Bereit für Entlastung bei Ihren operativen Aufgaben?",
+        "bannerDescription": "Ein fokussiertes 2-wöchiges Pilotprojekt. Klare Ergebnisse. Belegen Sie den Mehrwert, bevor Sie sich festlegen.",
+        "promptTitle": "Wählen Sie Ihren Einstieg",
+        "promptDescription": "Testen Sie einen Workflow oder besprechen Sie zunächst Ihren operativen Bedarf."
+      },
+      "contact": {
+        "promptTitle": "Bereit, den Workflow zu erproben?",
+        "promptDescription": "Beginnen Sie mit einem fokussierten Prozess und klaren Erfolgskriterien."
+      },
+      "pilot": {
+        "bannerTitle": "Noch nicht bereit für den Antrag? Lassen Sie uns darüber sprechen.",
+        "bannerDescription": "Vereinbaren Sie ein Erstgespräch, um Ihren Workflow, Ihre Fragen und die Eignung zu besprechen.",
+        "promptTitle": "Möchten Sie zuerst ein Gespräch führen?",
+        "promptDescription": "Vereinbaren Sie ein Erstgespräch, und wir helfen Ihnen, den richtigen nächsten Schritt zu klären."
+      },
+      "skills": {
+        "bannerTitle": "Bereit, Kompetenzen mit Perspektive aufzubauen?",
+        "bannerDescription": "Entdecken Sie praxisnahe Lernpfade, absolvieren Sie Assessments und bereiten Sie sich auf Chancen bei BlihOps Talent vor.",
+        "promptTitle": "Kompetenz aufbauen. Nachweise erbringen.",
+        "promptDescription": "Wählen Sie einen praxisnahen Lernpfad und beginnen Sie, verifizierte, einsatzbereite Kompetenzen aufzubauen."
+      },
+      "talent": {
+        "bannerTitle": "Bereit, Ihre verifizierten Kompetenzen sichtbar zu machen?",
+        "bannerDescription": "Treten Sie dem Pool bei und hören Sie von uns, wenn es eine passende Übereinstimmung gibt. Eine Vermittlung ist nicht garantiert.",
+        "promptTitle": "Seien Sie bereit, wenn es passt.",
+        "promptDescription": "Halten Sie Ihr verifiziertes Profil aktuell, damit passende Chancen Sie finden können."
+      }
+    },
+    "localeSelector": {
+      "label": "Sprache",
+      "current": "Aktuelle Sprache: {language}",
+      "switchTo": "Zu {language} wechseln",
+      "locales": {
+        "english": "Englisch",
+        "german": "Deutsch"
+      }
+    },
+    "forms": {
+      "optional": "optional",
+      "received": "Eingegangen",
+      "fields": {
+        "fullName": {
+          "label": "Vollständiger Name",
+          "placeholder": "Ihr Name"
+        },
+        "workEmail": {
+          "label": "Geschäftliche E-Mail-Adresse",
+          "placeholder": "you@company.com"
+        },
+        "company": {
+          "label": "Unternehmen",
+          "placeholder": "Unternehmensname"
+        }
+      },
+      "validation": {
+        "fullNameRequired": "Geben Sie Ihren vollständigen Namen ein.",
+        "fullNameMax": "Ihr Name darf höchstens 80 Zeichen lang sein.",
+        "emailMax": "Ihre E-Mail-Adresse darf höchstens 254 Zeichen lang sein.",
+        "companyMax": "Ihr Unternehmensname darf höchstens 120 Zeichen lang sein."
+      }
+    },
+    "services": {
+      "customerSupport": {
+        "title": "Customer Support",
+        "subtitle": "Support, der ohne Chaos mitwächst",
+        "shortDescription": "Omnichannel-Support per E-Mail, Chat und Telefon mit SLAs für Reaktionszeiten.",
+        "details": "Geschulte Mitarbeitende, Qualitätsbewertungen und klare Verantwortlichkeiten. Ihre Kunden erhalten konsistente Unterstützung. Sie werden entlastet.",
+        "body": "E-Mail, Chat und Telefon mit geschulten Mitarbeitenden, AI-gestützter Weiterleitung und klaren Reaktionszeit-SLAs. Jede Woche erfasst und berichtet.",
+        "tag": "Support, der mitwächst",
+        "features": [
+          "Omnichannel: E-Mail, Chat, Telefon",
+          "AI-gestützte Weiterleitung",
+          "Reaktionszeit-SLAs",
+          "Wöchentliche Qualitätsberichte"
+        ],
+        "whoThisIsFor": "SaaS- und E-Commerce-Teams, die besseren Support wünschen, ohne zusätzliches Personal aufzubauen."
+      },
+      "backOffice": {
+        "title": "Back-Office",
+        "subtitle": "Abläufe, die wie ein Uhrwerk funktionieren",
+        "shortDescription": "Dateneingabe, Dokumentenverarbeitung und administrative Abläufe auf Basis dokumentierter SOPs.",
+        "details": "Zuverlässige Ausführung zu einem Bruchteil der internen Kosten. Genauigkeit und Durchsatz, die Sie wöchentlich messen können.",
+        "body": "Dateneingabe, Dokumente, CRM und Administration auf Basis dokumentierter SOPs mit QA-Prüfungen. Strukturierte Ausführung, die Sie wöchentlich messen können.",
+        "tag": "Ausführung, auf die Sie vertrauen können",
+        "features": [
+          "Dateneingabe und -validierung",
+          "Dokumentenverarbeitung",
+          "CRM- und Verwaltungsabläufe",
+          "SOP-basierte QA"
+        ],
+        "whoThisIsFor": "Teams mit hoher administrativer Belastung, die zuverlässigen Durchsatz ohne weitere Einstellungen benötigen."
+      },
+      "itSoftware": {
+        "title": "IT & Software",
+        "subtitle": "Technische Fachkräfte, die sich wie Ihr eigenes Team anfühlen",
+        "shortDescription": "Dedizierte Entwickler, Software-Support und QA als Erweiterung Ihres Teams.",
+        "details": "Qualifizierte Engineers, die mit Ihrem Tech-Stack und Ihren Prozessen liefern, statt Aufgaben in einer isolierten Dienstleister-Warteschlange abzuarbeiten.",
+        "body": "Dedizierte Entwickler, Support und QA aus Äthiopien mit Überschneidung in GMT+3. Sprint-Rhythmus und Codestandards statt Freelancer.",
+        "tag": "Technische Fachkräfte nach Bedarf",
+        "features": [
+          "Dedizierte Entwicklungsteams",
+          "Support und Wartung",
+          "QA und Tests",
+          "Nearshore-Überschneidung in GMT+3"
+        ],
+        "whoThisIsFor": "Produktteams, die ihre Entwicklung skalieren möchten, ohne den gesamten Einstellungsaufwand zu tragen."
+      },
+      "aiAutomation": {
+        "title": "AI & Automatisierung",
+        "subtitle": "AI, die Geschäftsprobleme löst",
+        "shortDescription": "Workflow-Mapping und AI-gestützte Automatisierung, die Routinearbeit beseitigt.",
+        "details": "Von intelligenter Dokumentenverarbeitung bis zu AI-gestütztem Support. Outsourcing, das mit der Zeit intelligenter wird.",
+        "body": "Wir erfassen Workflows, reduzieren Routinearbeit und setzen Automatisierung dort ein, wo kein Urteilsvermögen erforderlich ist. Praxisnah, messbar und mit erfasstem ROI.",
+        "tag": "Intelligenz, die funktioniert",
+        "features": [
+          "Workflow-Mapping",
+          "Dokumenten-AI und Extraktion",
+          "CRM- und Prozessautomatisierung",
+          "Einführung mit ROI-Tracking"
+        ],
+        "whoThisIsFor": "Unternehmen, die durch manuelle Arbeit ausgebremst werden und umgesetzte Automatisierung statt bloßer Demos benötigen."
+      },
+      "dataReporting": {
+        "title": "Daten & Reporting",
+        "subtitle": "Alles sehen. Nichts erraten.",
+        "shortDescription": "Operative Dashboards, KPI-Tracking und automatisiertes Reporting.",
+        "details": "Sie wissen jederzeit, wie Ihre Abläufe funktionieren. Entscheidungen auf Basis von Daten statt Vermutungen.",
+        "body": "KPI-Dashboards, automatisierte Berichte und saubere operative Daten, damit die Führungsebene die Leistung klar erkennt. Keine Vermutungen.",
+        "tag": "Klarheit, auf deren Basis Sie handeln können",
+        "features": [
+          "KPI-Dashboards",
+          "Automatisierte Wochenberichte",
+          "Datenbereinigung und -validierung",
+          "Entscheidungsreife Zusammenfassungen für Stakeholder"
+        ],
+        "whoThisIsFor": "Führungskräfte, die ein klares operatives Reporting benötigen, um schneller zu entscheiden und zu verbessern."
+      }
+    },
+    "notFound": {
+      "title": "Seite nicht gefunden",
+      "description": "Diese Adresse existiert nicht oder wurde verschoben. Kehren Sie zur Startseite zurück und erfahren Sie weiter, wie BlihOps Abläufe übernimmt."
+    }
+  },
+  "Home": {
+    "hero": {
+      "eyebrow": "Outsourcing, intelligent umgesetzt.",
+      "title": "Wir steuern Ihre Abläufe mit Struktur & SLAs",
+      "description": "Managed Pods für Support, Back-Office und Automatisierung - mit klarer Verantwortung und messbarer Leistung."
+    },
+    "logoCloud": {
+      "heading": "Von Experten geschätzt"
+    },
+    "problem": {
+      "ariaLabel": "Die tatsächlichen Kosten, wenn Sie alles selbst erledigen",
+      "title": "Erfolgreiche Unternehmen geraten ins Stocken, wenn operative Aufgaben überhandnehmen",
+      "description": "Sie haben Ihr Unternehmen nicht gegründet, um Support-Tickets nachzugehen oder Prozesse ständig zu überwachen. Bei knappen Kapazitäten und steigenden Ausgaben wird die Skalierung jedes Quartal schwieriger. Es gibt einen intelligenteren Weg als herkömmliche Modelle.",
+      "items": {
+        "costTrap": {
+          "title": "Die Kostenfalle",
+          "description": "Die Rekrutierung, Schulung und Bindung eines internen Operations-Teams kostet mehr als nötig. Und jedes Mal, wenn jemand das Unternehmen verlässt, beginnen Sie wieder bei null."
+        },
+        "visibilityGap": {
+          "title": "Die Transparenzlücke",
+          "description": "Es gibt kein Dashboard, kein SLA und keinen Wochenbericht. Sie erfahren erst von Problemen, wenn Kunden sich beschweren, nicht vorher. Die Abläufe beruhen auf Hoffnung statt auf Daten."
+        },
+        "scalingWall": {
+          "title": "Die Skalierungsgrenze",
+          "description": "Manuelle Prozesse und informelles Wissen lassen sich nicht skalieren. Jeder neue Kunde bedeutet mehr Chaos, mehr Einstellungen und mehr Krisenmanagement. Sie brauchen intelligente Systeme, nicht nur mehr Personal."
+        },
+        "outsourcingBurn": {
+          "title": "Die Outsourcing-Enttäuschung",
+          "description": "Sie haben Offshore-Outsourcing ausprobiert und verpasste Fristen, schlechte Qualität sowie fehlende Verantwortlichkeit erlebt. Sie brauchen einen Partner, der Ihre Abläufe wie seine eigenen behandelt."
+        }
+      }
+    },
+    "solution": {
+      "ariaLabel": "Das BlihOps-Modell",
+      "eyebrow": "Das BlihOps-Modell",
+      "title": "Strukturierte Pods. AI-Workflows. SLA-Verbindlichkeit.",
+      "description": "Dedizierte Pods, AI-gestützte Workflows und gemessene SLAs sorgen dafür, dass Abläufe mit klarer Verantwortung statt im Chaos funktionieren.",
+      "features": {
+        "deliveryPods": {
+          "title": "Dedizierte Delivery Pods",
+          "description": "Mitarbeitende, QA und eine Pod-Leitung, strukturiert um Ihren Workflow, gehen innerhalb von 1–2 Wochen live."
+        },
+        "aiWorkflows": {
+          "title": "AI-gestützte Workflows",
+          "description": "Erfassen, automatisieren und beseitigen Sie Routinearbeit, ohne menschliche Verantwortung oder QA zu verlieren."
+        },
+        "globalDelivery": {
+          "title": "Globale Bereitstellung, klare Verantwortung",
+          "description": "Teams in Äthiopien mit dokumentierten SOPs, wöchentlichem Reporting und einer einzelnen verantwortlichen Pod-Leitung."
+        },
+        "slaImprovement": {
+          "title": "SLA-gestützt & kontinuierlich verbessert",
+          "description": "Abgestufte Reaktionszeiten, gemessene Bereitstellung und monatliche Optimierungspiloten ermöglichen Skalierung ohne Neustart."
+        }
+      },
+      "stats": {
+        "percentageRange": "{min}-{max}%",
+        "hoursRange": "{min}-{max} Std.",
+        "costReduction": "Kostensenkung",
+        "reclaimedPerWeek": "Zurückgewonnen / Woche"
+      },
+      "quote": {
+        "text": "Struktur und SLAs haben verändert, wie wir Kundenarbeit steuern. Allein durch Automatisierung gewinnen wir jede Woche Stunden manueller Arbeit zurück.",
+        "role": "Operations-Leitung",
+        "companyType": "SaaS in der Wachstumsphase"
+      },
+      "podMock": {
+        "support": "Support",
+        "slaLive": "SLA aktiv",
+        "responseTime": "Reaktion innerhalb von {count} Stunde",
+        "lead": "Leitung",
+        "qa": "QA",
+        "operations": "Operations"
+      },
+      "automationMock": {
+        "title": "Auto-Workflow",
+        "layerStatus": "Ebene {number} - Aktiv",
+        "running": "Läuft",
+        "steps": ["Erfassen", "Weiterleiten", "QA"],
+        "coverage": "Automatisierungsgrad",
+        "rulesLive": "{count} Regeln aktiv",
+        "hoursSaved": "-{hours} Std. / Tag"
+      },
+      "slaMock": {
+        "title": "SLA-Erfüllung",
+        "period": "Diese Woche - alle aktiven Pods",
+        "met": "Erfüllt",
+        "watch": "Beobachten"
+      }
+    },
+    "services": {
+      "ariaLabel": "Leistungen",
+      "eyebrow": "Intelligente Outsourcing-Services",
+      "title": "Alles, was Ihre Abläufe brauchen. Nichts, was sie nicht brauchen.",
+      "description": "Jeder Service umfasst SLAs, wöchentliches Reporting und integrierte Automatisierung.",
+      "serviceListAriaLabel": "Serviceliste",
+      "serviceSlidesAriaLabel": "Servicefolien",
+      "showServiceAriaLabel": "{title} anzeigen"
+    },
+    "trust": {
+      "ariaLabel": "Vertrauen und Nachweise",
+      "eyebrow": "Vertrauen & Nachweise",
+      "title": "Konzipiert für Zuverlässigkeit, Sicherheit und klare Verantwortung",
+      "description": "SLA-gestützte Bereitstellung, DSGVO-bewusste Prozesse und ISO-konforme Qualität - umgesetzt von Pods in Äthiopien mit wöchentlichem Reporting, auf dessen Basis Sie handeln können.",
+      "stats": {
+        "costReduction": "Typische Kostensenkung gegenüber internen Teams oder westlichem Outsourcing",
+        "slaCompliance": "SLA-Erfüllung in allen aktiven Delivery Pods",
+        "deploymentWindow": "Durchschnittlicher Zeitraum vom Pilotprojekt bis zum Live-Betrieb",
+        "dayValue": "{count} Tage"
+      }
+    },
+    "testimonials": {
+      "ariaLabel": "Kundenstimmen",
+      "title": "Was unsere Kunden sagen",
+      "description": "Erfahren Sie, wie Teams ihre Abläufe mit Struktur, SLAs und klarer Verantwortung steuern.",
+      "items": {
+        "sarahChen": {
+          "quote": "BlihOps hat unseren Support innerhalb von zwei Wochen übernommen. Die SLAs sind real - endlich sehen wir jeden Montag die Reaktionszeiten.",
+          "name": "Sarah Chen",
+          "role": "Leitung Operations"
+        },
+        "marcusWebb": {
+          "quote": "Zuvor hatten wir drei Offshore-Anbieter ausprobiert. Dedizierte Pods und wöchentliches Reporting haben verändert, wie wir unsere Abläufe skalieren.",
+          "name": "Marcus Webb",
+          "role": "COO"
+        },
+        "amiraHassan": {
+          "quote": "Die Genauigkeit im Back-Office stieg deutlich, nachdem BlihOps die SOPs dokumentiert hatte. Unser Team gewann fast sofort wertvolle Führungszeit zurück.",
+          "name": "Amira Hassan",
+          "role": "Gründerin"
+        },
+        "jamesOkonkwo": {
+          "quote": "AI-gestützte Triage reduzierte die Anzahl unnötiger Tickets, ohne die menschliche Übergabe zu verlieren. QA ist fest integriert und nicht nachträglich ergänzt.",
+          "name": "James Okonkwo",
+          "role": "Leitung Customer Success"
+        },
+        "elenaPetrova": {
+          "quote": "Vom Pilotprojekt zum Live-Betrieb in weniger als drei Wochen. Klare Verantwortung, eine Pod-Leitung und Reporting, das wir tatsächlich nutzen.",
+          "name": "Elena Petrova",
+          "role": "Leitung Operations"
+        },
+        "davidKim": {
+          "quote": "Die Kosten sanken gegenüber unserem internen Plan, die Qualität blieb jedoch erhalten. Diese Kombination ist im Outsourcing selten.",
+          "name": "David Kim",
+          "role": "CEO"
+        }
+      }
+    }
+  },
+  "ContactPage": {
+    "hero": {
+      "label": "BlihOps kontaktieren",
+      "context": "Neugeschäft / Allgemeine Anfragen",
+      "eyebrow": "Gespräch beginnen",
+      "title": "Sagen Sie uns, was Aufmerksamkeit erfordert.",
+      "description": "Schildern Sie uns das operative Problem, Ihre Partnerschaftsidee oder Ihre Frage. Wir bringen Sie mit der richtigen Ansprechperson zusammen.",
+      "preferToTalk": "Möchten Sie lieber persönlich sprechen?",
+      "details": {
+        "responseTime": {
+          "term": "Reaktionszeit",
+          "value": "Innerhalb eines Arbeitstages"
+        },
+        "workingRegion": {
+          "term": "Arbeitsregion",
+          "value": "Europa, der Nahe Osten und Afrika"
+        },
+        "deliveryBase": {
+          "term": "Bereitstellungsstandort",
+          "value": "Addis Ababa, Äthiopien"
+        }
+      },
+      "imageAlt": "Nächtliche Skyline von Addis Ababa",
+      "imageCaption": "Entwickelt und bereitgestellt aus Addis Ababa.",
+      "timeZone": "UTC +3"
+    },
+    "form": {
+      "label": "Kontaktanfrage",
+      "duration": "Ca. {minutes} Min.",
+      "title": "Wobei können wir Ihnen helfen?",
+      "description": "Teilen Sie uns die wichtigsten Informationen mit. Wir sorgen dafür, dass Ihre Nachricht die richtige Person erreicht.",
+      "fields": {
+        "topic": {
+          "label": "Thema",
+          "placeholder": "Thema auswählen",
+          "options": {
+            "outsourcing": "Outsourcing-Services",
+            "automation": "AI- und Workflow-Automatisierung",
+            "partnership": "Partnerschaft",
+            "general": "Allgemeine Anfrage"
+          }
+        },
+        "message": {
+          "label": "Nachricht",
+          "placeholder": "Beschreiben Sie, woran Sie arbeiten und was Sie von uns benötigen.",
+          "help": "Geben Sie keine Passwörter oder vertraulichen Kundendaten an."
+        }
+      },
+      "submit": "Anfrage senden",
+      "consent": "Mit dem Absenden erklären Sie sich damit einverstanden, dass BlihOps Sie zu dieser Anfrage kontaktiert.",
+      "validation": {
+        "emailInvalid": "Geben Sie eine gültige E-Mail-Adresse ein.",
+        "topicRequired": "Wählen Sie ein Thema aus.",
+        "messageRequired": "Teilen Sie uns weitere Informationen mit, damit wir Ihre Nachricht richtig weiterleiten können.",
+        "messageMax": "Ihre Nachricht darf höchstens 1.500 Zeichen lang sein."
+      },
+      "success": {
+        "title": "Vielen Dank für Ihre Nachricht.",
+        "description": "Wir prüfen Ihre Nachricht und antworten innerhalb eines Arbeitstages.",
+        "sendAnother": "Weitere Nachricht senden"
+      }
+    },
+    "pilotCta": {
+      "eyebrow": "Möchten Sie zuerst einen Nachweis?",
+      "title": "Testen Sie einen Workflow, bevor Sie sich festlegen.",
+      "description": "Das kostenlose zweiwöchige Pilotprojekt bietet Ihnen vor einer längeren Zusammenarbeit einen klaren Umfang, Kennzahlen und Reporting.",
+      "action": "Zweiwöchiges Pilotprojekt starten"
+    }
+  },
+  "PilotPage": {
+    "hero": {
+      "label": "Antrag auf ein Pilotprojekt",
+      "context": "Ein Workflow / Zwei Wochen",
+      "eyebrow": "Ein fokussierter Einstieg",
+      "title": "Belegen Sie den Mehrwert, bevor Sie skalieren.",
+      "description": "Testen Sie einen Workflow mit klaren Kennzahlen und transparentem Reporting, bevor Sie eine längere Verpflichtung eingehen.",
+      "benefits": [
+        "Keine langfristige Verpflichtung",
+        "Erfolgskriterien werden im Voraus vereinbart",
+        "Antwort innerhalb eines Arbeitstages"
+      ],
+      "imageAlt": "Ein BlihOps-Bereitstellungsteam bespricht einen operativen Workflow",
+      "imageCaption": "Ein Bereitstellungsteam, das auf Ihren Workflow ausgerichtet ist.",
+      "locationCaption": "Addis Ababa"
+    },
+    "form": {
+      "label": "Pilotprojekt-Anfrage",
+      "duration": "Ca. {minutes} Min.",
+      "title": "Sagen Sie uns, wo die Arbeit ins Stocken gerät.",
+      "description": "Genügend Details, um den Workflow zu verstehen, ohne daraus einen Beschaffungsprozess zu machen.",
+      "sections": {
+        "details": "Ihre Angaben",
+        "scope": "Umfang des Pilotprojekts"
+      },
+      "fields": {
+        "service": {
+          "label": "Wobei benötigen Sie Unterstützung?",
+          "placeholder": "Service auswählen",
+          "options": {
+            "customerSupport": "Customer Support",
+            "backOffice": "Back-Office-Abläufe",
+            "dataProcessing": "Datenverarbeitung",
+            "itSoftware": "IT- und Software-Support",
+            "aiAutomation": "AI- und Workflow-Automatisierung",
+            "notSure": "Noch nicht sicher"
+          }
+        },
+        "challenge": {
+          "label": "Was bremst Ihre Abläufe aus?",
+          "placeholder": "Beschreiben Sie den Workflow, den Engpass oder das Ergebnis, das Sie verbessern möchten.",
+          "help": "Einige Sätze genügen. Geben Sie keine vertraulichen Kundendaten an."
+        },
+        "volume": {
+          "label": "Ungefähres Arbeitsvolumen",
+          "placeholder": "Volumen auswählen",
+          "options": {
+            "underHundred": "Weniger als 100 Aufgaben pro Monat",
+            "hundredToFiveHundred": "100–500 Aufgaben pro Monat",
+            "fiveHundredToTwoThousand": "500–2.000 Aufgaben pro Monat",
+            "overTwoThousand": "Mehr als 2.000 Aufgaben pro Monat",
+            "unknown": "Es variiert oder wird noch nicht gemessen"
+          }
+        },
+        "timeline": {
+          "label": "Gewünschter Start",
+          "placeholder": "Zeitraum auswählen",
+          "options": {
+            "asap": "So bald wie möglich",
+            "withinThirtyDays": "Innerhalb von 30 Tagen",
+            "oneToThreeMonths": "Innerhalb von 1–3 Monaten",
+            "exploring": "Zunächst nur zur Orientierung"
+          }
+        },
+        "context": {
+          "label": "Was sollten wir außerdem wissen?",
+          "placeholder": "Bestehende Tools, Abdeckungszeiten, Sprachen oder Einschränkungen."
+        }
+      },
+      "submit": "Pilotprojekt anfragen",
+      "consent": "Mit dem Absenden erklären Sie sich damit einverstanden, dass BlihOps Sie zu dieser Anfrage kontaktiert.",
+      "validation": {
+        "emailInvalid": "Geben Sie eine gültige geschäftliche E-Mail-Adresse ein.",
+        "companyRequired": "Geben Sie Ihren Unternehmensnamen ein.",
+        "serviceRequired": "Wählen Sie den benötigten Service aus.",
+        "challengeRequired": "Beschreiben Sie die operative Herausforderung etwas genauer.",
+        "challengeMax": "Ihre Beschreibung darf höchstens 1.200 Zeichen lang sein.",
+        "volumeRequired": "Wählen Sie ein ungefähres Arbeitsvolumen aus.",
+        "timelineRequired": "Wählen Sie Ihren gewünschten Startzeitpunkt aus.",
+        "contextMax": "Die zusätzlichen Informationen dürfen höchstens 1.000 Zeichen lang sein."
+      },
+      "success": {
+        "title": "Ihre Pilotprojekt-Anfrage ist eingegangen.",
+        "description": "Wir prüfen Ihren Workflow und kontaktieren Sie innerhalb eines Arbeitstages, um Umfang und Erfolgskriterien zu klären.",
+        "anotherPrompt": "Möchten Sie einen anderen Workflow einreichen?",
+        "startAnother": "Weitere Anfrage starten"
+      }
+    },
+    "process": {
+      "eyebrow": "Das Arbeitsmodell",
+      "title": "Zwei Wochen. Vier gezielte Phasen.",
+      "description": "Eine fokussierte Frage leitet die Arbeit: Kann BlihOps diesen Workflow besser umsetzen?",
+      "steps": {
+        "shareWorkflow": {
+          "title": "Einen Workflow vorstellen",
+          "description": "Zeigen Sie uns, wo sich Arbeit verzögert, uneinheitlich ist oder zu viel Zeit Ihres Teams beansprucht."
+        },
+        "defineProof": {
+          "title": "Den Nachweis definieren",
+          "description": "Wir vereinbaren Umfang, Verantwortung, Servicelevel und die Kennzahlen, die den Mehrwert belegen."
+        },
+        "runPilot": {
+          "title": "Zwei Wochen durchführen",
+          "description": "Ein fokussierter Delivery Pod übernimmt den Workflow mit Qualitätsprüfungen und transparentem Reporting."
+        },
+        "reviewDecide": {
+          "title": "Prüfen und entscheiden",
+          "description": "Sie erhalten die erforderlichen Nachweise, um ohne langfristige Verpflichtung zu skalieren, nachzubessern oder aufzuhören."
+        }
+      }
+    },
+    "faq": {
+      "eyebrow": "Praktische Details",
+      "title": "Antworten auf Fragen zum Pilotprojekt.",
+      "description": "Ein fokussierter Umfang liefert bessere Nachweise. Diese Details fragen Käufer meist zuerst.",
+      "items": {
+        "isFree": {
+          "question": "Ist das zweiwöchige Pilotprojekt wirklich kostenlos?",
+          "answer": "Ja. Wir vereinbaren zunächst einen fokussierten Workflow und klare Grenzen, damit das Pilotprojekt innerhalb von zwei Wochen aussagekräftige Nachweise liefern kann."
+        },
+        "bestProcess": {
+          "question": "Welche Art von Prozess eignet sich am besten für ein Pilotprojekt?",
+          "answer": "Wählen Sie einen wiederholbaren Prozess mit sichtbarem Volumen und messbaren Ergebnissen, etwa Support-Tickets, Back-Office-Verarbeitung, Datenarbeit oder einen definierten Automatisierungsworkflow."
+        },
+        "replaceTools": {
+          "question": "Müssen wir unsere aktuellen Tools ersetzen?",
+          "answer": "In der Regel nicht. Wir beginnen mit den Tools und Zugängen, die Sie bereits nutzen, und empfehlen Änderungen nur dort, wo sie eine klare operative Einschränkung beseitigen."
+        },
+        "afterPilot": {
+          "question": "Was geschieht nach dem Pilotprojekt?",
+          "answer": "Wir prüfen gemeinsam mit Ihnen Bereitstellungsqualität, Servicelevel, Arbeitsvolumen und Verbesserungsmöglichkeiten. Sie entscheiden, ob Sie die Zusammenarbeit skalieren; es gibt keine automatische langfristige Verpflichtung."
+        }
+      }
+    },
+    "callCta": {
+      "title": "Noch nicht bereit für den Antrag?",
+      "description": "Besprechen Sie den Workflow und entscheiden Sie, ob ein Pilotprojekt der richtige nächste Schritt ist."
+    }
+  },
+  "CareersPage": {
+    "hero": {
+      "eyebrow": "Karriere bei BlihOps",
+      "title": "Gestalten Sie Arbeit, die zählt. Wachsen Sie mit Menschen, denen Qualität wichtig ist.",
+      "description": "Werden Sie Teil unseres Teams in Addis Ababa und gestalten Sie zuverlässige Abläufe, nützliche Technologie und bessere Ergebnisse für Teams weltweit."
+    },
+    "roles": {
+      "eyebrow": "Offene Stellen",
+      "title": "Finden Sie Ihren Platz",
+      "description": "Wir schätzen klares Denken, zuverlässige Ausführung und Menschen, die das System um sich herum verbessern.",
+      "emptyTitle": "Derzeit keine offenen Stellen",
+      "emptyDescription": "Unsere Teams wachsen weiter. Schauen Sie später nach neuen Chancen.",
+      "items": {
+        "operationsDeliveryLead": {
+          "title": "Leitung operative Bereitstellung",
+          "department": "Operations",
+          "location": "Addis Ababa, Äthiopien",
+          "workMode": "Vor Ort",
+          "employmentType": "Vollzeit",
+          "summary": "Leiten Sie einen Managed Delivery Pod und überführen Sie Kundenzusagen in zuverlässige tägliche Abläufe."
+        },
+        "aiAutomationEngineer": {
+          "title": "AI-Automatisierungsingenieur",
+          "department": "AI & Automatisierung",
+          "location": "Addis Ababa, Äthiopien",
+          "workMode": "Hybrid",
+          "employmentType": "Vollzeit",
+          "summary": "Konzipieren Sie zuverlässige Automatisierungen, die repetitive Arbeit beseitigen und menschliche Prüfung transparent halten."
+        },
+        "fullStackSoftwareEngineer": {
+          "title": "Full-Stack-Softwareentwickler",
+          "department": "Softwareentwicklung",
+          "location": "Addis Ababa, Äthiopien",
+          "workMode": "Hybrid",
+          "employmentType": "Vollzeit",
+          "summary": "Entwickeln Sie interne und kundenorientierte Software, mit der Managed Operations einfacher gesteuert und verbessert werden können."
+        },
+        "customerExperienceSpecialist": {
+          "title": "Spezialist für Kundenerlebnis",
+          "department": "Kundenerlebnis",
+          "location": "Addis Ababa, Äthiopien",
+          "workMode": "Vor Ort",
+          "employmentType": "Vollzeit",
+          "summary": "Vertreten Sie Kundenmarken kanalübergreifend mit Empathie, sicherem Urteilsvermögen und verlässlicher Nachverfolgung."
+        },
+        "businessDevelopmentAssociate": {
+          "title": "Mitarbeiter Geschäftsentwicklung",
+          "department": "Wachstum",
+          "location": "Addis Ababa, Äthiopien",
+          "workMode": "Hybrid",
+          "employmentType": "Vollzeit",
+          "summary": "Helfen Sie wachsenden Unternehmen zu verstehen, wo ein Managed BlihOps-Team messbaren operativen Mehrwert schaffen kann."
+        }
+      }
+    }
+  },
+  "SkillsPage": {
+    "hero": {
+      "eyebrow": "BlihOps Skills",
+      "title": "Lernen Sie praxisnahe Kompetenzen mit Perspektive.",
+      "description": "Bauen Sie praktische Fähigkeiten auf, weisen Sie diese in einem Assessment nach und bereiten Sie sich auf Chancen bei BlihOps Talent vor.",
+      "exploreTracks": "Lernpfade entdecken",
+      "visitPlatform": "Skills-Plattform besuchen"
+    },
+    "samplePathway": {
+      "eyebrow": "Beispielhafter Lernpfad",
+      "title": "Abläufe im Customer Support",
+      "stageProgress": "Phase {current} von {total}",
+      "steps": {
+        "learn": {
+          "title": "Lernen",
+          "description": "Grundlagenwissen"
+        },
+        "practice": {
+          "title": "Üben",
+          "description": "Anwendungsorientierte Übungen"
+        },
+        "assess": {
+          "title": "Bewerten",
+          "description": "Geprüftes Projekt"
+        },
+        "qualify": {
+          "title": "Qualifizieren",
+          "description": "Eignung für den Talentpool"
+        }
+      },
+      "details": {
+        "currentWork": {
+          "label": "Aktuelle Aufgabe",
+          "value": "Bearbeitung realitätsnaher Szenarien"
+        },
+        "evidence": {
+          "label": "Erbrachte Nachweise",
+          "value": "{count} praktische Einreichungen"
+        },
+        "outcome": {
+          "label": "Ergebnis des Lernpfads",
+          "value": "Assessment für die Support-Einsatzbereitschaft"
+        }
+      }
+    },
+    "principles": {
+      "practical": {
+        "title": "Praxisnah",
+        "description": "Rollenbezogenes Lernen"
+      },
+      "assessed": {
+        "title": "Bewertet",
+        "description": "Angewandte Arbeit, geprüft"
+      },
+      "connected": {
+        "title": "Vernetzt",
+        "description": "Ein Weg zu beruflichen Chancen"
+      }
+    },
+    "catalog": {
+      "eyebrow": "Katalogvorschau",
+      "title": "Beginnen Sie mit Arbeit, deren Erlernen sich lohnt.",
+      "description": "Während der vollständige Plattformkatalog vorbereitet wird, zeigen wir repräsentative Lernpfade. Jeder Pfad verbindet Lernen mit praktischen Nachweisen.",
+      "exploreAriaLabel": "{title} auf BlihOps Skills entdecken",
+      "labels": {
+        "level": "Niveau",
+        "length": "Dauer",
+        "study": "Lernumfang",
+        "outcome": "Ergebnis des Lernpfads"
+      },
+      "tracks": {
+        "customerSupportOperations": {
+          "title": "Abläufe im Customer Support",
+          "category": "Kundenerlebnis",
+          "description": "Entwickeln Sie die Kommunikations-, Ticketbearbeitungs-, Eskalations- und Qualitätsroutinen, die für zuverlässigen Customer Support erforderlich sind.",
+          "level": "Grundlagen",
+          "duration": "6 Wochen",
+          "modules": "8 Module",
+          "outcome": "Assessment für die Support-Einsatzbereitschaft"
+        },
+        "backOfficeDataQuality": {
+          "title": "Back-Office & Datenqualität",
+          "category": "Operations",
+          "description": "Lernen Sie präzise Datenverarbeitung, Dokumentenbearbeitung, SOP-Ausführung und praxisnahe Routinen zur Qualitätskontrolle.",
+          "level": "Grundlagen",
+          "duration": "5 Wochen",
+          "modules": "7 Module",
+          "outcome": "Überprüfung operativer Kompetenzen"
+        },
+        "softwareQualityAssurance": {
+          "title": "Software-Qualitätssicherung",
+          "category": "Technologie",
+          "description": "Üben Sie Testplanung, Fehlerberichte, Regressionsprüfungen und die Workflows zuverlässiger Produktteams.",
+          "level": "Fortgeschritten",
+          "duration": "8 Wochen",
+          "modules": "10 Module",
+          "outcome": "QA-Projekt für das Portfolio"
+        },
+        "aiWorkflowAutomation": {
+          "title": "AI-Workflow-Automatisierung",
+          "category": "AI & Automatisierung",
+          "description": "Erfassen Sie repetitive Arbeit, identifizieren Sie sichere Automatisierungsmöglichkeiten und entwickeln Sie praxisnahe AI-gestützte Workflows.",
+          "level": "Fortgeschritten",
+          "duration": "6 Wochen",
+          "modules": "8 Module",
+          "outcome": "Fallprojekt zur Automatisierung"
+        }
+      }
+    },
+    "pathway": {
+      "title": "Ein Kurs ist erst der Anfang.",
+      "description": "BlihOps Skills ist auf eine klare Entwicklung vom Lernen bis zu verifizierten, einsatzbereiten Kompetenzen ausgerichtet.",
+      "steps": {
+        "chooseTrack": {
+          "title": "Lernpfad wählen",
+          "description": "Beginnen Sie mit einem rollenbezogenen Pfad, der zu Ihren Entwicklungszielen passt."
+        },
+        "learnByDoing": {
+          "title": "Durch Praxis lernen",
+          "description": "Absolvieren Sie praxisnahe Lektionen, Übungen und realistische Projektarbeiten."
+        },
+        "showKnowledge": {
+          "title": "Kompetenz nachweisen",
+          "description": "Schließen Sie ein Assessment ab, das angewandte Kompetenzen statt bloßer Teilnahme prüft."
+        },
+        "opportunityReady": {
+          "title": "Bereit für Chancen werden",
+          "description": "Qualifizierte Lernende können für den BlihOps-Talentpool infrage kommen."
+        }
+      }
+    }
+  },
+  "TalentPage": {
+    "hero": {
+      "eyebrow": "BlihOps Talent",
+      "title": "Machen Sie aus nachgewiesenen Kompetenzen reale Chancen.",
+      "description": "Erstellen Sie ein verifiziertes Profil und werden Sie sichtbar, wenn Ihre Fähigkeiten zu realen Aufgaben passen.",
+      "exploreOpportunities": "Chancen entdecken",
+      "visitPlatform": "Talent-Plattform besuchen"
+    },
+    "sampleMatch": {
+      "eyebrow": "Beispielhafte Talentzuordnung",
+      "area": "Support-Abläufe",
+      "profileLabel": "Verifiziertes Profil",
+      "candidate": "Bewerberprofil",
+      "pathway": "Customer-Support-Lernpfad",
+      "skills": [
+        "Schriftliche Kommunikation",
+        "Ticketbearbeitung",
+        "Qualitätsroutinen"
+      ],
+      "opportunityLabel": "Passende Chance",
+      "opportunityTitle": "Customer-Support-Spezialist",
+      "opportunityDescription": "Eine Rolle, die klare schriftliche Unterstützung, zuverlässige Eskalation und konsistente Standards in der Kundenbetreuung erfordert.",
+      "details": {
+        "skillFit": {
+          "label": "Kompetenzübereinstimmung",
+          "value": "Hoch"
+        },
+        "availability": {
+          "label": "Verfügbarkeit",
+          "value": "Passend"
+        },
+        "profileStatus": {
+          "label": "Profilstatus",
+          "value": "Verifiziert"
+        },
+        "preferredWork": {
+          "label": "Bevorzugte Arbeitsform",
+          "value": "Für Remote-Arbeit geeignet"
+        },
+        "poolStatus": {
+          "label": "Poolstatus",
+          "value": "Für Zuordnungen verfügbar"
+        }
+      }
+    },
+    "principles": {
+      "verified": {
+        "title": "Verifiziert",
+        "description": "Kompetenzen mit Nachweisen"
+      },
+      "visible": {
+        "title": "Sichtbar",
+        "description": "Profile, die für Zuordnungen bereit sind"
+      },
+      "relevant": {
+        "title": "Relevant",
+        "description": "Kontaktaufnahme bei passender Übereinstimmung"
+      }
+    },
+    "opportunities": {
+      "eyebrow": "Vorschau auf Chancen",
+      "title": "Erfahren Sie, wo Ihre Kompetenzen passen könnten.",
+      "description": "Diese repräsentativen Pfade zeigen, welche Arten von Arbeit der Talentpool unterstützen kann, sobald eine entsprechende Nachfrage besteht.",
+      "exploreAriaLabel": "{title} auf BlihOps Talent entdecken",
+      "items": {
+        "customerSupportSpecialist": {
+          "title": "Customer-Support-Spezialist",
+          "area": "Kundenerlebnis",
+          "description": "Unterstützen Sie Kunden per E-Mail und Chat und halten Sie dabei klare Reaktions-, Eskalations- und Qualitätsstandards ein.",
+          "workMode": "Für Remote-Arbeit geeignet",
+          "location": "Addis Ababa",
+          "commitment": "Vollzeitpfad",
+          "skills": [
+            "Ticketbearbeitung",
+            "Schriftliche Kommunikation",
+            "Qualitätsroutinen"
+          ]
+        },
+        "backOfficeAssociate": {
+          "title": "Back-Office-Mitarbeiter",
+          "area": "Operations",
+          "description": "Führen Sie strukturierte Daten-, Dokumenten- und Verwaltungsworkflows mit gleichbleibender Genauigkeit und dokumentierten Prüfungen aus.",
+          "workMode": "Hybrid",
+          "location": "Addis Ababa",
+          "commitment": "Vollzeitpfad",
+          "skills": ["Datengenauigkeit", "SOP-Ausführung", "Dokumentenprüfung"]
+        },
+        "juniorQaAnalyst": {
+          "title": "Junior-QA-Analyst",
+          "area": "Technologie",
+          "description": "Unterstützen Sie Produktteams dabei, Releases zu testen, Probleme zu dokumentieren und eine zuverlässige Regressionsabdeckung aufrechtzuerhalten.",
+          "workMode": "Hybrid",
+          "location": "Addis Ababa",
+          "commitment": "Projekt oder Vollzeit",
+          "skills": ["Testplanung", "Fehlerberichte", "Regressionstests"]
+        },
+        "aiAutomationAssistant": {
+          "title": "Assistenz für AI-Automatisierung",
+          "area": "AI & Automatisierung",
+          "description": "Unterstützen Sie Workflow-Mapping, AI-gestützte Abläufe und praxisnahe Automatisierungsprojekte mit integrierter menschlicher Prüfung.",
+          "workMode": "Für Remote-Arbeit geeignet",
+          "location": "Addis Ababa",
+          "commitment": "Projektpfad",
+          "skills": [
+            "Workflow-Mapping",
+            "Prompt-Praxis",
+            "Prozessdokumentation"
+          ]
+        }
+      }
+    },
+    "matching": {
+      "title": "Ein klarer Weg in den Pool.",
+      "description": "Ihr Profil wird relevant, wenn Nachweise, Verfügbarkeit und die reale Nachfrage nach einer Chance zusammenkommen.",
+      "steps": {
+        "buildProfile": {
+          "title": "Profil erstellen",
+          "description": "Zeigen Sie Ihre Kompetenzen, Interessen, Verfügbarkeit und bevorzugte Arbeitsform."
+        },
+        "verifyAbility": {
+          "title": "Kompetenzen verifizieren",
+          "description": "Verknüpfen Sie abgeschlossene Assessments und praktische Nachweise mit Ihrem Profil."
+        },
+        "enterPool": {
+          "title": "Dem Pool beitreten",
+          "description": "Werden Sie für Rollen auffindbar, die zu Ihren verifizierten Kompetenzen passen."
+        },
+        "hearAboutMatch": {
+          "title": "Bei einer Übereinstimmung informiert werden",
+          "description": "BlihOps kontaktiert Sie, wenn Ihr Profil zu einer realen Nachfrage passt."
+        }
+      }
+    }
+  }
+}
