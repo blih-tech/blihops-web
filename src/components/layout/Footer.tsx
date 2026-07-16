@@ -68,6 +68,7 @@ export function Footer() {
   const contentRef = useRef<HTMLDivElement>(null);
   const isPilotPage = pathname === '/pilot';
   const isContactPage = pathname === '/contact';
+  const isSkillsPage = pathname === '/skills';
 
   return (
     <footer className="bg-background font-sans text-foreground">
@@ -94,12 +95,16 @@ export function Footer() {
               <h2 className="font-heading mb-3 max-w-2xl text-3xl font-semibold tracking-tight text-primary-foreground sm:text-4xl md:text-5xl">
                 {isPilotPage
                   ? 'Not ready to apply? Let’s talk it through.'
-                  : 'Ready to get relief from operational overwhelm?'}
+                  : isSkillsPage
+                    ? 'Ready to build skills that lead somewhere?'
+                    : 'Ready to get relief from operational overwhelm?'}
               </h2>
               <p className="font-sans mb-6 max-w-xl text-sm text-primary-foreground/90 sm:text-base">
                 {isPilotPage
                   ? 'Book a discovery call to discuss your workflow, questions, and fit.'
-                  : 'A focused 2-week pilot. Clear deliverables. Prove value before you commit.'}
+                  : isSkillsPage
+                    ? 'Explore practical tracks, complete assessments, and prepare for BlihOps talent opportunities.'
+                    : 'A focused 2-week pilot. Clear deliverables. Prove value before you commit.'}
               </p>
               {isPilotPage ? (
                 <BookCallButton
@@ -107,6 +112,19 @@ export function Footer() {
                   namespace="blih-ops-desicovery-call"
                   className="w-fit bg-primary text-primary-foreground hover:bg-primary/90"
                 />
+              ) : isSkillsPage ? (
+                <a
+                  href="https://skills.blihops.com"
+                  className={cn(
+                    buttonVariants({ size: 'lg' }),
+                    'group/cta w-fit gap-3 bg-primary hover:bg-primary',
+                  )}
+                >
+                  Explore BlihOps Skills
+                  <span className="flex size-7 items-center justify-center rounded-md bg-primary-foreground text-primary">
+                    <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-0.5" />
+                  </span>
+                </a>
               ) : (
                 <Link
                   href="/pilot"
@@ -250,19 +268,34 @@ export function Footer() {
                 <h3 className="font-heading text-base font-medium text-foreground">
                   {isPilotPage
                     ? 'Prefer a conversation first?'
-                    : isContactPage
-                      ? 'Ready to prove the workflow?'
-                      : 'Choose how you want to begin'}
+                    : isSkillsPage
+                      ? 'Build skill. Show evidence.'
+                      : isContactPage
+                        ? 'Ready to prove the workflow?'
+                        : 'Choose how you want to begin'}
                 </h3>
                 <p className="font-sans max-w-md text-sm text-muted-foreground lg:ml-auto">
                   {isPilotPage
                     ? 'Book a discovery call and we’ll help clarify the right next step.'
-                    : isContactPage
-                      ? 'Start with one focused process and clear success measures.'
-                      : 'Test one workflow or talk through your operational needs first.'}
+                    : isSkillsPage
+                      ? 'Choose a practical track and start building verified, opportunity-ready ability.'
+                      : isContactPage
+                        ? 'Start with one focused process and clear success measures.'
+                        : 'Test one workflow or talk through your operational needs first.'}
                 </p>
                 <div className="flex flex-wrap gap-3 lg:justify-end">
-                  {!isPilotPage ? (
+                  {isSkillsPage ? (
+                    <a
+                      href="https://skills.blihops.com"
+                      className={cn(
+                        buttonVariants({ size: 'lg' }),
+                        'group/cta h-12 rounded-none',
+                      )}
+                    >
+                      Explore BlihOps Skills
+                      <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-0.5" />
+                    </a>
+                  ) : !isPilotPage ? (
                     <Link
                       href="/pilot"
                       className={cn(
@@ -274,7 +307,7 @@ export function Footer() {
                       <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-0.5" />
                     </Link>
                   ) : null}
-                  {!isContactPage ? (
+                  {!isContactPage && !isSkillsPage ? (
                     <BookCallButton
                       calLink="blih-marketing-fzifjy/blih-ops-desicovery-call"
                       namespace="blih-ops-desicovery-call"
