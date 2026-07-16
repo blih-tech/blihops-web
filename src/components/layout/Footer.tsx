@@ -3,9 +3,11 @@
 import { useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { ArrowRight, ArrowUp } from 'lucide-react';
 import type { Variants } from 'motion/react';
 
+import { BookCallButton } from '@/components/BookCallButton';
 import { Logo } from '@/components/layout/Logo';
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
@@ -61,8 +63,11 @@ function SocialIcon({
 }
 
 export function Footer() {
+  const pathname = usePathname();
   const ctaRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const isPilotPage = pathname === '/pilot';
+  const isContactPage = pathname === '/contact';
 
   return (
     <footer className="bg-background font-sans text-foreground">
@@ -87,24 +92,35 @@ export function Footer() {
             <div className="absolute inset-0 bg-foreground/55" aria-hidden />
             <div className="absolute inset-0 flex flex-col justify-center p-8 sm:p-12 md:p-16">
               <h2 className="font-heading mb-3 max-w-2xl text-3xl font-semibold tracking-tight text-primary-foreground sm:text-4xl md:text-5xl">
-                Ready to get relief from operational overwhelm?
+                {isPilotPage
+                  ? 'Not ready to apply? Let’s talk it through.'
+                  : 'Ready to get relief from operational overwhelm?'}
               </h2>
               <p className="font-sans mb-6 max-w-xl text-sm text-primary-foreground/90 sm:text-base">
-                Free 2-week pilot. Clear deliverables. Prove value before you
-                commit.
+                {isPilotPage
+                  ? 'Book a discovery call to discuss your workflow, questions, and fit.'
+                  : 'A focused 2-week pilot. Clear deliverables. Prove value before you commit.'}
               </p>
-              <Link
-                href="/pilot"
-                className={cn(
-                  buttonVariants({ size: 'lg' }),
-                  'group/cta w-fit gap-3 bg-primary hover:bg-primary',
-                )}
-              >
-                Get free pilot
-                <span className="flex size-7 items-center justify-center rounded-md bg-primary-foreground text-primary">
-                  <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-0.5" />
-                </span>
-              </Link>
+              {isPilotPage ? (
+                <BookCallButton
+                  calLink="blih-marketing-fzifjy/blih-ops-desicovery-call"
+                  namespace="blih-ops-desicovery-call"
+                  className="w-fit bg-primary text-primary-foreground hover:bg-primary/90"
+                />
+              ) : (
+                <Link
+                  href="/pilot"
+                  className={cn(
+                    buttonVariants({ size: 'lg' }),
+                    'group/cta w-fit gap-3 bg-primary hover:bg-primary',
+                  )}
+                >
+                  Get a 2-week pilot
+                  <span className="flex size-7 items-center justify-center rounded-md bg-primary-foreground text-primary">
+                    <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-0.5" />
+                  </span>
+                </Link>
+              )}
             </div>
           </TimelineAnimation>
         </div>
@@ -232,25 +248,39 @@ export function Footer() {
                 className="space-y-4 lg:text-right"
               >
                 <h3 className="font-heading text-base font-medium text-foreground">
-                  Stay ahead of operational chaos
+                  {isPilotPage
+                    ? 'Prefer a conversation first?'
+                    : isContactPage
+                      ? 'Ready to prove the workflow?'
+                      : 'Choose how you want to begin'}
                 </h3>
                 <p className="font-sans max-w-md text-sm text-muted-foreground lg:ml-auto">
-                  Tips on outsourcing, SLAs, and scaling ops with AI delivered
-                  straight to your inbox.
+                  {isPilotPage
+                    ? 'Book a discovery call and we’ll help clarify the right next step.'
+                    : isContactPage
+                      ? 'Start with one focused process and clear success measures.'
+                      : 'Test one workflow or talk through your operational needs first.'}
                 </p>
-                <div className="relative max-w-md lg:ml-auto">
-                  <input
-                    type="email"
-                    placeholder="Enter your email"
-                    className="w-full rounded-md border border-border bg-background px-4 py-2.5 pr-12 text-sm text-foreground placeholder:text-muted-foreground transition-colors outline-none focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/30"
-                  />
-                  <button
-                    type="button"
-                    aria-label="Subscribe"
-                    className="absolute top-1/2 right-1.5 flex size-8 -translate-y-1/2 items-center justify-center rounded-md bg-primary text-primary-foreground transition-colors hover:bg-primary/80"
-                  >
-                    <ArrowRight className="size-4" />
-                  </button>
+                <div className="flex flex-wrap gap-3 lg:justify-end">
+                  {!isPilotPage ? (
+                    <Link
+                      href="/pilot"
+                      className={cn(
+                        buttonVariants({ size: 'lg' }),
+                        'group/cta h-12 rounded-none',
+                      )}
+                    >
+                      Get a 2-week pilot
+                      <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-0.5" />
+                    </Link>
+                  ) : null}
+                  {!isContactPage ? (
+                    <BookCallButton
+                      calLink="blih-marketing-fzifjy/blih-ops-desicovery-call"
+                      namespace="blih-ops-desicovery-call"
+                      className="border border-border bg-background text-foreground hover:bg-background hover:text-primary"
+                    />
+                  ) : null}
                 </div>
               </TimelineAnimation>
             </div>
