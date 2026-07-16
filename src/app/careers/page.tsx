@@ -1,10 +1,18 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRightIcon, MapPinIcon } from 'lucide-react';
+import * as motion from 'motion/react-client';
 
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import { CareersHero } from '@/components/sections/careers/Hero';
 import { careerRoles } from '@/content/careers';
+
+const sectionReveal = {
+  initial: { opacity: 0, y: 18, filter: 'blur(10px)' },
+  whileInView: { opacity: 1, y: 0, filter: 'blur(0px)' },
+  viewport: { once: false, amount: 0.12 },
+  transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] },
+} as const;
 
 export const metadata: Metadata = {
   title: 'Careers',
@@ -25,7 +33,8 @@ export default function CareersPage() {
       <SectionWrapper>
         <CareersHero />
 
-        <section
+        <motion.section
+          {...sectionReveal}
           id="open-roles"
           className="scroll-mt-24 py-16 md:py-24"
           aria-labelledby="open-roles-heading"
@@ -50,35 +59,49 @@ export default function CareersPage() {
             <div className="border-t border-border lg:col-span-8">
               {careerRoles.length > 0 ? (
                 careerRoles.map((role, index) => (
-                  <Link
+                  <motion.div
                     key={role.slug}
-                    href={`/careers/${role.slug}`}
-                    className="group grid gap-5 border-b border-border py-7 transition-colors hover:bg-muted/50 focus-visible:bg-muted/50 focus-visible:outline-none sm:grid-cols-[2.5rem_minmax(0,1fr)_auto] sm:px-5"
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: false, amount: 0.2 }}
+                    transition={{
+                      duration: 0.45,
+                      delay: index * 0.05,
+                      ease: [0.22, 1, 0.36, 1],
+                    }}
                   >
-                    <span className="font-mono text-[11px] tracking-widest text-primary">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                    <span>
-                      <span className="block font-heading text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-                        {role.title}
+                    <Link
+                      href={`/careers/${role.slug}`}
+                      className="group grid gap-5 border-b border-border py-7 transition-colors hover:bg-muted/50 focus-visible:bg-muted/50 focus-visible:outline-none sm:grid-cols-[2.5rem_minmax(0,1fr)_auto] sm:px-5"
+                    >
+                      <span className="font-mono text-[11px] tracking-widest text-primary">
+                        {String(index + 1).padStart(2, '0')}
                       </span>
-                      <span className="mt-3 block max-w-xl text-sm leading-relaxed text-muted-foreground">
-                        {role.summary}
-                      </span>
-                      <span className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-medium text-muted-foreground">
-                        <span>{role.department}</span>
-                        <span className="inline-flex items-center gap-1.5">
-                          <MapPinIcon className="size-3.5" aria-hidden="true" />
-                          {role.location}
+                      <span>
+                        <span className="block font-heading text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+                          {role.title}
                         </span>
-                        <span>{role.workMode}</span>
-                        <span>{role.employmentType}</span>
+                        <span className="mt-3 block max-w-xl text-sm leading-relaxed text-muted-foreground">
+                          {role.summary}
+                        </span>
+                        <span className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-medium text-muted-foreground">
+                          <span>{role.department}</span>
+                          <span className="inline-flex items-center gap-1.5">
+                            <MapPinIcon
+                              className="size-3.5"
+                              aria-hidden="true"
+                            />
+                            {role.location}
+                          </span>
+                          <span>{role.workMode}</span>
+                          <span>{role.employmentType}</span>
+                        </span>
                       </span>
-                    </span>
-                    <span className="flex size-10 items-center justify-center self-start rounded-md border border-border bg-background text-primary transition-[color,background-color,border-color,transform] group-hover:translate-x-0.5 group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground">
-                      <ArrowRightIcon className="size-4" aria-hidden="true" />
-                    </span>
-                  </Link>
+                      <span className="flex size-10 items-center justify-center self-start rounded-md border border-border bg-background text-primary transition-[color,background-color,border-color,transform] group-hover:translate-x-0.5 group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground">
+                        <ArrowRightIcon className="size-4" aria-hidden="true" />
+                      </span>
+                    </Link>
+                  </motion.div>
                 ))
               ) : (
                 <div className="border-b border-border py-12">
@@ -93,7 +116,7 @@ export default function CareersPage() {
               )}
             </div>
           </div>
-        </section>
+        </motion.section>
       </SectionWrapper>
     </main>
   );

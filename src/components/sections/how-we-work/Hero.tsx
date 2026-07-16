@@ -42,13 +42,17 @@ export function HowWeWorkHero() {
 
       <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
         <TimelineAnimation
-          as="p"
+          as="div"
           animationNum={0}
           timelineRef={sectionRef}
           once={false}
           customVariants={motionVariants}
-          className="font-sans text-xs font-medium tracking-widest text-muted-foreground uppercase"
+          className="flex w-fit items-center gap-2.5 rounded-md border border-border bg-card px-3 py-1.5 text-xs font-medium tracking-wide text-foreground uppercase"
         >
+          <span className="relative flex size-2" aria-hidden="true">
+            <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-75" />
+            <span className="relative inline-flex size-2 rounded-full bg-primary" />
+          </span>
           How we work
         </TimelineAnimation>
 
@@ -58,7 +62,7 @@ export function HowWeWorkHero() {
           timelineRef={sectionRef}
           once={false}
           customVariants={motionVariants}
-          className="mt-4 font-heading text-4xl font-semibold tracking-tight text-balance text-foreground sm:text-5xl lg:text-6xl"
+          className="mt-5 font-heading text-4xl font-semibold tracking-tight text-balance text-foreground sm:text-5xl lg:text-6xl"
         >
           From overwhelmed to in control
         </TimelineAnimation>

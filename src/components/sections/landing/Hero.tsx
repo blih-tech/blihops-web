@@ -89,7 +89,7 @@ export function Hero() {
           <BookCallButton
             calLink="blih-marketing-fzifjy/blih-ops-desicovery-call"
             namespace="blih-ops-desicovery-call"
-            className="h-10 rounded-md border border-border bg-background px-4 text-foreground hover:bg-muted hover:text-foreground"
+            className="h-10 rounded-md border border-border bg-background! px-4 text-foreground! hover:bg-muted! hover:text-foreground!"
           />
           <Link
             href="/pilot"
