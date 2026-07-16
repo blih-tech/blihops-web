@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { ChevronDownIcon } from 'lucide-react';
 
+import { BookCallButton } from '@/components/BookCallButton';
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import { PilotForm } from '@/components/sections/pilot/PilotForm';
 
@@ -235,6 +236,25 @@ export default function PilotPage() {
           </div>
         </SectionWrapper>
       </section>
+
+      <SectionWrapper as="section" className="py-20 md:py-24">
+        <div className="flex flex-col items-start justify-between gap-6 border-y border-border/80 py-8 sm:flex-row sm:items-center sm:py-10">
+          <div>
+            <h2 className="font-heading text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+              Not ready to apply?
+            </h2>
+            <p className="mt-2 text-sm leading-6 text-muted-foreground sm:text-base">
+              Talk through the workflow and decide whether a pilot is the right
+              next step.
+            </p>
+          </div>
+          <BookCallButton
+            calLink="blih-marketing-fzifjy/blih-ops-desicovery-call"
+            namespace="blih-ops-desicovery-call"
+            className="shrink-0 border border-border bg-background text-foreground hover:bg-muted hover:text-foreground"
+          />
+        </div>
+      </SectionWrapper>
     </main>
   );
 }

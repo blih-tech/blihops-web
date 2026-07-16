@@ -6,6 +6,7 @@ import {
   InsightDetail,
   InsightRelated,
 } from '@/components/sections/insights/InsightDetail';
+import { DetailConversionCta } from '@/components/sections/shared/DetailConversionCta';
 import {
   getInsightBySlug,
   getRelatedInsights,
@@ -64,6 +65,7 @@ export default async function InsightDetailPage({
     <main className="min-h-screen bg-background text-foreground">
       <SectionWrapper>
         <InsightDetail insight={insight} />
+        <DetailConversionCta />
         <InsightRelated insights={related} />
       </SectionWrapper>
     </main>

@@ -6,6 +6,7 @@ import {
   CaseStudyDetail,
   CaseStudyRelated,
 } from '@/components/sections/case-studies/CaseStudyDetail';
+import { DetailConversionCta } from '@/components/sections/shared/DetailConversionCta';
 import {
   caseStudies,
   getCaseStudyBySlug,
@@ -64,6 +65,7 @@ export default async function CaseStudyDetailPage({
     <main className="min-h-screen bg-background text-foreground">
       <SectionWrapper>
         <CaseStudyDetail study={study} />
+        <DetailConversionCta />
         {related.length > 0 ? <CaseStudyRelated studies={related} /> : null}
       </SectionWrapper>
     </main>
