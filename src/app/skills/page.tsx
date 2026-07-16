@@ -368,72 +368,6 @@ export default function SkillsPage() {
             </ol>
           </div>
         </motion.section>
-
-        <motion.section
-          {...sectionReveal}
-          className="py-16 md:py-24"
-          aria-labelledby="assessment-heading"
-        >
-          <div className="grid overflow-hidden rounded-2xl border border-border bg-foreground text-background shadow-lg lg:grid-cols-2">
-            <div className="flex flex-col justify-center p-8 sm:p-12 lg:p-14">
-              <p className="font-mono text-[11px] font-medium tracking-widest text-background/60 uppercase">
-                Skills with evidence
-              </p>
-              <h2
-                id="assessment-heading"
-                className="mt-4 font-heading text-3xl font-semibold tracking-tight text-background sm:text-4xl"
-              >
-                Finish with proof of what you can do.
-              </h2>
-              <p className="mt-4 max-w-lg text-sm leading-relaxed text-background/75 sm:text-base">
-                Assessments focus on realistic tasks, clear criteria, and useful
-                feedback so completion means more than watching lessons.
-              </p>
-              <a
-                href={skillsPlatformUrl}
-                className={cn(
-                  buttonVariants({ size: 'lg' }),
-                  'mt-8 w-fit bg-primary text-primary-foreground hover:bg-primary',
-                )}
-              >
-                Explore BlihOps Skills
-                <ArrowRightIcon />
-              </a>
-            </div>
-
-            <div className="border-t border-background/15 bg-background/5 p-6 sm:p-10 lg:border-t-0 lg:border-l">
-              <div className="border border-background/15 bg-background/5">
-                <div className="flex items-center justify-between border-b border-background/15 px-5 py-4">
-                  <p className="text-sm font-medium text-background">
-                    Assessment summary
-                  </p>
-                  <span className="font-mono text-[10px] tracking-wider text-background/60 uppercase">
-                    Example
-                  </span>
-                </div>
-                <div className="grid gap-px bg-background/15 sm:grid-cols-2">
-                  <AssessmentCell label="Applied project" value="Reviewed" />
-                  <AssessmentCell label="Core knowledge" value="Verified" />
-                  <AssessmentCell label="Quality habits" value="Demonstrated" />
-                  <AssessmentCell
-                    label="Next pathway"
-                    value="Talent eligibility"
-                  />
-                </div>
-                <div className="flex items-start gap-3 border-t border-background/15 p-5">
-                  <CheckIcon
-                    className="mt-0.5 size-4 shrink-0 text-primary"
-                    aria-hidden="true"
-                  />
-                  <p className="text-sm leading-relaxed text-background/75">
-                    Evaluation supports talent-pool eligibility; it does not
-                    guarantee placement.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.section>
       </SectionWrapper>
     </main>
   );
@@ -457,17 +391,6 @@ function TrackDetail({ label, value }: { label: string; value: string }) {
         {label}
       </dt>
       <dd className="mt-1.5 text-xs font-medium text-foreground">{value}</dd>
-    </div>
-  );
-}
-
-function AssessmentCell({ label, value }: { label: string; value: string }) {
-  return (
-    <div className="bg-foreground p-5">
-      <p className="font-mono text-[9px] tracking-wider text-background/55 uppercase">
-        {label}
-      </p>
-      <p className="mt-2 text-sm font-medium text-background">{value}</p>
     </div>
   );
 }
