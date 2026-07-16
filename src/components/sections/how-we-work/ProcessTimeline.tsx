@@ -16,6 +16,7 @@ import {
   useTransform,
   type Variants,
 } from 'motion/react';
+import { useTranslations } from 'next-intl';
 
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
 import { cn } from '@/lib/utils';
@@ -54,37 +55,27 @@ const rowVariants: Variants = {
 const steps = [
   {
     id: '01',
-    title: 'Discovery & Assessment',
-    description:
-      'We audit your operations, map pain points, and identify where you lose time, quality, and money.',
+    key: 'discoveryAssessment',
     icon: SearchIcon,
   },
   {
     id: '02',
-    title: 'Solution Design & SOPs',
-    description:
-      'We design SOPs, SLA tiers, KPIs, and automation layers. You approve the blueprint before go-live.',
+    key: 'solutionDesign',
     icon: BookOpenIcon,
   },
   {
     id: '03',
-    title: 'Team Assembly & Training',
-    description:
-      'A dedicated pod is selected, trained on your SOPs, and calibrated to your quality standards.',
+    key: 'teamAssembly',
     icon: UsersIcon,
   },
   {
     id: '04',
-    title: 'Go-Live & SLA Tracking',
-    description:
-      'Operations launch with measured SLAs, quality monitoring, and your first performance report in week one.',
+    key: 'goLive',
     icon: ZapIcon,
   },
   {
     id: '05',
-    title: 'Continuous Optimization',
-    description:
-      'Monthly reviews deepen automation, improve process, and scale capacity without resetting structure.',
+    key: 'continuousOptimization',
     icon: TrendingUpIcon,
   },
 ] as const;
@@ -92,6 +83,7 @@ const steps = [
 export function ProcessTimeline() {
   const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const t = useTranslations('ProcessPage.timeline');
 
   const { scrollYProgress } = useScroll({
     target: trackRef,
@@ -107,7 +99,7 @@ export function ProcessTimeline() {
     <section
       ref={sectionRef}
       className="w-full py-12 md:py-16"
-      aria-label="Process timeline"
+      aria-label={t('ariaLabel')}
     >
       <div className="relative bg-background">
         {/* Outer frame lines that overrun corners so they cross */}
@@ -137,7 +129,7 @@ export function ProcessTimeline() {
             customVariants={headerVariants}
             className="mb-4 inline-flex items-center rounded-sm border border-border bg-muted/40 px-3 py-1 font-sans text-xs font-medium text-muted-foreground"
           >
-            Process
+            {t('eyebrow')}
           </TimelineAnimation>
           <TimelineAnimation
             as="h2"
@@ -147,7 +139,7 @@ export function ProcessTimeline() {
             customVariants={headerVariants}
             className="font-heading max-w-2xl text-3xl font-semibold tracking-tight text-foreground md:text-5xl"
           >
-            A structured path from chaos to control
+            {t('title')}
           </TimelineAnimation>
           <TimelineAnimation
             as="p"
@@ -157,8 +149,7 @@ export function ProcessTimeline() {
             customVariants={headerVariants}
             className="mt-4 max-w-xl font-sans text-sm leading-relaxed text-muted-foreground md:text-base"
           >
-            Five clear stages. Documented SOPs. Measured SLAs. Continuous
-            improvement built into every engagement.
+            {t('description')}
           </TimelineAnimation>
         </div>
 
@@ -206,6 +197,7 @@ function TimelineRow({
   const rowRef = useRef<HTMLDivElement>(null);
   const inView = useInView(rowRef, { once: false, margin: '-12% 0px' });
   const Icon = step.icon;
+  const t = useTranslations('ProcessPage.timeline.steps');
 
   const textBlock = (
     <div
@@ -218,10 +210,10 @@ function TimelineRow({
         {step.id}
       </p>
       <h3 className="font-heading text-xl font-semibold tracking-tight text-foreground md:text-2xl">
-        {step.title}
+        {t(`${step.key}.title`)}
       </h3>
       <p className="mt-3 max-w-sm font-sans text-sm leading-relaxed text-muted-foreground">
-        {step.description}
+        {t(`${step.key}.description`)}
       </p>
     </div>
   );

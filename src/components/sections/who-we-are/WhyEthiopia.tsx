@@ -3,9 +3,9 @@
 import Image from 'next/image';
 import { useRef } from 'react';
 import type { Variants } from 'motion/react';
+import { useTranslations } from 'next-intl';
 
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
-import { ethiopiaAdvantages } from '@/content/who-we-are';
 import { cn } from '@/lib/utils';
 
 const motionVariants: Variants = {
@@ -30,8 +30,17 @@ type WhyEthiopiaProps = {
   className?: string;
 };
 
+const advantageKeys = [
+  'lowerCosts',
+  'englishTalent',
+  'timeOverlap',
+  'outsourcingHub',
+  'workforceModel',
+] as const;
+
 export function WhyEthiopia({ className }: WhyEthiopiaProps) {
   const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations('AboutPage.ethiopia');
 
   return (
     <section
@@ -49,7 +58,7 @@ export function WhyEthiopia({ className }: WhyEthiopiaProps) {
       >
         <Image
           src="/addis-image.jpg"
-          alt="Addis Ababa city skyline at night"
+          alt={t('imageAlt')}
           fill
           sizes="(max-width: 1280px) 100vw, 1152px"
           className="object-cover motion-safe:transition-transform motion-safe:duration-700 motion-safe:ease-out motion-safe:group-hover:scale-[1.02]"
@@ -58,25 +67,24 @@ export function WhyEthiopia({ className }: WhyEthiopiaProps) {
 
         <div className="absolute inset-x-0 bottom-0 p-6 text-background md:p-10 lg:p-12">
           <p className="font-sans text-xs font-medium tracking-widest text-background/70 uppercase">
-            Why Ethiopia
+            {t('eyebrow')}
           </p>
           <h2
             id="why-ethiopia-heading"
             className="mt-5 max-w-3xl font-heading text-3xl font-semibold tracking-tight md:text-5xl"
           >
-            A new operating hub with global advantages.
+            {t('title')}
           </h2>
           <p className="mt-5 max-w-2xl font-sans text-sm leading-relaxed text-background/80 md:text-base">
-            Skilled talent, aligned working hours, and an AI-native delivery
-            model create a strong base for international operations.
+            {t('description')}
           </p>
         </div>
       </TimelineAnimation>
 
       <div className="grid grid-cols-1 gap-px border-x border-b border-border bg-border sm:grid-cols-2 lg:grid-cols-5">
-        {ethiopiaAdvantages.map((advantage, index) => (
+        {advantageKeys.map((key, index) => (
           <TimelineAnimation
-            key={advantage.label}
+            key={key}
             as="article"
             animationNum={1 + index}
             timelineRef={sectionRef}
@@ -85,10 +93,10 @@ export function WhyEthiopia({ className }: WhyEthiopiaProps) {
             className="min-h-36 bg-background p-5 transition-colors duration-300 hover:bg-muted/50 md:p-6"
           >
             <p className="font-heading text-2xl font-semibold tracking-tight text-foreground">
-              {advantage.highlight}
+              {t(`advantages.${key}.highlight`)}
             </p>
             <p className="mt-3 font-sans text-xs leading-relaxed text-muted-foreground uppercase tracking-wide">
-              {advantage.label}
+              {t(`advantages.${key}.label`)}
             </p>
           </TimelineAnimation>
         ))}

@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import { LockIcon, ShieldCheckIcon } from 'lucide-react';
 import type { Variants } from 'motion/react';
+import { useTranslations } from 'next-intl';
 
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
 import { cn } from '@/lib/utils';
@@ -25,22 +26,16 @@ const motionVariants: Variants = {
   },
 };
 
-const trustPoints = [
-  'ISO 9001 & ISO 27001 aligned operations',
-  'GDPR-aware outsourcing practices',
-  'Secure data handling and access protocols',
-  'NDA and confidentiality for every team member',
-  'Regular compliance reviews and security audits',
-] as const;
-
 export function Security() {
   const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations('ProcessPage.security');
+  const trustPoints = t.raw('points') as string[];
 
   return (
     <section
       ref={sectionRef}
       className="w-full py-16 md:py-24"
-      aria-label="Security and compliance"
+      aria-label={t('ariaLabel')}
     >
       <div className="relative bg-background">
         <div
@@ -70,7 +65,7 @@ export function Security() {
               customVariants={motionVariants}
               className="font-sans text-xs font-medium tracking-widest text-muted-foreground uppercase"
             >
-              Secure outsourcing
+              {t('eyebrow')}
             </TimelineAnimation>
             <TimelineAnimation
               as="h2"
@@ -80,7 +75,7 @@ export function Security() {
               customVariants={motionVariants}
               className="mt-4 font-heading text-3xl font-semibold tracking-tight text-foreground md:text-4xl"
             >
-              Security and compliance you can trust
+              {t('title')}
             </TimelineAnimation>
             <TimelineAnimation
               as="p"
@@ -90,9 +85,7 @@ export function Security() {
               customVariants={motionVariants}
               className="mt-4 max-w-md font-sans text-sm leading-relaxed text-muted-foreground md:text-base"
             >
-              Controlled access, documented handling, and compliance-minded
-              process. For Europe and the Middle East, security is not optional.
-              Neither is it for us.
+              {t('description')}
             </TimelineAnimation>
 
             <ul className="mt-8 space-y-3">
