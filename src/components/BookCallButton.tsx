@@ -2,6 +2,7 @@
 
 import { useEffect, type MouseEventHandler, type ReactNode } from 'react';
 import { getCalApi } from '@calcom/embed-react';
+import { useTranslations } from 'next-intl';
 
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -17,10 +18,12 @@ type BookCallButtonProps = {
 export function BookCallButton({
   calLink,
   namespace = 'discovery-call',
-  children = 'Book a call',
+  children,
   className,
   onClick,
 }: BookCallButtonProps) {
+  const t = useTranslations('Shared.actions');
+
   useEffect(() => {
     async function configureCal() {
       const cal = await getCalApi({ namespace });
@@ -53,7 +56,7 @@ export function BookCallButton({
         className,
       )}
     >
-      {children}
+      {children ?? t('bookCall')}
     </Button>
   );
 }

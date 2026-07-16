@@ -1,5 +1,7 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
 import Silk from '@/components/Silk';
 import { cn } from '@/lib/utils';
 
@@ -11,9 +13,11 @@ type AboutUsMegaMenuProps = {
 
 export function AboutUsMegaMenu({
   className,
-  title = 'Who we are',
-  description = 'Mission, values, and the team behind BlihOps.',
+  title,
+  description,
 }: AboutUsMegaMenuProps) {
+  const t = useTranslations('Shared.header.aboutMenu.whoWeAre');
+
   return (
     <div
       className={cn(
@@ -33,10 +37,10 @@ export function AboutUsMegaMenu({
       <div className="absolute inset-0 bg-linear-to-t from-foreground/55 via-foreground/10 to-transparent" />
       <div className="relative z-10 flex h-full min-h-36 flex-col justify-end p-4">
         <p className="font-sans text-sm font-semibold text-background">
-          {title}
+          {title ?? t('label')}
         </p>
         <p className="mt-1 font-sans text-xs leading-relaxed text-background/80">
-          {description}
+          {description ?? t('previewDescription')}
         </p>
       </div>
     </div>
