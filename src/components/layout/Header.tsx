@@ -1,8 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { Link, usePathname } from '@/i18n/navigation';
 import {
   ArrowRight,
   Building2,
@@ -16,6 +15,7 @@ import { AnimatePresence, motion } from 'motion/react';
 
 import { BookCallButton } from '@/components/BookCallButton';
 import { AboutUsMegaMenu } from '@/components/layout/AboutUsMegaMenu';
+import { LocaleSwitcher } from '@/components/layout/LocaleSwitcher';
 import { Logo } from '@/components/layout/Logo';
 import { MegaMenu, type MegaMenuLink } from '@/components/layout/MegaMenu';
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
@@ -273,6 +273,7 @@ export function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <LocaleSwitcher />
           <BookCallButton
             calLink="blih-marketing-fzifjy/blih-ops-desicovery-call"
             namespace="blih-ops-desicovery-call"
