@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { ArrowRightIcon } from 'lucide-react';
 import type { Variants } from 'motion/react';
 
+import { BookCallButton } from '@/components/BookCallButton';
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
 import { HeroBackdrop } from '@/components/sections/shared/HeroBackdrop';
 import { buttonVariants } from '@/components/ui/button';
@@ -85,12 +86,11 @@ export function Hero() {
           customVariants={heroMotionVariants}
           className="flex flex-row flex-wrap items-center justify-center gap-3 pt-1"
         >
-          <Link
-            href="/how-we-work"
-            className={buttonVariants({ size: 'lg', variant: 'outline' })}
-          >
-            How we work
-          </Link>
+          <BookCallButton
+            calLink="blih-marketing-fzifjy/blih-ops-desicovery-call"
+            namespace="blih-ops-desicovery-call"
+            className="h-10 rounded-md border border-border bg-background px-4 text-foreground hover:bg-muted hover:text-foreground"
+          />
           <Link
             href="/pilot"
             className={cn(
@@ -98,7 +98,7 @@ export function Hero() {
               'group/cta bg-primary hover:bg-primary',
             )}
           >
-            Get free pilot
+            Get a 2-week pilot
             <ArrowRightIcon
               data-icon="inline-end"
               className="transition-transform group-hover/cta:translate-x-0.5"
