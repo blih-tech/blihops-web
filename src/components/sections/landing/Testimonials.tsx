@@ -3,6 +3,7 @@
 import { useRef } from 'react';
 import Image from 'next/image';
 import type { Variants } from 'motion/react';
+import { useTranslations } from 'next-intl';
 
 import { InfiniteSlider } from '@/components/infinite-slider';
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
@@ -28,14 +29,34 @@ const motionVariants: Variants = {
   },
 };
 
+const testimonialMessageKeys = [
+  'sarahChen',
+  'marcusWebb',
+  'amiraHassan',
+  'jamesOkonkwo',
+  'elenaPetrova',
+  'davidKim',
+] as const;
+
 export function Testimonials() {
   const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations('Home.testimonials');
+  const localizedTestimonials = testimonials.map((testimonial, index) => {
+    const key = testimonialMessageKeys[index];
+
+    return {
+      ...testimonial,
+      quote: t(`items.${key}.quote`),
+      name: t(`items.${key}.name`),
+      role: t(`items.${key}.role`),
+    };
+  });
 
   return (
     <section
       ref={sectionRef}
       className="w-full py-16 md:py-24"
-      aria-label="Customer testimonials"
+      aria-label={t('ariaLabel')}
     >
       <SectionWrapper className="flex flex-col gap-12 md:gap-16">
         <div className="max-w-2xl space-y-3">
@@ -47,7 +68,7 @@ export function Testimonials() {
             customVariants={motionVariants}
             className="font-heading text-3xl font-semibold tracking-tight text-foreground md:text-5xl"
           >
-            What our clients say
+            {t('title')}
           </TimelineAnimation>
           <TimelineAnimation
             as="p"
@@ -57,8 +78,7 @@ export function Testimonials() {
             customVariants={motionVariants}
             className="font-sans text-sm leading-relaxed text-muted-foreground md:text-base"
           >
-            See how teams run operations with structure, SLAs, and clear
-            ownership.
+            {t('description')}
           </TimelineAnimation>
         </div>
 
@@ -72,12 +92,14 @@ export function Testimonials() {
           data-lenis-prevent
         >
           <ul className="sr-only">
-            {testimonials.map((t) => (
-              <li key={t.id}>
-                <strong>
-                  {t.name}, {t.role} at {t.company}
-                </strong>
-                : {t.quote}
+            {localizedTestimonials.map((testimonial) => (
+              <li key={testimonial.id}>
+                {t('screenReader', {
+                  name: testimonial.name,
+                  role: testimonial.role,
+                  company: testimonial.company,
+                  quote: testimonial.quote,
+                })}
               </li>
             ))}
           </ul>
@@ -91,7 +113,7 @@ export function Testimonials() {
             speedOnHover={12}
             className="w-full"
           >
-            {testimonials.map((item) => (
+            {localizedTestimonials.map((item) => (
               <TestimonialCard key={item.id} testimonial={item} />
             ))}
           </InfiniteSlider>
@@ -108,6 +130,8 @@ function TestimonialCard({
   testimonial: Testimonial;
   className?: string;
 }) {
+  const t = useTranslations('Home.testimonials');
+
   return (
     <article
       className={cn(
@@ -141,7 +165,10 @@ function TestimonialCard({
             {testimonial.name}
           </p>
           <p className="truncate font-sans text-xs text-muted-foreground">
-            {testimonial.role}, {testimonial.company}
+            {t('attribution', {
+              role: testimonial.role,
+              company: testimonial.company,
+            })}
           </p>
         </div>
       </div>

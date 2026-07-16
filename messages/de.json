@@ -715,6 +715,7 @@
       "stats": {
         "percentageRange": "{min}-{max}%",
         "hoursRange": "{min}-{max} Std.",
+        "hoursSuffix": " Std.",
         "costReduction": "Kostensenkung",
         "reclaimedPerWeek": "Zurückgewonnen / Woche"
       },
@@ -765,13 +766,16 @@
         "costReduction": "Typische Kostensenkung gegenüber internen Teams oder westlichem Outsourcing",
         "slaCompliance": "SLA-Erfüllung in allen aktiven Delivery Pods",
         "deploymentWindow": "Durchschnittlicher Zeitraum vom Pilotprojekt bis zum Live-Betrieb",
-        "dayValue": "{count} Tage"
+        "dayValue": "{count} Tage",
+        "daySuffix": " Tage"
       }
     },
     "testimonials": {
       "ariaLabel": "Kundenstimmen",
       "title": "Was unsere Kunden sagen",
       "description": "Erfahren Sie, wie Teams ihre Abläufe mit Struktur, SLAs und klarer Verantwortung steuern.",
+      "screenReader": "{name}, {role} bei {company}: {quote}",
+      "attribution": "{role}, {company}",
       "items": {
         "sarahChen": {
           "quote": "BlihOps hat unseren Support innerhalb von zwei Wochen übernommen. Die SLAs sind real - endlich sehen wir jeden Montag die Reaktionszeiten.",

@@ -3,10 +3,16 @@
 import { useRef, type ReactNode, type RefObject } from 'react';
 import { BarChartIcon, EyeOffIcon, FlameIcon, WalletIcon } from 'lucide-react';
 import type { HTMLMotionProps, Variants } from 'motion/react';
+import { useTranslations } from 'next-intl';
 
 import { DecorIcon } from '@/components/decor-icon';
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
 import { cn } from '@/lib/utils';
+
+type ProblemDefinition = {
+  key: 'costTrap' | 'visibilityGap' | 'scalingWall' | 'outsourcingBurn';
+  icon: ReactNode;
+};
 
 type ProblemCard = {
   title: string;
@@ -34,12 +40,13 @@ const problemMotionVariants: Variants = {
 
 export function Problem() {
   const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations('Home.problem');
 
   return (
     <section
       ref={sectionRef}
       className="flex w-full flex-col justify-center gap-12 py-16 md:py-24"
-      aria-label="The real cost of doing it all yourself"
+      aria-label={t('ariaLabel')}
     >
       <div className="mx-auto max-w-2xl space-y-3 text-center">
         <TimelineAnimation
@@ -50,7 +57,7 @@ export function Problem() {
           customVariants={problemMotionVariants}
           className="font-heading text-3xl font-semibold tracking-tight text-foreground md:text-5xl"
         >
-          Great Businesses Stall When Operations Take Over
+          {t('title')}
         </TimelineAnimation>
         <TimelineAnimation
           as="p"
@@ -60,18 +67,19 @@ export function Problem() {
           customVariants={problemMotionVariants}
           className="font-sans text-sm leading-relaxed text-muted-foreground md:text-base"
         >
-          You didn&apos;t start your business to chase support tickets or
-          babysit processes. Stretched thin and overspending, scaling feels
-          harder every quarter. There&apos;s a smarter way than traditional
-          models.
+          {t('description')}
         </TimelineAnimation>
       </div>
 
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
         {problems.map((problem, index) => (
           <ProblemCardItem
-            key={problem.title}
-            problem={problem}
+            key={problem.key}
+            problem={{
+              title: t(`items.${problem.key}.title`),
+              description: t(`items.${problem.key}.description`),
+              icon: problem.icon,
+            }}
             animationNum={index + 2}
             timelineRef={sectionRef}
           />
@@ -134,29 +142,21 @@ function ProblemCardItem({
   );
 }
 
-const problems: ProblemCard[] = [
+const problems: ProblemDefinition[] = [
   {
-    title: 'The Cost Trap',
+    key: 'costTrap',
     icon: <WalletIcon />,
-    description:
-      'Recruiting, training, and retaining an in-house operations team costs more than it should. And every time someone leaves, you start from zero.',
   },
   {
-    title: 'The Visibility Gap',
+    key: 'visibilityGap',
     icon: <EyeOffIcon />,
-    description:
-      "There's no dashboard, no SLA, no weekly report. You find out about problems when clients complain not before. Operations run on hope, not data.",
   },
   {
-    title: 'The Scaling Wall',
+    key: 'scalingWall',
     icon: <BarChartIcon />,
-    description:
-      "Manual processes and tribal knowledge don't scale. Every new client means more chaos, more hires, more firefighting. You need intelligent systems, not just more people.",
   },
   {
-    title: 'The Outsourcing Burn',
+    key: 'outsourcingBurn',
     icon: <FlameIcon />,
-    description:
-      'You tried offshore outsourcing and got missed deadlines, poor quality, and zero accountability. You need a partner who treats your operations like their own.',
   },
 ];

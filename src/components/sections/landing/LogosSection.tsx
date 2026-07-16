@@ -1,10 +1,12 @@
 import { LogoCloud } from '@/components/sections/shared/LogoCloud';
 
 export function LogosSection() {
+  const t = useTranslations('Home.logoCloud');
+
   return (
     <section className="relative space-y-4 border-t pt-6 pb-10">
       <h2 className="font-sans text-center font-medium text-lg text-muted-foreground tracking-tight md:text-xl">
-        Trusted by <span className="text-foreground">experts</span>
+        {t('heading')}
       </h2>
       <div className="relative z-10 mx-auto max-w-4xl">
         <LogoCloud />
@@ -12,3 +14,4 @@ export function LogosSection() {
     </section>
   );
 }
+import { useTranslations } from 'next-intl';
