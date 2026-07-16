@@ -50,19 +50,34 @@ export function WhatWeOfferHero() {
 
       <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
         <TimelineAnimation
-          as="h1"
+          as="div"
           animationNum={0}
           timelineRef={sectionRef}
           once={false}
           customVariants={motionVariants}
-          className="font-heading max-w-3xl text-4xl font-semibold tracking-tight text-balance text-foreground sm:text-5xl lg:text-6xl"
+          className="flex w-fit items-center gap-2.5 rounded-md border border-border bg-card px-3 py-1.5 text-xs font-medium tracking-wide text-foreground uppercase"
+        >
+          <span className="relative flex size-2" aria-hidden="true">
+            <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-75" />
+            <span className="relative inline-flex size-2 rounded-full bg-primary" />
+          </span>
+          BlihOps Services
+        </TimelineAnimation>
+
+        <TimelineAnimation
+          as="h1"
+          animationNum={1}
+          timelineRef={sectionRef}
+          once={false}
+          customVariants={motionVariants}
+          className="mt-5 max-w-3xl font-heading text-4xl font-semibold tracking-tight text-balance text-foreground sm:text-5xl lg:text-6xl"
         >
           Intelligent outsourcing for growing businesses.
         </TimelineAnimation>
 
         <TimelineAnimation
           as="p"
-          animationNum={1}
+          animationNum={2}
           timelineRef={sectionRef}
           once={false}
           customVariants={motionVariants}
@@ -74,7 +89,7 @@ export function WhatWeOfferHero() {
 
         <TimelineAnimation
           as="div"
-          animationNum={2}
+          animationNum={3}
           timelineRef={sectionRef}
           once={false}
           customVariants={motionVariants}
@@ -103,7 +118,7 @@ export function WhatWeOfferHero() {
 
       <TimelineAnimation
         as="div"
-        animationNum={3}
+        animationNum={4}
         timelineRef={sectionRef}
         once={false}
         customVariants={motionVariants}
@@ -114,7 +129,7 @@ export function WhatWeOfferHero() {
 
       <TimelineAnimation
         as="div"
-        animationNum={4}
+        animationNum={5}
         timelineRef={sectionRef}
         once={false}
         customVariants={motionVariants}
