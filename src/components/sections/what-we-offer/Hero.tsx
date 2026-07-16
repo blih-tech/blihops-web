@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { Link } from '@/i18n/navigation';
 import { ArrowRightIcon } from 'lucide-react';
 import type { Variants } from 'motion/react';
+import { useTranslations } from 'next-intl';
 
 import { BookCallButton } from '@/components/BookCallButton';
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
@@ -39,12 +40,14 @@ const VIDEO =
 
 export function WhatWeOfferHero() {
   const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations('ServicesPage.hero');
+  const tActions = useTranslations('Shared.actions');
 
   return (
     <section
       ref={sectionRef}
       className="relative w-full py-16 md:py-24"
-      aria-label="What we offer"
+      aria-label={t('ariaLabel')}
     >
       <HeroBackdrop />
 
@@ -61,7 +64,7 @@ export function WhatWeOfferHero() {
             <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-75" />
             <span className="relative inline-flex size-2 rounded-full bg-primary" />
           </span>
-          BlihOps Services
+          {t('eyebrow')}
         </TimelineAnimation>
 
         <TimelineAnimation
@@ -72,7 +75,7 @@ export function WhatWeOfferHero() {
           customVariants={motionVariants}
           className="mt-5 max-w-3xl font-heading text-4xl font-semibold tracking-tight text-balance text-foreground sm:text-5xl lg:text-6xl"
         >
-          Intelligent outsourcing for growing businesses.
+          {t('title')}
         </TimelineAnimation>
 
         <TimelineAnimation
@@ -83,8 +86,7 @@ export function WhatWeOfferHero() {
           customVariants={motionVariants}
           className="mt-5 max-w-2xl font-sans text-base leading-relaxed text-muted-foreground sm:text-lg"
         >
-          Support, back-office, IT, AI automation, and reporting with documented
-          SOPs, defined SLAs, and automation built in from day one.
+          {t('description')}
         </TimelineAnimation>
 
         <TimelineAnimation
@@ -107,7 +109,7 @@ export function WhatWeOfferHero() {
               'group/cta bg-primary hover:bg-primary',
             )}
           >
-            Get a 2-week pilot
+            {tActions('getPilot')}
             <ArrowRightIcon
               data-icon="inline-end"
               className="transition-transform group-hover/cta:translate-x-0.5"

@@ -2,9 +2,9 @@
 
 import { useRef } from 'react';
 import type { Variants } from 'motion/react';
+import { useTranslations } from 'next-intl';
 
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
-import { visionMission } from '@/content/who-we-are';
 import { cn } from '@/lib/utils';
 
 const motionVariants: Variants = {
@@ -29,8 +29,15 @@ type VisionMissionProps = {
   className?: string;
 };
 
+const driverKeys = [
+  'reliableSystems',
+  'aiAssistedOperations',
+  'africanTalent',
+] as const;
+
 export function VisionMission({ className }: VisionMissionProps) {
   const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations('AboutPage.visionMission');
 
   return (
     <section
@@ -47,7 +54,7 @@ export function VisionMission({ className }: VisionMissionProps) {
           customVariants={motionVariants}
           className="font-sans text-xs font-medium tracking-widest text-muted-foreground uppercase"
         >
-          {visionMission.eyebrow}
+          {t('eyebrow')}
         </TimelineAnimation>
 
         <TimelineAnimation
@@ -59,7 +66,7 @@ export function VisionMission({ className }: VisionMissionProps) {
           id="vision-mission-heading"
           className="mt-5 font-heading text-3xl font-semibold tracking-tight text-foreground md:text-5xl"
         >
-          {visionMission.heading}
+          {t('heading')}
         </TimelineAnimation>
       </div>
 
@@ -73,10 +80,10 @@ export function VisionMission({ className }: VisionMissionProps) {
           className="bg-primary p-6 text-primary-foreground md:p-10 lg:p-12"
         >
           <p className="font-sans text-xs font-medium tracking-widest text-primary-foreground/70 uppercase">
-            Vision
+            {t('visionLabel')}
           </p>
           <p className="mt-8 max-w-4xl font-heading text-3xl leading-tight font-semibold tracking-tight md:text-5xl">
-            {visionMission.vision}
+            {t('vision')}
           </p>
         </TimelineAnimation>
 
@@ -90,17 +97,17 @@ export function VisionMission({ className }: VisionMissionProps) {
             className="bg-muted/40 p-6 md:p-10 lg:col-span-5 lg:border-r lg:border-border"
           >
             <p className="font-sans text-xs font-medium tracking-widest text-muted-foreground uppercase">
-              Mission
+              {t('missionLabel')}
             </p>
             <p className="mt-6 font-heading text-2xl leading-snug font-semibold tracking-tight text-foreground md:text-3xl">
-              {visionMission.mission}
+              {t('mission')}
             </p>
           </TimelineAnimation>
 
           <div className="divide-y divide-border bg-background lg:col-span-7">
-            {visionMission.drivers.map((driver, index) => (
+            {driverKeys.map((key, index) => (
               <TimelineAnimation
-                key={driver.title}
+                key={key}
                 as="article"
                 animationNum={4 + index}
                 timelineRef={sectionRef}
@@ -109,10 +116,10 @@ export function VisionMission({ className }: VisionMissionProps) {
                 className="grid gap-2 p-6 transition-colors duration-300 hover:bg-muted/40 sm:grid-cols-[minmax(0,0.75fr)_minmax(0,1fr)] sm:items-baseline md:p-8"
               >
                 <h3 className="font-heading text-lg font-semibold tracking-tight text-foreground md:text-xl">
-                  {driver.title}
+                  {t(`drivers.${key}.title`)}
                 </h3>
                 <p className="font-sans text-sm leading-relaxed text-muted-foreground">
-                  {driver.description}
+                  {t(`drivers.${key}.description`)}
                 </p>
               </TimelineAnimation>
             ))}

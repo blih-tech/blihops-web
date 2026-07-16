@@ -2,9 +2,9 @@
 
 import { useRef } from 'react';
 import type { Variants } from 'motion/react';
+import { useTranslations } from 'next-intl';
 
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
-import { leadershipPrinciples } from '@/content/who-we-are';
 import { cn } from '@/lib/utils';
 
 const motionVariants: Variants = {
@@ -29,8 +29,15 @@ type LeadershipProps = {
   className?: string;
 };
 
+const principleKeys = [
+  'deliveryOwnership',
+  'qualityOwnership',
+  'performanceVisibility',
+] as const;
+
 export function Leadership({ className }: LeadershipProps) {
   const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations('AboutPage.leadership');
 
   return (
     <section
@@ -47,7 +54,7 @@ export function Leadership({ className }: LeadershipProps) {
           customVariants={motionVariants}
           className="font-sans text-xs font-medium tracking-widest text-muted-foreground uppercase"
         >
-          Leadership & accountability
+          {t('eyebrow')}
         </TimelineAnimation>
         <TimelineAnimation
           as="h2"
@@ -58,7 +65,7 @@ export function Leadership({ className }: LeadershipProps) {
           id="leadership-heading"
           className="mt-5 font-heading text-3xl font-semibold tracking-tight text-foreground md:text-5xl"
         >
-          Clear ownership at every level.
+          {t('title')}
         </TimelineAnimation>
         <TimelineAnimation
           as="p"
@@ -68,14 +75,14 @@ export function Leadership({ className }: LeadershipProps) {
           customVariants={motionVariants}
           className="mt-5 max-w-2xl font-sans text-sm leading-relaxed text-muted-foreground md:text-base"
         >
-          Clients always know who owns delivery, quality, and performance.
+          {t('description')}
         </TimelineAnimation>
       </div>
 
       <div className="mt-12 border border-border bg-muted/30 p-6 md:mt-16 md:p-10">
         <div className="grid items-stretch md:grid-cols-[1fr_auto_1fr_auto_1fr]">
-          {leadershipPrinciples.map((principle, index) => (
-            <div key={principle.title} className="contents">
+          {principleKeys.map((key, index) => (
+            <div key={key} className="contents">
               <TimelineAnimation
                 as="article"
                 animationNum={3 + index}
@@ -85,14 +92,14 @@ export function Leadership({ className }: LeadershipProps) {
                 className="py-6 md:px-6 md:py-4"
               >
                 <h3 className="font-heading text-xl font-semibold tracking-tight text-foreground md:text-2xl">
-                  {principle.title}
+                  {t(`principles.${key}.title`)}
                 </h3>
                 <p className="mt-4 font-sans text-sm leading-relaxed text-muted-foreground">
-                  {principle.description}
+                  {t(`principles.${key}.description`)}
                 </p>
               </TimelineAnimation>
 
-              {index < leadershipPrinciples.length - 1 ? (
+              {index < principleKeys.length - 1 ? (
                 <div
                   aria-hidden="true"
                   className="flex items-center justify-center"

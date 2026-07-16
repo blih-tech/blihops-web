@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { Link } from '@/i18n/navigation';
 import { ArrowRightIcon } from 'lucide-react';
 import type { Variants } from 'motion/react';
+import { useTranslations } from 'next-intl';
 
 import { BookCallButton } from '@/components/BookCallButton';
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
@@ -31,12 +32,14 @@ const motionVariants: Variants = {
 
 export function HowWeWorkHero() {
   const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations('ProcessPage.hero');
+  const tActions = useTranslations('Shared.actions');
 
   return (
     <section
       ref={sectionRef}
       className="relative w-full py-16 md:py-24"
-      aria-label="How we work"
+      aria-label={t('ariaLabel')}
     >
       <HeroBackdrop />
 
@@ -53,7 +56,7 @@ export function HowWeWorkHero() {
             <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-75" />
             <span className="relative inline-flex size-2 rounded-full bg-primary" />
           </span>
-          How we work
+          {t('eyebrow')}
         </TimelineAnimation>
 
         <TimelineAnimation
@@ -64,7 +67,7 @@ export function HowWeWorkHero() {
           customVariants={motionVariants}
           className="mt-5 font-heading text-4xl font-semibold tracking-tight text-balance text-foreground sm:text-5xl lg:text-6xl"
         >
-          From overwhelmed to in control
+          {t('title')}
         </TimelineAnimation>
 
         <TimelineAnimation
@@ -75,9 +78,7 @@ export function HowWeWorkHero() {
           customVariants={motionVariants}
           className="mt-5 max-w-2xl font-sans text-base leading-relaxed text-muted-foreground sm:text-lg"
         >
-          Every engagement follows a clear path: discovery, design, dedicated
-          pods, SLA tracking, and continuous optimization. You always know what
-          is happening and how it is performing.
+          {t('description')}
         </TimelineAnimation>
 
         <TimelineAnimation
@@ -100,7 +101,7 @@ export function HowWeWorkHero() {
               'group/cta bg-primary hover:bg-primary',
             )}
           >
-            Get a 2-week pilot
+            {tActions('getPilot')}
             <ArrowRightIcon
               data-icon="inline-end"
               className="transition-transform group-hover/cta:translate-x-0.5"

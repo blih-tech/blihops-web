@@ -9,9 +9,9 @@ import {
   useTransform,
 } from 'motion/react';
 import type { MotionValue, Variants } from 'motion/react';
+import { useTranslations } from 'next-intl';
 
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
-import { story } from '@/content/who-we-are';
 import { cn } from '@/lib/utils';
 
 const motionVariants: Variants = {
@@ -127,14 +127,18 @@ type StoryProps = {
   className?: string;
 };
 
+const statKeys = ['combinedServices', 'sla'] as const;
+
 export function Story({ className }: StoryProps) {
   const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations('AboutPage.story');
+  const paragraphs = t.raw('paragraphs') as string[];
 
   return (
     <section
       ref={sectionRef}
       className={cn('w-full py-16 md:py-24', className)}
-      aria-label="Our story"
+      aria-label={t('ariaLabel')}
     >
       {/* Asymmetric split: 45/55 \u2014 image left, narrative right */}
       <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12 lg:gap-16">
@@ -149,16 +153,18 @@ export function Story({ className }: StoryProps) {
         >
           <figure className="group relative aspect-[4/5] w-full overflow-hidden border border-border bg-muted">
             <Image
-              src={story.image.src}
-              alt={story.image.alt}
+              src="/about-us-image.jpg"
+              alt={t('imageAlt')}
               fill
               sizes="(max-width: 1024px) 100vw, 40vw"
               className="object-cover motion-safe:transition-transform motion-safe:duration-700 motion-safe:ease-out motion-safe:group-hover:scale-[1.025]"
             />
             {/* Caption strip */}
             <figcaption className="absolute inset-x-0 bottom-0 flex items-center justify-between border-t border-border bg-background/95 px-4 py-3 font-mono text-[11px] tracking-wide text-muted-foreground uppercase backdrop-blur-sm">
-              <span>{story.image.caption}</span>
-              <span className="text-foreground/60">Blih Ops HQ</span>
+              <span>{t('imageCaption')}</span>
+              <span className="text-foreground/60">
+                {t('headquartersCaption')}
+              </span>
             </figcaption>
           </figure>
         </TimelineAnimation>
@@ -173,7 +179,7 @@ export function Story({ className }: StoryProps) {
             customVariants={motionVariants}
             className="font-sans text-xs font-medium tracking-widest text-muted-foreground uppercase"
           >
-            {story.eyebrow}
+            {t('eyebrow')}
           </TimelineAnimation>
 
           <TimelineAnimation
@@ -184,8 +190,8 @@ export function Story({ className }: StoryProps) {
             customVariants={motionVariants}
             className="mt-5 font-heading text-3xl font-semibold tracking-tight text-foreground md:text-4xl lg:text-5xl"
           >
-            {story.heading}{' '}
-            <span className="text-foreground/80">{story.headingAccent}</span>
+            {t('heading')}{' '}
+            <span className="text-foreground/80">{t('headingAccent')}</span>
           </TimelineAnimation>
 
           <TimelineAnimation
@@ -201,31 +207,31 @@ export function Story({ className }: StoryProps) {
               className="w-0.5 shrink-0 self-stretch rounded-full bg-background/40"
             />
             <p className="font-sans text-sm leading-relaxed text-background md:text-[15px]">
-              {story.pullQuote}
+              {t('pullQuote')}
             </p>
           </TimelineAnimation>
 
-          <ScrollRevealContent paragraphs={story.paragraphs} />
+          <ScrollRevealContent paragraphs={paragraphs} />
 
           {/* Stat tags \u2014 hairline metric cells, not glowing chips */}
           <TimelineAnimation
             as="div"
-            animationNum={4 + story.paragraphs.length}
+            animationNum={4 + paragraphs.length}
             timelineRef={sectionRef}
             once={false}
             customVariants={motionVariants}
             className="mt-10 flex flex-wrap items-stretch gap-px border border-border bg-border"
           >
-            {story.stats.map((stat) => (
+            {statKeys.map((key) => (
               <div
-                key={stat.label}
+                key={key}
                 className="flex min-w-40 flex-1 flex-col gap-1 bg-background px-6 py-5 last:bg-muted/60"
               >
                 <span className="font-heading text-lg font-semibold tracking-tight text-foreground md:text-xl">
-                  {stat.value}
+                  {t(`stats.${key}.value`)}
                 </span>
                 <span className="font-sans text-xs uppercase tracking-widest text-muted-foreground">
-                  {stat.label}
+                  {t(`stats.${key}.label`)}
                 </span>
               </div>
             ))}

@@ -6,10 +6,18 @@ import { WhoWeAreHero } from '@/components/sections/who-we-are/Hero';
 import { VisionMission } from '@/components/sections/who-we-are/VisionMission';
 import { WhyEthiopia } from '@/components/sections/who-we-are/WhyEthiopia';
 import { createGenerateMetadata } from '@/i18n/metadata';
+import { setRequestLocale } from 'next-intl/server';
 
 export const generateMetadata = createGenerateMetadata('about', '/who-we-are');
 
-export default function WhoWeArePage() {
+export default async function WhoWeArePage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+
   return (
     <main className="min-h-screen bg-background text-foreground">
       <SectionWrapper>

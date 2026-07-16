@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { ArrowRightIcon, CheckIcon } from 'lucide-react';
 import { motion, useInView, type Variants } from 'motion/react';
+import { useTranslations } from 'next-intl';
 
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
 import { buttonVariants } from '@/components/ui/button';
@@ -42,14 +43,40 @@ const rowVariants: Variants = {
   },
 };
 
+const serviceMessageKeys = {
+  'customer-support': 'customerSupport',
+  'back-office': 'backOffice',
+  'it-software': 'itSoftware',
+  'ai-automation': 'aiAutomation',
+  'data-reporting': 'dataReporting',
+} as const;
+
 export function ServicesList() {
   const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations('ServicesPage.servicesList');
+  const tServices = useTranslations('Shared.services');
+  const localizedServices = services.map((service) => {
+    const key =
+      serviceMessageKeys[service.id as keyof typeof serviceMessageKeys];
+
+    return {
+      ...service,
+      title: tServices(`${key}.title`),
+      subtitle: tServices(`${key}.subtitle`),
+      shortDescription: tServices(`${key}.shortDescription`),
+      details: tServices(`${key}.details`),
+      body: tServices(`${key}.body`),
+      tag: tServices(`${key}.tag`),
+      features: tServices.raw(`${key}.features`) as string[],
+      whoThisIsFor: tServices(`${key}.whoThisIsFor`),
+    };
+  });
 
   return (
     <section
       ref={sectionRef}
       className="w-full py-16 md:py-24"
-      aria-label="Our services"
+      aria-label={t('ariaLabel')}
     >
       <div className="mx-auto mb-14 max-w-2xl space-y-3 text-center md:mb-20">
         <TimelineAnimation
@@ -60,7 +87,7 @@ export function ServicesList() {
           customVariants={headerVariants}
           className="font-sans text-xs font-medium tracking-widest text-muted-foreground uppercase"
         >
-          What we deliver
+          {t('eyebrow')}
         </TimelineAnimation>
         <TimelineAnimation
           as="h2"
@@ -70,7 +97,7 @@ export function ServicesList() {
           customVariants={headerVariants}
           className="font-heading text-3xl font-semibold tracking-tight text-foreground md:text-5xl"
         >
-          Five capabilities. One partner.
+          {t('title')}
         </TimelineAnimation>
         <TimelineAnimation
           as="p"
@@ -80,13 +107,12 @@ export function ServicesList() {
           customVariants={headerVariants}
           className="font-sans text-sm leading-relaxed text-muted-foreground md:text-base"
         >
-          Every service ships with documented SOPs, defined SLAs, trained pods,
-          and automation where it counts.
+          {t('description')}
         </TimelineAnimation>
       </div>
 
       <div className="flex flex-col gap-20 md:gap-28">
-        {services.map((service, index) => (
+        {localizedServices.map((service, index) => (
           <ServiceRow
             key={service.id}
             service={service}
@@ -108,6 +134,8 @@ function ServiceRow({
   const Icon = service.icon;
   const rowRef = useRef<HTMLDivElement>(null);
   const inView = useInView(rowRef, { once: false, margin: '-10% 0px' });
+  const t = useTranslations('ServicesPage.servicesList');
+  const tActions = useTranslations('Shared.actions');
 
   return (
     <motion.div
@@ -233,7 +261,7 @@ function ServiceRow({
           <div className="w-0.5 shrink-0 self-stretch rounded-full bg-background/40" />
           <p className="font-sans text-sm leading-relaxed">
             <span className="font-medium text-background">
-              Who this is for:{' '}
+              {t('whoThisIsForLabel')}{' '}
             </span>
             <span className="text-background/80">{service.whoThisIsFor}</span>
           </p>
@@ -247,7 +275,7 @@ function ServiceRow({
               'group/cta h-auto px-0 text-foreground underline-offset-4 hover:text-primary',
             )}
           >
-            Get free pilot
+            {tActions('getFreePilot')}
             <ArrowRightIcon
               data-icon="inline-end"
               className="transition-transform group-hover/cta:translate-x-0.5"

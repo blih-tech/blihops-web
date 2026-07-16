@@ -1,5 +1,6 @@
 import { Link } from '@/i18n/navigation';
 import { CornerDownRightIcon } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -7,27 +8,19 @@ import { cn } from '@/lib/utils';
 const steps = [
   {
     step: '01',
-    title: 'Process first',
-    description:
-      'SOPs, SLAs, and KPIs are defined before anyone touches a task. We map workflows, automation layers, and success metrics up front.',
+    key: 'processFirst',
   },
   {
     step: '02',
-    title: 'AI where it counts',
-    description:
-      'Automation handles the repetitive work routing, validation, and busywork so humans focus on judgment, care, and complex decisions.',
+    key: 'aiWhereItCounts',
   },
   {
     step: '03',
-    title: 'Dedicated pods',
-    description:
-      'Operators, QA, and a pod lead structured around your workflow. Skilled talent that feels like an extension of your team, not a vendor queue.',
+    key: 'dedicatedPods',
   },
   {
     step: '04',
-    title: 'Full visibility',
-    description:
-      'Weekly reporting, measured SLAs, and continuous improvement. You always know how operations are performing and where we optimize next.',
+    key: 'fullVisibility',
   },
 ] as const;
 
@@ -36,23 +29,24 @@ type ApproachProps = {
 };
 
 export function Approach({ className }: ApproachProps) {
+  const t = useTranslations('ServicesPage.approach');
+  const tActions = useTranslations('Shared.actions');
+
   return (
     <section
       className={cn('w-full py-16 md:py-24', className)}
-      aria-label="Our approach"
+      aria-label={t('ariaLabel')}
     >
       <div className="grid grid-cols-1 gap-10 lg:grid-cols-6 lg:gap-16">
         <div className="col-span-2 h-fit space-y-5 lg:sticky lg:top-28">
           <p className="font-sans text-xs font-medium tracking-widest text-muted-foreground uppercase">
-            Our approach
+            {t('eyebrow')}
           </p>
           <h2 className="font-heading text-3xl font-semibold tracking-tight text-foreground md:text-4xl lg:text-5xl">
-            Outsourcing, intelligently
+            {t('title')}
           </h2>
           <p className="font-sans text-sm leading-relaxed text-muted-foreground md:text-base">
-            Most outsourcing companies give you people and hope it works. We
-            give you a system process design, AI, skilled pods, and reporting
-            before scale.
+            {t('description')}
           </p>
           <Link
             href="/pilot"
@@ -62,7 +56,7 @@ export function Approach({ className }: ApproachProps) {
             )}
           >
             <CornerDownRightIcon className="size-4 text-primary" />
-            Get free pilot
+            {tActions('getFreePilot')}
           </Link>
         </div>
 
@@ -78,10 +72,10 @@ export function Approach({ className }: ApproachProps) {
               </div>
               <div className="min-w-0 flex-1 pr-8">
                 <h3 className="mb-3 font-heading text-xl font-semibold tracking-tight text-foreground md:text-2xl">
-                  {item.title}
+                  {t(`steps.${item.key}.title`)}
                 </h3>
                 <p className="font-sans text-sm leading-relaxed text-muted-foreground md:text-base">
-                  {item.description}
+                  {t(`steps.${item.key}.description`)}
                 </p>
               </div>
             </li>

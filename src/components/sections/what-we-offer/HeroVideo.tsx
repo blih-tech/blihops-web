@@ -3,6 +3,7 @@
 import { useRef, useState } from 'react';
 import Image from 'next/image';
 import { PlayIcon } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 import { cn } from '@/lib/utils';
 
@@ -15,6 +16,7 @@ type HeroVideoProps = {
 export function HeroVideo({ poster, src, className }: HeroVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);
+  const t = useTranslations('ServicesPage.hero');
 
   const handlePlay = async () => {
     const video = videoRef.current;
@@ -63,7 +65,7 @@ export function HeroVideo({ poster, src, className }: HeroVideoProps) {
           <button
             type="button"
             onClick={handlePlay}
-            aria-label="Play video"
+            aria-label={t('playVideoAriaLabel')}
             className="absolute top-1/2 left-1/2 z-10 flex size-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-foreground text-background shadow-md transition-transform hover:scale-105 md:size-16"
           >
             <PlayIcon className="size-6 fill-current md:size-7" />

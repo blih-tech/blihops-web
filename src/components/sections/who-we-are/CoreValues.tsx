@@ -2,9 +2,9 @@
 
 import { useRef } from 'react';
 import type { Variants } from 'motion/react';
+import { useTranslations } from 'next-intl';
 
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
-import { coreValues } from '@/content/who-we-are';
 import { cn } from '@/lib/utils';
 
 const motionVariants: Variants = {
@@ -33,12 +33,21 @@ const valueLayouts = [
   'md:col-span-4',
 ] as const;
 
+const valueKeys = [
+  'intelligence',
+  'talent',
+  'reliability',
+  'quality',
+  'efficiency',
+] as const;
+
 type CoreValuesProps = {
   className?: string;
 };
 
 export function CoreValues({ className }: CoreValuesProps) {
   const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations('AboutPage.coreValues');
 
   return (
     <section
@@ -55,7 +64,7 @@ export function CoreValues({ className }: CoreValuesProps) {
           customVariants={motionVariants}
           className="font-sans text-xs font-medium tracking-widest text-muted-foreground uppercase"
         >
-          What drives us
+          {t('eyebrow')}
         </TimelineAnimation>
         <TimelineAnimation
           as="h2"
@@ -66,17 +75,17 @@ export function CoreValues({ className }: CoreValuesProps) {
           id="core-values-heading"
           className="mt-5 font-heading text-3xl font-semibold tracking-tight text-foreground md:text-5xl"
         >
-          Five values that shape every operation.
+          {t('title')}
         </TimelineAnimation>
       </div>
 
       <div className="mt-12 grid grid-cols-1 gap-px border border-border bg-border md:mt-16 md:grid-cols-12">
-        {coreValues.map((value, index) => {
-          const isFeatured = value.title === 'Talent';
+        {valueKeys.map((key, index) => {
+          const isFeatured = key === 'talent';
 
           return (
             <TimelineAnimation
-              key={value.title}
+              key={key}
               as="article"
               animationNum={2 + index}
               timelineRef={sectionRef}
@@ -89,10 +98,10 @@ export function CoreValues({ className }: CoreValuesProps) {
               )}
             >
               <h3 className="font-heading text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
-                {value.title}
+                {t(`items.${key}.title`)}
               </h3>
               <p className="mt-8 max-w-md font-sans text-sm leading-relaxed text-muted-foreground md:text-base">
-                {value.description}
+                {t(`items.${key}.description`)}
               </p>
               <div
                 className={cn(
