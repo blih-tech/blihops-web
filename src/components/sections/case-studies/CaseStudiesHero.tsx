@@ -2,6 +2,7 @@
 
 import { useRef } from 'react';
 import type { Variants } from 'motion/react';
+import { useTranslations } from 'next-intl';
 
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
 
@@ -25,6 +26,7 @@ const heroVariants: Variants = {
 
 export function CaseStudiesHero() {
   const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations('CaseStudiesPage.hero');
 
   return (
     <section
@@ -45,7 +47,7 @@ export function CaseStudiesHero() {
             <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-75" />
             <span className="relative inline-flex size-2 rounded-full bg-primary" />
           </span>
-          <span>Case studies</span>
+          <span>{t('eyebrow')}</span>
         </TimelineAnimation>
         <TimelineAnimation
           as="h1"
@@ -56,7 +58,7 @@ export function CaseStudiesHero() {
           id="case-studies-heading"
           className="mt-5 font-heading text-4xl font-semibold tracking-tight text-balance text-foreground sm:text-5xl lg:text-6xl"
         >
-          Outcomes, not promises.
+          {t('title')}
         </TimelineAnimation>
         <TimelineAnimation
           as="p"
@@ -66,7 +68,7 @@ export function CaseStudiesHero() {
           customVariants={heroVariants}
           className="mt-5 max-w-2xl font-sans text-base leading-relaxed text-muted-foreground sm:text-lg"
         >
-          Real challenges. Focused teams. Clear operational progress.
+          {t('description')}
         </TimelineAnimation>
       </div>
     </section>

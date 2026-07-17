@@ -10,9 +10,14 @@ import {
   motion,
   type Variants,
 } from 'motion/react';
+import { useTranslations } from 'next-intl';
 
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
-import { caseStudyServiceNames, type CaseStudy } from '@/content/case-studies';
+import {
+  caseStudyServiceNames,
+  type CaseStudy,
+  type CaseStudyService,
+} from '@/content/case-studies';
 import { cn } from '@/lib/utils';
 
 type CaseStudiesArchiveProps = {
@@ -20,6 +25,32 @@ type CaseStudiesArchiveProps = {
 };
 
 const ALL_SERVICES = 'All';
+
+const studyMessageKeys = {
+  'scaling-support-across-channels': 'scalingSupportAcrossChannels',
+  'streamlining-document-processing': 'streamliningDocumentProcessing',
+  'engineering-support-for-product-roadmap':
+    'engineeringSupportForProductRoadmap',
+  'automating-repetitive-operations': 'automatingRepetitiveOperations',
+  'turning-data-into-clear-decisions': 'turningDataIntoClearDecisions',
+  'optimizing-provider-onboarding': 'optimizingProviderOnboarding',
+  'quality-system-for-customer-conversations':
+    'qualitySystemForCustomerConversations',
+  'software-support-with-clear-ownership': 'softwareSupportWithClearOwnership',
+} as const;
+
+const serviceMessageKeys = {
+  'Customer Support': 'customerSupport',
+  'Back-Office': 'backOffice',
+  'IT & Software': 'itSoftware',
+  'AI & Automation': 'aiAutomation',
+  'Data & Reporting': 'dataReporting',
+} as const satisfies Record<CaseStudyService, string>;
+
+type LocalizedCaseStudy = CaseStudy & {
+  outcome: string;
+  serviceLabels: string[];
+};
 
 const archiveIntroVariants: Variants = {
   visible: {
@@ -67,12 +98,41 @@ const cardVariants: Variants = {
 
 export function CaseStudiesArchive({ caseStudies }: CaseStudiesArchiveProps) {
   const sectionRef = useRef<HTMLElement>(null);
-  const [activeService, setActiveService] = useState<string>(ALL_SERVICES);
+  const [activeService, setActiveService] = useState<
+    CaseStudyService | typeof ALL_SERVICES
+  >(ALL_SERVICES);
+  const t = useTranslations('CaseStudiesPage.archive');
+  const tStudies = useTranslations('CaseStudiesPage.studies');
+  const tServices = useTranslations('Shared.services');
+  const localizedCaseStudies = caseStudies.map((study) => {
+    const key = studyMessageKeys[study.slug as keyof typeof studyMessageKeys];
+
+    return {
+      ...study,
+      title: tStudies(`${key}.title`),
+      client: tStudies(`${key}.client`),
+      excerpt: tStudies(`${key}.excerpt`),
+      outcome: tStudies(`${key}.outcome`),
+      serviceLabels: study.services.map((service) =>
+        tServices(`${serviceMessageKeys[service]}.title`),
+      ),
+    };
+  });
+  const serviceFilters: {
+    value: CaseStudyService | typeof ALL_SERVICES;
+    label: string;
+  }[] = [
+    { value: ALL_SERVICES, label: t('all') },
+    ...caseStudyServiceNames.map((service) => ({
+      value: service,
+      label: tServices(`${serviceMessageKeys[service]}.title`),
+    })),
+  ];
 
   const visibleStudies =
     activeService === ALL_SERVICES
-      ? caseStudies
-      : caseStudies.filter((study) =>
+      ? localizedCaseStudies
+      : localizedCaseStudies.filter((study) =>
           study.services.some((service) => service === activeService),
         );
 
@@ -80,7 +140,7 @@ export function CaseStudiesArchive({ caseStudies }: CaseStudiesArchiveProps) {
     <section
       ref={sectionRef}
       className="grid items-start lg:grid-cols-[13.5rem_minmax(0,1fr)]"
-      aria-label="Case study archive"
+      aria-label={t('ariaLabel')}
     >
       <aside className="border-b border-border py-5 lg:sticky lg:top-20 lg:border-r lg:border-b-0 lg:py-7 lg:pr-7">
         <TimelineAnimation
@@ -90,21 +150,21 @@ export function CaseStudiesArchive({ caseStudies }: CaseStudiesArchiveProps) {
           customVariants={archiveIntroVariants}
         >
           <p className="mb-4 font-sans text-[10px] font-medium tracking-widest text-muted-foreground uppercase lg:mb-5">
-            Filter by service
+            {t('filterLabel')}
           </p>
           <div
             className="flex gap-2 overflow-x-auto pb-1 lg:flex-col lg:gap-0 lg:overflow-visible lg:pb-0"
-            aria-label="Filter case studies by service"
+            aria-label={t('filterAriaLabel')}
           >
-            {[ALL_SERVICES, ...caseStudyServiceNames].map((service) => {
-              const isActive = activeService === service;
+            {serviceFilters.map((service) => {
+              const isActive = activeService === service.value;
 
               return (
                 <button
-                  key={service}
+                  key={service.value}
                   type="button"
                   aria-pressed={isActive}
-                  onClick={() => setActiveService(service)}
+                  onClick={() => setActiveService(service.value)}
                   className={cn(
                     'relative shrink-0 cursor-pointer rounded-md border px-3 py-2 text-left font-sans text-xs font-medium transition-colors lg:w-full lg:border-0 lg:px-4 lg:py-2.5',
                     isActive
@@ -118,21 +178,21 @@ export function CaseStudiesArchive({ caseStudies }: CaseStudiesArchiveProps) {
                       aria-hidden
                     />
                   ) : null}
-                  <span className="relative z-10 lg:pl-1">{service}</span>
+                  <span className="relative z-10 lg:pl-1">{service.label}</span>
                 </button>
               );
             })}
           </div>
 
           <p className="mt-6 hidden font-mono text-[10px] text-muted-foreground lg:block">
-            {String(visibleStudies.length).padStart(2, '0')} projects
+            {t('count', { count: visibleStudies.length })}
           </p>
         </TimelineAnimation>
       </aside>
 
       <div className="lg:pl-0">
         <p className="border-b border-border py-4 font-mono text-[10px] text-muted-foreground lg:hidden">
-          {String(visibleStudies.length).padStart(2, '0')} projects
+          {t('count', { count: visibleStudies.length })}
         </p>
 
         {visibleStudies.length > 0 ? (
@@ -169,7 +229,7 @@ export function CaseStudiesArchive({ caseStudies }: CaseStudiesArchiveProps) {
         ) : (
           <div className="min-h-72 border-b border-border px-6 py-20 text-center">
             <p className="font-heading text-2xl text-foreground">
-              No case studies in this service yet.
+              {t('empty')}
             </p>
           </div>
         )}
@@ -178,12 +238,14 @@ export function CaseStudiesArchive({ caseStudies }: CaseStudiesArchiveProps) {
   );
 }
 
-function CaseStudyCard({ study }: { study: CaseStudy }) {
+function CaseStudyCard({ study }: { study: LocalizedCaseStudy }) {
+  const t = useTranslations('CaseStudiesPage.archive');
+
   return (
     <Link
       href={`/case-studies/${study.slug}`}
       className="group flex min-h-full flex-col bg-background p-4 transition-colors duration-300 hover:bg-muted/50 sm:p-5"
-      aria-label={`Read case study: ${study.title}`}
+      aria-label={t('readAriaLabel', { title: study.title })}
     >
       <div className="relative aspect-video overflow-hidden rounded-md border border-border bg-muted">
         <Image
@@ -197,7 +259,7 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
 
       <article className="flex flex-1 flex-col pt-4">
         <p className="font-sans text-[11px] font-medium text-primary">
-          {study.services.join('  ·  ')}
+          {study.serviceLabels.join('  ·  ')}
           <span className="text-muted-foreground"> · {study.client}</span>
         </p>
 
@@ -211,8 +273,10 @@ function CaseStudyCard({ study }: { study: CaseStudy }) {
 
         <div className="mt-auto flex items-end justify-between gap-5 pt-6">
           <p className="max-w-md font-sans text-xs leading-relaxed text-muted-foreground">
-            <span className="font-semibold text-primary">Outcome:</span>{' '}
-            {study.outcomes[0]}
+            <span className="font-semibold text-primary">
+              {t('outcomeLabel')}
+            </span>{' '}
+            {study.outcome}
           </p>
           <ArrowUpRightIcon className="size-5 shrink-0 text-primary motion-safe:transition-transform motion-safe:duration-300 motion-safe:group-hover:translate-x-0.5 motion-safe:group-hover:-translate-y-0.5" />
         </div>

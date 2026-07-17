@@ -1,3 +1,5 @@
+import { setRequestLocale } from 'next-intl/server';
+
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import { HeroWrapper } from '@/components/sections/landing/HeroWrapper';
 import { Problem } from '@/components/sections/landing/Problem';
@@ -27,4 +29,3 @@ export default async function Home({
     </main>
   );
 }
-import { setRequestLocale } from 'next-intl/server';
