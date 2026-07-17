@@ -1,6 +1,7 @@
 import { Link } from '@/i18n/navigation';
 import { ArrowRightIcon, CheckIcon } from 'lucide-react';
 import * as motion from 'motion/react-client';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import { HeroBackdrop } from '@/components/sections/shared/HeroBackdrop';
@@ -29,34 +30,30 @@ function heroReveal(delay: number) {
 
 export const generateMetadata = createGenerateMetadata('skills', '/skills');
 
-const pathway = [
-  {
-    number: '01',
-    title: 'Choose a track',
-    description:
-      'Start with a role-focused path that matches where you want to grow.',
-  },
-  {
-    number: '02',
-    title: 'Learn by doing',
-    description:
-      'Complete practical lessons, exercises, and realistic project work.',
-  },
-  {
-    number: '03',
-    title: 'Show what you know',
-    description:
-      'Finish an assessment that checks applied skill, not attendance.',
-  },
-  {
-    number: '04',
-    title: 'Become opportunity-ready',
-    description:
-      'Qualified learners can become eligible for the BlihOps talent pool.',
-  },
+const pathwayKeys = [
+  'chooseTrack',
+  'learnByDoing',
+  'showKnowledge',
+  'opportunityReady',
 ] as const;
+const sampleStepKeys = ['learn', 'practice', 'assess', 'qualify'] as const;
+const principleKeys = ['practical', 'assessed', 'connected'] as const;
+const trackMessageKeys = {
+  'customer-support-operations': 'customerSupportOperations',
+  'back-office-data-quality': 'backOfficeDataQuality',
+  'software-quality-assurance': 'softwareQualityAssurance',
+  'ai-workflow-automation': 'aiWorkflowAutomation',
+} as const;
 
-export default function SkillsPage() {
+export default async function SkillsPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations('SkillsPage');
+
   return (
     <main className="min-h-screen bg-background text-foreground">
       <SectionWrapper>
@@ -74,7 +71,7 @@ export default function SkillsPage() {
                 <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-75" />
                 <span className="relative inline-flex size-2 rounded-full bg-primary" />
               </span>
-              BlihOps Skills
+              {t('hero.eyebrow')}
             </motion.div>
 
             <motion.h1
@@ -82,14 +79,13 @@ export default function SkillsPage() {
               id="skills-heading"
               className="mt-5 max-w-3xl font-heading text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl"
             >
-              Learn practical skills that lead somewhere.
+              {t('hero.title')}
             </motion.h1>
             <motion.p
               {...heroReveal(0.24)}
               className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg"
             >
-              Build practical ability, prove it through assessment, and prepare
-              for BlihOps talent opportunities.
+              {t('hero.description')}
             </motion.p>
 
             <motion.div
@@ -103,7 +99,7 @@ export default function SkillsPage() {
                   'group/cta bg-primary hover:bg-primary',
                 )}
               >
-                Explore learning tracks
+                {t('hero.exploreTracks')}
                 <ArrowRightIcon className="transition-transform group-hover/cta:translate-x-0.5" />
               </Link>
               <a
@@ -113,7 +109,7 @@ export default function SkillsPage() {
                   'h-10 border-border bg-background px-4 text-foreground hover:bg-muted hover:text-foreground',
                 )}
               >
-                Visit Skills platform
+                {t('hero.visitPlatform')}
               </a>
             </motion.div>
           </div>
@@ -129,15 +125,18 @@ export default function SkillsPage() {
                 </span>
                 <div>
                   <p className="font-mono text-[10px] font-medium tracking-widest text-muted-foreground uppercase">
-                    Sample learning pathway
+                    {t('samplePathway.eyebrow')}
                   </p>
                   <p className="mt-1.5 font-heading text-xl font-semibold tracking-tight sm:text-2xl">
-                    Customer Support Operations
+                    {t('samplePathway.title')}
                   </p>
                 </div>
               </div>
               <p className="font-mono text-[10px] tracking-wider text-primary uppercase">
-                Stage 02 of 04
+                {t('samplePathway.stageProgress', {
+                  current: '02',
+                  total: '04',
+                })}
               </p>
             </div>
 
@@ -150,58 +149,63 @@ export default function SkillsPage() {
               </div>
 
               <ol className="relative grid gap-px bg-border sm:grid-cols-4 sm:bg-transparent">
-                {[
-                  ['01', 'Learn', 'Core knowledge', 'complete'],
-                  ['02', 'Practice', 'Applied exercises', 'current'],
-                  ['03', 'Assess', 'Reviewed project', 'upcoming'],
-                  ['04', 'Qualify', 'Talent eligibility', 'upcoming'],
-                ].map(([number, title, detail, status]) => (
-                  <li
-                    key={number}
-                    className="relative flex items-center gap-4 bg-background p-4 sm:flex-col sm:bg-transparent sm:p-0 sm:text-center"
-                  >
-                    <span
-                      className={cn(
-                        'relative z-10 flex size-10 shrink-0 items-center justify-center rounded-full border bg-background font-mono text-[10px] font-semibold',
-                        status === 'complete' &&
-                          'border-primary bg-primary text-primary-foreground',
-                        status === 'current' &&
-                          'border-primary text-primary ring-4 ring-primary/10',
-                        status === 'upcoming' &&
-                          'border-border text-muted-foreground',
-                      )}
+                {sampleStepKeys.map((key, index) => {
+                  const number = String(index + 1).padStart(2, '0');
+                  const status =
+                    index === 0
+                      ? 'complete'
+                      : index === 1
+                        ? 'current'
+                        : 'upcoming';
+
+                  return (
+                    <li
+                      key={number}
+                      className="relative flex items-center gap-4 bg-background p-4 sm:flex-col sm:bg-transparent sm:p-0 sm:text-center"
                     >
-                      {status === 'complete' ? (
-                        <CheckIcon className="size-4" aria-hidden="true" />
-                      ) : (
-                        number
-                      )}
-                    </span>
-                    <div>
-                      <p className="font-heading text-lg font-semibold">
-                        {title}
-                      </p>
-                      <p className="mt-1 text-xs text-muted-foreground">
-                        {detail}
-                      </p>
-                    </div>
-                  </li>
-                ))}
+                      <span
+                        className={cn(
+                          'relative z-10 flex size-10 shrink-0 items-center justify-center rounded-full border bg-background font-mono text-[10px] font-semibold',
+                          status === 'complete' &&
+                            'border-primary bg-primary text-primary-foreground',
+                          status === 'current' &&
+                            'border-primary text-primary ring-4 ring-primary/10',
+                          status === 'upcoming' &&
+                            'border-border text-muted-foreground',
+                        )}
+                      >
+                        {status === 'complete' ? (
+                          <CheckIcon className="size-4" aria-hidden="true" />
+                        ) : (
+                          number
+                        )}
+                      </span>
+                      <div>
+                        <p className="font-heading text-lg font-semibold">
+                          {t(`samplePathway.steps.${key}.title`)}
+                        </p>
+                        <p className="mt-1 text-xs text-muted-foreground">
+                          {t(`samplePathway.steps.${key}.description`)}
+                        </p>
+                      </div>
+                    </li>
+                  );
+                })}
               </ol>
             </div>
 
             <dl className="grid gap-px border-t border-border bg-border sm:grid-cols-3">
               <PathwayDetail
-                label="Current work"
-                value="Handling live scenarios"
+                label={t('samplePathway.details.currentWork.label')}
+                value={t('samplePathway.details.currentWork.value')}
               />
               <PathwayDetail
-                label="Evidence collected"
-                value="3 practical submissions"
+                label={t('samplePathway.details.evidence.label')}
+                value={t('samplePathway.details.evidence.value', { count: 3 })}
               />
               <PathwayDetail
-                label="Track outcome"
-                value="Support-ready assessment"
+                label={t('samplePathway.details.outcome.label')}
+                value={t('samplePathway.details.outcome.value')}
               />
             </dl>
           </motion.div>
@@ -211,15 +215,13 @@ export default function SkillsPage() {
           {...sectionReveal}
           className="grid gap-px border-b border-border bg-border sm:grid-cols-3"
         >
-          {[
-            ['Practical', 'Role-focused learning'],
-            ['Assessed', 'Applied work, reviewed'],
-            ['Connected', 'A path toward opportunity'],
-          ].map(([title, description]) => (
-            <div key={title} className="bg-background px-5 py-6 sm:px-6">
-              <p className="font-heading text-xl font-semibold">{title}</p>
+          {principleKeys.map((key) => (
+            <div key={key} className="bg-background px-5 py-6 sm:px-6">
+              <p className="font-heading text-xl font-semibold">
+                {t(`principles.${key}.title`)}
+              </p>
               <p className="mt-1 text-sm text-muted-foreground">
-                {description}
+                {t(`principles.${key}.description`)}
               </p>
             </div>
           ))}
@@ -233,23 +235,25 @@ export default function SkillsPage() {
         >
           <div className="max-w-2xl">
             <p className="font-mono text-[11px] font-medium tracking-widest text-primary uppercase">
-              Preview catalog
+              {t('catalog.eyebrow')}
             </p>
             <h2
               id="tracks-heading"
               className="mt-3 font-heading text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl"
             >
-              Start with work worth learning.
+              {t('catalog.title')}
             </h2>
             <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-              Representative tracks are shown while the full platform catalog is
-              being prepared. Each path connects learning to practical evidence.
+              {t('catalog.description')}
             </p>
           </div>
 
           <div className="mt-12 grid gap-px border border-border bg-border md:grid-cols-2">
             {skillTracks.map((track, index) => {
               const Icon = track.icon;
+              const key =
+                trackMessageKeys[track.id as keyof typeof trackMessageKeys];
+              const title = t(`catalog.tracks.${key}.title`);
 
               return (
                 <motion.a
@@ -264,7 +268,7 @@ export default function SkillsPage() {
                   key={track.id}
                   href={skillsPlatformUrl}
                   className="group flex min-h-96 flex-col bg-background p-6 transition-colors hover:bg-muted/60 focus-visible:bg-muted/60 focus-visible:outline-none sm:p-8"
-                  aria-label={`Explore ${track.title} on BlihOps Skills`}
+                  aria-label={t('catalog.exploreAriaLabel', { title })}
                 >
                   <div className="flex items-start justify-between gap-6">
                     <span className="flex size-10 items-center justify-center rounded-md border border-border bg-muted text-primary transition-colors group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground">
@@ -281,29 +285,38 @@ export default function SkillsPage() {
 
                   <div className="mt-8">
                     <p className="text-xs font-medium tracking-wide text-primary uppercase">
-                      {track.category}
+                      {t(`catalog.tracks.${key}.category`)}
                     </p>
                     <h3 className="mt-2 font-heading text-2xl font-semibold tracking-tight sm:text-3xl">
-                      {track.title}
+                      {title}
                     </h3>
                     <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-                      {track.description}
+                      {t(`catalog.tracks.${key}.description`)}
                     </p>
                   </div>
 
                   <dl className="mt-8 grid grid-cols-3 gap-px bg-border">
-                    <TrackDetail label="Level" value={track.level} />
-                    <TrackDetail label="Length" value={track.duration} />
-                    <TrackDetail label="Study" value={track.modules} />
+                    <TrackDetail
+                      label={t('catalog.labels.level')}
+                      value={t(`catalog.tracks.${key}.level`)}
+                    />
+                    <TrackDetail
+                      label={t('catalog.labels.length')}
+                      value={t(`catalog.tracks.${key}.duration`)}
+                    />
+                    <TrackDetail
+                      label={t('catalog.labels.study')}
+                      value={t(`catalog.tracks.${key}.modules`)}
+                    />
                   </dl>
 
                   <div className="mt-auto flex items-center justify-between gap-4 border-t border-border pt-6">
                     <div>
                       <p className="text-xs text-muted-foreground">
-                        Track outcome
+                        {t('catalog.labels.outcome')}
                       </p>
                       <p className="mt-1 text-sm font-medium">
-                        {track.outcome}
+                        {t(`catalog.tracks.${key}.outcome`)}
                       </p>
                     </div>
                     <span className="flex size-10 shrink-0 items-center justify-center rounded-md border border-border bg-background text-primary transition-[color,background-color,border-color,transform] group-hover:translate-x-0.5 group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground">
@@ -327,29 +340,28 @@ export default function SkillsPage() {
                 id="pathway-heading"
                 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl"
               >
-                A course is only the beginning.
+                {t('pathway.title')}
               </h2>
               <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground sm:text-base">
-                BlihOps Skills is designed around a clear progression from
-                learning to verified, opportunity-ready ability.
+                {t('pathway.description')}
               </p>
             </div>
 
             <ol className="border-t border-border lg:col-span-8">
-              {pathway.map((step) => (
+              {pathwayKeys.map((key, index) => (
                 <li
-                  key={step.number}
+                  key={key}
                   className="grid gap-4 border-b border-border py-7 sm:grid-cols-[3rem_minmax(0,1fr)] sm:px-5"
                 >
                   <span className="font-mono text-[11px] tracking-widest text-primary">
-                    {step.number}
+                    {String(index + 1).padStart(2, '0')}
                   </span>
                   <div>
                     <h3 className="font-heading text-2xl font-semibold tracking-tight">
-                      {step.title}
+                      {t(`pathway.steps.${key}.title`)}
                     </h3>
                     <p className="mt-2 max-w-lg text-sm leading-relaxed text-muted-foreground">
-                      {step.description}
+                      {t(`pathway.steps.${key}.description`)}
                     </p>
                   </div>
                 </li>

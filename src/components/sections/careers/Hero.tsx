@@ -2,6 +2,7 @@
 
 import { useRef } from 'react';
 import type { Variants } from 'motion/react';
+import { useTranslations } from 'next-intl';
 
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
 import { HeroBackdrop } from '@/components/sections/shared/HeroBackdrop';
@@ -26,6 +27,7 @@ const heroMotionVariants: Variants = {
 
 export function CareersHero() {
   const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations('CareersPage.hero');
 
   return (
     <section
@@ -47,7 +49,7 @@ export function CareersHero() {
             <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-75" />
             <span className="relative inline-flex size-2 rounded-full bg-primary" />
           </span>
-          Careers at BlihOps
+          {t('eyebrow')}
         </TimelineAnimation>
 
         <TimelineAnimation
@@ -59,7 +61,7 @@ export function CareersHero() {
           customVariants={heroMotionVariants}
           className="max-w-3xl text-center font-heading text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl"
         >
-          Build work that matters. Grow with people who care.
+          {t('title')}
         </TimelineAnimation>
 
         <TimelineAnimation
@@ -70,8 +72,7 @@ export function CareersHero() {
           customVariants={heroMotionVariants}
           className="mx-auto max-w-2xl text-center text-base leading-relaxed text-muted-foreground sm:text-lg"
         >
-          Join us in Addis Ababa to build dependable operations, useful
-          technology, and better outcomes for teams around the world.
+          {t('description')}
         </TimelineAnimation>
       </div>
     </section>

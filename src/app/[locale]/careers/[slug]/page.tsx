@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import { CareerDetail } from '@/components/sections/careers/CareerDetail';
 import { careerRoles, getCareerRoleBySlug } from '@/content/careers';
 
 type CareerPageProps = {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 };
 
 export function generateStaticParams() {
@@ -24,17 +24,19 @@ export async function generateMetadata({
   return {
     title: `${role.title} - Careers`,
     description: role.summary,
-    alternates: { canonical: `/careers/${role.slug}` },
+    alternates: { canonical: `/en/careers/${role.slug}` },
     openGraph: {
       title: `${role.title} at BlihOps`,
       description: role.summary,
-      url: `/careers/${role.slug}`,
+      url: `/en/careers/${role.slug}`,
     },
   };
 }
 
 export default async function CareerDetailPage({ params }: CareerPageProps) {
-  const { slug } = await params;
+  const { locale, slug } = await params;
+  if (locale !== 'en') redirect(`/en/careers/${slug}`);
+
   const role = getCareerRoleBySlug(slug);
 
   if (!role) notFound();

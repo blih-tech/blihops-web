@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import {
@@ -20,7 +20,7 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
   const insight = getInsightBySlug(slug);
@@ -31,14 +31,14 @@ export async function generateMetadata({
     title: insight.title,
     description: insight.excerpt,
     authors: [{ name: insight.author }],
-    alternates: { canonical: `/insights/${insight.slug}` },
+    alternates: { canonical: `/en/insights/${insight.slug}` },
     openGraph: {
       title: `${insight.title} | BlihOps`,
       description: insight.excerpt,
       type: 'article',
       publishedTime: insight.publishedAt,
       authors: [insight.author],
-      url: `https://blihops.com/insights/${insight.slug}`,
+      url: `https://blihops.com/en/insights/${insight.slug}`,
       images: [{ url: insight.heroImage }],
     },
     twitter: {
@@ -53,9 +53,11 @@ export async function generateMetadata({
 export default async function InsightDetailPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { slug } = await params;
+  const { locale, slug } = await params;
+  if (locale !== 'en') redirect(`/en/insights/${slug}`);
+
   const insight = getInsightBySlug(slug);
   if (!insight) notFound();
 

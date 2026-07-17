@@ -6,6 +6,7 @@ import {
   ShieldCheckIcon,
 } from 'lucide-react';
 import * as motion from 'motion/react-client';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import { HeroBackdrop } from '@/components/sections/shared/HeroBackdrop';
@@ -34,34 +35,30 @@ function heroReveal(delay: number) {
 
 export const generateMetadata = createGenerateMetadata('talent', '/talent');
 
-const matchingSteps = [
-  {
-    number: '01',
-    title: 'Build your profile',
-    description:
-      'Show your skills, interests, availability, and preferred work.',
-  },
-  {
-    number: '02',
-    title: 'Verify your ability',
-    description:
-      'Connect completed assessments and practical evidence to your profile.',
-  },
-  {
-    number: '03',
-    title: 'Enter the pool',
-    description:
-      'Become discoverable for roles that fit your verified capabilities.',
-  },
-  {
-    number: '04',
-    title: 'Hear when there is a match',
-    description:
-      'BlihOps reaches out when your profile aligns with real demand.',
-  },
+const matchingStepKeys = [
+  'buildProfile',
+  'verifyAbility',
+  'enterPool',
+  'hearAboutMatch',
 ] as const;
+const principleKeys = ['verified', 'visible', 'relevant'] as const;
+const opportunityMessageKeys = {
+  'customer-support-specialist': 'customerSupportSpecialist',
+  'back-office-associate': 'backOfficeAssociate',
+  'junior-qa-analyst': 'juniorQaAnalyst',
+  'ai-automation-assistant': 'aiAutomationAssistant',
+} as const;
 
-export default function TalentPage() {
+export default async function TalentPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const t = await getTranslations('TalentPage');
+  const sampleSkills = t.raw('sampleMatch.skills') as string[];
+
   return (
     <main className="min-h-screen bg-background text-foreground">
       <SectionWrapper>
@@ -79,7 +76,7 @@ export default function TalentPage() {
                 <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-75" />
                 <span className="relative inline-flex size-2 rounded-full bg-primary" />
               </span>
-              BlihOps Talent
+              {t('hero.eyebrow')}
             </motion.div>
 
             <motion.h1
@@ -87,14 +84,13 @@ export default function TalentPage() {
               id="talent-heading"
               className="mt-5 max-w-3xl font-heading text-4xl font-semibold tracking-tight text-balance sm:text-5xl lg:text-6xl"
             >
-              Turn proven skills into real opportunity.
+              {t('hero.title')}
             </motion.h1>
             <motion.p
               {...heroReveal(0.24)}
               className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg"
             >
-              Build a verified profile and become visible when your abilities
-              match real work.
+              {t('hero.description')}
             </motion.p>
 
             <motion.div
@@ -108,7 +104,7 @@ export default function TalentPage() {
                   'group/cta bg-primary hover:bg-primary',
                 )}
               >
-                Explore opportunities
+                {t('hero.exploreOpportunities')}
                 <ArrowRightIcon className="transition-transform group-hover/cta:translate-x-0.5" />
               </Link>
               <a
@@ -118,7 +114,7 @@ export default function TalentPage() {
                   'h-10 border-border bg-background px-4 text-foreground hover:bg-muted hover:text-foreground',
                 )}
               >
-                Visit Talent platform
+                {t('hero.visitPlatform')}
               </a>
             </motion.div>
           </div>
@@ -130,9 +126,11 @@ export default function TalentPage() {
             <div className="flex items-center justify-between gap-4 border-b border-border px-5 py-4 sm:px-7">
               <div>
                 <p className="font-mono text-[10px] font-medium tracking-widest text-muted-foreground uppercase">
-                  Sample talent match
+                  {t('sampleMatch.eyebrow')}
                 </p>
-                <p className="mt-1 text-sm font-medium">Support operations</p>
+                <p className="mt-1 text-sm font-medium">
+                  {t('sampleMatch.area')}
+                </p>
               </div>
               <span className="font-mono text-[10px] tracking-wider text-primary uppercase">
                 MATCH-042
@@ -144,13 +142,13 @@ export default function TalentPage() {
                 <div className="flex items-start justify-between gap-5">
                   <div>
                     <p className="font-mono text-[10px] tracking-widest text-muted-foreground uppercase">
-                      Verified profile
+                      {t('sampleMatch.profileLabel')}
                     </p>
                     <h2 className="mt-3 font-heading text-2xl font-semibold tracking-tight">
-                      Candidate 024
+                      {t('sampleMatch.candidate')} 024
                     </h2>
                     <p className="mt-1 text-sm text-muted-foreground">
-                      Customer support pathway
+                      {t('sampleMatch.pathway')}
                     </p>
                   </div>
                   <span className="flex size-9 items-center justify-center rounded-md border border-primary/25 bg-accent text-primary">
@@ -158,11 +156,7 @@ export default function TalentPage() {
                   </span>
                 </div>
                 <ul className="mt-6 divide-y divide-border border-y border-border">
-                  {[
-                    'Written communication',
-                    'Ticket handling',
-                    'Quality routines',
-                  ].map((skill) => (
+                  {sampleSkills.map((skill) => (
                     <li
                       key={skill}
                       className="flex items-center gap-3 py-3 text-sm"
@@ -185,28 +179,41 @@ export default function TalentPage() {
 
               <div className="p-6 sm:p-8">
                 <p className="font-mono text-[10px] tracking-widest text-muted-foreground uppercase">
-                  Matching opportunity
+                  {t('sampleMatch.opportunityLabel')}
                 </p>
                 <h2 className="mt-3 font-heading text-2xl font-semibold tracking-tight">
-                  Customer Support Specialist
+                  {t('sampleMatch.opportunityTitle')}
                 </h2>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  A role requiring clear written support, reliable escalation,
-                  and consistent customer-care standards.
+                  {t('sampleMatch.opportunityDescription')}
                 </p>
                 <dl className="mt-6 grid grid-cols-2 gap-px bg-border">
-                  <MatchDetail label="Skill fit" value="Strong" />
-                  <MatchDetail label="Availability" value="Aligned" />
+                  <MatchDetail
+                    label={t('sampleMatch.details.skillFit.label')}
+                    value={t('sampleMatch.details.skillFit.value')}
+                  />
+                  <MatchDetail
+                    label={t('sampleMatch.details.availability.label')}
+                    value={t('sampleMatch.details.availability.value')}
+                  />
                 </dl>
               </div>
             </div>
 
             <dl className="grid gap-px border-t border-border bg-border sm:grid-cols-3">
-              <MatchDetail label="Profile status" value="Verified" muted />
-              <MatchDetail label="Preferred work" value="Remote-ready" muted />
               <MatchDetail
-                label="Pool status"
-                value="Available for matching"
+                label={t('sampleMatch.details.profileStatus.label')}
+                value={t('sampleMatch.details.profileStatus.value')}
+                muted
+              />
+              <MatchDetail
+                label={t('sampleMatch.details.preferredWork.label')}
+                value={t('sampleMatch.details.preferredWork.value')}
+                muted
+              />
+              <MatchDetail
+                label={t('sampleMatch.details.poolStatus.label')}
+                value={t('sampleMatch.details.poolStatus.value')}
                 muted
               />
             </dl>
@@ -217,15 +224,13 @@ export default function TalentPage() {
           {...sectionReveal}
           className="grid gap-px border-b border-border bg-border sm:grid-cols-3"
         >
-          {[
-            ['Verified', 'Skills backed by evidence'],
-            ['Visible', 'Profiles ready for matching'],
-            ['Relevant', 'Contact when there is a fit'],
-          ].map(([title, description]) => (
-            <div key={title} className="bg-background px-5 py-6 sm:px-6">
-              <p className="font-heading text-xl font-semibold">{title}</p>
+          {principleKeys.map((key) => (
+            <div key={key} className="bg-background px-5 py-6 sm:px-6">
+              <p className="font-heading text-xl font-semibold">
+                {t(`principles.${key}.title`)}
+              </p>
               <p className="mt-1 text-sm text-muted-foreground">
-                {description}
+                {t(`principles.${key}.description`)}
               </p>
             </div>
           ))}
@@ -240,23 +245,30 @@ export default function TalentPage() {
           <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-16">
             <div className="lg:sticky lg:top-24 lg:col-span-4">
               <p className="font-mono text-[11px] font-medium tracking-widest text-primary uppercase">
-                Preview opportunities
+                {t('opportunities.eyebrow')}
               </p>
               <h2
                 id="opportunities-heading"
                 className="mt-3 font-heading text-3xl font-semibold tracking-tight sm:text-4xl"
               >
-                See where your skills could fit.
+                {t('opportunities.title')}
               </h2>
               <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground sm:text-base">
-                These representative pathways show the kinds of work the talent
-                pool may support as demand becomes available.
+                {t('opportunities.description')}
               </p>
             </div>
 
             <div className="border-t border-border lg:col-span-8">
               {talentOpportunities.map((opportunity, index) => {
                 const Icon = opportunity.icon;
+                const key =
+                  opportunityMessageKeys[
+                    opportunity.id as keyof typeof opportunityMessageKeys
+                  ];
+                const title = t(`opportunities.items.${key}.title`);
+                const skills = t.raw(
+                  `opportunities.items.${key}.skills`,
+                ) as string[];
 
                 return (
                   <motion.a
@@ -271,7 +283,7 @@ export default function TalentPage() {
                     key={opportunity.id}
                     href={talentPlatformUrl}
                     className="group block border-b border-border py-7 transition-colors hover:bg-muted/50 focus-visible:bg-muted/50 focus-visible:outline-none sm:px-5"
-                    aria-label={`Explore ${opportunity.title} on BlihOps Talent`}
+                    aria-label={t('opportunities.exploreAriaLabel', { title })}
                   >
                     <div className="grid gap-5 sm:grid-cols-[2.5rem_minmax(0,1fr)_auto]">
                       <span className="flex size-10 items-center justify-center rounded-md border border-border bg-muted text-primary transition-colors group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground">
@@ -283,13 +295,13 @@ export default function TalentPage() {
                       </span>
                       <div>
                         <p className="text-xs font-medium tracking-wide text-primary uppercase">
-                          {opportunity.area}
+                          {t(`opportunities.items.${key}.area`)}
                         </p>
                         <h3 className="mt-2 font-heading text-2xl font-semibold tracking-tight sm:text-3xl">
-                          {opportunity.title}
+                          {title}
                         </h3>
                         <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">
-                          {opportunity.description}
+                          {t(`opportunities.items.${key}.description`)}
                         </p>
                         <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-xs font-medium text-muted-foreground">
                           <span className="inline-flex items-center gap-1.5">
@@ -297,13 +309,17 @@ export default function TalentPage() {
                               className="size-3.5"
                               aria-hidden="true"
                             />
-                            {opportunity.location}
+                            {t(`opportunities.items.${key}.location`)}
                           </span>
-                          <span>{opportunity.workMode}</span>
-                          <span>{opportunity.commitment}</span>
+                          <span>
+                            {t(`opportunities.items.${key}.workMode`)}
+                          </span>
+                          <span>
+                            {t(`opportunities.items.${key}.commitment`)}
+                          </span>
                         </div>
                         <div className="mt-5 flex flex-wrap gap-2">
-                          {opportunity.skills.map((skill) => (
+                          {skills.map((skill) => (
                             <span
                               key={skill}
                               className="rounded-full border border-border bg-background px-2.5 py-1 text-[11px] text-muted-foreground"
@@ -334,25 +350,24 @@ export default function TalentPage() {
               id="matching-heading"
               className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl"
             >
-              A clear path into the pool.
+              {t('matching.title')}
             </h2>
             <p className="mt-4 max-w-xl text-sm leading-relaxed text-muted-foreground sm:text-base">
-              Your profile becomes useful when evidence, availability, and real
-              opportunity demand come together.
+              {t('matching.description')}
             </p>
           </div>
 
           <ol className="mt-12 grid gap-px border border-border bg-border md:grid-cols-2 lg:grid-cols-4">
-            {matchingSteps.map((step) => (
-              <li key={step.number} className="bg-background p-6 sm:p-7">
+            {matchingStepKeys.map((key, index) => (
+              <li key={key} className="bg-background p-6 sm:p-7">
                 <span className="font-mono text-[11px] tracking-widest text-primary">
-                  {step.number}
+                  {String(index + 1).padStart(2, '0')}
                 </span>
                 <h3 className="mt-8 font-heading text-xl font-semibold tracking-tight">
-                  {step.title}
+                  {t(`matching.steps.${key}.title`)}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-                  {step.description}
+                  {t(`matching.steps.${key}.description`)}
                 </p>
               </li>
             ))}
