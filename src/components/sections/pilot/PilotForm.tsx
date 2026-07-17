@@ -4,10 +4,11 @@ import { useEffect, useRef, useState } from 'react';
 import { standardSchemaResolver } from '@hookform/resolvers/standard-schema';
 import { ArrowRightIcon, CheckCircle2Icon, RotateCcwIcon } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
+import { useTranslations } from 'next-intl';
 import { useForm } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
-import { pilotFormSchema, type PilotFormValues } from '@/lib/forms/pilot';
+import { createPilotFormSchema, type PilotFormValues } from '@/lib/forms/pilot';
 
 const inputClassName =
   'h-12 w-full rounded-none border-0 border-b border-border bg-transparent px-0 text-base text-foreground outline-none transition-[border-color,background-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] placeholder:text-muted-foreground/70 focus-visible:border-primary focus-visible:bg-muted/40 aria-invalid:border-destructive sm:text-sm';
@@ -16,33 +17,49 @@ const textareaClassName =
   'min-h-32 w-full resize-y rounded-none border-0 border-b border-border bg-transparent px-0 py-3 text-base leading-relaxed text-foreground outline-none transition-[border-color,background-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] placeholder:text-muted-foreground/70 focus-visible:border-primary focus-visible:bg-muted/40 aria-invalid:border-destructive sm:text-sm';
 
 const serviceOptions = [
-  'Customer support',
-  'Back-office operations',
-  'Data processing',
-  'IT and software support',
-  'AI and workflow automation',
-  'Not sure yet',
+  { value: 'Customer support', key: 'customerSupport' },
+  { value: 'Back-office operations', key: 'backOffice' },
+  { value: 'Data processing', key: 'dataProcessing' },
+  { value: 'IT and software support', key: 'itSoftware' },
+  { value: 'AI and workflow automation', key: 'aiAutomation' },
+  { value: 'Not sure yet', key: 'notSure' },
 ] as const;
 
 const volumeOptions = [
-  'Under 100 tasks per month',
-  '100–500 tasks per month',
-  '500–2,000 tasks per month',
-  'More than 2,000 tasks per month',
-  'It varies or is not measured yet',
+  { value: 'Under 100 tasks per month', key: 'underHundred' },
+  { value: '100–500 tasks per month', key: 'hundredToFiveHundred' },
+  { value: '500–2,000 tasks per month', key: 'fiveHundredToTwoThousand' },
+  { value: 'More than 2,000 tasks per month', key: 'overTwoThousand' },
+  { value: 'It varies or is not measured yet', key: 'unknown' },
 ] as const;
 
 const timelineOptions = [
-  'As soon as possible',
-  'Within 30 days',
-  'Within 1–3 months',
-  'Just exploring for now',
+  { value: 'As soon as possible', key: 'asap' },
+  { value: 'Within 30 days', key: 'withinThirtyDays' },
+  { value: 'Within 1–3 months', key: 'oneToThreeMonths' },
+  { value: 'Just exploring for now', key: 'exploring' },
 ] as const;
 
 export function PilotForm() {
+  const t = useTranslations('PilotPage.form');
+  const tForms = useTranslations('Shared.forms');
   const [submitted, setSubmitted] = useState(false);
   const successRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
+  const pilotFormSchema = createPilotFormSchema({
+    fullNameRequired: tForms('validation.fullNameRequired'),
+    fullNameMax: tForms('validation.fullNameMax'),
+    emailInvalid: t('validation.emailInvalid'),
+    emailMax: tForms('validation.emailMax'),
+    companyRequired: t('validation.companyRequired'),
+    companyMax: tForms('validation.companyMax'),
+    serviceRequired: t('validation.serviceRequired'),
+    challengeRequired: t('validation.challengeRequired'),
+    challengeMax: t('validation.challengeMax'),
+    volumeRequired: t('validation.volumeRequired'),
+    timelineRequired: t('validation.timelineRequired'),
+    contextMax: t('validation.contextMax'),
+  });
   const {
     register,
     handleSubmit,
@@ -97,11 +114,11 @@ export function PilotForm() {
         <div>
           <div className="mb-16 flex items-center justify-between border-b border-border/80 pb-4">
             <span className="font-mono text-[10px] tracking-[0.16em] text-muted-foreground uppercase">
-              Pilot intake
+              {t('label')}
             </span>
             <span className="inline-flex items-center gap-2 font-mono text-[10px] tracking-wider text-primary uppercase">
               <span className="size-1.5 rounded-full bg-primary" />
-              Received
+              {tForms('received')}
             </span>
           </div>
 
@@ -111,17 +128,16 @@ export function PilotForm() {
             aria-hidden="true"
           />
           <h2 className="mt-8 max-w-lg font-heading text-4xl leading-[1.02] font-semibold tracking-[-0.035em] text-foreground sm:text-5xl">
-            Your pilot request is in.
+            {t('success.title')}
           </h2>
           <p className="mt-6 max-w-md text-base leading-7 text-muted-foreground">
-            We will review your workflow and contact you within one business day
-            to clarify the scope and success measures.
+            {t('success.description')}
           </p>
         </div>
 
         <div className="mt-12 border-t border-border pt-6">
           <p className="mb-4 text-sm text-muted-foreground">
-            Need to submit a different workflow?
+            {t('success.anotherPrompt')}
           </p>
           <Button
             type="button"
@@ -131,7 +147,7 @@ export function PilotForm() {
             onClick={startAnotherRequest}
           >
             <RotateCcwIcon data-icon="inline-start" aria-hidden="true" />
-            Start another request
+            {t('success.startAnother')}
           </Button>
         </div>
       </motion.div>
@@ -149,20 +165,19 @@ export function PilotForm() {
     >
       <div className="flex items-center justify-between border-y border-border/80 py-3">
         <span className="font-mono text-[10px] tracking-[0.16em] text-muted-foreground uppercase">
-          Pilot intake
+          {t('label')}
         </span>
         <span className="font-mono text-[10px] tracking-wider text-muted-foreground uppercase">
-          Approx. 04 min
+          {t('duration', { minutes: 4 })}
         </span>
       </div>
 
       <div className="border-b border-border/80 py-10 sm:py-12">
         <h2 className="max-w-lg font-heading text-3xl leading-[1.05] font-semibold tracking-[-0.03em] text-foreground sm:text-4xl">
-          Tell us where the work gets stuck.
+          {t('title')}
         </h2>
         <p className="mt-4 max-w-lg text-sm leading-6 text-muted-foreground sm:text-base sm:leading-7">
-          Enough detail to understand the workflow, without turning this into a
-          procurement exercise.
+          {t('description')}
         </p>
       </div>
 
@@ -175,7 +190,7 @@ export function PilotForm() {
         <fieldset className="space-y-8">
           <legend className="mb-8 flex items-center gap-4 font-mono text-[10px] tracking-[0.16em] text-muted-foreground uppercase">
             <span className="text-primary">01</span>
-            Your details
+            {t('sections.details')}
           </legend>
 
           <div className="grid gap-8 sm:grid-cols-2">
@@ -184,13 +199,14 @@ export function PilotForm() {
                 className="text-sm font-medium text-foreground"
                 htmlFor="fullName"
               >
-                Full name <span className="text-destructive">*</span>
+                {tForms('fields.fullName.label')}{' '}
+                <span className="text-destructive">*</span>
               </label>
               <input
                 id="fullName"
                 type="text"
                 autoComplete="name"
-                placeholder="Your name"
+                placeholder={tForms('fields.fullName.placeholder')}
                 required
                 aria-invalid={Boolean(errors.fullName)}
                 aria-describedby={
@@ -215,14 +231,15 @@ export function PilotForm() {
                 className="text-sm font-medium text-foreground"
                 htmlFor="workEmail"
               >
-                Work email <span className="text-destructive">*</span>
+                {tForms('fields.workEmail.label')}{' '}
+                <span className="text-destructive">*</span>
               </label>
               <input
                 id="workEmail"
                 type="email"
                 autoComplete="email"
                 inputMode="email"
-                placeholder="you@company.com"
+                placeholder={tForms('fields.workEmail.placeholder')}
                 required
                 aria-invalid={Boolean(errors.workEmail)}
                 aria-describedby={
@@ -248,13 +265,14 @@ export function PilotForm() {
               className="text-sm font-medium text-foreground"
               htmlFor="company"
             >
-              Company <span className="text-destructive">*</span>
+              {tForms('fields.company.label')}{' '}
+              <span className="text-destructive">*</span>
             </label>
             <input
               id="company"
               type="text"
               autoComplete="organization"
-              placeholder="Company name"
+              placeholder={tForms('fields.company.placeholder')}
               required
               aria-invalid={Boolean(errors.company)}
               aria-describedby={errors.company ? 'company-error' : undefined}
@@ -276,7 +294,7 @@ export function PilotForm() {
         <fieldset className="space-y-8 border-t border-border/80 pt-12">
           <legend className="mb-8 flex items-center gap-4 font-mono text-[10px] tracking-[0.16em] text-muted-foreground uppercase">
             <span className="text-primary">02</span>
-            Pilot scope
+            {t('sections.scope')}
           </legend>
 
           <div className="space-y-2">
@@ -284,7 +302,7 @@ export function PilotForm() {
               className="text-sm font-medium text-foreground"
               htmlFor="service"
             >
-              What do you need help with?{' '}
+              {t('fields.service.label')}{' '}
               <span className="text-destructive">*</span>
             </label>
             <select
@@ -295,10 +313,10 @@ export function PilotForm() {
               required
               {...register('service')}
             >
-              <option value="">Select a service</option>
+              <option value="">{t('fields.service.placeholder')}</option>
               {serviceOptions.map((option) => (
-                <option key={option} value={option}>
-                  {option}
+                <option key={option.value} value={option.value}>
+                  {t(`fields.service.options.${option.key}`)}
                 </option>
               ))}
             </select>
@@ -318,13 +336,13 @@ export function PilotForm() {
               className="text-sm font-medium text-foreground"
               htmlFor="challenge"
             >
-              What is slowing your operation down?{' '}
+              {t('fields.challenge.label')}{' '}
               <span className="text-destructive">*</span>
             </label>
             <textarea
               id="challenge"
               rows={4}
-              placeholder="Describe the workflow, bottleneck, or outcome you want to improve."
+              placeholder={t('fields.challenge.placeholder')}
               aria-invalid={Boolean(errors.challenge)}
               aria-describedby={
                 errors.challenge ? 'challenge-error' : 'challenge-help'
@@ -343,8 +361,7 @@ export function PilotForm() {
               </p>
             ) : (
               <p id="challenge-help" className="text-xs text-muted-foreground">
-                A few sentences are enough. Do not include sensitive customer
-                data.
+                {t('fields.challenge.help')}
               </p>
             )}
           </div>
@@ -355,7 +372,8 @@ export function PilotForm() {
                 className="text-sm font-medium text-foreground"
                 htmlFor="volume"
               >
-                Approximate workload <span className="text-destructive">*</span>
+                {t('fields.volume.label')}{' '}
+                <span className="text-destructive">*</span>
               </label>
               <select
                 id="volume"
@@ -365,10 +383,10 @@ export function PilotForm() {
                 required
                 {...register('volume')}
               >
-                <option value="">Select volume</option>
+                <option value="">{t('fields.volume.placeholder')}</option>
                 {volumeOptions.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
+                  <option key={option.value} value={option.value}>
+                    {t(`fields.volume.options.${option.key}`)}
                   </option>
                 ))}
               </select>
@@ -388,7 +406,8 @@ export function PilotForm() {
                 className="text-sm font-medium text-foreground"
                 htmlFor="timeline"
               >
-                Preferred start <span className="text-destructive">*</span>
+                {t('fields.timeline.label')}{' '}
+                <span className="text-destructive">*</span>
               </label>
               <select
                 id="timeline"
@@ -400,10 +419,10 @@ export function PilotForm() {
                 required
                 {...register('timeline')}
               >
-                <option value="">Select timing</option>
+                <option value="">{t('fields.timeline.placeholder')}</option>
                 {timelineOptions.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
+                  <option key={option.value} value={option.value}>
+                    {t(`fields.timeline.options.${option.key}`)}
                   </option>
                 ))}
               </select>
@@ -424,15 +443,15 @@ export function PilotForm() {
               className="text-sm font-medium text-foreground"
               htmlFor="context"
             >
-              Anything else we should know?{' '}
+              {t('fields.context.label')}{' '}
               <span className="font-normal text-muted-foreground">
-                (optional)
+                ({tForms('optional')})
               </span>
             </label>
             <textarea
               id="context"
               rows={3}
-              placeholder="Existing tools, coverage hours, languages, or constraints."
+              placeholder={t('fields.context.placeholder')}
               aria-invalid={Boolean(errors.context)}
               aria-describedby={errors.context ? 'context-error' : undefined}
               className={textareaClassName}
@@ -456,12 +475,11 @@ export function PilotForm() {
             size="lg"
             className="h-12 w-full justify-between rounded-none px-5"
           >
-            Request your pilot
+            {t('submit')}
             <ArrowRightIcon data-icon="inline-end" aria-hidden="true" />
           </Button>
           <p className="mt-3 text-center text-xs leading-relaxed text-muted-foreground">
-            By submitting, you agree that BlihOps may contact you about this
-            request.
+            {t('consent')}
           </p>
         </div>
       </form>
