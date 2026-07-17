@@ -4,11 +4,11 @@ import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import { Link, usePathname } from '@/i18n/navigation';
 import {
   ArrowRight,
-  Building2,
   ChevronDown,
   Lightbulb,
   Menu,
   Newspaper,
+  Users,
   X,
 } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
@@ -77,7 +77,7 @@ export function Header() {
       text: t('aboutMenu.whoWeAre.label'),
       shortDescription: t('aboutMenu.whoWeAre.description'),
       href: '/who-we-are',
-      icon: Building2,
+      icon: Users,
       preview: <AboutUsMegaMenu />,
     },
     {
@@ -278,11 +278,6 @@ export function Header() {
 
         <div className="flex items-center gap-2">
           <LocaleSwitcher />
-          <BookCallButton
-            calLink="blih-marketing-fzifjy/blih-ops-desicovery-call"
-            namespace="blih-ops-desicovery-call"
-            className="hidden h-8 rounded-md border border-border bg-background px-3 text-foreground hover:bg-muted hover:text-foreground xl:inline-flex"
-          />
           <Link
             href="/pilot"
             className={cn(
