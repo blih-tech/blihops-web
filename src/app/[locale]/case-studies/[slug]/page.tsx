@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import {
@@ -20,7 +20,7 @@ export function generateStaticParams() {
 export function generateMetadata({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
   return params.then(({ slug }) => {
     const study = getCaseStudyBySlug(slug);
@@ -31,13 +31,13 @@ export function generateMetadata({
     return {
       title: study.title,
       description: study.excerpt,
-      alternates: { canonical: `/case-studies/${study.slug}` },
+      alternates: { canonical: `/en/case-studies/${study.slug}` },
       openGraph: {
         title: `${study.title} | BlihOps`,
         description: study.excerpt,
         type: 'article',
         publishedTime: study.publishedAt,
-        url: `https://blihops.com/case-studies/${study.slug}`,
+        url: `https://blihops.com/en/case-studies/${study.slug}`,
         images: [{ url: study.heroImage }],
       },
       twitter: {
@@ -53,9 +53,11 @@ export function generateMetadata({
 export default async function CaseStudyDetailPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: Promise<{ locale: string; slug: string }>;
 }) {
-  const { slug } = await params;
+  const { locale, slug } = await params;
+  if (locale !== 'en') redirect(`/en/case-studies/${slug}`);
+
   const study = getCaseStudyBySlug(slug);
   if (!study) notFound();
 
