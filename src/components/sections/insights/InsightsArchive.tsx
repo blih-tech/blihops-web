@@ -10,6 +10,7 @@ import {
   motion,
   type Variants,
 } from 'motion/react';
+import { useFormatter, useTranslations } from 'next-intl';
 
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
 import { insightCategoryNames, type Insight } from '@/content/insights';
@@ -20,6 +21,30 @@ type InsightsArchiveProps = {
 };
 
 const ALL_CATEGORIES = 'All';
+
+const ARTICLE_KEYS_BY_SLUG = {
+  'designing-an-outsourcing-pilot-that-proves-value':
+    'designingOutsourcingPilot',
+  'what-to-automate-first-in-back-office-operations': 'whatToAutomateFirst',
+  'slas-need-an-operating-cadence': 'slasNeedOperatingCadence',
+  'human-in-the-loop-is-an-operating-model': 'humanInTheLoop',
+  'building-a-quality-scorecard-people-can-use': 'qualityScorecard',
+  'operational-reporting-people-actually-use': 'operationalReporting',
+  'how-an-embedded-pod-joins-a-product-team': 'embeddedPod',
+  'from-shared-inbox-to-controlled-queue': 'sharedInboxToQueue',
+} as const;
+
+const CATEGORY_KEYS = {
+  'Operations Design': 'operationsDesign',
+  'AI & Automation': 'aiAutomation',
+  'Customer Experience': 'customerExperience',
+  'Data & Reporting': 'dataReporting',
+  'Team & Delivery': 'teamDelivery',
+} as const;
+
+type LocalizedInsight = Insight & {
+  categoryLabel: string;
+};
 
 const archiveIntroVariants: Variants = {
   visible: {
@@ -65,28 +90,40 @@ const cardVariants: Variants = {
   },
 };
 
-function formatDate(iso: string): string {
-  return new Intl.DateTimeFormat('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-  }).format(new Date(`${iso}T00:00:00`));
-}
-
 export function InsightsArchive({ insights }: InsightsArchiveProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const [activeCategory, setActiveCategory] = useState(ALL_CATEGORIES);
+  const tArchive = useTranslations('InsightsPage.archive');
+  const tCategories = useTranslations('InsightsPage.categories');
+  const tArticles = useTranslations('InsightsPage.articles');
+  const tInsights = useTranslations('InsightsPage');
+
+  const localizedInsights: LocalizedInsight[] = insights.map((insight) => {
+    const articleKey =
+      ARTICLE_KEYS_BY_SLUG[insight.slug as keyof typeof ARTICLE_KEYS_BY_SLUG];
+
+    return {
+      ...insight,
+      title: tArticles(`${articleKey}.title`),
+      excerpt: tArticles(`${articleKey}.excerpt`),
+      categoryLabel: tCategories(CATEGORY_KEYS[insight.category]),
+      author: tInsights('author'),
+      readTime: tArticles(`${articleKey}.readTime`),
+    };
+  });
 
   const visibleInsights =
     activeCategory === ALL_CATEGORIES
-      ? insights
-      : insights.filter((insight) => insight.category === activeCategory);
+      ? localizedInsights
+      : localizedInsights.filter(
+          (insight) => insight.category === activeCategory,
+        );
 
   return (
     <section
       ref={sectionRef}
       className="grid items-start lg:grid-cols-[13.5rem_minmax(0,1fr)]"
-      aria-label="Insight archive"
+      aria-label={tArchive('ariaLabel')}
     >
       <aside className="border-b border-border py-5 lg:sticky lg:top-20 lg:border-r lg:border-b-0 lg:py-7 lg:pr-7">
         <TimelineAnimation
@@ -96,11 +133,11 @@ export function InsightsArchive({ insights }: InsightsArchiveProps) {
           customVariants={archiveIntroVariants}
         >
           <p className="mb-4 font-sans text-[10px] font-medium tracking-widest text-muted-foreground uppercase lg:mb-5">
-            Filter by category
+            {tArchive('filterLabel')}
           </p>
           <div
             className="flex gap-2 overflow-x-auto pb-1 lg:flex-col lg:gap-0 lg:overflow-visible lg:pb-0"
-            aria-label="Filter insights by category"
+            aria-label={tArchive('filterAriaLabel')}
           >
             {[ALL_CATEGORIES, ...insightCategoryNames].map((category) => {
               const isActive = activeCategory === category;
@@ -124,21 +161,27 @@ export function InsightsArchive({ insights }: InsightsArchiveProps) {
                       aria-hidden
                     />
                   ) : null}
-                  <span className="relative z-10 lg:pl-1">{category}</span>
+                  <span className="relative z-10 lg:pl-1">
+                    {category === ALL_CATEGORIES
+                      ? tArchive('all')
+                      : tCategories(
+                          CATEGORY_KEYS[category as keyof typeof CATEGORY_KEYS],
+                        )}
+                  </span>
                 </button>
               );
             })}
           </div>
 
           <p className="mt-6 hidden font-mono text-[10px] text-muted-foreground lg:block">
-            {String(visibleInsights.length).padStart(2, '0')} articles
+            {tArchive('count', { count: visibleInsights.length })}
           </p>
         </TimelineAnimation>
       </aside>
 
       <div className="lg:pl-0">
         <p className="border-b border-border py-4 font-mono text-[10px] text-muted-foreground lg:hidden">
-          {String(visibleInsights.length).padStart(2, '0')} articles
+          {tArchive('count', { count: visibleInsights.length })}
         </p>
 
         <LayoutGroup>
@@ -168,6 +211,17 @@ export function InsightsArchive({ insights }: InsightsArchiveProps) {
                   <InsightCard insight={insight} />
                 </motion.div>
               ))}
+              {visibleInsights.length === 0 ? (
+                <motion.p
+                  key="empty"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="col-span-full bg-background p-8 font-sans text-sm text-muted-foreground"
+                >
+                  {tArchive('empty')}
+                </motion.p>
+              ) : null}
             </AnimatePresence>
           </motion.div>
         </LayoutGroup>
@@ -176,12 +230,15 @@ export function InsightsArchive({ insights }: InsightsArchiveProps) {
   );
 }
 
-function InsightCard({ insight }: { insight: Insight }) {
+function InsightCard({ insight }: { insight: LocalizedInsight }) {
+  const format = useFormatter();
+  const t = useTranslations('InsightsPage.archive');
+
   return (
     <Link
       href={`/insights/${insight.slug}`}
       className="group flex min-h-full flex-col bg-background p-4 transition-colors duration-300 hover:bg-muted/50 sm:p-5"
-      aria-label={`Read insight: ${insight.title}`}
+      aria-label={t('readAriaLabel', { title: insight.title })}
     >
       <div className="relative aspect-video overflow-hidden rounded-md border border-border bg-muted">
         <Image
@@ -195,10 +252,15 @@ function InsightCard({ insight }: { insight: Insight }) {
 
       <article className="flex flex-1 flex-col pt-4">
         <p className="font-sans text-[11px] font-medium text-primary">
-          {insight.category}
+          {insight.categoryLabel}
           <span className="text-muted-foreground">
             {' '}
-            · {formatDate(insight.publishedAt)}
+            ·{' '}
+            {format.dateTime(new Date(`${insight.publishedAt}T00:00:00`), {
+              month: 'short',
+              day: 'numeric',
+              year: 'numeric',
+            })}
           </span>
         </p>
 
@@ -212,7 +274,7 @@ function InsightCard({ insight }: { insight: Insight }) {
 
         <div className="mt-auto flex items-end justify-between gap-5 pt-6">
           <p className="max-w-md font-sans text-xs leading-relaxed text-muted-foreground">
-            <span className="font-semibold text-primary">By:</span>{' '}
+            <span className="font-semibold text-primary">{t('byLabel')}</span>{' '}
             {insight.author} · {insight.readTime}
           </p>
           <ArrowUpRightIcon className="size-5 shrink-0 text-primary motion-safe:transition-transform motion-safe:duration-300 motion-safe:group-hover:translate-x-0.5 motion-safe:group-hover:-translate-y-0.5" />

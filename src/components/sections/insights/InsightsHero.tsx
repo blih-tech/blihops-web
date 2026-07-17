@@ -2,6 +2,7 @@
 
 import { useRef } from 'react';
 import type { Variants } from 'motion/react';
+import { useTranslations } from 'next-intl';
 
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
 
@@ -25,6 +26,7 @@ const heroVariants: Variants = {
 
 export function InsightsHero() {
   const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations('InsightsPage.hero');
 
   return (
     <section
@@ -45,7 +47,7 @@ export function InsightsHero() {
             <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-75" />
             <span className="relative inline-flex size-2 rounded-full bg-primary" />
           </span>
-          <span>Insights</span>
+          <span>{t('eyebrow')}</span>
         </TimelineAnimation>
         <TimelineAnimation
           as="h1"
@@ -56,7 +58,7 @@ export function InsightsHero() {
           id="insights-heading"
           className="mt-5 font-heading text-4xl font-semibold tracking-tight text-balance text-foreground sm:text-5xl lg:text-6xl"
         >
-          Practical thinking for better operations.
+          {t('title')}
         </TimelineAnimation>
         <TimelineAnimation
           as="p"
@@ -66,8 +68,7 @@ export function InsightsHero() {
           customVariants={heroVariants}
           className="mt-5 max-w-2xl font-sans text-base leading-relaxed text-muted-foreground sm:text-lg"
         >
-          Field notes on service design, automation, quality, reporting, and
-          delivery.
+          {t('description')}
         </TimelineAnimation>
       </div>
     </section>
