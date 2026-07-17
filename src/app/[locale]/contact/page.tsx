@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { ArrowUpRightIcon } from 'lucide-react';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { BookCallButton } from '@/components/BookCallButton';
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
@@ -9,13 +10,23 @@ import { createGenerateMetadata } from '@/i18n/metadata';
 
 export const generateMetadata = createGenerateMetadata('contact', '/contact');
 
-const contactDetails = [
-  ['Response time', 'Within one business day'],
-  ['Working region', 'Europe, Middle East and Africa'],
-  ['Delivery base', 'Addis Ababa, Ethiopia'],
-] as const;
+export default async function ContactPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
 
-export default function ContactPage() {
+  const tHero = await getTranslations('ContactPage.hero');
+  const tPilotCta = await getTranslations('ContactPage.pilotCta');
+  const tActions = await getTranslations('Shared.actions');
+  const contactDetails = [
+    [tHero('details.responseTime.term'), tHero('details.responseTime.value')],
+    [tHero('details.workingRegion.term'), tHero('details.workingRegion.value')],
+    [tHero('details.deliveryBase.term'), tHero('details.deliveryBase.value')],
+  ] as const;
+
   return (
     <main className="min-h-screen bg-background text-foreground">
       <section className="border-b border-border/80">
@@ -39,21 +50,20 @@ export default function ContactPage() {
             />
 
             <div className="flex items-center justify-between border-y border-border/80 px-5 py-3 font-mono text-[10px] tracking-[0.16em] text-muted-foreground uppercase sm:px-8">
-              <span>Contact BlihOps</span>
-              <span>New business / General enquiries</span>
+              <span>{tHero('label')}</span>
+              <span>{tHero('context')}</span>
             </div>
 
             <div className="grid lg:grid-cols-[0.88fr_1.12fr] lg:divide-x lg:divide-border/80">
               <div className="px-5 py-12 sm:px-8 md:py-16 lg:px-10 lg:py-20">
                 <p className="font-mono text-[11px] tracking-[0.12em] text-primary uppercase">
-                  Start a conversation
+                  {tHero('eyebrow')}
                 </p>
                 <h1 className="mt-7 max-w-lg font-heading text-5xl leading-[0.94] font-semibold tracking-[-0.045em] text-balance text-foreground sm:text-6xl lg:text-7xl">
-                  Tell us what needs attention.
+                  {tHero('title')}
                 </h1>
                 <p className="mt-8 max-w-md text-base leading-7 text-muted-foreground sm:text-lg">
-                  Share the operational problem, partnership idea, or question.
-                  We will connect you with the right person.
+                  {tHero('description')}
                 </p>
 
                 <a
@@ -65,13 +75,15 @@ export default function ContactPage() {
 
                 <div className="mt-8 flex flex-wrap items-center gap-4">
                   <span className="text-sm text-muted-foreground">
-                    Prefer to talk?
+                    {tHero('preferToTalk')}
                   </span>
                   <BookCallButton
                     calLink="blih-marketing-fzifjy/blih-ops-desicovery-call"
                     namespace="blih-ops-desicovery-call"
                     className="h-10 rounded-md border border-border bg-background px-4 text-foreground hover:bg-muted hover:text-foreground"
-                  />
+                  >
+                    {tActions('bookCall')}
+                  </BookCallButton>
                 </div>
 
                 <dl className="mt-12 border-t border-border/80">
@@ -93,7 +105,7 @@ export default function ContactPage() {
                   <div className="relative aspect-[16/10] overflow-hidden bg-muted">
                     <Image
                       src="/addis-image.jpg"
-                      alt="Addis Ababa skyline at night"
+                      alt={tHero('imageAlt')}
                       fill
                       className="object-cover saturate-[0.72]"
                       sizes="28rem"
@@ -101,9 +113,9 @@ export default function ContactPage() {
                     />
                   </div>
                   <figcaption className="flex items-center justify-between border-b border-border/80 py-4 text-xs text-muted-foreground">
-                    <span>Built and delivered from Addis Ababa.</span>
+                    <span>{tHero('imageCaption')}</span>
                     <span className="font-mono text-[10px] tracking-wider uppercase">
-                      UTC +3
+                      {tHero('timeZone')}
                     </span>
                   </figcaption>
                 </figure>
@@ -125,26 +137,25 @@ export default function ContactPage() {
         <div className="grid items-end gap-10 border-y border-border/80 py-10 md:grid-cols-[0.72fr_1.28fr] md:gap-20 md:py-14">
           <div>
             <p className="font-mono text-[10px] tracking-[0.16em] text-muted-foreground uppercase">
-              Looking for proof first?
+              {tPilotCta('eyebrow')}
             </p>
             <h2
               id="pilot-route"
               className="mt-5 max-w-sm font-heading text-3xl leading-[1.05] font-semibold tracking-[-0.03em] text-foreground sm:text-4xl"
             >
-              Test one workflow before you commit.
+              {tPilotCta('title')}
             </h2>
           </div>
 
           <div className="md:pb-1">
             <p className="max-w-lg text-base leading-7 text-muted-foreground">
-              The free two-week pilot gives you clear scope, measures, and
-              reporting before a longer engagement.
+              {tPilotCta('description')}
             </p>
             <Link
               href="/pilot"
               className="mt-7 inline-flex items-center gap-3 border-b border-foreground pb-1 text-sm font-medium text-foreground transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-primary hover:text-primary"
             >
-              Start a two-week pilot
+              {tPilotCta('action')}
               <ArrowUpRightIcon
                 className="size-4"
                 strokeWidth={1.5}

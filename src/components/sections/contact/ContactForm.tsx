@@ -4,10 +4,14 @@ import { useEffect, useRef, useState } from 'react';
 import { standardSchemaResolver } from '@hookform/resolvers/standard-schema';
 import { ArrowRightIcon, CheckCircle2Icon, RotateCcwIcon } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
+import { useTranslations } from 'next-intl';
 import { useForm } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
-import { contactFormSchema, type ContactFormValues } from '@/lib/forms/contact';
+import {
+  createContactSchema,
+  type ContactFormValues,
+} from '@/lib/forms/contact';
 
 const inputClassName =
   'h-12 w-full rounded-none border-0 border-b border-border bg-transparent px-0 text-base text-foreground outline-none transition-[border-color,background-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] placeholder:text-muted-foreground/70 focus-visible:border-primary focus-visible:bg-muted/40 aria-invalid:border-destructive sm:text-sm';
@@ -16,13 +20,15 @@ const textareaClassName =
   'min-h-40 w-full resize-y rounded-none border-0 border-b border-border bg-transparent px-0 py-3 text-base leading-relaxed text-foreground outline-none transition-[border-color,background-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] placeholder:text-muted-foreground/70 focus-visible:border-primary focus-visible:bg-muted/40 aria-invalid:border-destructive sm:text-sm';
 
 const topics = [
-  'Outsourcing services',
-  'AI and workflow automation',
-  'Partnership',
-  'General enquiry',
+  { value: 'Outsourcing services', key: 'outsourcing' },
+  { value: 'AI and workflow automation', key: 'automation' },
+  { value: 'Partnership', key: 'partnership' },
+  { value: 'General enquiry', key: 'general' },
 ] as const;
 
 export function ContactForm() {
+  const t = useTranslations('ContactPage.form');
+  const tForms = useTranslations('Shared.forms');
   const [submitted, setSubmitted] = useState(false);
   const successRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
@@ -32,7 +38,18 @@ export function ContactForm() {
     reset,
     formState: { errors },
   } = useForm<ContactFormValues>({
-    resolver: standardSchemaResolver(contactFormSchema),
+    resolver: standardSchemaResolver(
+      createContactSchema({
+        fullNameRequired: tForms('validation.fullNameRequired'),
+        fullNameMax: tForms('validation.fullNameMax'),
+        emailInvalid: t('validation.emailInvalid'),
+        emailMax: tForms('validation.emailMax'),
+        companyMax: tForms('validation.companyMax'),
+        topicRequired: t('validation.topicRequired'),
+        messageRequired: t('validation.messageRequired'),
+        messageMax: t('validation.messageMax'),
+      }),
+    ),
     mode: 'onBlur',
     defaultValues: {
       fullName: '',
@@ -77,11 +94,11 @@ export function ContactForm() {
         <div>
           <div className="mb-16 flex items-center justify-between border-b border-border/80 pb-4">
             <span className="font-mono text-[10px] tracking-[0.16em] text-muted-foreground uppercase">
-              Contact enquiry
+              {t('label')}
             </span>
             <span className="inline-flex items-center gap-2 font-mono text-[10px] tracking-wider text-primary uppercase">
               <span className="size-1.5 rounded-full bg-primary" />
-              Received
+              {tForms('received')}
             </span>
           </div>
 
@@ -91,10 +108,10 @@ export function ContactForm() {
             aria-hidden="true"
           />
           <h2 className="mt-8 max-w-lg font-heading text-4xl leading-[1.02] font-semibold tracking-[-0.035em] text-foreground sm:text-5xl">
-            Thanks for reaching out.
+            {t('success.title')}
           </h2>
           <p className="mt-6 max-w-md text-base leading-7 text-muted-foreground">
-            We will review your message and reply within one business day.
+            {t('success.description')}
           </p>
         </div>
 
@@ -107,7 +124,7 @@ export function ContactForm() {
             onClick={startAnotherMessage}
           >
             <RotateCcwIcon data-icon="inline-start" aria-hidden="true" />
-            Send another message
+            {t('success.sendAnother')}
           </Button>
         </div>
       </motion.div>
@@ -125,20 +142,19 @@ export function ContactForm() {
     >
       <div className="flex items-center justify-between border-y border-border/80 py-3">
         <span className="font-mono text-[10px] tracking-[0.16em] text-muted-foreground uppercase">
-          Contact enquiry
+          {t('label')}
         </span>
         <span className="font-mono text-[10px] tracking-wider text-muted-foreground uppercase">
-          Approx. 02 min
+          {t('duration', { minutes: 2 })}
         </span>
       </div>
 
       <div className="border-b border-border/80 py-10 sm:py-12">
         <h2 className="max-w-lg font-heading text-3xl leading-[1.05] font-semibold tracking-[-0.03em] text-foreground sm:text-4xl">
-          What can we help with?
+          {t('title')}
         </h2>
         <p className="mt-4 max-w-lg text-sm leading-6 text-muted-foreground sm:text-base sm:leading-7">
-          Share the essentials. We will make sure your message reaches the right
-          person.
+          {t('description')}
         </p>
       </div>
 
@@ -154,13 +170,14 @@ export function ContactForm() {
               className="text-sm font-medium text-foreground"
               htmlFor="fullName"
             >
-              Full name <span className="text-destructive">*</span>
+              {tForms('fields.fullName.label')}{' '}
+              <span className="text-destructive">*</span>
             </label>
             <input
               id="fullName"
               type="text"
               autoComplete="name"
-              placeholder="Your name"
+              placeholder={tForms('fields.fullName.placeholder')}
               required
               aria-invalid={Boolean(errors.fullName)}
               aria-describedby={errors.fullName ? 'fullName-error' : undefined}
@@ -183,14 +200,15 @@ export function ContactForm() {
               className="text-sm font-medium text-foreground"
               htmlFor="workEmail"
             >
-              Work email <span className="text-destructive">*</span>
+              {tForms('fields.workEmail.label')}{' '}
+              <span className="text-destructive">*</span>
             </label>
             <input
               id="workEmail"
               type="email"
               autoComplete="email"
               inputMode="email"
-              placeholder="you@company.com"
+              placeholder={tForms('fields.workEmail.placeholder')}
               required
               aria-invalid={Boolean(errors.workEmail)}
               aria-describedby={
@@ -216,16 +234,16 @@ export function ContactForm() {
             className="text-sm font-medium text-foreground"
             htmlFor="company"
           >
-            Company{' '}
+            {tForms('fields.company.label')}{' '}
             <span className="font-normal text-muted-foreground">
-              (optional)
+              ({tForms('optional')})
             </span>
           </label>
           <input
             id="company"
             type="text"
             autoComplete="organization"
-            placeholder="Company name"
+            placeholder={tForms('fields.company.placeholder')}
             aria-invalid={Boolean(errors.company)}
             aria-describedby={errors.company ? 'company-error' : undefined}
             className={inputClassName}
@@ -247,7 +265,8 @@ export function ContactForm() {
             className="text-sm font-medium text-foreground"
             htmlFor="topic"
           >
-            Topic <span className="text-destructive">*</span>
+            {t('fields.topic.label')}{' '}
+            <span className="text-destructive">*</span>
           </label>
           <select
             id="topic"
@@ -257,10 +276,10 @@ export function ContactForm() {
             className={inputClassName}
             {...register('topic')}
           >
-            <option value="">Select a topic</option>
+            <option value="">{t('fields.topic.placeholder')}</option>
             {topics.map((topic) => (
-              <option key={topic} value={topic}>
-                {topic}
+              <option key={topic.value} value={topic.value}>
+                {t(`fields.topic.options.${topic.key}`)}
               </option>
             ))}
           </select>
@@ -280,12 +299,13 @@ export function ContactForm() {
             className="text-sm font-medium text-foreground"
             htmlFor="message"
           >
-            Message <span className="text-destructive">*</span>
+            {t('fields.message.label')}{' '}
+            <span className="text-destructive">*</span>
           </label>
           <textarea
             id="message"
             rows={6}
-            placeholder="Tell us what you are working on and what you need from us."
+            placeholder={t('fields.message.placeholder')}
             required
             aria-invalid={Boolean(errors.message)}
             aria-describedby={errors.message ? 'message-error' : 'message-help'}
@@ -302,7 +322,7 @@ export function ContactForm() {
             </p>
           ) : (
             <p id="message-help" className="text-xs text-muted-foreground">
-              Do not include passwords or sensitive customer data.
+              {t('fields.message.help')}
             </p>
           )}
         </div>
@@ -313,12 +333,11 @@ export function ContactForm() {
             size="lg"
             className="h-12 w-full justify-between rounded-none px-5"
           >
-            Send enquiry
+            {t('submit')}
             <ArrowRightIcon data-icon="inline-end" aria-hidden="true" />
           </Button>
           <p className="mt-3 text-center text-xs leading-relaxed text-muted-foreground">
-            By submitting, you agree that BlihOps may contact you about this
-            enquiry.
+            {t('consent')}
           </p>
         </div>
       </form>
