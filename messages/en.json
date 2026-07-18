@@ -62,9 +62,9 @@
     },
     "talent": {
       "title": "Talent",
-      "description": "Join the BlihOps talent pool, build a verified professional profile, and be considered when your skills match an opportunity.",
+      "description": "Explore partner-company opportunities as verified talent or find skills-backed professionals for your team through BlihOps Talent.",
       "openGraphTitle": "BlihOps Talent",
-      "openGraphDescription": "Turn verified skills into visibility for relevant BlihOps and partner opportunities."
+      "openGraphDescription": "A marketplace connecting verified professionals with opportunities from partner companies."
     }
   },
   "Shared": {
@@ -153,10 +153,10 @@
         "promptDescription": "Choose a practical track and start building verified, opportunity-ready ability."
       },
       "talent": {
-        "bannerTitle": "Ready to make your verified skills visible?",
-        "bannerDescription": "Join the pool and hear from us when there is a relevant match. Placement is not guaranteed.",
-        "promptTitle": "Be ready when the fit is right.",
-        "promptDescription": "Keep your verified profile current so relevant opportunities can find you."
+        "bannerTitle": "Ready to find the right match?",
+        "bannerDescription": "Explore partner opportunities as verified talent or find skills-backed professionals for your company.",
+        "promptTitle": "One marketplace. Two ways forward.",
+        "promptDescription": "Use BlihOps Talent to pursue relevant work or discover verified people for your team."
       }
     },
     "localeSelector": {
@@ -1210,24 +1210,54 @@
   },
   "TalentPage": {
     "hero": {
-      "eyebrow": "BlihOps Talent",
-      "title": "Turn proven skills into real opportunity.",
-      "description": "Build a verified profile and become visible when your abilities match real work.",
-      "exploreOpportunities": "Explore opportunities",
-      "visitPlatform": "Visit Talent platform"
+      "eyebrow": "BlihOps Talent marketplace",
+      "title": "Verified talent. Real company demand.",
+      "description": "Verified professionals meet partner opportunities while subscribed teams find talent backed by practical evidence.",
+      "forTalent": "Find opportunities",
+      "forCompanies": "Find verified talent",
+      "marketplace": {
+        "label": "Marketplace signal",
+        "title": "Evidence meets demand",
+        "status": "Open for matching",
+        "talentLabel": "Verified professionals",
+        "talentTitle": "Skills you can prove",
+        "talentDescription": "Profiles connect completed courses or assessments with practical evidence, preferences, and availability.",
+        "companyLabel": "Subscribed companies",
+        "companyTitle": "People who fit the work",
+        "companyDescription": "Teams review relevant profiles against role requirements instead of starting with an unfiltered applicant pool.",
+        "note": "Matching considers verified ability, work preferences, availability, and current company demand."
+      }
+    },
+    "audiences": {
+      "ariaLabel": "Ways to use BlihOps Talent",
+      "talent": {
+        "label": "For talent",
+        "title": "Turn verified ability into visibility.",
+        "description": "Complete a practical BlihOps Skills course or take an assessment, build your verified profile, and explore opportunities from partner companies.",
+        "cta": "Enter Talent platform",
+        "skillsCta": "Get verified on Skills"
+      },
+      "companies": {
+        "label": "For companies",
+        "title": "Start with evidence, not claims.",
+        "description": "Subscribed companies can find profiles by verified skills, work preferences, location, and availability, then focus on people who fit the need.",
+        "cta": "Explore verified talent"
+      }
     },
     "sampleMatch": {
+      "title": "A shared view of fit.",
+      "description": "The marketplace connects what a professional has proved with what a partner company actually needs.",
       "eyebrow": "Sample talent match",
       "area": "Support operations",
       "profileLabel": "Verified profile",
-      "candidate": "Candidate",
+      "candidate": "Profile",
       "pathway": "Customer support pathway",
       "skills": [
         "Written communication",
         "Ticket handling",
         "Quality routines"
       ],
-      "opportunityLabel": "Matching opportunity",
+      "opportunityLabel": "Partner opportunity",
       "opportunityTitle": "Customer Support Specialist",
       "opportunityDescription": "A role requiring clear written support, reliable escalation, and consistent customer-care standards.",
       "details": {
@@ -1238,46 +1268,22 @@
         "availability": {
           "label": "Availability",
           "value": "Aligned"
-        },
-        "profileStatus": {
-          "label": "Profile status",
-          "value": "Verified"
-        },
-        "preferredWork": {
-          "label": "Preferred work",
-          "value": "Remote-ready"
-        },
-        "poolStatus": {
-          "label": "Pool status",
-          "value": "Available for matching"
         }
       }
     },
-    "principles": {
-      "verified": {
-        "title": "Verified",
-        "description": "Skills backed by evidence"
-      },
-      "visible": {
-        "title": "Visible",
-        "description": "Profiles ready for matching"
-      },
-      "relevant": {
-        "title": "Relevant",
-        "description": "Contact when there is a fit"
-      }
-    },
     "opportunities": {
-      "eyebrow": "Preview opportunities",
-      "title": "See where your skills could fit.",
-      "description": "These representative pathways show the kinds of work the talent pool may support as demand becomes available.",
+      "eyebrow": "Partner opportunities",
+      "title": "Work from companies looking for verified talent.",
+      "disclaimerTitle": "Partner roles, not BlihOps vacancies",
+      "disclaimer": "Listings shown here represent opportunities from companies using BlihOps Talent. They are not employment roles at BlihOps.",
+      "partnerLabel": "Partner company opportunity",
       "exploreAriaLabel": "Explore {title} on BlihOps Talent",
       "items": {
         "customerSupportSpecialist": {
           "title": "Customer Support Specialist",
           "area": "Customer experience",
           "description": "Support customers across email and chat while maintaining clear response, escalation, and quality standards.",
-          "workMode": "Remote-ready",
+          "workMode": "Remote",
           "location": "Addis Ababa",
           "commitment": "Full-time pathway",
           "skills": [
@@ -1290,7 +1296,7 @@
           "title": "Back-Office Associate",
           "area": "Operations",
           "description": "Run structured data, document, and administrative workflows with consistent accuracy and documented checks.",
-          "workMode": "Hybrid",
+          "workMode": "Remote",
           "location": "Addis Ababa",
           "commitment": "Full-time pathway",
           "skills": ["Data accuracy", "SOP execution", "Document review"]
@@ -1299,16 +1305,16 @@
           "title": "Junior QA Analyst",
           "area": "Technology",
           "description": "Help product teams test releases, document issues, and maintain dependable regression coverage.",
-          "workMode": "Hybrid",
+          "workMode": "Remote",
           "location": "Addis Ababa",
           "commitment": "Project or full-time",
           "skills": ["Test planning", "Issue reporting", "Regression testing"]
         },
         "aiAutomationAssistant": {
           "title": "AI Automation Assistant",
-          "area": "AI & automation",
+          "area": "AI and automation",
           "description": "Support workflow mapping, AI-assisted operations, and practical automation projects with human review built in.",
-          "workMode": "Remote-ready",
+          "workMode": "Remote",
           "location": "Addis Ababa",
           "commitment": "Project pathway",
           "skills": [
@@ -1319,27 +1325,102 @@
         }
       }
     },
-    "matching": {
-      "title": "A clear path into the pool.",
-      "description": "Your profile becomes useful when evidence, availability, and real opportunity demand come together.",
-      "steps": {
-        "buildProfile": {
-          "title": "Build your profile",
-          "description": "Show your skills, interests, availability, and preferred work."
+    "profiles": {
+      "title": "See the evidence behind the profile.",
+      "description": "Sample profiles show how subscribed companies can compare verified ability, availability, and preferred ways of working.",
+      "sampleLabel": "Sample profile",
+      "verified": "Verified",
+      "viewProfile": "View on Talent platform",
+      "viewAriaLabel": "View sample {title} profile on BlihOps Talent",
+      "labels": {
+        "verification": "Verification",
+        "availability": "Availability",
+        "location": "Location",
+        "workMode": "Preferred work",
+        "skills": "Verified capabilities"
+      },
+      "items": {
+        "supportSpecialist": {
+          "title": "Customer Support Specialist",
+          "verification": "Course and assessment",
+          "availability": "Available now",
+          "location": "Addis Ababa",
+          "workMode": "Remote",
+          "skills": ["Ticket handling", "Written support", "Escalation"]
         },
-        "verifyAbility": {
-          "title": "Verify your ability",
-          "description": "Connect completed assessments and practical evidence to your profile."
+        "dataAssociate": {
+          "title": "Data Operations Associate",
+          "verification": "Direct assessment",
+          "availability": "Available in 2 weeks",
+          "location": "Addis Ababa",
+          "workMode": "Remote",
+          "skills": ["Data quality", "SOP execution", "Document review"]
         },
-        "enterPool": {
-          "title": "Enter the pool",
-          "description": "Become discoverable for roles that fit your verified capabilities."
+        "qaAnalyst": {
+          "title": "Junior QA Analyst",
+          "verification": "Course and assessment",
+          "availability": "Project-ready",
+          "location": "Addis Ababa",
+          "workMode": "Remote",
+          "skills": ["Test planning", "Bug reporting", "Regression testing"]
         },
-        "hearAboutMatch": {
-          "title": "Hear when there is a match",
-          "description": "BlihOps reaches out when your profile aligns with real demand."
+        "automationAssistant": {
+          "title": "Automation Assistant",
+          "verification": "Direct assessment",
+          "availability": "Part-time available",
+          "location": "Addis Ababa",
+          "workMode": "Remote",
+          "skills": ["Workflow mapping", "Prompt practice", "Documentation"]
         }
       }
+    },
+    "process": {
+      "title": "Two paths, one clearer match.",
+      "description": "Professionals build credible profiles. Companies narrow the search around evidence and real operating needs.",
+      "talentTitle": "For talent",
+      "companyTitle": "For companies",
+      "talentSteps": {
+        "learnOrAssess": {
+          "title": "Learn or take an assessment",
+          "description": "Complete a BlihOps Skills course or prove existing ability through direct assessment."
+        },
+        "becomeVerified": {
+          "title": "Earn verification",
+          "description": "Connect practical evidence and assessment outcomes to your professional identity."
+        },
+        "buildProfile": {
+          "title": "Build your profile",
+          "description": "Add your interests, availability, location, and preferred way of working."
+        },
+        "meetDemand": {
+          "title": "Meet relevant demand",
+          "description": "Explore partner opportunities and become visible when your evidence fits a role."
+        }
+      },
+      "companySteps": {
+        "subscribe": {
+          "title": "Access the company experience",
+          "description": "Subscribed companies enter the platform with a clear hiring or outsourcing need."
+        },
+        "defineNeed": {
+          "title": "Define the requirement",
+          "description": "Set the skills, availability, location, and working model the role needs."
+        },
+        "reviewProfiles": {
+          "title": "Review verified profiles",
+          "description": "Compare relevant people using practical evidence rather than claims alone."
+        },
+        "connect": {
+          "title": "Connect around fit",
+          "description": "Move forward with professionals whose verified ability matches the work."
+        }
+      }
+    },
+    "finalCta": {
+      "title": "Choose what you came to find.",
+      "description": "The same platform supports verified professionals pursuing work and companies looking for evidence-backed talent.",
+      "talent": "I want opportunities",
+      "companies": "I want verified talent"
     }
   }
 }

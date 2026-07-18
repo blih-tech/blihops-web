@@ -26,7 +26,7 @@ export const talentOpportunities: TalentOpportunity[] = [
     area: 'Customer experience',
     description:
       'Support customers across email and chat while maintaining clear response, escalation, and quality standards.',
-    workMode: 'Remote-ready',
+    workMode: 'Remote',
     location: 'Addis Ababa',
     commitment: 'Full-time pathway',
     skills: ['Ticket handling', 'Written communication', 'Quality routines'],
@@ -38,7 +38,7 @@ export const talentOpportunities: TalentOpportunity[] = [
     area: 'Operations',
     description:
       'Run structured data, document, and administrative workflows with consistent accuracy and documented checks.',
-    workMode: 'Hybrid',
+    workMode: 'Remote',
     location: 'Addis Ababa',
     commitment: 'Full-time pathway',
     skills: ['Data accuracy', 'SOP execution', 'Document review'],
@@ -50,7 +50,7 @@ export const talentOpportunities: TalentOpportunity[] = [
     area: 'Technology',
     description:
       'Help product teams test releases, document issues, and maintain dependable regression coverage.',
-    workMode: 'Hybrid',
+    workMode: 'Remote',
     location: 'Addis Ababa',
     commitment: 'Project or full-time',
     skills: ['Test planning', 'Issue reporting', 'Regression testing'],
@@ -62,7 +62,7 @@ export const talentOpportunities: TalentOpportunity[] = [
     area: 'AI & automation',
     description:
       'Support workflow mapping, AI-assisted operations, and practical automation projects with human review built in.',
-    workMode: 'Remote-ready',
+    workMode: 'Remote',
     location: 'Addis Ababa',
     commitment: 'Project pathway',
     skills: ['Workflow mapping', 'Prompt practice', 'Process documentation'],
