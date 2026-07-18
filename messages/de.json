@@ -62,9 +62,9 @@
     },
     "talent": {
       "title": "Talent",
-      "description": "Werden Sie Teil des BlihOps-Talentpools, erstellen Sie ein verifiziertes berufliches Profil und kommen Sie in Betracht, wenn Ihre Kompetenzen zu einer Chance passen.",
+      "description": "Entdecken Sie als verifiziertes Talent Chancen bei Partnerunternehmen oder finden Sie über BlihOps Talent kompetenzgeprüfte Fachkräfte für Ihr Team.",
       "openGraphTitle": "BlihOps Talent",
-      "openGraphDescription": "Machen Sie verifizierte Kompetenzen für passende Chancen bei BlihOps und Partnern sichtbar."
+      "openGraphDescription": "Ein Marktplatz, der verifizierte Fachkräfte mit Chancen bei Partnerunternehmen verbindet."
     }
   },
   "ServicesPage": {
@@ -536,10 +536,10 @@
         "promptDescription": "Wählen Sie einen praxisnahen Lernpfad und beginnen Sie, verifizierte, einsatzbereite Kompetenzen aufzubauen."
       },
       "talent": {
-        "bannerTitle": "Bereit, Ihre verifizierten Kompetenzen sichtbar zu machen?",
-        "bannerDescription": "Treten Sie dem Pool bei und hören Sie von uns, wenn es eine passende Übereinstimmung gibt. Eine Vermittlung ist nicht garantiert.",
-        "promptTitle": "Seien Sie bereit, wenn es passt.",
-        "promptDescription": "Halten Sie Ihr verifiziertes Profil aktuell, damit passende Chancen Sie finden können."
+        "bannerTitle": "Bereit, die richtige Übereinstimmung zu finden?",
+        "bannerDescription": "Entdecken Sie als verifiziertes Talent Chancen bei Partnern oder finden Sie kompetenzgeprüfte Fachkräfte für Ihr Unternehmen.",
+        "promptTitle": "Ein Marktplatz. Zwei Wege nach vorn.",
+        "promptDescription": "Nutzen Sie BlihOps Talent, um passende Arbeit zu finden oder verifizierte Fachkräfte für Ihr Team zu entdecken."
       }
     },
     "localeSelector": {
@@ -1210,24 +1210,56 @@
   },
   "TalentPage": {
     "hero": {
-      "eyebrow": "BlihOps Talent",
-      "title": "Machen Sie aus nachgewiesenen Kompetenzen reale Chancen.",
-      "description": "Erstellen Sie ein verifiziertes Profil und werden Sie sichtbar, wenn Ihre Fähigkeiten zu realen Aufgaben passen.",
+      "eyebrow": "BlihOps Talent-Marktplatz",
+      "title": "Verifizierte Talente. Reale Unternehmensnachfrage.",
+      "description": "Verifizierte Fachkräfte finden Partnerchancen, während abonnierte Teams Talente mit praktischen Nachweisen entdecken.",
+      "forTalent": "Chancen finden",
+      "forCompanies": "Verifizierte Talente finden",
       "exploreOpportunities": "Chancen entdecken",
-      "visitPlatform": "Talent-Plattform besuchen"
+      "visitPlatform": "Talent-Plattform besuchen",
+      "marketplace": {
+        "label": "Marktplatz-Signal",
+        "title": "Nachweise treffen Nachfrage",
+        "status": "Offen für Matching",
+        "talentLabel": "Verifizierte Fachkräfte",
+        "talentTitle": "Kompetenzen mit Nachweis",
+        "talentDescription": "Profile verbinden abgeschlossene Kurse oder Assessments mit praktischen Nachweisen, Präferenzen und Verfügbarkeit.",
+        "companyLabel": "Abonnierte Unternehmen",
+        "companyTitle": "Menschen, die zur Arbeit passen",
+        "companyDescription": "Teams prüfen relevante Profile anhand der Rollenanforderungen statt mit einem ungefilterten Bewerberpool zu beginnen.",
+        "note": "Das Matching berücksichtigt verifizierte Fähigkeiten, Arbeitspräferenzen, Verfügbarkeit und aktuelle Unternehmensnachfrage."
+      }
+    },
+    "audiences": {
+      "ariaLabel": "Möglichkeiten zur Nutzung von BlihOps Talent",
+      "talent": {
+        "label": "Für Talente",
+        "title": "Machen Sie verifizierte Fähigkeiten sichtbar.",
+        "description": "Absolvieren Sie einen praxisnahen BlihOps-Skills-Kurs oder ein Assessment, erstellen Sie Ihr verifiziertes Profil und entdecken Sie Chancen bei Partnerunternehmen.",
+        "cta": "Talent-Plattform öffnen",
+        "skillsCta": "Auf Skills verifizieren"
+      },
+      "companies": {
+        "label": "Für Unternehmen",
+        "title": "Beginnen Sie mit Nachweisen, nicht mit Behauptungen.",
+        "description": "Abonnierte Unternehmen können Profile nach verifizierten Fähigkeiten, Arbeitspräferenzen, Standort und Verfügbarkeit finden und sich auf passende Menschen konzentrieren.",
+        "cta": "Verifizierte Talente entdecken"
+      }
     },
     "sampleMatch": {
+      "title": "Eine gemeinsame Sicht auf die Passung.",
+      "description": "Der Marktplatz verbindet nachgewiesene Fähigkeiten mit dem tatsächlichen Bedarf eines Partnerunternehmens.",
       "eyebrow": "Beispielhafte Talentzuordnung",
       "area": "Support-Abläufe",
       "profileLabel": "Verifiziertes Profil",
-      "candidate": "Bewerberprofil",
+      "candidate": "Profil",
       "pathway": "Customer-Support-Lernpfad",
       "skills": [
         "Schriftliche Kommunikation",
         "Ticketbearbeitung",
         "Qualitätsroutinen"
       ],
-      "opportunityLabel": "Passende Chance",
+      "opportunityLabel": "Partnerchance",
       "opportunityTitle": "Customer-Support-Spezialist",
       "opportunityDescription": "Eine Rolle, die klare schriftliche Unterstützung, zuverlässige Eskalation und konsistente Standards in der Kundenbetreuung erfordert.",
       "details": {
@@ -1268,16 +1300,18 @@
       }
     },
     "opportunities": {
-      "eyebrow": "Vorschau auf Chancen",
-      "title": "Erfahren Sie, wo Ihre Kompetenzen passen könnten.",
-      "description": "Diese repräsentativen Pfade zeigen, welche Arten von Arbeit der Talentpool unterstützen kann, sobald eine entsprechende Nachfrage besteht.",
+      "eyebrow": "Partnerchancen",
+      "title": "Arbeit von Unternehmen, die verifizierte Talente suchen.",
+      "disclaimerTitle": "Partnerrollen, keine BlihOps-Stellen",
+      "disclaimer": "Die hier gezeigten Angebote stehen für Chancen von Unternehmen, die BlihOps Talent nutzen. Es sind keine Beschäftigungsrollen bei BlihOps.",
+      "partnerLabel": "Chance bei einem Partnerunternehmen",
       "exploreAriaLabel": "{title} auf BlihOps Talent entdecken",
       "items": {
         "customerSupportSpecialist": {
           "title": "Customer-Support-Spezialist",
           "area": "Kundenerlebnis",
           "description": "Unterstützen Sie Kunden per E-Mail und Chat und halten Sie dabei klare Reaktions-, Eskalations- und Qualitätsstandards ein.",
-          "workMode": "Für Remote-Arbeit geeignet",
+          "workMode": "Remote",
           "location": "Addis Ababa",
           "commitment": "Vollzeitpfad",
           "skills": [
@@ -1290,7 +1324,7 @@
           "title": "Back-Office-Mitarbeiter",
           "area": "Operations",
           "description": "Führen Sie strukturierte Daten-, Dokumenten- und Verwaltungsworkflows mit gleichbleibender Genauigkeit und dokumentierten Prüfungen aus.",
-          "workMode": "Hybrid",
+          "workMode": "Remote",
           "location": "Addis Ababa",
           "commitment": "Vollzeitpfad",
           "skills": ["Datengenauigkeit", "SOP-Ausführung", "Dokumentenprüfung"]
@@ -1299,7 +1333,7 @@
           "title": "Junior-QA-Analyst",
           "area": "Technologie",
           "description": "Unterstützen Sie Produktteams dabei, Releases zu testen, Probleme zu dokumentieren und eine zuverlässige Regressionsabdeckung aufrechtzuerhalten.",
-          "workMode": "Hybrid",
+          "workMode": "Remote",
           "location": "Addis Ababa",
           "commitment": "Projekt oder Vollzeit",
           "skills": ["Testplanung", "Fehlerberichte", "Regressionstests"]
@@ -1308,7 +1342,7 @@
           "title": "Assistenz für AI-Automatisierung",
           "area": "AI & Automatisierung",
           "description": "Unterstützen Sie Workflow-Mapping, AI-gestützte Abläufe und praxisnahe Automatisierungsprojekte mit integrierter menschlicher Prüfung.",
-          "workMode": "Für Remote-Arbeit geeignet",
+          "workMode": "Remote",
           "location": "Addis Ababa",
           "commitment": "Projektpfad",
           "skills": [
@@ -1340,6 +1374,103 @@
           "description": "BlihOps kontaktiert Sie, wenn Ihr Profil zu einer realen Nachfrage passt."
         }
       }
+    },
+    "profiles": {
+      "title": "Sehen Sie die Nachweise hinter dem Profil.",
+      "description": "Beispielprofile zeigen, wie abonnierte Unternehmen verifizierte Fähigkeiten, Verfügbarkeit und bevorzugte Arbeitsweisen vergleichen können.",
+      "sampleLabel": "Beispielprofil",
+      "verified": "Verifiziert",
+      "viewProfile": "Auf der Talent-Plattform ansehen",
+      "viewAriaLabel": "Beispielprofil {title} auf BlihOps Talent ansehen",
+      "labels": {
+        "verification": "Verifizierung",
+        "availability": "Verfügbarkeit",
+        "location": "Standort",
+        "workMode": "Bevorzugte Arbeit",
+        "skills": "Verifizierte Kompetenzen"
+      },
+      "items": {
+        "supportSpecialist": {
+          "title": "Customer-Support-Spezialist",
+          "verification": "Kurs und Assessment",
+          "availability": "Sofort verfügbar",
+          "location": "Addis Ababa",
+          "workMode": "Remote",
+          "skills": ["Ticketbearbeitung", "Schriftlicher Support", "Eskalation"]
+        },
+        "dataAssociate": {
+          "title": "Data-Operations-Mitarbeiter",
+          "verification": "Direktes Assessment",
+          "availability": "In 2 Wochen verfügbar",
+          "location": "Addis Ababa",
+          "workMode": "Remote",
+          "skills": ["Datenqualität", "SOP-Ausführung", "Dokumentenprüfung"]
+        },
+        "qaAnalyst": {
+          "title": "Junior-QA-Analyst",
+          "verification": "Kurs und Assessment",
+          "availability": "Projektbereit",
+          "location": "Addis Ababa",
+          "workMode": "Remote",
+          "skills": ["Testplanung", "Fehlerberichte", "Regressionstests"]
+        },
+        "automationAssistant": {
+          "title": "Automatisierungsassistent",
+          "verification": "Direktes Assessment",
+          "availability": "In Teilzeit verfügbar",
+          "location": "Addis Ababa",
+          "workMode": "Remote",
+          "skills": ["Workflow-Mapping", "Prompt-Praxis", "Dokumentation"]
+        }
+      }
+    },
+    "process": {
+      "title": "Zwei Wege, eine klarere Übereinstimmung.",
+      "description": "Fachkräfte bauen glaubwürdige Profile auf. Unternehmen grenzen ihre Suche anhand von Nachweisen und realem operativem Bedarf ein.",
+      "talentTitle": "Für Talente",
+      "companyTitle": "Für Unternehmen",
+      "talentSteps": {
+        "learnOrAssess": {
+          "title": "Lernen oder Assessment absolvieren",
+          "description": "Absolvieren Sie einen BlihOps-Skills-Kurs oder weisen Sie vorhandene Fähigkeiten durch ein direktes Assessment nach."
+        },
+        "becomeVerified": {
+          "title": "Verifizierung erhalten",
+          "description": "Verbinden Sie praktische Nachweise und Assessment-Ergebnisse mit Ihrer beruflichen Identität."
+        },
+        "buildProfile": {
+          "title": "Profil erstellen",
+          "description": "Ergänzen Sie Interessen, Verfügbarkeit, Standort und bevorzugte Arbeitsweise."
+        },
+        "meetDemand": {
+          "title": "Auf relevante Nachfrage treffen",
+          "description": "Entdecken Sie Partnerchancen und werden Sie sichtbar, wenn Ihre Nachweise zu einer Rolle passen."
+        }
+      },
+      "companySteps": {
+        "subscribe": {
+          "title": "Unternehmenszugang nutzen",
+          "description": "Abonnierte Unternehmen betreten die Plattform mit einem klaren Einstellungs- oder Outsourcing-Bedarf."
+        },
+        "defineNeed": {
+          "title": "Anforderung definieren",
+          "description": "Legen Sie Fähigkeiten, Verfügbarkeit, Standort und Arbeitsmodell für die Rolle fest."
+        },
+        "reviewProfiles": {
+          "title": "Verifizierte Profile prüfen",
+          "description": "Vergleichen Sie relevante Menschen anhand praktischer Nachweise statt nur anhand von Aussagen."
+        },
+        "connect": {
+          "title": "Auf Basis der Passung verbinden",
+          "description": "Gehen Sie mit Fachkräften weiter, deren verifizierte Fähigkeiten zur Arbeit passen."
+        }
+      }
+    },
+    "finalCta": {
+      "title": "Wählen Sie, wonach Sie suchen.",
+      "description": "Dieselbe Plattform unterstützt verifizierte Fachkräfte bei der Arbeitssuche und Unternehmen bei der Suche nach nachweislich qualifizierten Talenten.",
+      "talent": "Ich suche Chancen",
+      "companies": "Ich suche verifizierte Talente"
     }
   }
 }
