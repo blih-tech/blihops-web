@@ -12,7 +12,7 @@ export const testimonials: Testimonial[] = [
   {
     id: '1',
     quote:
-      'BlihOps took support off our plate in two weeks. SLAs are real — we finally see response times every Monday.',
+      'Blih Ops took support off our plate in two weeks. SLAs are real — we finally see response times every Monday.',
     name: 'Sarah Chen',
     role: 'Head of Operations',
     company: 'Northline SaaS',

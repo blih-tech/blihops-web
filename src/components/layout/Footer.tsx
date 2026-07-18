@@ -379,7 +379,7 @@ export function Footer() {
               className="flex flex-col items-center justify-between gap-6 border-t border-border py-8 md:flex-row"
             >
               <span className="text-sm font-semibold text-foreground">
-                BlihOps
+                Blih Ops
               </span>
               <span className="text-sm text-muted-foreground">
                 {t('copyright', { year: new Date().getFullYear() })}

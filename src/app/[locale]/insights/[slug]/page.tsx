@@ -33,7 +33,7 @@ export async function generateMetadata({
     authors: [{ name: insight.author }],
     alternates: { canonical: `/en/insights/${insight.slug}` },
     openGraph: {
-      title: `${insight.title} | BlihOps`,
+      title: `${insight.title} | Blih Ops`,
       description: insight.excerpt,
       type: 'article',
       publishedTime: insight.publishedAt,
@@ -43,7 +43,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${insight.title} | BlihOps`,
+      title: `${insight.title} | Blih Ops`,
       description: insight.excerpt,
       images: [insight.heroImage],
     },

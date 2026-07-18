@@ -33,7 +33,7 @@ export function generateMetadata({
       description: study.excerpt,
       alternates: { canonical: `/en/case-studies/${study.slug}` },
       openGraph: {
-        title: `${study.title} | BlihOps`,
+        title: `${study.title} | Blih Ops`,
         description: study.excerpt,
         type: 'article',
         publishedTime: study.publishedAt,
@@ -42,7 +42,7 @@ export function generateMetadata({
       },
       twitter: {
         card: 'summary_large_image',
-        title: `${study.title} | BlihOps`,
+        title: `${study.title} | Blih Ops`,
         description: study.excerpt,
         images: [study.heroImage],
       },

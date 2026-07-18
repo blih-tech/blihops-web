@@ -88,7 +88,7 @@ export const careerRoles: CareerRole[] = [
     summary:
       'Build internal and client-facing software that makes managed operations easier to run and improve.',
     overview: [
-      'You will work across product interfaces, APIs, and data models for tools used by BlihOps teams and clients. The focus is clear, maintainable software that supports real operating workflows.',
+      'You will work across product interfaces, APIs, and data models for tools used by Blih Ops teams and clients. The focus is clear, maintainable software that supports real operating workflows.',
       'You will collaborate closely with operations and automation specialists, turning practical needs into small, dependable product increments.',
     ],
     responsibilities: [
@@ -148,7 +148,7 @@ export const careerRoles: CareerRole[] = [
     workMode: 'Hybrid',
     employmentType: 'Full-time',
     summary:
-      'Help growing companies understand where a managed BlihOps team can create measurable operational value.',
+      'Help growing companies understand where a managed Blih Ops team can create measurable operational value.',
     overview: [
       'You will research prospective clients, start thoughtful conversations, and help the growth team qualify opportunities across Europe, the Middle East, and Africa.',
       'This is a research-led role for someone who writes clearly, asks good questions, and can connect operational pain points to a focused next step.',
