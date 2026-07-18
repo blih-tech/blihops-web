@@ -9,7 +9,7 @@ export function DetailConversionCta() {
   return (
     <section
       className="grid gap-8 border-t border-border py-12 md:grid-cols-[0.85fr_1.15fr] md:items-end md:gap-16 md:py-16"
-      aria-label="Work with BlihOps"
+      aria-label="Work with Blih Ops"
     >
       <div>
         <p className="font-mono text-[10px] tracking-[0.16em] text-muted-foreground uppercase">

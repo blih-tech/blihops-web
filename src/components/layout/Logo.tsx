@@ -11,7 +11,7 @@ export function Logo({ className, priority = false }: LogoProps) {
   return (
     <Image
       src="/logo-blihops.png"
-      alt="BlihOps"
+      alt="Blih Ops"
       width={200}
       height={32}
       priority={priority}

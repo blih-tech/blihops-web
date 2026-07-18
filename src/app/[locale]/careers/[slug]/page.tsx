@@ -26,7 +26,7 @@ export async function generateMetadata({
     description: role.summary,
     alternates: { canonical: `/en/careers/${role.slug}` },
     openGraph: {
-      title: `${role.title} at BlihOps`,
+      title: `${role.title} at Blih Ops`,
       description: role.summary,
       url: `/en/careers/${role.slug}`,
     },

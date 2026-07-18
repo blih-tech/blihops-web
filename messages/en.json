@@ -1,8 +1,8 @@
 {
   "Metadata": {
     "global": {
-      "defaultTitle": "BlihOps, AI-Powered Outsourcing",
-      "titleTemplate": "{title} | BlihOps",
+      "defaultTitle": "Blih Ops, AI-Powered Outsourcing",
+      "titleTemplate": "{title} | Blih Ops",
       "description": "Blih Intelligent Operations - Ethiopia's AI-powered outsourcing company. Managed customer support, back-office, IT, and automation with clear SLAs and a free 2-week pilot.",
       "keywords": [
         "outsourcing",
@@ -13,57 +13,57 @@
         "Ethiopia",
         "managed services"
       ],
-      "openGraphTitle": "BlihOps - AI-Powered Outsourcing",
+      "openGraphTitle": "Blih Ops - AI-Powered Outsourcing",
       "openGraphDescription": "Managed operations with structure, automation, and SLA accountability. Serving Europe, the Middle East, and Africa from Addis Ababa.",
-      "twitterTitle": "BlihOps - AI-Powered Outsourcing",
+      "twitterTitle": "Blih Ops - AI-Powered Outsourcing",
       "twitterDescription": "Managed operations with structure, automation, and SLA accountability."
     },
     "services": {
       "title": "What We Offer",
-      "description": "Explore BlihOps services: customer support, back-office, IT and software, AI automation, and data processing - with SLAs, SOPs, and a free pilot."
+      "description": "Explore Blih Ops services: customer support, back-office, IT and software, AI automation, and data processing - with SLAs, SOPs, and a free pilot."
     },
     "process": {
       "title": "How We Work",
-      "description": "See how BlihOps delivers intelligent operations - from discovery and SOPs to dedicated pods, SLA tracking, and continuous optimization."
+      "description": "See how Blih Ops delivers intelligent operations - from discovery and SOPs to dedicated pods, SLA tracking, and continuous optimization."
     },
     "about": {
-      "title": "About BlihOps - Ethiopia's AI-Powered Outsourcing Company",
+      "title": "About Blih Ops - Ethiopia's AI-Powered Outsourcing Company",
       "description": "Blih Intelligent Operations combines AI, skilled African talent, and reliable systems to run operations for growing businesses across Europe, the Middle East, and Asia.",
-      "openGraphTitle": "About BlihOps - Ethiopia's AI-Powered Outsourcing Company",
+      "openGraphTitle": "About Blih Ops - Ethiopia's AI-Powered Outsourcing Company",
       "openGraphDescription": "AI-integrated operations combining reliable systems with skilled African talent. Managed pods, defined SLAs, and weekly reporting."
     },
     "caseStudies": {
       "title": "Case Studies",
-      "description": "Explore how BlihOps improves customer support, back-office operations, software delivery, automation, and reporting."
+      "description": "Explore how Blih Ops improves customer support, back-office operations, software delivery, automation, and reporting."
     },
     "insights": {
       "title": "Insights",
-      "description": "Practical guidance on operations design, AI automation, customer experience, reporting, and delivery from BlihOps."
+      "description": "Practical guidance on operations design, AI automation, customer experience, reporting, and delivery from Blih Ops."
     },
     "contact": {
       "title": "Contact",
-      "description": "Contact BlihOps about managed outsourcing, AI automation, partnerships, or a general enquiry."
+      "description": "Contact Blih Ops about managed outsourcing, AI automation, partnerships, or a general enquiry."
     },
     "pilot": {
       "title": "Get a 2-Week Pilot",
-      "description": "Test one workflow with a free two-week BlihOps pilot. Define the scope, success measures, delivery team, and reporting before you scale."
+      "description": "Test one workflow with a free two-week Blih Ops pilot. Define the scope, success measures, delivery team, and reporting before you scale."
     },
     "careers": {
       "title": "Careers",
-      "description": "Explore open roles at BlihOps and help build reliable, AI-enabled operations from Addis Ababa for teams around the world.",
-      "openGraphTitle": "Careers at BlihOps",
+      "description": "Explore open roles at Blih Ops and help build reliable, AI-enabled operations from Addis Ababa for teams around the world.",
+      "openGraphTitle": "Careers at Blih Ops",
       "openGraphDescription": "Build your career with a team combining skilled African talent, reliable systems, and practical AI."
     },
     "skills": {
       "title": "Skills",
-      "description": "Explore practical BlihOps learning tracks designed to build, assess, and verify skills for real operational opportunities.",
-      "openGraphTitle": "BlihOps Skills",
-      "openGraphDescription": "Build practical skills, complete real assessments, and prepare for opportunities in the BlihOps talent pool."
+      "description": "Explore practical Blih Ops learning tracks designed to build, assess, and verify skills for real operational opportunities.",
+      "openGraphTitle": "Blih Ops Skills",
+      "openGraphDescription": "Build practical skills, complete real assessments, and prepare for opportunities in the Blih Ops talent pool."
     },
     "talent": {
       "title": "Talent",
-      "description": "Explore partner-company opportunities as verified talent or find skills-backed professionals for your team through BlihOps Talent.",
-      "openGraphTitle": "BlihOps Talent",
+      "description": "Explore partner-company opportunities as verified talent or find skills-backed professionals for your team through Blih Ops Talent.",
+      "openGraphTitle": "Blih Ops Talent",
       "openGraphDescription": "A marketplace connecting verified professionals with opportunities from partner companies."
     }
   },
@@ -74,11 +74,11 @@
       "getFreePilot": "Get free pilot",
       "learnMore": "Learn more",
       "goHome": "Go home",
-      "exploreSkills": "Explore BlihOps Skills",
-      "exploreTalent": "Explore BlihOps Talent"
+      "exploreSkills": "Explore Blih Ops Skills",
+      "exploreTalent": "Explore Blih Ops Talent"
     },
     "header": {
-      "homeAriaLabel": "BlihOps homepage",
+      "homeAriaLabel": "Blih Ops homepage",
       "primaryNavAriaLabel": "Primary",
       "mobileNavAriaLabel": "Mobile",
       "openMenuAriaLabel": "Open menu",
@@ -95,8 +95,8 @@
         "ariaLabel": "About menu",
         "whoWeAre": {
           "label": "Who we are",
-          "description": "Learn about our mission, values, and the team driving engineering excellence at BlihOps.",
-          "previewDescription": "Mission, values, and the team behind BlihOps."
+          "description": "Learn about our mission, values, and the team driving engineering excellence at Blih Ops.",
+          "previewDescription": "Mission, values, and the team behind Blih Ops."
         },
         "caseStudies": {
           "label": "Case studies",
@@ -128,7 +128,7 @@
         "linkedIn": "LinkedIn",
         "youTube": "YouTube"
       },
-      "copyright": "© {year} BlihOps. All rights reserved.",
+      "copyright": "© {year} Blih Ops. All rights reserved.",
       "backToTop": "Back to top",
       "default": {
         "bannerTitle": "Ready to get relief from operational overwhelm?",
@@ -148,7 +148,7 @@
       },
       "skills": {
         "bannerTitle": "Ready to build skills that lead somewhere?",
-        "bannerDescription": "Explore practical tracks, complete assessments, and prepare for BlihOps talent opportunities.",
+        "bannerDescription": "Explore practical tracks, complete assessments, and prepare for Blih Ops talent opportunities.",
         "promptTitle": "Build skill. Show evidence.",
         "promptDescription": "Choose a practical track and start building verified, opportunity-ready ability."
       },
@@ -156,7 +156,7 @@
         "bannerTitle": "Ready to find the right match?",
         "bannerDescription": "Explore partner opportunities as verified talent or find skills-backed professionals for your company.",
         "promptTitle": "One marketplace. Two ways forward.",
-        "promptDescription": "Use BlihOps Talent to pursue relevant work or discover verified people for your team."
+        "promptDescription": "Use Blih Ops Talent to pursue relevant work or discover verified people for your team."
       }
     },
     "localeSelector": {
@@ -271,7 +271,7 @@
     },
     "notFound": {
       "title": "Page not found",
-      "description": "That route doesn't exist or it moved. Head home and keep exploring how BlihOps runs operations."
+      "description": "That route doesn't exist or it moved. Head home and keep exploring how Blih Ops runs operations."
     }
   },
   "Home": {
@@ -307,8 +307,8 @@
       }
     },
     "solution": {
-      "ariaLabel": "The BlihOps model",
-      "eyebrow": "The BlihOps Model",
+      "ariaLabel": "The Blih Ops model",
+      "eyebrow": "The Blih Ops Model",
       "title": "Structured pods. AI workflows. SLA accountability.",
       "description": "Dedicated pods, AI-assisted workflows, and measured SLAs so operations run with ownership, not chaos.",
       "features": {
@@ -395,7 +395,7 @@
       "attribution": "{role}, {company}",
       "items": {
         "sarahChen": {
-          "quote": "BlihOps took support off our plate in two weeks. SLAs are real - we finally see response times every Monday.",
+          "quote": "Blih Ops took support off our plate in two weeks. SLAs are real - we finally see response times every Monday.",
           "name": "Sarah Chen",
           "role": "Head of Operations"
         },
@@ -430,7 +430,7 @@
   "ServicesPage": {
     "hero": {
       "ariaLabel": "What we offer",
-      "eyebrow": "BlihOps Services",
+      "eyebrow": "Blih Ops Services",
       "title": "Intelligent outsourcing for growing businesses.",
       "description": "Support, back-office, IT, AI automation, and reporting with documented SOPs, defined SLAs, and automation built in from day one.",
       "playVideoAriaLabel": "Play video"
@@ -550,7 +550,7 @@
   },
   "AboutPage": {
     "hero": {
-      "ariaLabel": "About BlihOps",
+      "ariaLabel": "About Blih Ops",
       "eyebrow": "About Blih Intelligent Operations",
       "title": "Outsourcing, intelligently. From Ethiopia to the world.",
       "description": "AI-integrated operations combining reliable systems with skilled African talent - managed pods, defined SLAs, and weekly reporting for growing businesses across Europe, the Middle East, and Asia."
@@ -563,7 +563,7 @@
       "pullQuote": "We saw the same problem in every growing business we worked with: brilliant founders buried under operations. They didn't need more people. They needed an intelligent system. So we built one.",
       "paragraphs": [
         "Blih Intelligent Operations was born inside Blih Marketing & Communications, an established agency in Addis Ababa that learned firsthand what it takes to build operations that scale. After years of perfecting internal SOPs, KPIs, automation workflows, and AI integrations, we realized the frameworks we built for ourselves could transform how other businesses run.",
-        "We launched BlihOps to deliver intelligent operations to growing businesses worldwide. Not just people. Not just technology. A complete system where human talent and AI work together to produce better outcomes, faster delivery, and measurable results.",
+        "We launched Blih Ops to deliver intelligent operations to growing businesses worldwide. Not just people. Not just technology. A complete system where human talent and AI work together to produce better outcomes, faster delivery, and measurable results.",
         "Today we serve international SMEs across Europe, the Middle East, and Asia. We combine business process outsourcing, IT and software, and AI automation under one brand because your operations don't fit neatly into one category, and your outsourcing partner shouldn't either."
       ],
       "stats": {
@@ -576,9 +576,9 @@
           "label": "Backed delivery"
         }
       },
-      "imageAlt": "BlihOps team at work in the Addis Ababa office",
+      "imageAlt": "Blih Ops team at work in the Addis Ababa office",
       "imageCaption": "Addis Ababa, Ethiopia",
-      "headquartersCaption": "BlihOps HQ"
+      "headquartersCaption": "Blih Ops HQ"
     },
     "visionMission": {
       "eyebrow": "Vision & mission",
@@ -766,7 +766,7 @@
       "dataReporting": "Data & Reporting",
       "teamDelivery": "Team & Delivery"
     },
-    "author": "BlihOps Editorial",
+    "author": "Blih Ops Editorial",
     "articles": {
       "designingOutsourcingPilot": {
         "title": "Designing an outsourcing pilot that proves value",
@@ -812,7 +812,7 @@
   },
   "ContactPage": {
     "hero": {
-      "label": "Contact BlihOps",
+      "label": "Contact Blih Ops",
       "context": "New business / General enquiries",
       "eyebrow": "Start a conversation",
       "title": "Tell us what needs attention.",
@@ -859,7 +859,7 @@
         }
       },
       "submit": "Send enquiry",
-      "consent": "By submitting, you agree that BlihOps may contact you about this enquiry.",
+      "consent": "By submitting, you agree that Blih Ops may contact you about this enquiry.",
       "validation": {
         "emailInvalid": "Enter a valid email address.",
         "topicRequired": "Select a topic.",
@@ -891,7 +891,7 @@
         "Success measures agreed upfront",
         "Response within one business day"
       ],
-      "imageAlt": "A BlihOps delivery team discussing an operational workflow",
+      "imageAlt": "A Blih Ops delivery team discussing an operational workflow",
       "imageCaption": "A delivery team built around your workflow.",
       "locationCaption": "Addis Ababa"
     },
@@ -951,7 +951,7 @@
       "submit": "Request your pilot",
       "submitting": "Submitting...",
       "bookingPrompt": "After submitting, we'll open our calendar so you can book a short discovery call.",
-      "consent": "By submitting, you agree that BlihOps may contact you about this request.",
+      "consent": "By submitting, you agree that Blih Ops may contact you about this request.",
       "validation": {
         "emailInvalid": "Enter a valid work email address.",
         "companyRequired": "Enter your company name.",
@@ -972,7 +972,7 @@
     "process": {
       "eyebrow": "The working model",
       "title": "Two weeks. Four deliberate stages.",
-      "description": "One focused question guides the work: can BlihOps deliver this workflow better?",
+      "description": "One focused question guides the work: can Blih Ops deliver this workflow better?",
       "steps": {
         "shareWorkflow": {
           "title": "Share one workflow",
@@ -1022,7 +1022,7 @@
   },
   "CareersPage": {
     "hero": {
-      "eyebrow": "Careers at BlihOps",
+      "eyebrow": "Careers at Blih Ops",
       "title": "Build work that matters. Grow with people who care.",
       "description": "Join us in Addis Ababa to build dependable operations, useful technology, and better outcomes for teams around the world."
     },
@@ -1071,16 +1071,16 @@
           "location": "Addis Ababa, Ethiopia",
           "workMode": "Hybrid",
           "employmentType": "Full-time",
-          "summary": "Help growing companies understand where a managed BlihOps team can create measurable operational value."
+          "summary": "Help growing companies understand where a managed Blih Ops team can create measurable operational value."
         }
       }
     }
   },
   "SkillsPage": {
     "hero": {
-      "eyebrow": "BlihOps Skills",
+      "eyebrow": "Blih Ops Skills",
       "title": "Learn practical skills that lead somewhere.",
-      "description": "Build practical ability, prove it through assessment, and prepare for BlihOps talent opportunities.",
+      "description": "Build practical ability, prove it through assessment, and prepare for Blih Ops talent opportunities.",
       "exploreTracks": "Explore learning tracks",
       "visitPlatform": "Visit Skills platform"
     },
@@ -1139,7 +1139,7 @@
       "eyebrow": "Preview catalog",
       "title": "Start with work worth learning.",
       "description": "Representative tracks are shown while the full platform catalog is being prepared. Each path connects learning to practical evidence.",
-      "exploreAriaLabel": "Explore {title} on BlihOps Skills",
+      "exploreAriaLabel": "Explore {title} on Blih Ops Skills",
       "labels": {
         "level": "Level",
         "length": "Length",
@@ -1187,7 +1187,7 @@
     },
     "pathway": {
       "title": "A course is only the beginning.",
-      "description": "BlihOps Skills is designed around a clear progression from learning to verified, opportunity-ready ability.",
+      "description": "Blih Ops Skills is designed around a clear progression from learning to verified, opportunity-ready ability.",
       "steps": {
         "chooseTrack": {
           "title": "Choose a track",
@@ -1203,14 +1203,14 @@
         },
         "opportunityReady": {
           "title": "Become opportunity-ready",
-          "description": "Qualified learners can become eligible for the BlihOps talent pool."
+          "description": "Qualified learners can become eligible for the Blih Ops talent pool."
         }
       }
     }
   },
   "TalentPage": {
     "hero": {
-      "eyebrow": "BlihOps Talent marketplace",
+      "eyebrow": "Blih Ops Talent marketplace",
       "title": "Verified talent. Real company demand.",
       "description": "Verified professionals meet partner opportunities while subscribed teams find talent backed by practical evidence.",
       "forTalent": "Find opportunities",
@@ -1229,11 +1229,11 @@
       }
     },
     "audiences": {
-      "ariaLabel": "Ways to use BlihOps Talent",
+      "ariaLabel": "Ways to use Blih Ops Talent",
       "talent": {
         "label": "For talent",
         "title": "Turn verified ability into visibility.",
-        "description": "Complete a practical BlihOps Skills course or take an assessment, build your verified profile, and explore opportunities from partner companies.",
+        "description": "Complete a practical Blih Ops Skills course or take an assessment, build your verified profile, and explore opportunities from partner companies.",
         "cta": "Enter Talent platform",
         "skillsCta": "Get verified on Skills"
       },
@@ -1274,10 +1274,10 @@
     "opportunities": {
       "eyebrow": "Partner opportunities",
       "title": "Work from companies looking for verified talent.",
-      "disclaimerTitle": "Partner roles, not BlihOps vacancies",
-      "disclaimer": "Listings shown here represent opportunities from companies using BlihOps Talent. They are not employment roles at BlihOps.",
+      "disclaimerTitle": "Partner roles, not Blih Ops vacancies",
+      "disclaimer": "Listings shown here represent opportunities from companies using Blih Ops Talent. They are not employment roles at Blih Ops.",
       "partnerLabel": "Partner company opportunity",
-      "exploreAriaLabel": "Explore {title} on BlihOps Talent",
+      "exploreAriaLabel": "Explore {title} on Blih Ops Talent",
       "items": {
         "customerSupportSpecialist": {
           "title": "Customer Support Specialist",
@@ -1331,7 +1331,7 @@
       "sampleLabel": "Sample profile",
       "verified": "Verified",
       "viewProfile": "View on Talent platform",
-      "viewAriaLabel": "View sample {title} profile on BlihOps Talent",
+      "viewAriaLabel": "View sample {title} profile on Blih Ops Talent",
       "labels": {
         "verification": "Verification",
         "availability": "Availability",
@@ -1382,7 +1382,7 @@
       "talentSteps": {
         "learnOrAssess": {
           "title": "Learn or take an assessment",
-          "description": "Complete a BlihOps Skills course or prove existing ability through direct assessment."
+          "description": "Complete a Blih Ops Skills course or prove existing ability through direct assessment."
         },
         "becomeVerified": {
           "title": "Earn verification",

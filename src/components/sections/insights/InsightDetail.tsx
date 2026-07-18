@@ -71,7 +71,7 @@ export function InsightDetail({ insight }: { insight: Insight }) {
       <figure className="group relative aspect-video w-full overflow-hidden border border-border bg-muted">
         <Image
           src={insight.heroImage}
-          alt={`${insight.title} — BlihOps insight`}
+          alt={`${insight.title} — Blih Ops insight`}
           fill
           priority
           sizes="(max-width: 768px) 100vw, 72rem"

@@ -41,7 +41,7 @@ export const caseStudies: CaseStudy[] = [
         <li>A repeatable quality review and coaching cadence</li>
       </ul>
       <h2>Our approach</h2>
-      <p>BlihOps began by mapping the request lifecycle from first contact to resolution. Together with the client, we documented channel-specific playbooks, severity definitions, ownership rules, and the information required before an issue could be escalated.</p>
+      <p>Blih Ops began by mapping the request lifecycle from first contact to resolution. Together with the client, we documented channel-specific playbooks, severity definitions, ownership rules, and the information required before an issue could be escalated.</p>
       <p>A dedicated support pod then took ownership of the agreed queues. The pod lead reviewed workload and exceptions daily, while quality specialists sampled conversations against a shared scorecard each week.</p>
       <h3>The operating system</h3>
       <ul>
@@ -114,7 +114,7 @@ export const caseStudies: CaseStudy[] = [
         <li>Too much coordination falling on senior product engineers</li>
       </ul>
       <h2>Our approach</h2>
-      <p>BlihOps formed an embedded engineering and QA pod around a defined portion of the roadmap. The team joined the client's planning, stand-ups, code review, and release process rather than introducing a parallel workflow.</p>
+      <p>Blih Ops formed an embedded engineering and QA pod around a defined portion of the roadmap. The team joined the client's planning, stand-ups, code review, and release process rather than introducing a parallel workflow.</p>
       <p>Responsibilities were divided clearly: the client retained product and architecture decisions, while the pod owned implementation, test coverage, documentation, and release readiness for assigned work.</p>
       <h3>Working agreement</h3>
       <ul>
@@ -187,7 +187,7 @@ export const caseStudies: CaseStudy[] = [
         <li>Important exceptions hidden inside large spreadsheets</li>
       </ul>
       <h2>Our approach</h2>
-      <p>BlihOps worked with operational leaders to define a small set of measures, the decision each measure supported, and the source fields required to calculate it. We then mapped the existing reports to those definitions and resolved inconsistent categories.</p>
+      <p>Blih Ops worked with operational leaders to define a small set of measures, the decision each measure supported, and the source fields required to calculate it. We then mapped the existing reports to those definitions and resolved inconsistent categories.</p>
       <p>The reporting layer was designed around review, not decoration. It separated current performance, emerging risks, and actions requiring an owner.</p>
       <h3>A single reporting cadence</h3>
       <ul>
@@ -260,7 +260,7 @@ export const caseStudies: CaseStudy[] = [
         <li>Findings not connected to coaching or operational action</li>
       </ul>
       <h2>Our approach</h2>
-      <p>BlihOps created a scorecard around accuracy, ownership, communication, process compliance, and customer context. Review guidance described what good performance looked like and how to handle issues that did not fit a simple pass-or-fail decision.</p>
+      <p>Blih Ops created a scorecard around accuracy, ownership, communication, process compliance, and customer context. Review guidance described what good performance looked like and how to handle issues that did not fit a simple pass-or-fail decision.</p>
       <p>Reviewers calibrated together using the same conversations before the scorecard entered routine use. Findings then flowed into individual coaching, knowledge-base updates, and recurring operational reports.</p>
       <h3>From review to improvement</h3>
       <ul>
