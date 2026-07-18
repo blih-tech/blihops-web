@@ -949,6 +949,8 @@
         }
       },
       "submit": "Request your pilot",
+      "submitting": "Submitting...",
+      "bookingPrompt": "After submitting, we'll open our calendar so you can book a short discovery call.",
       "consent": "By submitting, you agree that BlihOps may contact you about this request.",
       "validation": {
         "emailInvalid": "Enter a valid work email address.",

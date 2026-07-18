@@ -949,6 +949,8 @@
         }
       },
       "submit": "Pilotprojekt anfragen",
+      "submitting": "Wird gesendet...",
+      "bookingPrompt": "Nach dem Absenden öffnen wir unseren Kalender, damit Sie ein kurzes Kennenlerngespräch buchen können.",
       "consent": "Mit dem Absenden erklären Sie sich damit einverstanden, dass BlihOps Sie zu dieser Anfrage kontaktiert.",
       "validation": {
         "emailInvalid": "Geben Sie eine gültige geschäftliche E-Mail-Adresse ein.",

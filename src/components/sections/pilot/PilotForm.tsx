@@ -1,8 +1,14 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { getCalApi } from '@calcom/embed-react';
 import { standardSchemaResolver } from '@hookform/resolvers/standard-schema';
-import { ArrowRightIcon, CheckCircle2Icon, RotateCcwIcon } from 'lucide-react';
+import {
+  ArrowRightIcon,
+  CheckCircle2Icon,
+  LoaderCircleIcon,
+  RotateCcwIcon,
+} from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
 import { useTranslations } from 'next-intl';
 import { useForm } from 'react-hook-form';
@@ -40,6 +46,9 @@ const timelineOptions = [
   { value: 'Just exploring for now', key: 'exploring' },
 ] as const;
 
+const calLink = 'blih-marketing-fzifjy/blih-ops-desicovery-call';
+const calNamespace = 'blih-ops-desicovery-call';
+
 export function PilotForm() {
   const t = useTranslations('PilotPage.form');
   const tForms = useTranslations('Shared.forms');
@@ -64,7 +73,7 @@ export function PilotForm() {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<PilotFormValues>({
     resolver: standardSchemaResolver(pilotFormSchema),
     mode: 'onBlur',
@@ -86,9 +95,20 @@ export function PilotForm() {
     }
   }, [submitted]);
 
-  function onSubmit(data: PilotFormValues) {
+  async function onSubmit(data: PilotFormValues) {
     console.info('Pilot request submitted:', data);
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     setSubmitted(true);
+
+    const cal = await getCalApi({ namespace: calNamespace });
+    cal('modal', {
+      calLink,
+      config: {
+        layout: 'month_view',
+        useSlotsViewOnSmallScreen: 'true',
+        theme: 'light',
+      },
+    });
   }
 
   function startAnotherRequest() {
@@ -473,11 +493,23 @@ export function PilotForm() {
           <Button
             type="submit"
             size="lg"
+            disabled={isSubmitting}
             className="h-12 w-full justify-between rounded-none px-5"
           >
-            {t('submit')}
-            <ArrowRightIcon data-icon="inline-end" aria-hidden="true" />
+            {isSubmitting ? t('submitting') : t('submit')}
+            {isSubmitting ? (
+              <LoaderCircleIcon
+                className="animate-spin"
+                data-icon="inline-end"
+                aria-hidden="true"
+              />
+            ) : (
+              <ArrowRightIcon data-icon="inline-end" aria-hidden="true" />
+            )}
           </Button>
+          <p className="mt-3 text-center text-sm leading-relaxed text-foreground">
+            {t('bookingPrompt')}
+          </p>
           <p className="mt-3 text-center text-xs leading-relaxed text-muted-foreground">
             {t('consent')}
           </p>
