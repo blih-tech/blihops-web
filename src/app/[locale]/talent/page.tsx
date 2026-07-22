@@ -81,7 +81,7 @@ export default async function TalentPage({
             <motion.h1
               {...heroReveal(0.12)}
               id="talent-heading"
-              className="mt-6 max-w-3xl font-heading text-5xl leading-[0.96] font-semibold tracking-[-0.045em] text-balance sm:text-6xl lg:text-7xl"
+              className="mt-6 max-w-3xl break-words font-heading text-[2rem] leading-[1.05] font-semibold tracking-tight hyphens-auto text-balance sm:text-6xl sm:leading-[0.96] sm:tracking-[-0.045em] lg:text-7xl"
             >
               {t('hero.title')}
             </motion.h1>

@@ -45,8 +45,8 @@ export default async function CareersPage({
           className="scroll-mt-24 py-16 md:py-24"
           aria-labelledby="open-roles-heading"
         >
-          <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-16">
-            <div className="lg:sticky lg:top-24 lg:col-span-4">
+          <div className="grid min-w-0 items-start gap-10 lg:grid-cols-12 lg:gap-16">
+            <div className="min-w-0 lg:sticky lg:top-24 lg:col-span-4">
               <p className="font-mono text-[11px] font-medium tracking-widest text-primary uppercase">
                 {t('eyebrow')}
               </p>
@@ -61,7 +61,7 @@ export default async function CareersPage({
               </p>
             </div>
 
-            <div className="border-t border-border lg:col-span-8">
+            <div className="min-w-0 border-t border-border lg:col-span-8">
               {careerRoles.length > 0 ? (
                 careerRoles.map((role, index) => {
                   const key =
@@ -70,6 +70,7 @@ export default async function CareersPage({
                   return (
                     <motion.div
                       key={role.slug}
+                      className="min-w-0"
                       initial={{ opacity: 0, y: 16 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: false, amount: 0.2 }}
@@ -81,19 +82,19 @@ export default async function CareersPage({
                     >
                       <Link
                         href={`/careers/${role.slug}`}
-                        className="group grid gap-5 border-b border-border py-7 transition-colors hover:bg-muted/50 focus-visible:bg-muted/50 focus-visible:outline-none sm:grid-cols-[2.5rem_minmax(0,1fr)_auto] sm:px-5"
+                        className="group grid min-w-0 gap-5 border-b border-border py-7 transition-colors hover:bg-muted/50 focus-visible:bg-muted/50 focus-visible:outline-none sm:grid-cols-[2.5rem_minmax(0,1fr)_auto] sm:px-5"
                       >
                         <span className="font-mono text-[11px] tracking-widest text-primary">
                           {String(index + 1).padStart(2, '0')}
                         </span>
-                        <span>
-                          <span className="block font-heading text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+                        <span className="min-w-0">
+                          <span className="block break-words font-heading text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
                             {t(`items.${key}.title`)}
                           </span>
-                          <span className="mt-3 block max-w-xl text-sm leading-relaxed text-muted-foreground">
+                          <span className="mt-3 block max-w-xl break-words text-sm leading-relaxed text-muted-foreground">
                             {t(`items.${key}.summary`)}
                           </span>
-                          <span className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs font-medium text-muted-foreground">
+                          <span className="mt-4 flex min-w-0 flex-wrap items-center gap-x-4 gap-y-2 break-words text-xs font-medium text-muted-foreground">
                             <span>{t(`items.${key}.department`)}</span>
                             <span className="inline-flex items-center gap-1.5">
                               <MapPinIcon

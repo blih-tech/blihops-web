@@ -49,31 +49,31 @@ export default async function ContactPage({
               className="absolute top-0 -right-3 h-px w-3 bg-border"
             />
 
-            <div className="flex items-center justify-between border-y border-border/80 px-5 py-3 font-mono text-[10px] tracking-[0.16em] text-muted-foreground uppercase sm:px-8">
+            <div className="flex flex-col items-start gap-2 border-y border-border/80 px-5 py-3 font-mono text-[10px] tracking-[0.16em] text-muted-foreground uppercase sm:flex-row sm:items-center sm:justify-between sm:px-8">
               <span>{tHero('label')}</span>
               <span>{tHero('context')}</span>
             </div>
 
-            <div className="grid lg:grid-cols-[0.88fr_1.12fr] lg:divide-x lg:divide-border/80">
-              <div className="px-5 py-12 sm:px-8 md:py-16 lg:px-10 lg:py-20">
+            <div className="grid min-w-0 lg:grid-cols-[0.88fr_1.12fr] lg:divide-x lg:divide-border/80">
+              <div className="min-w-0 px-5 py-12 sm:px-8 md:py-16 lg:px-10 lg:py-20">
                 <p className="font-mono text-[11px] tracking-[0.12em] text-primary uppercase">
                   {tHero('eyebrow')}
                 </p>
-                <h1 className="mt-7 max-w-lg font-heading text-5xl leading-[0.94] font-semibold tracking-[-0.045em] text-balance text-foreground sm:text-6xl lg:text-7xl">
+                <h1 className="mt-7 max-w-lg break-words font-heading text-[2rem] leading-[1.05] font-semibold tracking-tight hyphens-auto text-balance text-foreground sm:text-6xl sm:leading-[0.94] sm:tracking-[-0.045em] lg:text-7xl">
                   {tHero('title')}
                 </h1>
-                <p className="mt-8 max-w-md text-base leading-7 text-muted-foreground sm:text-lg">
+                <p className="mt-8 max-w-md text-base leading-7 text-pretty text-muted-foreground sm:text-lg">
                   {tHero('description')}
                 </p>
 
                 <a
                   href="mailto:blih.marketing2023@gmail.com"
-                  className="mt-12 inline-block border-b border-foreground pb-1 text-sm font-medium text-foreground transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-primary hover:text-primary"
+                  className="mt-12 inline-block max-w-full break-all border-b border-foreground pb-1 text-sm font-medium text-foreground transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-primary hover:text-primary"
                 >
                   blih.marketing2023@gmail.com
                 </a>
 
-                <div className="mt-8 flex flex-wrap items-center gap-4">
+                <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:flex-wrap sm:items-center">
                   <span className="text-sm text-muted-foreground">
                     {tHero('preferToTalk')}
                   </span>
@@ -90,13 +90,17 @@ export default async function ContactPage({
                   {contactDetails.map(([term, detail], index) => (
                     <div
                       key={term}
-                      className="grid grid-cols-[2rem_0.8fr_1.2fr] gap-3 border-b border-border/80 py-4 text-sm"
+                      className="grid min-w-0 grid-cols-[2rem_minmax(0,1fr)] gap-x-3 gap-y-1 border-b border-border/80 py-4 text-sm sm:grid-cols-[2rem_0.8fr_1.2fr] sm:gap-y-0"
                     >
                       <span className="font-mono text-[10px] text-primary">
                         0{index + 1}
                       </span>
-                      <dt className="text-muted-foreground">{term}</dt>
-                      <dd className="text-foreground">{detail}</dd>
+                      <dt className="min-w-0 break-words text-muted-foreground hyphens-auto">
+                        {term}
+                      </dt>
+                      <dd className="col-start-2 min-w-0 break-words text-foreground sm:col-start-auto">
+                        {detail}
+                      </dd>
                     </div>
                   ))}
                 </dl>
@@ -121,7 +125,7 @@ export default async function ContactPage({
                 </figure>
               </div>
 
-              <div className="border-t border-border/80 px-5 py-12 sm:px-8 md:py-16 lg:border-t-0 lg:px-10 lg:py-20">
+              <div className="min-w-0 border-t border-border/80 px-5 py-12 sm:px-8 md:py-16 lg:border-t-0 lg:px-10 lg:py-20">
                 <ContactForm />
               </div>
             </div>
@@ -134,26 +138,26 @@ export default async function ContactPage({
         className="py-24 md:py-32"
         aria-labelledby="pilot-route"
       >
-        <div className="grid items-end gap-10 border-y border-border/80 py-10 md:grid-cols-[0.72fr_1.28fr] md:gap-20 md:py-14">
-          <div>
+        <div className="grid min-w-0 items-end gap-10 border-y border-border/80 py-10 md:grid-cols-[0.72fr_1.28fr] md:gap-20 md:py-14">
+          <div className="min-w-0">
             <p className="font-mono text-[10px] tracking-[0.16em] text-muted-foreground uppercase">
               {tPilotCta('eyebrow')}
             </p>
             <h2
               id="pilot-route"
-              className="mt-5 max-w-sm font-heading text-3xl leading-[1.05] font-semibold tracking-[-0.03em] text-foreground sm:text-4xl"
+              className="mt-5 max-w-sm break-words font-heading text-3xl leading-[1.05] font-semibold tracking-[-0.03em] text-balance text-foreground hyphens-auto sm:text-4xl"
             >
               {tPilotCta('title')}
             </h2>
           </div>
 
-          <div className="md:pb-1">
-            <p className="max-w-lg text-base leading-7 text-muted-foreground">
+          <div className="min-w-0 md:pb-1">
+            <p className="max-w-lg text-base leading-7 text-pretty text-muted-foreground">
               {tPilotCta('description')}
             </p>
             <Link
               href="/pilot"
-              className="mt-7 inline-flex items-center gap-3 border-b border-foreground pb-1 text-sm font-medium text-foreground transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-primary hover:text-primary"
+              className="mt-7 inline-flex max-w-full items-start gap-3 border-b border-foreground pb-1 text-sm leading-relaxed font-medium whitespace-normal text-foreground transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:border-primary hover:text-primary"
             >
               {tPilotCta('action')}
               <ArrowUpRightIcon
