@@ -79,7 +79,7 @@ export function Solution() {
           timelineRef={sectionRef}
           once={false}
           customVariants={motionVariants}
-          className="font-heading text-3xl font-semibold tracking-tight text-foreground md:text-5xl"
+          className="font-heading text-3xl font-semibold tracking-tight text-balance text-foreground md:text-5xl"
         >
           {t('title')}
         </TimelineAnimation>
@@ -89,7 +89,7 @@ export function Solution() {
           timelineRef={sectionRef}
           once={false}
           customVariants={motionVariants}
-          className="font-sans text-sm leading-relaxed text-muted-foreground md:text-base mx-auto max-w-lg"
+          className="font-sans mx-auto max-w-xl text-sm leading-relaxed text-pretty text-muted-foreground md:text-base"
         >
           {t('description')}
         </TimelineAnimation>
@@ -200,14 +200,14 @@ function FeatureCell({
   return (
     <div
       className={cn(
-        'flex flex-col items-center px-6 py-10 md:px-10 md:py-12',
+        'flex flex-col items-center px-4 py-8 sm:px-6 sm:py-10 md:px-10 md:py-12',
         className,
       )}
     >
-      <div className="flex min-h-48 w-full flex-1 items-center justify-center md:min-h-56">
+      <div className="flex min-h-44 w-full flex-1 items-center justify-center sm:min-h-48 md:min-h-56">
         {visual}
       </div>
-      <div className="mt-8 max-w-xs space-y-2 text-center">
+      <div className="mt-6 max-w-xs space-y-2 text-center sm:mt-8">
         <h3 className="font-heading text-base font-semibold text-foreground">
           {title}
         </h3>
@@ -227,16 +227,16 @@ function StatsRow() {
   return (
     <div
       ref={statsRef}
-      className="relative grid grid-cols-2 border-b border-border bg-muted lg:border-r"
+      className="relative grid grid-cols-1 border-b border-border bg-muted sm:grid-cols-2 lg:border-r"
     >
-      <GridPlus className="top-0 left-1/2" />
-      <GridPlus className="bottom-0 left-1/2" />
+      <GridPlus className="top-0 left-1/2 hidden sm:block" />
+      <GridPlus className="bottom-0 left-1/2 hidden sm:block" />
       <StatBlock
         value={statsInView ? 40 : 0}
         prefix="25–"
         suffix="%"
         label={t('costReduction')}
-        className="border-r border-border"
+        className="border-b border-border sm:border-r sm:border-b-0"
       />
       <StatBlock
         value={statsInView ? 20 : 0}
@@ -264,7 +264,7 @@ function StatBlock({
   return (
     <div
       className={cn(
-        'flex flex-col items-center justify-center gap-2 px-4 py-10 md:py-12',
+        'flex flex-col items-center justify-center gap-2 px-4 py-8 sm:py-10 md:py-12',
         className,
       )}
     >

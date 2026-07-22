@@ -108,7 +108,7 @@ export function Services() {
           timelineRef={sectionRef}
           once={false}
           customVariants={motionVariants}
-          className="font-heading text-3xl font-semibold tracking-tight text-foreground md:text-5xl"
+          className="font-heading text-3xl font-semibold tracking-tight text-balance text-foreground md:text-5xl"
         >
           {t('title')}
         </TimelineAnimation>
@@ -118,7 +118,7 @@ export function Services() {
           timelineRef={sectionRef}
           once={false}
           customVariants={motionVariants}
-          className="font-sans text-sm leading-relaxed text-muted-foreground md:text-base"
+          className="font-sans mx-auto max-w-2xl text-sm leading-relaxed text-pretty text-muted-foreground md:text-base"
         >
           {t('description')}
         </TimelineAnimation>

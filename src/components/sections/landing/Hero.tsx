@@ -64,7 +64,7 @@ export function Hero() {
           timelineRef={sectionRef}
           once={false}
           customVariants={heroMotionVariants}
-          className="font-heading max-w-3xl text-center text-4xl font-semibold tracking-tight text-foreground text-balance sm:text-5xl lg:text-6xl"
+          className="font-heading max-w-3xl text-center text-[2rem] leading-[1.08] font-semibold tracking-tight text-balance text-foreground sm:text-5xl lg:text-6xl"
         >
           {t('title')}
         </TimelineAnimation>
@@ -75,7 +75,7 @@ export function Hero() {
           timelineRef={sectionRef}
           once={false}
           customVariants={heroMotionVariants}
-          className="font-sans mx-auto max-w-lg text-center text-base leading-relaxed tracking-normal text-muted-foreground sm:text-lg"
+          className="font-sans mx-auto max-w-xl text-center text-base leading-relaxed tracking-normal text-pretty text-muted-foreground sm:text-lg"
         >
           {t('description')}
         </TimelineAnimation>
@@ -86,18 +86,18 @@ export function Hero() {
           timelineRef={sectionRef}
           once={false}
           customVariants={heroMotionVariants}
-          className="flex flex-row flex-wrap items-center justify-center gap-3 pt-1"
+          className="flex w-full flex-col items-center justify-center gap-3 pt-1 sm:w-auto sm:flex-row sm:flex-wrap"
         >
           <BookCallButton
             calLink="blih-marketing-fzifjy/blih-ops-desicovery-call"
             namespace="blih-ops-desicovery-call"
-            className="h-10 rounded-md border border-border bg-background! px-4 text-foreground! hover:bg-muted! hover:text-foreground!"
+            className="h-10 w-full rounded-md border border-border bg-background! px-4 text-foreground! hover:bg-muted! hover:text-foreground! sm:w-auto"
           />
           <Link
             href="/pilot"
             className={cn(
               buttonVariants({ size: 'lg' }),
-              'group/cta bg-primary hover:bg-primary',
+              'group/cta w-full bg-primary hover:bg-primary sm:w-auto',
             )}
           >
             {tActions('getPilot')}

@@ -79,7 +79,7 @@ export function Trust() {
           timelineRef={sectionRef}
           once={false}
           customVariants={motionVariants}
-          className="font-heading text-3xl font-semibold tracking-tight text-foreground md:text-5xl"
+          className="font-heading text-3xl font-semibold tracking-tight text-balance text-foreground md:text-5xl"
         >
           {t('title')}
         </TimelineAnimation>
@@ -89,7 +89,7 @@ export function Trust() {
           timelineRef={sectionRef}
           once={false}
           customVariants={motionVariants}
-          className="font-sans text-sm leading-relaxed text-muted-foreground md:text-base"
+          className="font-sans mx-auto max-w-2xl text-sm leading-relaxed text-pretty text-muted-foreground md:text-base"
         >
           {t('description')}
         </TimelineAnimation>
@@ -110,7 +110,7 @@ export function Trust() {
             <div
               key={stat.id}
               className={cn(
-                'flex flex-col items-center justify-center gap-3 rounded-xl border border-border bg-muted px-6 py-12 text-center',
+                'flex flex-col items-center justify-center gap-3 rounded-xl border border-border bg-muted px-6 py-10 text-center md:py-12',
               )}
             >
               <p className="font-heading text-4xl font-semibold tracking-tight text-foreground tabular-nums md:text-5xl">

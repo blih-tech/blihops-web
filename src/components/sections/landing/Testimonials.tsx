@@ -66,7 +66,7 @@ export function Testimonials() {
             timelineRef={sectionRef}
             once={false}
             customVariants={motionVariants}
-            className="font-heading text-3xl font-semibold tracking-tight text-foreground md:text-5xl"
+            className="font-heading text-3xl font-semibold tracking-tight text-balance text-foreground md:text-5xl"
           >
             {t('title')}
           </TimelineAnimation>
@@ -76,7 +76,7 @@ export function Testimonials() {
             timelineRef={sectionRef}
             once={false}
             customVariants={motionVariants}
-            className="font-sans text-sm leading-relaxed text-muted-foreground md:text-base"
+            className="font-sans text-sm leading-relaxed text-pretty text-muted-foreground md:text-base"
           >
             {t('description')}
           </TimelineAnimation>
@@ -104,8 +104,8 @@ export function Testimonials() {
             ))}
           </ul>
 
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-linear-to-r from-background to-transparent sm:w-24" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-linear-to-l from-background to-transparent sm:w-24" />
+          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-linear-to-r from-background to-transparent sm:w-24" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-linear-to-l from-background to-transparent sm:w-24" />
 
           <InfiniteSlider
             gap={0}
@@ -135,7 +135,7 @@ function TestimonialCard({
   return (
     <article
       className={cn(
-        'flex w-80 shrink-0 flex-col border-r border-border bg-background sm:w-96',
+        'flex w-[calc(100vw-2rem)] max-w-80 shrink-0 flex-col border-r border-border bg-background sm:w-96 sm:max-w-none',
         className,
       )}
     >

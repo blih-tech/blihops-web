@@ -1,9 +1,9 @@
 {
   "Metadata": {
     "global": {
-      "defaultTitle": "Blih Ops, AI-Powered Outsourcing",
+      "defaultTitle": "Outsourcing Company in Ethiopia | Blih Ops",
       "titleTemplate": "{title} | Blih Ops",
-      "description": "Blih Intelligent Operations - Ethiopia's AI-powered outsourcing company. Managed customer support, back-office, IT, and automation with clear SLAs and a free 2-week pilot.",
+      "description": "Blih Ops is an outsourcing company in Ethiopia providing managed customer support, back-office, IT, and AI automation with dedicated teams, clear SLAs, and weekly reporting.",
       "openGraphTitle": "Blih Ops - AI-Powered Outsourcing",
       "openGraphDescription": "Managed operations with structure, automation, and SLA accountability. Serving Europe, the Middle East, and Africa from Addis Ababa.",
       "twitterTitle": "Blih Ops - AI-Powered Outsourcing",
@@ -267,16 +267,16 @@
   },
   "Home": {
     "hero": {
-      "eyebrow": "Outsourcing, intelligently.",
-      "title": "We Run Your Operations With Structure & SLAs",
-      "description": "Managed pods for support, back-office, and automation - with clear ownership and measurable performance."
+      "eyebrow": "Ethiopia-Based Managed Outsourcing",
+      "title": "An Outsourcing Company in Ethiopia Built for Reliable Operations",
+      "description": "Dedicated teams for customer support, back-office, IT, and automation, managed with documented processes, clear SLAs, and weekly reporting."
     },
     "logoCloud": {
       "heading": "Trusted by experts"
     },
     "problem": {
       "ariaLabel": "The real cost of doing it all yourself",
-      "title": "Great Businesses Stall When Operations Take Over",
+      "title": "When Growing Operations Outpace Your Internal Team",
       "description": "You didn't start your business to chase support tickets or babysit processes. Stretched thin and overspending, scaling feels harder every quarter. There's a smarter way than traditional models.",
       "items": {
         "costTrap": {
@@ -299,9 +299,9 @@
     },
     "solution": {
       "ariaLabel": "The Blih Ops model",
-      "eyebrow": "The Blih Ops Model",
-      "title": "Structured pods. AI workflows. SLA accountability.",
-      "description": "Dedicated pods, AI-assisted workflows, and measured SLAs so operations run with ownership, not chaos.",
+      "eyebrow": "Our Managed Outsourcing Model",
+      "title": "Dedicated Ethiopian Teams. Clear Processes. Measurable Delivery.",
+      "description": "We combine skilled teams in Addis Ababa with documented workflows, practical automation, quality assurance, and SLA-backed delivery.",
       "features": {
         "deliveryPods": {
           "title": "Dedicated Delivery Pods",
@@ -359,8 +359,8 @@
     "services": {
       "ariaLabel": "Services",
       "eyebrow": "Intelligent Outsourcing Services",
-      "title": "Everything your operations need. Nothing they don't.",
-      "description": "Every service ships with SLAs, weekly reporting, and built-in automation.",
+      "title": "Outsourcing Services for Growing Businesses",
+      "description": "Outsource customer support, back-office operations, IT and software work, data reporting, and repetitive workflows to one accountable delivery partner.",
       "serviceListAriaLabel": "Service list",
       "serviceSlidesAriaLabel": "Service slides",
       "showServiceAriaLabel": "Show {title}"
@@ -368,8 +368,8 @@
     "trust": {
       "ariaLabel": "Trust and proof",
       "eyebrow": "Trust & Proof",
-      "title": "Built for reliability, security, and clear ownership",
-      "description": "SLA-backed delivery, GDPR-aware processes, and ISO-aligned quality - run by Ethiopia-based pods with weekly reporting you can act on.",
+      "title": "Why Businesses Choose Blih Ops as Their Ethiopia Outsourcing Partner",
+      "description": "Ethiopia-based delivery with GMT+3 availability, GDPR-aware processes, documented quality controls, dedicated ownership, and transparent weekly reporting.",
       "stats": {
         "costReduction": "Typical cost reduction vs. in-house or Western outsourcing",
         "slaCompliance": "SLA compliance across active delivery pods",
