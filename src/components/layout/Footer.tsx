@@ -55,6 +55,8 @@ function SocialIcon({
     <a
       href={href}
       aria-label={label}
+      target="_blank"
+      rel="noreferrer"
       className="flex size-10 items-center justify-center rounded-md border border-border bg-background text-foreground transition-colors hover:border-primary hover:bg-muted hover:text-primary"
     >
       {children}
@@ -203,15 +205,29 @@ export function Footer() {
                       customVariants={footerMotionVariants}
                     >
                       <SocialIcon
-                        label={t('socialAriaLabels.facebook')}
-                        href="#"
+                        label={t('socialAriaLabels.instagram')}
+                        href="https://www.instagram.com/blihops/"
                       >
                         <svg
                           viewBox="0 0 24 24"
-                          className="size-4 fill-current"
+                          className="size-4 fill-none stroke-current"
                           aria-hidden
                         >
-                          <path d="M24 12.1C24 5.4 18.6 0 12 0S0 5.4 0 12.1C0 18.1 4.4 23 10.1 24v-8.4h-3v-3.5h3V9.4c0-3 1.8-4.7 4.6-4.7 1.3 0 2.7.2 2.7.2v3h-1.5c-1.5 0-2 .9-2 1.9v2.3h3.3l-.5 3.5h-2.8V24C19.6 23 24 18.1 24 12.1z" />
+                          <rect
+                            x="2.5"
+                            y="2.5"
+                            width="19"
+                            height="19"
+                            rx="5"
+                            strokeWidth="2"
+                          />
+                          <circle cx="12" cy="12" r="4.25" strokeWidth="2" />
+                          <circle
+                            cx="17.5"
+                            cy="6.5"
+                            r="1"
+                            className="fill-current stroke-none"
+                          />
                         </svg>
                       </SocialIcon>
                     </TimelineAnimation>
@@ -222,13 +238,16 @@ export function Footer() {
                       once={false}
                       customVariants={footerMotionVariants}
                     >
-                      <SocialIcon label={t('socialAriaLabels.x')} href="#">
+                      <SocialIcon
+                        label={t('socialAriaLabels.tiktok')}
+                        href="https://www.tiktok.com/@blihops/video/7602309252924984583"
+                      >
                         <svg
                           viewBox="0 0 24 24"
                           className="size-4 fill-current"
                           aria-hidden
                         >
-                          <path d="M18.9 2H22l-6.8 7.8L23 22h-6.2l-4.9-6.4L6.3 22H3.2l7.3-8.3L1 2h6.4l4.4 5.8L18.9 2zm-1.1 18h1.7L6.3 3.9H4.5L17.8 20z" />
+                          <path d="M16.6 5.82a4.85 4.85 0 0 1-1.17-3.18h-3.3v13.24a2.77 2.77 0 1 1-2.39-2.75V9.79a6.1 6.1 0 1 0 5.69 6.09V9.17a8.2 8.2 0 0 0 4.8 1.54V7.42a4.87 4.87 0 0 1-3.63-1.6Z" />
                         </svg>
                       </SocialIcon>
                     </TimelineAnimation>
@@ -241,7 +260,7 @@ export function Footer() {
                     >
                       <SocialIcon
                         label={t('socialAriaLabels.linkedIn')}
-                        href="#"
+                        href="https://et.linkedin.com/company/blihops"
                       >
                         <svg
                           viewBox="0 0 24 24"
@@ -252,30 +271,10 @@ export function Footer() {
                         </svg>
                       </SocialIcon>
                     </TimelineAnimation>
-                    <TimelineAnimation
-                      as="div"
-                      animationNum={5}
-                      timelineRef={contentRef}
-                      once={false}
-                      customVariants={footerMotionVariants}
-                    >
-                      <SocialIcon
-                        label={t('socialAriaLabels.youTube')}
-                        href="#"
-                      >
-                        <svg
-                          viewBox="0 0 24 24"
-                          className="size-4 fill-current"
-                          aria-hidden
-                        >
-                          <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z" />
-                        </svg>
-                      </SocialIcon>
-                    </TimelineAnimation>
                   </div>
                   <TimelineAnimation
                     as="div"
-                    animationNum={6}
+                    animationNum={5}
                     timelineRef={contentRef}
                     once={false}
                     customVariants={footerMotionVariants}

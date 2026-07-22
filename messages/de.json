@@ -497,10 +497,9 @@
         "contact": "Kontakt"
       },
       "socialAriaLabels": {
-        "facebook": "Facebook",
-        "x": "X",
-        "linkedIn": "LinkedIn",
-        "youTube": "YouTube"
+        "instagram": "Instagram",
+        "tiktok": "TikTok",
+        "linkedIn": "LinkedIn"
       },
       "copyright": "© {year} Blih Ops. Alle Rechte vorbehalten.",
       "backToTop": "Nach oben",

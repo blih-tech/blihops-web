@@ -114,10 +114,9 @@
         "contact": "Contact"
       },
       "socialAriaLabels": {
-        "facebook": "Facebook",
-        "x": "X",
-        "linkedIn": "LinkedIn",
-        "youTube": "YouTube"
+        "instagram": "Instagram",
+        "tiktok": "TikTok",
+        "linkedIn": "LinkedIn"
       },
       "copyright": "© {year} Blih Ops. All rights reserved.",
       "backToTop": "Back to top",
