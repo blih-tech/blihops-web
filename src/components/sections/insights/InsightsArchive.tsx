@@ -122,10 +122,10 @@ export function InsightsArchive({ insights }: InsightsArchiveProps) {
   return (
     <section
       ref={sectionRef}
-      className="grid items-start lg:grid-cols-[13.5rem_minmax(0,1fr)]"
+      className="grid min-w-0 items-start lg:grid-cols-[13.5rem_minmax(0,1fr)]"
       aria-label={tArchive('ariaLabel')}
     >
-      <aside className="border-b border-border py-5 lg:sticky lg:top-20 lg:border-r lg:border-b-0 lg:py-7 lg:pr-7">
+      <aside className="min-w-0 border-b border-border py-5 lg:sticky lg:top-20 lg:border-r lg:border-b-0 lg:py-7 lg:pr-7">
         <TimelineAnimation
           animationNum={0}
           timelineRef={sectionRef}
@@ -179,7 +179,7 @@ export function InsightsArchive({ insights }: InsightsArchiveProps) {
         </TimelineAnimation>
       </aside>
 
-      <div className="lg:pl-0">
+      <div className="min-w-0 lg:pl-0">
         <p className="border-b border-border py-4 font-mono text-[10px] text-muted-foreground lg:hidden">
           {tArchive('count', { count: visibleInsights.length })}
         </p>
@@ -187,7 +187,7 @@ export function InsightsArchive({ insights }: InsightsArchiveProps) {
         <LayoutGroup>
           <motion.div
             layout
-            className="grid grid-cols-1 gap-px bg-border md:grid-cols-2"
+            className="grid min-w-0 grid-cols-1 gap-px bg-border md:grid-cols-2"
           >
             <AnimatePresence mode="popLayout">
               {visibleInsights.map((insight, index) => (
@@ -206,7 +206,7 @@ export function InsightsArchive({ insights }: InsightsArchiveProps) {
                       damping: 30,
                     },
                   }}
-                  className="bg-background"
+                  className="min-w-0 bg-background"
                 >
                   <InsightCard insight={insight} />
                 </motion.div>
@@ -237,7 +237,7 @@ function InsightCard({ insight }: { insight: LocalizedInsight }) {
   return (
     <Link
       href={`/insights/${insight.slug}`}
-      className="group flex min-h-full flex-col bg-background p-4 transition-colors duration-300 hover:bg-muted/50 sm:p-5"
+      className="group flex min-h-full min-w-0 flex-col bg-background p-4 transition-colors duration-300 hover:bg-muted/50 sm:p-5"
       aria-label={t('readAriaLabel', { title: insight.title })}
     >
       <div className="relative aspect-video overflow-hidden rounded-md border border-border bg-muted">
