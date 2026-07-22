@@ -46,7 +46,6 @@ export async function generateMetadata({
     },
     description: t('description'),
     applicationName: 'Blih Ops',
-    keywords: ['Blih Ops', ...(t.raw('keywords') as string[])],
     authors: [{ name: 'Blih Intelligent Operations PLC' }],
     creator: 'Blih Ops',
     publisher: 'Blih Intelligent Operations PLC',
