@@ -51,12 +51,15 @@ export async function generateMetadata({
     publisher: 'Blih Intelligent Operations PLC',
     alternates: {
       canonical: `/${locale}`,
-      languages: Object.fromEntries(
-        routing.locales.map((supportedLocale) => [
-          supportedLocale,
-          `/${supportedLocale}`,
-        ]),
-      ),
+      languages: {
+        ...Object.fromEntries(
+          routing.locales.map((supportedLocale) => [
+            supportedLocale,
+            `/${supportedLocale}`,
+          ]),
+        ),
+        'x-default': `/${routing.defaultLocale}`,
+      },
     },
     openGraph: {
       type: 'website',
