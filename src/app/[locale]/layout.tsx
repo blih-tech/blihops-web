@@ -33,6 +33,7 @@ export async function generateMetadata({
 }: Pick<LocaleLayoutProps, 'params'>): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'Metadata.global' });
+  const socialImage = `/seo/og-${locale}.png`;
 
   return {
     metadataBase: new URL('https://blihops.com'),
@@ -62,12 +63,14 @@ export async function generateMetadata({
       siteName: 'Blih Ops',
       title: t('openGraphTitle'),
       description: t('openGraphDescription'),
+      images: [{ url: socialImage, alt: t('openGraphTitle') }],
     },
     twitter: {
       card: 'summary_large_image',
       title: t('twitterTitle'),
       description: t('twitterDescription'),
       creator: '@blihops',
+      images: [{ url: socialImage, alt: t('openGraphTitle') }],
     },
     robots: {
       index: true,
