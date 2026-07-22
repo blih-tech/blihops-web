@@ -4,6 +4,7 @@ import { notFound, redirect } from 'next/navigation';
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import { CareerDetail } from '@/components/sections/careers/CareerDetail';
 import { careerRoles, getCareerRoleBySlug } from '@/content/careers';
+import { noIndexRobots } from '@/i18n/metadata';
 
 type CareerPageProps = {
   params: Promise<{ locale: string; slug: string }>;
@@ -19,11 +20,12 @@ export async function generateMetadata({
   const { slug } = await params;
   const role = getCareerRoleBySlug(slug);
 
-  if (!role) return { title: 'Role not found' };
+  if (!role) return { title: 'Role not found', robots: noIndexRobots };
 
   return {
     title: `${role.title} - Careers`,
     description: role.summary,
+    robots: noIndexRobots,
     alternates: { canonical: `/en/careers/${role.slug}` },
     openGraph: {
       title: `${role.title} at Blih Ops`,

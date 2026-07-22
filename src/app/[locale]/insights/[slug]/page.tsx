@@ -12,6 +12,7 @@ import {
   getRelatedInsights,
   insights,
 } from '@/content/insights';
+import { noIndexRobots } from '@/i18n/metadata';
 
 export function generateStaticParams() {
   return insights.map((insight) => ({ slug: insight.slug }));
@@ -25,11 +26,12 @@ export async function generateMetadata({
   const { slug } = await params;
   const insight = getInsightBySlug(slug);
 
-  if (!insight) return { title: 'Insight not found' };
+  if (!insight) return { title: 'Insight not found', robots: noIndexRobots };
 
   return {
     title: insight.title,
     description: insight.excerpt,
+    robots: noIndexRobots,
     authors: [{ name: insight.author }],
     alternates: { canonical: `/en/insights/${insight.slug}` },
     openGraph: {
