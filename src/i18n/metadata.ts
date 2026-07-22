@@ -35,6 +35,13 @@ export function createGenerateMetadata(
     });
     const title = t('title');
     const description = t('description');
+    const openGraphTitle = t.has('openGraphTitle')
+      ? t('openGraphTitle')
+      : title;
+    const openGraphDescription = t.has('openGraphDescription')
+      ? t('openGraphDescription')
+      : description;
+    const socialImage = `/seo/og-${locale}.png`;
 
     return {
       title,
@@ -49,11 +56,19 @@ export function createGenerateMetadata(
         ),
       },
       openGraph: {
-        title: t.has('openGraphTitle') ? t('openGraphTitle') : title,
-        description: t.has('openGraphDescription')
-          ? t('openGraphDescription')
-          : description,
+        type: 'website',
+        locale: locale === 'de' ? 'de_DE' : 'en_US',
+        siteName: 'Blih Ops',
+        title: openGraphTitle,
+        description: openGraphDescription,
         url: getLocalizedPath(locale, pathname),
+        images: [{ url: socialImage, alt: openGraphTitle }],
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: openGraphTitle,
+        description: openGraphDescription,
+        images: [{ url: socialImage, alt: openGraphTitle }],
       },
     };
   };
