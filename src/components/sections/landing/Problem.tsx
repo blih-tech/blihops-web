@@ -55,7 +55,7 @@ export function Problem() {
           timelineRef={sectionRef}
           once={false}
           customVariants={problemMotionVariants}
-          className="font-heading text-3xl font-semibold tracking-tight text-foreground md:text-5xl"
+          className="font-heading text-3xl font-semibold tracking-tight text-balance text-foreground md:text-5xl"
         >
           {t('title')}
         </TimelineAnimation>
@@ -65,7 +65,7 @@ export function Problem() {
           timelineRef={sectionRef}
           once={false}
           customVariants={problemMotionVariants}
-          className="font-sans text-sm leading-relaxed text-muted-foreground md:text-base"
+          className="font-sans mx-auto max-w-xl text-sm leading-relaxed text-pretty text-muted-foreground md:text-base"
         >
           {t('description')}
         </TimelineAnimation>
@@ -134,7 +134,7 @@ function ProblemCardItem({
         <h3 className="font-heading text-base font-medium text-foreground">
           {problem.title}
         </h3>
-        <p className="font-sans text-xs leading-relaxed text-muted-foreground">
+        <p className="font-sans text-sm leading-relaxed text-pretty text-muted-foreground">
           {problem.description}
         </p>
       </div>

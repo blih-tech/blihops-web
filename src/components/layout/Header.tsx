@@ -177,7 +177,7 @@ export function Header() {
         </Link>
 
         <nav
-          className="relative hidden items-center rounded-md border border-border bg-transparent p-1 md:flex"
+          className="relative hidden items-center rounded-md border border-border bg-transparent p-1 lg:flex"
           aria-label={t('primaryNavAriaLabel')}
           onMouseLeave={() => {
             if (!whoOpen) setHoveredNavId(null);
@@ -294,7 +294,7 @@ export function Header() {
 
           <button
             type="button"
-            className="inline-flex size-9 items-center justify-center rounded-md border border-border bg-background text-foreground md:hidden"
+            className="inline-flex size-9 items-center justify-center rounded-md border border-border bg-background text-foreground lg:hidden"
             aria-label={
               mobileOpen ? t('closeMenuAriaLabel') : t('openMenuAriaLabel')
             }
@@ -314,7 +314,7 @@ export function Header() {
       </SectionWrapper>
 
       {mobileOpen ? (
-        <div className="border-t border-border bg-background md:hidden">
+        <div className="border-t border-border bg-background lg:hidden">
           <SectionWrapper
             as="nav"
             className="flex max-h-[calc(100dvh-4rem)] flex-col overflow-y-auto py-3"

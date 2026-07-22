@@ -1,9 +1,9 @@
 {
   "Metadata": {
     "global": {
-      "defaultTitle": "Blih Ops, AI-gestütztes Outsourcing",
+      "defaultTitle": "Outsourcing-Unternehmen in Äthiopien | Blih Ops",
       "titleTemplate": "{title} | Blih Ops",
-      "description": "Blih Intelligent Operations - Äthiopiens Unternehmen für AI-gestütztes Outsourcing. Managed Customer Support, Back-Office, IT und Automatisierung mit klaren SLAs und einem kostenlosen 2-wöchigen Pilotprojekt.",
+      "description": "Blih Ops ist ein Outsourcing-Unternehmen in Äthiopien für Customer Support, Back-Office, IT und AI-Automatisierung mit dedizierten Teams, klaren SLAs und wöchentlichem Reporting.",
       "openGraphTitle": "Blih Ops - AI-gestütztes Outsourcing",
       "openGraphDescription": "Managed Operations mit Struktur, Automatisierung und SLA-Verbindlichkeit. Für Europa, den Nahen Osten und Afrika aus Addis Ababa.",
       "twitterTitle": "Blih Ops - AI-gestütztes Outsourcing",
@@ -650,16 +650,16 @@
   },
   "Home": {
     "hero": {
-      "eyebrow": "Outsourcing, intelligent umgesetzt.",
-      "title": "Wir steuern Ihre Abläufe mit Struktur & SLAs",
-      "description": "Managed Pods für Support, Back-Office und Automatisierung - mit klarer Verantwortung und messbarer Leistung."
+      "eyebrow": "Managed Outsourcing aus Äthiopien",
+      "title": "Ihr Outsourcing-Unternehmen in Äthiopien für zuverlässige Abläufe",
+      "description": "Dedizierte Teams für Customer Support, Back-Office, IT und Automatisierung, gesteuert durch dokumentierte Prozesse, klare SLAs und wöchentliches Reporting."
     },
     "logoCloud": {
       "heading": "Von Experten geschätzt"
     },
     "problem": {
       "ariaLabel": "Die tatsächlichen Kosten, wenn Sie alles selbst erledigen",
-      "title": "Erfolgreiche Unternehmen geraten ins Stocken, wenn operative Aufgaben überhandnehmen",
+      "title": "Wenn wachsende Abläufe die Kapazitäten Ihres internen Teams übersteigen",
       "description": "Sie haben Ihr Unternehmen nicht gegründet, um Support-Tickets nachzugehen oder Prozesse ständig zu überwachen. Bei knappen Kapazitäten und steigenden Ausgaben wird die Skalierung jedes Quartal schwieriger. Es gibt einen intelligenteren Weg als herkömmliche Modelle.",
       "items": {
         "costTrap": {
@@ -682,9 +682,9 @@
     },
     "solution": {
       "ariaLabel": "Das Blih Ops-Modell",
-      "eyebrow": "Das Blih Ops-Modell",
-      "title": "Strukturierte Pods. AI-Workflows. SLA-Verbindlichkeit.",
-      "description": "Dedizierte Pods, AI-gestützte Workflows und gemessene SLAs sorgen dafür, dass Abläufe mit klarer Verantwortung statt im Chaos funktionieren.",
+      "eyebrow": "Unser Managed-Outsourcing-Modell",
+      "title": "Dedizierte Teams aus Äthiopien. Klare Prozesse. Messbare Leistung.",
+      "description": "Wir verbinden qualifizierte Teams in Addis Ababa mit dokumentierten Workflows, praxisnaher Automatisierung, Qualitätssicherung und SLA-gestützter Leistungserbringung.",
       "features": {
         "deliveryPods": {
           "title": "Dedizierte Delivery Pods",
@@ -742,8 +742,8 @@
     "services": {
       "ariaLabel": "Leistungen",
       "eyebrow": "Intelligente Outsourcing-Services",
-      "title": "Alles, was Ihre Abläufe brauchen. Nichts, was sie nicht brauchen.",
-      "description": "Jeder Service umfasst SLAs, wöchentliches Reporting und integrierte Automatisierung.",
+      "title": "Outsourcing-Services für wachsende Unternehmen",
+      "description": "Lagern Sie Customer Support, Back-Office, IT- und Softwareaufgaben, Datenreporting und repetitive Workflows an einen verantwortlichen Delivery-Partner aus.",
       "serviceListAriaLabel": "Serviceliste",
       "serviceSlidesAriaLabel": "Servicefolien",
       "showServiceAriaLabel": "{title} anzeigen"
@@ -751,8 +751,8 @@
     "trust": {
       "ariaLabel": "Vertrauen und Nachweise",
       "eyebrow": "Vertrauen & Nachweise",
-      "title": "Konzipiert für Zuverlässigkeit, Sicherheit und klare Verantwortung",
-      "description": "SLA-gestützte Bereitstellung, DSGVO-bewusste Prozesse und ISO-konforme Qualität - umgesetzt von Pods in Äthiopien mit wöchentlichem Reporting, auf dessen Basis Sie handeln können.",
+      "title": "Warum Unternehmen Blih Ops als Outsourcing-Partner in Äthiopien wählen",
+      "description": "Leistungserbringung aus Äthiopien mit GMT+3-Verfügbarkeit, DSGVO-bewussten Prozessen, dokumentierten Qualitätskontrollen, klarer Verantwortung und transparentem wöchentlichem Reporting.",
       "stats": {
         "costReduction": "Typische Kostensenkung gegenüber internen Teams oder westlichem Outsourcing",
         "slaCompliance": "SLA-Erfüllung in allen aktiven Delivery Pods",
