@@ -12,6 +12,7 @@ import {
   getCaseStudyBySlug,
   getRelatedCaseStudies,
 } from '@/content/case-studies';
+import { noIndexRobots } from '@/i18n/metadata';
 
 export function generateStaticParams() {
   return caseStudies.map((study) => ({ slug: study.slug }));
@@ -25,12 +26,13 @@ export function generateMetadata({
   return params.then(({ slug }) => {
     const study = getCaseStudyBySlug(slug);
     if (!study) {
-      return { title: 'Case study not found' };
+      return { title: 'Case study not found', robots: noIndexRobots };
     }
 
     return {
       title: study.title,
       description: study.excerpt,
+      robots: noIndexRobots,
       alternates: { canonical: `/en/case-studies/${study.slug}` },
       openGraph: {
         title: `${study.title} | Blih Ops`,

@@ -3,6 +3,11 @@ import { getTranslations } from 'next-intl/server';
 
 import { routing } from '@/i18n/routing';
 
+export const noIndexRobots: Metadata['robots'] = {
+  index: false,
+  follow: true,
+};
+
 type MetadataNamespace =
   | 'services'
   | 'process'
