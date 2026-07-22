@@ -107,7 +107,7 @@ export function ContactForm() {
             strokeWidth={1.25}
             aria-hidden="true"
           />
-          <h2 className="mt-8 max-w-lg font-heading text-4xl leading-[1.02] font-semibold tracking-[-0.035em] text-foreground sm:text-5xl">
+          <h2 className="mt-8 max-w-lg break-words font-heading text-3xl leading-[1.05] font-semibold tracking-tight text-balance text-foreground hyphens-auto sm:text-5xl sm:leading-[1.02] sm:tracking-[-0.035em]">
             {t('success.title')}
           </h2>
           <p className="mt-6 max-w-md text-base leading-7 text-muted-foreground">
@@ -120,7 +120,7 @@ export function ContactForm() {
             type="button"
             variant="outline"
             size="lg"
-            className="h-12 rounded-none px-5"
+            className="h-auto min-h-12 w-full rounded-none px-5 py-3 text-center whitespace-normal sm:w-auto sm:whitespace-nowrap sm:py-0"
             onClick={startAnotherMessage}
           >
             <RotateCcwIcon data-icon="inline-start" aria-hidden="true" />
@@ -150,7 +150,7 @@ export function ContactForm() {
       </div>
 
       <div className="border-b border-border/80 py-10 sm:py-12">
-        <h2 className="max-w-lg font-heading text-3xl leading-[1.05] font-semibold tracking-[-0.03em] text-foreground sm:text-4xl">
+        <h2 className="max-w-lg break-words font-heading text-3xl leading-[1.05] font-semibold tracking-[-0.03em] text-balance text-foreground hyphens-auto sm:text-4xl">
           {t('title')}
         </h2>
         <p className="mt-4 max-w-lg text-sm leading-6 text-muted-foreground sm:text-base sm:leading-7">

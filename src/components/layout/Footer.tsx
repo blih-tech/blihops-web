@@ -99,7 +99,7 @@ export function Footer() {
             timelineRef={ctaRef}
             once={false}
             customVariants={footerMotionVariants}
-            className="group relative h-80 overflow-hidden rounded-2xl border border-border bg-card shadow-lg md:h-96"
+            className="group relative min-h-80 overflow-hidden rounded-2xl border border-border bg-card shadow-lg md:min-h-96"
           >
             <Image
               src="/footer_image.jpg"
@@ -110,25 +110,25 @@ export function Footer() {
               priority={false}
             />
             <div className="absolute inset-0 bg-foreground/55" aria-hidden />
-            <div className="absolute inset-0 flex flex-col justify-center p-8 sm:p-12 md:p-16">
-              <h2 className="font-heading mb-3 max-w-2xl text-3xl font-semibold tracking-tight text-primary-foreground sm:text-4xl md:text-5xl">
+            <div className="relative z-10 flex min-h-80 flex-col justify-center p-6 sm:min-h-96 sm:p-12 md:p-16">
+              <h2 className="font-heading mb-3 max-w-2xl text-3xl font-semibold tracking-tight text-balance text-primary-foreground sm:text-4xl md:text-5xl">
                 {t(`${bannerVariant}.bannerTitle`)}
               </h2>
-              <p className="font-sans mb-6 max-w-xl text-sm text-primary-foreground/90 sm:text-base">
+              <p className="font-sans mb-6 max-w-xl text-sm text-pretty text-primary-foreground/90 sm:text-base">
                 {t(`${bannerVariant}.bannerDescription`)}
               </p>
               {isPilotPage ? (
                 <BookCallButton
                   calLink="blih-marketing-fzifjy/blih-ops-desicovery-call"
                   namespace="blih-ops-desicovery-call"
-                  className="w-fit bg-primary text-primary-foreground hover:bg-primary/90"
+                  className="h-auto min-h-10 w-full whitespace-normal bg-primary py-2.5 text-center leading-tight text-primary-foreground hover:bg-primary/90 sm:w-fit sm:whitespace-nowrap sm:py-0"
                 />
               ) : isSkillsPage ? (
                 <a
                   href="https://skills.blihops.com"
                   className={cn(
                     buttonVariants({ size: 'lg' }),
-                    'group/cta w-fit gap-3 bg-primary hover:bg-primary',
+                    'group/cta h-auto min-h-10 w-full gap-2 whitespace-normal bg-primary py-2.5 text-center leading-tight hover:bg-primary sm:w-fit sm:gap-3 sm:whitespace-nowrap sm:py-0',
                   )}
                 >
                   {tActions('exploreSkills')}
@@ -141,7 +141,7 @@ export function Footer() {
                   href="https://talent.blihops.com"
                   className={cn(
                     buttonVariants({ size: 'lg' }),
-                    'group/cta w-fit gap-3 bg-primary hover:bg-primary',
+                    'group/cta h-auto min-h-10 w-full gap-2 whitespace-normal bg-primary py-2.5 text-center leading-tight hover:bg-primary sm:w-fit sm:gap-3 sm:whitespace-nowrap sm:py-0',
                   )}
                 >
                   {tActions('exploreTalent')}
@@ -154,7 +154,7 @@ export function Footer() {
                   href="/pilot"
                   className={cn(
                     buttonVariants({ size: 'lg' }),
-                    'group/cta w-fit gap-3 bg-primary hover:bg-primary',
+                    'group/cta h-auto min-h-10 w-full gap-2 whitespace-normal bg-primary py-2.5 text-center leading-tight hover:bg-primary sm:w-fit sm:gap-3 sm:whitespace-nowrap sm:py-0',
                   )}
                 >
                   {tActions('getPilot')}
