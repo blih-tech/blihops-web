@@ -53,12 +53,15 @@ export function createGenerateMetadata(
       description,
       alternates: {
         canonical: getLocalizedPath(locale, pathname),
-        languages: Object.fromEntries(
-          routing.locales.map((supportedLocale) => [
-            supportedLocale,
-            getLocalizedPath(supportedLocale, pathname),
-          ]),
-        ),
+        languages: {
+          ...Object.fromEntries(
+            routing.locales.map((supportedLocale) => [
+              supportedLocale,
+              getLocalizedPath(supportedLocale, pathname),
+            ]),
+          ),
+          'x-default': getLocalizedPath(routing.defaultLocale, pathname),
+        },
       },
       openGraph: {
         type: 'website',
