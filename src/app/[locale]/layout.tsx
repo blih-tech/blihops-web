@@ -34,9 +34,6 @@ export async function generateMetadata({
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'Metadata.global' });
   const socialImage = `/seo/og-${locale}.png`;
-  const isProduction =
-    process.env.VERCEL_ENV === 'production' &&
-    process.env.VERCEL_PROJECT_PRODUCTION_URL === 'blihops.com';
 
   return {
     metadataBase: new URL('https://blihops.com'),
@@ -77,8 +74,8 @@ export async function generateMetadata({
       images: [{ url: socialImage, alt: t('openGraphTitle') }],
     },
     robots: {
-      index: isProduction,
-      follow: isProduction,
+      index: true,
+      follow: true,
     },
   };
 }
