@@ -26,7 +26,7 @@ AI-powered managed outsourcing from Addis Ababa, serving Europe / Middle East / 
 | Icons           | `lucide-react` (no brand icons in newer Lucide — use inline SVG for socials) |
 | Package manager | **pnpm only** (npm/yarn blocked)                                             |
 
-**Engines:** Node `22.x`, pnpm `11.x` (see `package.json` + Corepack).
+**Engines:** Node `>=24.18.0 <25`, pnpm `11.x` (see `package.json` + Corepack).
 
 ## Commands
 
