@@ -4,7 +4,7 @@ Thanks for helping build the Blihop marketing site. This guide covers setup, bra
 
 ## Setup
 
-1. Install **Node.js 22.x** from [nodejs.org](https://nodejs.org/) (nvm/Volta optional, not required).
+1. Install **Node.js 24.18.0 or newer (below 25)** from [nodejs.org](https://nodejs.org/) (nvm/Volta optional, not required).
 2. Enable Corepack (ships with Node):
 
    ```bash
@@ -18,7 +18,7 @@ Thanks for helping build the Blihop marketing site. This guide covers setup, bra
    pnpm dev
    ```
 
-**pnpm only.** `npm` and `yarn` are blocked by the `preinstall` script. Use Node **22.x** and pnpm **11.x** (see `package.json` `engines` and `packageManager`).
+**pnpm only.** `npm` and `yarn` are blocked by the `preinstall` script. Use Node **24.18.0 or newer (below 25)** and pnpm **11.x** (see `package.json` `engines` and `packageManager`).
 
 ## Branch naming
 

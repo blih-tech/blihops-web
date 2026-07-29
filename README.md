@@ -16,11 +16,11 @@ Standalone Next.js frontend. No admin CMS, no database, and no backend live in t
 
 | Tool    | Version                                                  |
 | ------- | -------------------------------------------------------- |
-| Node.js | **22.x**                                                 |
+| Node.js | **24.18.0 or newer (below 25)**                          |
 | pnpm    | **11.x** (pinned via `packageManager` in `package.json`) |
 
 - **npm and yarn are blocked** — installs must use pnpm.
-- Volta / nvm are **not required**. Install Node 22 from [nodejs.org](https://nodejs.org/), then use Corepack for pnpm.
+- Volta / nvm are **not required**. Install Node 24.18.0 or newer from [nodejs.org](https://nodejs.org/), then use Corepack for pnpm.
 
 ## Quick start
 
@@ -62,7 +62,7 @@ blihops-web/
 │   ├── content/         # Static marketing / mock CMS data
 │   └── lib/             # api + forms boundaries (mock → real API later)
 ├── .editorconfig
-├── .nvmrc               # Node 22 (CI / optional local managers)
+├── .nvmrc               # Node 24.18.0 (CI / optional local managers)
 ├── .prettierrc
 └── package.json
 ```
