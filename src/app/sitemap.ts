@@ -12,8 +12,8 @@ const paths = [
   '/insights',
   '/careers',
   '/contact',
-  '/skills',
   '/talent',
+  '/talent/apply',
   '/pilot',
 ] as const;
 

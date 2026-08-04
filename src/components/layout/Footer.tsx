@@ -72,24 +72,20 @@ export function Footer() {
   const contentRef = useRef<HTMLDivElement>(null);
   const isPilotPage = pathname === '/pilot';
   const isContactPage = pathname === '/contact';
-  const isSkillsPage = pathname === '/skills';
-  const isTalentPage = pathname === '/talent';
+  const isTalentPage =
+    pathname === '/talent' || pathname.startsWith('/talent/');
   const bannerVariant = isPilotPage
     ? 'pilot'
-    : isSkillsPage
-      ? 'skills'
-      : isTalentPage
-        ? 'talent'
-        : 'default';
+    : isTalentPage
+      ? 'talent'
+      : 'default';
   const promptVariant = isPilotPage
     ? 'pilot'
-    : isSkillsPage
-      ? 'skills'
-      : isTalentPage
-        ? 'talent'
-        : isContactPage
-          ? 'contact'
-          : 'default';
+    : isTalentPage
+      ? 'talent'
+      : isContactPage
+        ? 'contact'
+        : 'default';
 
   return (
     <footer className="bg-background font-sans text-foreground">
@@ -125,32 +121,19 @@ export function Footer() {
                   namespace="blih-ops-desicovery-call"
                   className="h-auto min-h-10 w-full whitespace-normal bg-primary py-2.5 text-center leading-tight text-primary-foreground hover:bg-primary/90 sm:w-fit sm:whitespace-nowrap sm:py-0"
                 />
-              ) : isSkillsPage ? (
-                <a
-                  href="https://skills.blihops.com"
-                  className={cn(
-                    buttonVariants({ size: 'lg' }),
-                    'group/cta h-auto min-h-10 w-full gap-2 whitespace-normal bg-primary py-2.5 text-center leading-tight hover:bg-primary sm:w-fit sm:gap-3 sm:whitespace-nowrap sm:py-0',
-                  )}
-                >
-                  {tActions('exploreSkills')}
-                  <span className="flex size-7 items-center justify-center rounded-md bg-primary-foreground text-primary">
-                    <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-0.5" />
-                  </span>
-                </a>
               ) : isTalentPage ? (
-                <a
-                  href="https://talent.blihops.com"
+                <Link
+                  href="/talent/apply"
                   className={cn(
                     buttonVariants({ size: 'lg' }),
                     'group/cta h-auto min-h-10 w-full gap-2 whitespace-normal bg-primary py-2.5 text-center leading-tight hover:bg-primary sm:w-fit sm:gap-3 sm:whitespace-nowrap sm:py-0',
                   )}
                 >
-                  {tActions('exploreTalent')}
+                  {tActions('applyToTalentPool')}
                   <span className="flex size-7 items-center justify-center rounded-md bg-primary-foreground text-primary">
                     <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-0.5" />
                   </span>
-                </a>
+                </Link>
               ) : (
                 <Link
                   href="/pilot"
@@ -304,28 +287,17 @@ export function Footer() {
                   {t(`${promptVariant}.promptDescription`)}
                 </p>
                 <div className="flex flex-wrap gap-3 lg:justify-end">
-                  {isSkillsPage ? (
-                    <a
-                      href="https://skills.blihops.com"
+                  {isTalentPage ? (
+                    <Link
+                      href="/talent/apply"
                       className={cn(
                         buttonVariants({ size: 'lg' }),
                         'group/cta h-12 rounded-none',
                       )}
                     >
-                      {tActions('exploreSkills')}
+                      {tActions('applyToTalentPool')}
                       <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-0.5" />
-                    </a>
-                  ) : isTalentPage ? (
-                    <a
-                      href="https://talent.blihops.com"
-                      className={cn(
-                        buttonVariants({ size: 'lg' }),
-                        'group/cta h-12 rounded-none',
-                      )}
-                    >
-                      {tActions('exploreTalent')}
-                      <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-0.5" />
-                    </a>
+                    </Link>
                   ) : !isPilotPage ? (
                     <Link
                       href="/pilot"
@@ -338,7 +310,7 @@ export function Footer() {
                       <ArrowRight className="size-4 transition-transform group-hover/cta:translate-x-0.5" />
                     </Link>
                   ) : null}
-                  {!isContactPage && !isSkillsPage && !isTalentPage ? (
+                  {!isContactPage && !isTalentPage ? (
                     <BookCallButton
                       calLink="blih-marketing-fzifjy/blih-ops-desicovery-call"
                       namespace="blih-ops-desicovery-call"
