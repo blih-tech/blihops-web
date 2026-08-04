@@ -45,17 +45,15 @@
       "openGraphTitle": "Karriere bei Blih Ops",
       "openGraphDescription": "Bauen Sie Ihre Karriere in einem Team auf, das qualifizierte afrikanische Fachkräfte, zuverlässige Systeme und praxisnahe AI verbindet."
     },
-    "skills": {
-      "title": "Skills",
-      "description": "Entdecken Sie praxisnahe Blih Ops-Lernpfade, mit denen Sie Kompetenzen für reale operative Chancen aufbauen, bewerten und nachweisen können.",
-      "openGraphTitle": "Blih Ops Skills",
-      "openGraphDescription": "Bauen Sie praktische Kompetenzen auf, absolvieren Sie reale Assessments und bereiten Sie sich auf Chancen im Blih Ops-Talentpool vor."
-    },
     "talent": {
-      "title": "Talent",
-      "description": "Entdecken Sie als verifiziertes Talent Chancen bei Partnerunternehmen oder finden Sie über Blih Ops Talent kompetenzgeprüfte Fachkräfte für Ihr Team.",
-      "openGraphTitle": "Blih Ops Talent",
-      "openGraphDescription": "Ein Marktplatz, der verifizierte Fachkräfte mit Chancen bei Partnerunternehmen verbindet."
+      "title": "Dem Blih Ops-Talentpool beitreten",
+      "description": "Treten Sie dem Talentpool aus geprüften äthiopischen Software-Engineers bei. Einmal bewerben, Screening und Assessments absolvieren und für globale Unternehmen sichtbar werden.",
+      "openGraphTitle": "Dem Blih Ops-Talentpool beitreten",
+      "openGraphDescription": "Bewerben Sie sich für einen geprüften Talentpool für globale Unternehmen. Screening, Assessments und einladungsbasierte Kundenvorstellungen."
+    },
+    "talentApply": {
+      "title": "Bewerbung für den Blih Ops-Talentpool",
+      "description": "Reichen Sie Ihr Engineer-Profil, Ihren Lebenslauf und Ihre Verfügbarkeit ein, um dem Blih Ops-Talentpool beizutreten. Wir prüfen jede Bewerbung, bevor wir geprüfte Engineers einladen."
     }
   },
   "ServicesPage": {
@@ -448,8 +446,7 @@
       "getFreePilot": "Kostenloses Pilotprojekt starten",
       "learnMore": "Mehr erfahren",
       "goHome": "Zur Startseite",
-      "exploreSkills": "Blih Ops Skills entdecken",
-      "exploreTalent": "Blih Ops Talent entdecken"
+      "applyToTalentPool": "Dem Talentpool beitreten"
     },
     "header": {
       "homeAriaLabel": "Blih Ops-Startseite",
@@ -519,17 +516,11 @@
         "promptTitle": "Möchten Sie zuerst ein Gespräch führen?",
         "promptDescription": "Vereinbaren Sie ein Erstgespräch, und wir helfen Ihnen, den richtigen nächsten Schritt zu klären."
       },
-      "skills": {
-        "bannerTitle": "Bereit, Kompetenzen mit Perspektive aufzubauen?",
-        "bannerDescription": "Entdecken Sie praxisnahe Lernpfade, absolvieren Sie Assessments und bereiten Sie sich auf Chancen bei Blih Ops Talent vor.",
-        "promptTitle": "Kompetenz aufbauen. Nachweise erbringen.",
-        "promptDescription": "Wählen Sie einen praxisnahen Lernpfad und beginnen Sie, verifizierte, einsatzbereite Kompetenzen aufzubauen."
-      },
       "talent": {
-        "bannerTitle": "Bereit, die richtige Übereinstimmung zu finden?",
-        "bannerDescription": "Entdecken Sie als verifiziertes Talent Chancen bei Partnern oder finden Sie kompetenzgeprüfte Fachkräfte für Ihr Unternehmen.",
-        "promptTitle": "Ein Marktplatz. Zwei Wege nach vorn.",
-        "promptDescription": "Nutzen Sie Blih Ops Talent, um passende Arbeit zu finden oder verifizierte Fachkräfte für Ihr Team zu entdecken."
+        "bannerTitle": "Bereit, dem Talentpool beizutreten?",
+        "bannerDescription": "Einmal bewerben. Screening und Assessments absolvieren und auf betreuter Basis für globale Unternehmen sichtbar werden.",
+        "promptTitle": "Der erste Schritt",
+        "promptDescription": "Reichen Sie Profil, Lebenslauf und Verfügbarkeit ein - den Rest übernehmen wir."
       }
     },
     "localeSelector": {
@@ -1066,401 +1057,349 @@
       }
     }
   },
-  "SkillsPage": {
-    "hero": {
-      "eyebrow": "Blih Ops Skills",
-      "title": "Lernen Sie praxisnahe Kompetenzen mit Perspektive.",
-      "description": "Bauen Sie praktische Fähigkeiten auf, weisen Sie diese in einem Assessment nach und bereiten Sie sich auf Chancen bei Blih Ops Talent vor.",
-      "exploreTracks": "Lernpfade entdecken",
-      "visitPlatform": "Skills-Plattform besuchen"
-    },
-    "samplePathway": {
-      "eyebrow": "Beispielhafter Lernpfad",
-      "title": "Abläufe im Customer Support",
-      "stageProgress": "Phase {current} von {total}",
-      "steps": {
-        "learn": {
-          "title": "Lernen",
-          "description": "Grundlagenwissen"
-        },
-        "practice": {
-          "title": "Üben",
-          "description": "Anwendungsorientierte Übungen"
-        },
-        "assess": {
-          "title": "Bewerten",
-          "description": "Geprüftes Projekt"
-        },
-        "qualify": {
-          "title": "Qualifizieren",
-          "description": "Eignung für den Talentpool"
-        }
-      },
-      "details": {
-        "currentWork": {
-          "label": "Aktuelle Aufgabe",
-          "value": "Bearbeitung realitätsnaher Szenarien"
-        },
-        "evidence": {
-          "label": "Erbrachte Nachweise",
-          "value": "{count} praktische Einreichungen"
-        },
-        "outcome": {
-          "label": "Ergebnis des Lernpfads",
-          "value": "Assessment für die Support-Einsatzbereitschaft"
-        }
-      }
-    },
-    "principles": {
-      "practical": {
-        "title": "Praxisnah",
-        "description": "Rollenbezogenes Lernen"
-      },
-      "assessed": {
-        "title": "Bewertet",
-        "description": "Angewandte Arbeit, geprüft"
-      },
-      "connected": {
-        "title": "Vernetzt",
-        "description": "Ein Weg zu beruflichen Chancen"
-      }
-    },
-    "catalog": {
-      "eyebrow": "Katalogvorschau",
-      "title": "Beginnen Sie mit Arbeit, deren Erlernen sich lohnt.",
-      "description": "Während der vollständige Plattformkatalog vorbereitet wird, zeigen wir repräsentative Lernpfade. Jeder Pfad verbindet Lernen mit praktischen Nachweisen.",
-      "exploreAriaLabel": "{title} auf Blih Ops Skills entdecken",
-      "labels": {
-        "level": "Niveau",
-        "length": "Dauer",
-        "study": "Lernumfang",
-        "outcome": "Ergebnis des Lernpfads"
-      },
-      "tracks": {
-        "customerSupportOperations": {
-          "title": "Abläufe im Customer Support",
-          "category": "Kundenerlebnis",
-          "description": "Entwickeln Sie die Kommunikations-, Ticketbearbeitungs-, Eskalations- und Qualitätsroutinen, die für zuverlässigen Customer Support erforderlich sind.",
-          "level": "Grundlagen",
-          "duration": "6 Wochen",
-          "modules": "8 Module",
-          "outcome": "Assessment für die Support-Einsatzbereitschaft"
-        },
-        "backOfficeDataQuality": {
-          "title": "Back-Office & Datenqualität",
-          "category": "Operations",
-          "description": "Lernen Sie präzise Datenverarbeitung, Dokumentenbearbeitung, SOP-Ausführung und praxisnahe Routinen zur Qualitätskontrolle.",
-          "level": "Grundlagen",
-          "duration": "5 Wochen",
-          "modules": "7 Module",
-          "outcome": "Überprüfung operativer Kompetenzen"
-        },
-        "softwareQualityAssurance": {
-          "title": "Software-Qualitätssicherung",
-          "category": "Technologie",
-          "description": "Üben Sie Testplanung, Fehlerberichte, Regressionsprüfungen und die Workflows zuverlässiger Produktteams.",
-          "level": "Fortgeschritten",
-          "duration": "8 Wochen",
-          "modules": "10 Module",
-          "outcome": "QA-Projekt für das Portfolio"
-        },
-        "aiWorkflowAutomation": {
-          "title": "AI-Workflow-Automatisierung",
-          "category": "AI & Automatisierung",
-          "description": "Erfassen Sie repetitive Arbeit, identifizieren Sie sichere Automatisierungsmöglichkeiten und entwickeln Sie praxisnahe AI-gestützte Workflows.",
-          "level": "Fortgeschritten",
-          "duration": "6 Wochen",
-          "modules": "8 Module",
-          "outcome": "Fallprojekt zur Automatisierung"
-        }
-      }
-    },
-    "pathway": {
-      "title": "Ein Kurs ist erst der Anfang.",
-      "description": "Blih Ops Skills ist auf eine klare Entwicklung vom Lernen bis zu verifizierten, einsatzbereiten Kompetenzen ausgerichtet.",
-      "steps": {
-        "chooseTrack": {
-          "title": "Lernpfad wählen",
-          "description": "Beginnen Sie mit einem rollenbezogenen Pfad, der zu Ihren Entwicklungszielen passt."
-        },
-        "learnByDoing": {
-          "title": "Durch Praxis lernen",
-          "description": "Absolvieren Sie praxisnahe Lektionen, Übungen und realistische Projektarbeiten."
-        },
-        "showKnowledge": {
-          "title": "Kompetenz nachweisen",
-          "description": "Schließen Sie ein Assessment ab, das angewandte Kompetenzen statt bloßer Teilnahme prüft."
-        },
-        "opportunityReady": {
-          "title": "Bereit für Chancen werden",
-          "description": "Qualifizierte Lernende können für den Blih Ops-Talentpool infrage kommen."
-        }
-      }
-    }
-  },
   "TalentPage": {
     "hero": {
-      "eyebrow": "Blih Ops Talent-Marktplatz",
-      "title": "Verifizierte Talente. Reale Unternehmensnachfrage.",
-      "description": "Verifizierte Fachkräfte finden Partnerchancen, während abonnierte Teams Talente mit praktischen Nachweisen entdecken.",
-      "forTalent": "Chancen finden",
-      "forCompanies": "Verifizierte Talente finden",
-      "exploreOpportunities": "Chancen entdecken",
-      "visitPlatform": "Talent-Plattform besuchen",
-      "marketplace": {
-        "label": "Marktplatz-Signal",
-        "title": "Nachweise treffen Nachfrage",
-        "status": "Offen für Matching",
-        "talentLabel": "Verifizierte Fachkräfte",
-        "talentTitle": "Kompetenzen mit Nachweis",
-        "talentDescription": "Profile verbinden abgeschlossene Kurse oder Assessments mit praktischen Nachweisen, Präferenzen und Verfügbarkeit.",
-        "companyLabel": "Abonnierte Unternehmen",
-        "companyTitle": "Menschen, die zur Arbeit passen",
-        "companyDescription": "Teams prüfen relevante Profile anhand der Rollenanforderungen statt mit einem ungefilterten Bewerberpool zu beginnen.",
-        "note": "Das Matching berücksichtigt verifizierte Fähigkeiten, Arbeitspräferenzen, Verfügbarkeit und aktuelle Unternehmensnachfrage."
-      }
-    },
-    "audiences": {
-      "ariaLabel": "Möglichkeiten zur Nutzung von Blih Ops Talent",
-      "talent": {
-        "label": "Für Talente",
-        "title": "Machen Sie verifizierte Fähigkeiten sichtbar.",
-        "description": "Absolvieren Sie einen praxisnahen Blih Ops-Skills-Kurs oder ein Assessment, erstellen Sie Ihr verifiziertes Profil und entdecken Sie Chancen bei Partnerunternehmen.",
-        "cta": "Talent-Plattform öffnen",
-        "skillsCta": "Auf Skills verifizieren"
+      "eyebrow": "Blih Ops-Talentpool",
+      "title": "Werden Sie Teil eines geprüften Pools äthiopischer Software-Engineers.",
+      "description": "Bewerben Sie sich einmal, absolvieren Sie Screening und Assessments und werden Sie über einen betreuten, einladungsbasierten Prozess für globale Unternehmen sichtbar.",
+      "apply": "Jetzt bewerben",
+      "howItWorks": "So funktioniert es",
+      "pool": {
+        "label": "Der Talentpool",
+        "title": "Geprüft, bevor Sie gesehen werden",
+        "status": "Bewerbungen werden geprüft",
+        "reviewedLabel": "Für Engineers",
+        "reviewedTitle": "Geprüft und bewertet",
+        "reviewedDescription": "Jede Bewerbung wird geprüft und bewertet, bevor sie einem Kunden vorgestellt wird, damit Ihr Profil aussagekräftige Nachweise enthält.",
+        "introductionLabel": "Für Kunden",
+        "introductionTitle": "Von Blih Ops vorgestellt",
+        "introductionDescription": "Geprüfte Engineers werden im sichtbaren Talentpool organisiert, den qualifizierte Unternehmen über einen privaten Arbeitsbereich einsehen."
       },
-      "companies": {
-        "label": "Für Unternehmen",
-        "title": "Beginnen Sie mit Nachweisen, nicht mit Behauptungen.",
-        "description": "Abonnierte Unternehmen können Profile nach verifizierten Fähigkeiten, Arbeitspräferenzen, Standort und Verfügbarkeit finden und sich auf passende Menschen konzentrieren.",
-        "cta": "Verifizierte Talente entdecken"
-      }
+      "poolValues": [
+        "Screening und Assessments",
+        "Einladungsbasierter Zugang",
+        "Betreute Kundenvorstellungen"
+      ]
     },
-    "sampleMatch": {
-      "title": "Eine gemeinsame Sicht auf die Passung.",
-      "description": "Der Marktplatz verbindet nachgewiesene Fähigkeiten mit dem tatsächlichen Bedarf eines Partnerunternehmens.",
-      "eyebrow": "Beispielhafte Talentzuordnung",
-      "area": "Support-Abläufe",
-      "profileLabel": "Verifiziertes Profil",
-      "candidate": "Profil",
-      "pathway": "Customer-Support-Lernpfad",
-      "skills": [
-        "Schriftliche Kommunikation",
-        "Ticketbearbeitung",
-        "Qualitätsroutinen"
-      ],
-      "opportunityLabel": "Partnerchance",
-      "opportunityTitle": "Customer-Support-Spezialist",
-      "opportunityDescription": "Eine Rolle, die klare schriftliche Unterstützung, zuverlässige Eskalation und konsistente Standards in der Kundenbetreuung erfordert.",
-      "details": {
-        "skillFit": {
-          "label": "Kompetenzübereinstimmung",
-          "value": "Hoch"
-        },
-        "availability": {
-          "label": "Verfügbarkeit",
-          "value": "Passend"
-        },
-        "profileStatus": {
-          "label": "Profilstatus",
-          "value": "Verifiziert"
-        },
-        "preferredWork": {
-          "label": "Bevorzugte Arbeitsform",
-          "value": "Für Remote-Arbeit geeignet"
-        },
-        "poolStatus": {
-          "label": "Poolstatus",
-          "value": "Für Zuordnungen verfügbar"
-        }
-      }
-    },
-    "principles": {
-      "verified": {
-        "title": "Verifiziert",
-        "description": "Kompetenzen mit Nachweisen"
-      },
-      "visible": {
-        "title": "Sichtbar",
-        "description": "Profile, die für Zuordnungen bereit sind"
-      },
-      "relevant": {
-        "title": "Relevant",
-        "description": "Kontaktaufnahme bei passender Übereinstimmung"
-      }
-    },
-    "opportunities": {
-      "eyebrow": "Partnerchancen",
-      "title": "Arbeit von Unternehmen, die verifizierte Talente suchen.",
-      "disclaimerTitle": "Partnerrollen, keine Blih Ops-Stellen",
-      "disclaimer": "Die hier gezeigten Angebote stehen für Chancen von Unternehmen, die Blih Ops Talent nutzen. Es sind keine Beschäftigungsrollen bei Blih Ops.",
-      "partnerLabel": "Chance bei einem Partnerunternehmen",
-      "exploreAriaLabel": "{title} auf Blih Ops Talent entdecken",
+    "criteria": {
+      "eyebrow": "Worauf wir achten",
+      "title": "Für zuverlässige, professionelle Leistung.",
+      "description": "Wir suchen Menschen, die solide technische Fähigkeiten mit der Kommunikation und den Arbeitsgewohnheiten verbinden, auf die globale Teams bauen.",
       "items": {
-        "customerSupportSpecialist": {
-          "title": "Customer-Support-Spezialist",
-          "area": "Kundenerlebnis",
-          "description": "Unterstützen Sie Kunden per E-Mail und Chat und halten Sie dabei klare Reaktions-, Eskalations- und Qualitätsstandards ein.",
-          "workMode": "Remote",
-          "location": "Addis Ababa",
-          "commitment": "Vollzeitpfad",
-          "skills": [
-            "Ticketbearbeitung",
-            "Schriftliche Kommunikation",
-            "Qualitätsroutinen"
-          ]
+        "skill": {
+          "title": "Kompetenz",
+          "description": "Nachgewiesene Fähigkeiten in Ihrer primären Rolle, gestützt auf reale Projekte und ein überprüfbares Profil."
         },
-        "backOfficeAssociate": {
-          "title": "Back-Office-Mitarbeiter",
-          "area": "Operations",
-          "description": "Führen Sie strukturierte Daten-, Dokumenten- und Verwaltungsworkflows mit gleichbleibender Genauigkeit und dokumentierten Prüfungen aus.",
-          "workMode": "Remote",
-          "location": "Addis Ababa",
-          "commitment": "Vollzeitpfad",
-          "skills": ["Datengenauigkeit", "SOP-Ausführung", "Dokumentenprüfung"]
+        "communication": {
+          "title": "Kommunikation",
+          "description": "Klare schriftliche und mündliche Englischkenntnisse, um effektiv mit Kunden über Zeitzonen hinweg zu arbeiten."
         },
-        "juniorQaAnalyst": {
-          "title": "Junior-QA-Analyst",
-          "area": "Technologie",
-          "description": "Unterstützen Sie Produktteams dabei, Releases zu testen, Probleme zu dokumentieren und eine zuverlässige Regressionsabdeckung aufrechtzuerhalten.",
-          "workMode": "Remote",
-          "location": "Addis Ababa",
-          "commitment": "Projekt oder Vollzeit",
-          "skills": ["Testplanung", "Fehlerberichte", "Regressionstests"]
+        "remote": {
+          "title": "Remote-Bereitschaft",
+          "description": "Die Tools, Planung und Zuverlässigkeit, die für die Arbeit in einem verteilten Team erforderlich sind."
         },
-        "aiAutomationAssistant": {
-          "title": "Assistenz für AI-Automatisierung",
-          "area": "AI & Automatisierung",
-          "description": "Unterstützen Sie Workflow-Mapping, AI-gestützte Abläufe und praxisnahe Automatisierungsprojekte mit integrierter menschlicher Prüfung.",
-          "workMode": "Remote",
-          "location": "Addis Ababa",
-          "commitment": "Projektpfad",
-          "skills": [
-            "Workflow-Mapping",
-            "Prompt-Praxis",
-            "Prozessdokumentation"
-          ]
-        }
-      }
-    },
-    "matching": {
-      "title": "Ein klarer Weg in den Pool.",
-      "description": "Ihr Profil wird relevant, wenn Nachweise, Verfügbarkeit und die reale Nachfrage nach einer Chance zusammenkommen.",
-      "steps": {
-        "buildProfile": {
-          "title": "Profil erstellen",
-          "description": "Zeigen Sie Ihre Kompetenzen, Interessen, Verfügbarkeit und bevorzugte Arbeitsform."
-        },
-        "verifyAbility": {
-          "title": "Kompetenzen verifizieren",
-          "description": "Verknüpfen Sie abgeschlossene Assessments und praktische Nachweise mit Ihrem Profil."
-        },
-        "enterPool": {
-          "title": "Dem Pool beitreten",
-          "description": "Werden Sie für Rollen auffindbar, die zu Ihren verifizierten Kompetenzen passen."
-        },
-        "hearAboutMatch": {
-          "title": "Bei einer Übereinstimmung informiert werden",
-          "description": "Blih Ops kontaktiert Sie, wenn Ihr Profil zu einer realen Nachfrage passt."
-        }
-      }
-    },
-    "profiles": {
-      "title": "Sehen Sie die Nachweise hinter dem Profil.",
-      "description": "Beispielprofile zeigen, wie abonnierte Unternehmen verifizierte Fähigkeiten, Verfügbarkeit und bevorzugte Arbeitsweisen vergleichen können.",
-      "sampleLabel": "Beispielprofil",
-      "verified": "Verifiziert",
-      "viewProfile": "Auf der Talent-Plattform ansehen",
-      "viewAriaLabel": "Beispielprofil {title} auf Blih Ops Talent ansehen",
-      "labels": {
-        "verification": "Verifizierung",
-        "availability": "Verfügbarkeit",
-        "location": "Standort",
-        "workMode": "Bevorzugte Arbeit",
-        "skills": "Verifizierte Kompetenzen"
-      },
-      "items": {
-        "supportSpecialist": {
-          "title": "Customer-Support-Spezialist",
-          "verification": "Kurs und Assessment",
-          "availability": "Sofort verfügbar",
-          "location": "Addis Ababa",
-          "workMode": "Remote",
-          "skills": ["Ticketbearbeitung", "Schriftlicher Support", "Eskalation"]
-        },
-        "dataAssociate": {
-          "title": "Data-Operations-Mitarbeiter",
-          "verification": "Direktes Assessment",
-          "availability": "In 2 Wochen verfügbar",
-          "location": "Addis Ababa",
-          "workMode": "Remote",
-          "skills": ["Datenqualität", "SOP-Ausführung", "Dokumentenprüfung"]
-        },
-        "qaAnalyst": {
-          "title": "Junior-QA-Analyst",
-          "verification": "Kurs und Assessment",
-          "availability": "Projektbereit",
-          "location": "Addis Ababa",
-          "workMode": "Remote",
-          "skills": ["Testplanung", "Fehlerberichte", "Regressionstests"]
-        },
-        "automationAssistant": {
-          "title": "Automatisierungsassistent",
-          "verification": "Direktes Assessment",
-          "availability": "In Teilzeit verfügbar",
-          "location": "Addis Ababa",
-          "workMode": "Remote",
-          "skills": ["Workflow-Mapping", "Prompt-Praxis", "Dokumentation"]
+        "growth": {
+          "title": "Lernbereitschaft",
+          "description": "Eine Gewohnheit des Lernens, die Ihre Fähigkeiten an dem ausrichtet, was moderne Unternehmen brauchen."
         }
       }
     },
     "process": {
-      "title": "Zwei Wege, eine klarere Übereinstimmung.",
-      "description": "Fachkräfte bauen glaubwürdige Profile auf. Unternehmen grenzen ihre Suche anhand von Nachweisen und realem operativem Bedarf ein.",
-      "talentTitle": "Für Talente",
-      "companyTitle": "Für Unternehmen",
-      "talentSteps": {
-        "learnOrAssess": {
-          "title": "Lernen oder Assessment absolvieren",
-          "description": "Absolvieren Sie einen Blih Ops-Skills-Kurs oder weisen Sie vorhandene Fähigkeiten durch ein direktes Assessment nach."
+      "eyebrow": "So treten Sie bei",
+      "title": "Vier Schritte von der Bewerbung zur Vorstellung.",
+      "description": "Ein fokussierter Prozess, der den Pool für Engineers und die Unternehmen, die sich darauf verlassen, glaubwürdig hält.",
+      "apply": "Bewerbung starten",
+      "steps": {
+        "apply": {
+          "title": "Bewerben",
+          "description": "Reichen Sie einmalig Kontaktdaten, berufliches Profil, Links, Lebenslauf und Verfügbarkeit ein."
         },
-        "becomeVerified": {
-          "title": "Verifizierung erhalten",
-          "description": "Verbinden Sie praktische Nachweise und Assessment-Ergebnisse mit Ihrer beruflichen Identität."
+        "screening": {
+          "title": "Screening und Assessments",
+          "description": "Unser Team prüft Ihr Profil und führt praxisnahe, rollenbezogene Screenings und Assessments durch."
         },
-        "buildProfile": {
-          "title": "Profil erstellen",
-          "description": "Ergänzen Sie Interessen, Verfügbarkeit, Standort und bevorzugte Arbeitsweise."
+        "approval": {
+          "title": "Freigabe und Profil",
+          "description": "Für freigegebene Engineers wird aus ihrer Bewerbung ein Talentprofil erstellt, bereit für die Kundenprüfung."
         },
-        "meetDemand": {
-          "title": "Auf relevante Nachfrage treffen",
-          "description": "Entdecken Sie Partnerchancen und werden Sie sichtbar, wenn Ihre Nachweise zu einer Rolle passen."
+        "invitation": {
+          "title": "Einladung und Sichtbarkeit",
+          "description": "Sie werden zu Ihrem Talentportal eingeladen, um Ihr Profil aktuell zu halten und für qualifizierte Kunden sichtbar zu werden."
         }
-      },
-      "companySteps": {
-        "subscribe": {
-          "title": "Unternehmenszugang nutzen",
-          "description": "Abonnierte Unternehmen betreten die Plattform mit einem klaren Einstellungs- oder Outsourcing-Bedarf."
+      }
+    },
+    "next": {
+      "eyebrow": "Was danach passiert",
+      "title": "Ein professionelles Profil, das für Sie arbeitet.",
+      "description": "Nach der Freigabe wird Ihre Bewerbung in ein kontrolliertes Profil überführt, das aktuell und kundenbereit bleibt.",
+      "items": {
+        "invitation": {
+          "title": "Einladungsbasierter Zugang",
+          "description": "Sie aktivieren Ihr Talentportal mit einer sicheren Einladung und halten Ihre beruflichen Informationen aktuell."
         },
-        "defineNeed": {
-          "title": "Anforderung definieren",
-          "description": "Legen Sie Fähigkeiten, Verfügbarkeit, Standort und Arbeitsmodell für die Rolle fest."
+        "profile": {
+          "title": "Ein fokussiertes Profil",
+          "description": "Headline, Bio, Kompetenzen, Links, Lebenslauf und Verfügbarkeit bilden das Profil, das Kunden prüfen."
         },
-        "reviewProfiles": {
-          "title": "Verifizierte Profile prüfen",
-          "description": "Vergleichen Sie relevante Menschen anhand praktischer Nachweise statt nur anhand von Aussagen."
+        "matching": {
+          "title": "Sichtbar für Kunden",
+          "description": "Qualifizierte Unternehmen können Sie über den privaten Kunden-Arbeitsbereich entdecken und in Betracht ziehen."
+        }
+      }
+    },
+    "faq": {
+      "eyebrow": "Praktische Details",
+      "title": "Der Beitritt, beantwortet.",
+      "description": "Die wichtigsten Fragen, die sich Engineers vor der Bewerbung stellen.",
+      "items": {
+        "eligibility": {
+          "question": "Wer kann sich bewerben?",
+          "answer": "Software-Engineers und technische Spezialisten mit echter Erfahrung und guten Kommunikationsfähigkeiten sind unabhängig vom Senioritätsgrad eingeladen, sich zu bewerben. Jede Bewerbung wird geprüft."
         },
-        "connect": {
-          "title": "Auf Basis der Passung verbinden",
-          "description": "Gehen Sie mit Fachkräften weiter, deren verifizierte Fähigkeiten zur Arbeit passen."
+        "timeline": {
+          "question": "Wie lange dauert der Prozess?",
+          "answer": "Die Dauer hängt von der Rolle und dem Stand Ihrer Bewerbung ab. Wir prüfen Bewerbungen, führen Screening und Assessments durch und halten Sie über jeden Schritt informiert."
+        },
+        "location": {
+          "question": "Muss ich in Äthiopien sein?",
+          "answer": "Blih Ops arbeitet vorwiegend mit Engineers mit Sitz in Äthiopien und betreut Unternehmen in Europa, dem Nahen Osten und Afrika."
+        },
+        "afterApproval": {
+          "question": "Was passiert nach meiner Freigabe?",
+          "answer": "Für Sie wird ein Talentprofil erstellt und Sie erhalten eine Einladung zu Ihrem Talentportal, wo Sie Ihre beruflichen Informationen pflegen und für qualifizierte Kunden sichtbar werden."
         }
       }
     },
     "finalCta": {
-      "title": "Wählen Sie, wonach Sie suchen.",
-      "description": "Dieselbe Plattform unterstützt verifizierte Fachkräfte bei der Arbeitssuche und Unternehmen bei der Suche nach nachweislich qualifizierten Talenten.",
-      "talent": "Ich suche Chancen",
-      "companies": "Ich suche verifizierte Talente"
+      "title": "Bringen Sie Ihre Kompetenzen dorthin, wo sie gefragt sind.",
+      "description": "Werden Sie Teil eines geprüften Pools, dem globale Unternehmen vertrauen - Ihr Profil wird für Sie verwaltet und aktuell gehalten.",
+      "eyebrow": "Bereit zur Bewerbung",
+      "actionTitle": "Ihre nächste Chance beginnt hier.",
+      "actionDescription": "Bewerben Sie sich einmal mit Profil, Lebenslauf und Verfügbarkeit. Den Rest übernehmen wir.",
+      "apply": "Dem Talentpool beitreten"
+    }
+  },
+  "TalentApplyPage": {
+    "hero": {
+      "label": "Talentbewerbung",
+      "context": "Talentpool / Geprüfte Engineers",
+      "eyebrow": "Dem Talentpool beitreten",
+      "title": "Bewerben Sie sich einmal für einen geprüften Talentpool.",
+      "description": "Erzählen Sie uns von Ihrer Erfahrung und dem, was Sie aufbauen möchten. Wir prüfen jede Bewerbung, bevor wir geprüfte Engineers einladen.",
+      "benefits": [
+        "Von einem echten Team geprüft",
+        "Rollenbezogenes Screening",
+        "Einladung zu Ihrem Talentportal"
+      ],
+      "imageAlt": "Ein Blih Ops-Lieferteam bespricht einen operativen Workflow",
+      "imageCaption": "Ein Team von Engineers, das für globale Kunden liefert.",
+      "locationCaption": "Addis Ababa"
+    },
+    "form": {
+      "label": "Talentbewerbung",
+      "duration": "Ca. {minutes} Min.",
+      "title": "Erzählen Sie uns, wer Sie sind und was Sie bauen.",
+      "description": "Ein vollständiges Profil hilft uns, Ihre Kompetenzen zu prüfen und das passende Assessment vorzubereiten. Halten Sie Ihre Angaben präzise und aktuell.",
+      "sections": {
+        "details": "Ihre Angaben",
+        "profile": "Berufliches Profil",
+        "links": "Links und Nachweise",
+        "availability": "Verfügbarkeit und Präferenzen"
+      },
+      "fields": {
+        "email": {
+          "label": "E-Mail",
+          "placeholder": "you@example.com"
+        },
+        "phone": {
+          "label": "Telefon",
+          "placeholder": "+251 ..."
+        },
+        "country": {
+          "label": "Land",
+          "placeholder": "Land"
+        },
+        "city": {
+          "label": "Stadt",
+          "placeholder": "Stadt"
+        },
+        "photo": {
+          "label": "Profilfoto",
+          "hint": "Wählen Sie ein klares, aktuelles Porträt. JPG, PNG oder WEBP."
+        },
+        "headline": {
+          "label": "Berufliche Headline",
+          "placeholder": "z. B. Senior Full-Stack-Engineer"
+        },
+        "bio": {
+          "label": "Kurzprofil",
+          "placeholder": "Fassen Sie Ihre Erfahrung, die Arbeit, die Sie mögen, und die Probleme zusammen, die Sie lösen.",
+          "help": "Ein paar Sätze, die einer prüfenden Person helfen, Ihren Hintergrund zu verstehen."
+        },
+        "primaryRole": {
+          "label": "Primäre Rolle",
+          "placeholder": "Primäre Rolle wählen",
+          "options": {
+            "frontend": "Frontend-Entwickler",
+            "backend": "Backend-Entwickler",
+            "fullStack": "Full-Stack-Entwickler",
+            "mobile": "Mobile-Entwickler",
+            "devops": "DevOps-Engineer",
+            "qa": "QA-Ingenieur",
+            "data": "Dateningenieur / Analyst",
+            "aiMl": "AI-/ML-Ingenieur",
+            "automation": "Automatisierungsingenieur",
+            "customerSupport": "Customer-Support-Spezialist",
+            "backOffice": "Back-Office-Spezialist",
+            "other": "Sonstiges"
+          }
+        },
+        "techStack": {
+          "label": "Tech-Stack",
+          "hint": "Wählen Sie die Technologien, mit denen Sie am häufigsten arbeiten."
+        },
+        "secondarySkills": {
+          "label": "Weitere Kompetenzen",
+          "hint": "Optionale zusätzliche Fähigkeiten, die Ihre primäre Rolle unterstützen."
+        },
+        "yearsExperience": {
+          "label": "Jahre Erfahrung",
+          "placeholder": "Erfahrung wählen",
+          "options": {
+            "underOne": "Weniger als 1 Jahr",
+            "oneToTwo": "1-2 Jahre",
+            "threeToFive": "3-5 Jahre",
+            "fiveToEight": "5-8 Jahre",
+            "eightPlus": "8+ Jahre"
+          }
+        },
+        "portfolio": {
+          "label": "Portfolio",
+          "placeholder": "https://..."
+        },
+        "github": {
+          "label": "GitHub",
+          "placeholder": "https://github.com/..."
+        },
+        "linkedin": {
+          "label": "LinkedIn",
+          "placeholder": "https://linkedin.com/in/..."
+        },
+        "resume": {
+          "label": "Lebenslauf",
+          "hint": "Laden Sie Ihren Lebenslauf hoch. PDF, DOC oder DOCX."
+        },
+        "availability": {
+          "label": "Verfügbarkeit",
+          "placeholder": "Verfügbarkeit wählen",
+          "options": {
+            "immediate": "Sofort",
+            "withinTwoWeeks": "Innerhalb von 2 Wochen",
+            "withinOneMonth": "Innerhalb von 1 Monat",
+            "oneToThreeMonths": "Innerhalb von 1-3 Monaten"
+          }
+        },
+        "earliestStartDate": {
+          "label": "Frühestmögliches Startdatum"
+        },
+        "engagement": {
+          "label": "Bevorzugte Zusammenarbeit",
+          "placeholder": "Zusammenarbeit wählen",
+          "options": {
+            "fullTime": "Vollzeit",
+            "partTime": "Teilzeit",
+            "contract": "Vertrag / Freelance",
+            "projectBased": "Projektbasiert"
+          }
+        },
+        "screening": {
+          "label": "Warum möchten Sie beitreten?",
+          "placeholder": "Erzählen Sie uns kurz, was Sie suchen und was Sie anbieten können.",
+          "help": "Eine kurze, ehrliche Antwort hilft uns, Ihre Motivation zu verstehen."
+        }
+      },
+      "submit": "Bewerbung absenden",
+      "submitting": "Wird gesendet...",
+      "consent": "Mit dem Absenden stimmen Sie zu, dass Blih Ops Sie zu Ihrer Bewerbung kontaktieren darf.",
+      "validation": {
+        "emailInvalid": "Geben Sie eine gültige E-Mail-Adresse ein.",
+        "phoneRequired": "Geben Sie Ihre Telefonnummer ein.",
+        "phoneMax": "Ihre Telefonnummer darf höchstens 40 Zeichen lang sein.",
+        "countryRequired": "Geben Sie Ihr Land ein.",
+        "cityRequired": "Geben Sie Ihre Stadt ein.",
+        "photoRequired": "Fügen Sie ein Profilfoto hinzu.",
+        "photoInvalidType": "Laden Sie ein Bild im JPG-, PNG- oder WEBP-Format hoch.",
+        "photoTooLarge": "Ihr Foto darf höchstens 5 MB groß sein.",
+        "headlineRequired": "Geben Sie eine berufliche Headline ein.",
+        "headlineMax": "Ihre Headline darf höchstens 120 Zeichen lang sein.",
+        "bioRequired": "Erzählen Sie uns etwas mehr über Ihren Hintergrund.",
+        "bioMax": "Ihr Kurzprofil darf höchstens 1.200 Zeichen lang sein.",
+        "primaryRoleRequired": "Wählen Sie Ihre primäre Rolle.",
+        "techStackRequired": "Wählen Sie mindestens eine Technologie.",
+        "yearsExperienceRequired": "Wählen Sie Ihre Berufserfahrung.",
+        "urlInvalid": "Geben Sie eine gültige URL ein.",
+        "urlMax": "Ihr Link darf höchstens 300 Zeichen lang sein.",
+        "resumeRequired": "Laden Sie Ihren Lebenslauf hoch.",
+        "resumeInvalidType": "Laden Sie eine PDF-, DOC- oder DOCX-Datei hoch.",
+        "resumeTooLarge": "Ihr Lebenslauf darf höchstens 10 MB groß sein.",
+        "availabilityRequired": "Wählen Sie Ihre Verfügbarkeit.",
+        "startDateRequired": "Wählen Sie Ihr frühestmögliches Startdatum.",
+        "engagementRequired": "Wählen Sie Ihre bevorzugte Zusammenarbeit.",
+        "screeningRequired": "Erzählen Sie uns kurz, warum Sie beitreten möchten.",
+        "screeningMax": "Dieses Feld darf höchstens 500 Zeichen lang sein."
+      },
+      "success": {
+        "title": "Ihre Bewerbung ist eingegangen.",
+        "description": "Wir haben Ihre Bewerbung erhalten und werden sie prüfen. Sie hören von uns zu den nächsten Schritten.",
+        "anotherPrompt": "Möchten Sie sich für eine andere Person bewerben?",
+        "startAnother": "Weitere Bewerbung starten"
+      }
+    },
+    "process": {
+      "eyebrow": "Was als Nächstes passiert",
+      "title": "Eine klare, gründliche Prüfung.",
+      "description": "Ihre Bewerbung durchläuft einen fokussierten Prozess, damit der Pool für Sie und für Kunden glaubwürdig bleibt.",
+      "steps": {
+        "applicationReceived": {
+          "title": "Bewerbung eingegangen",
+          "description": "Ihr Profil und Lebenslauf werden zur Prüfung durch unser Team erfasst."
+        },
+        "review": {
+          "title": "Prüfung",
+          "description": "Wir bewerten Ihre Erfahrung, Ihre Kompetenzen und Ihre Eignung für den Talentpool."
+        },
+        "screening": {
+          "title": "Screening und Assessments",
+          "description": "Sie absolvieren praxisnahe, rollenbezogene Screenings und Assessments."
+        },
+        "approval": {
+          "title": "Freigabe und Einladung",
+          "description": "Bei Freigabe wird ein Talentprofil erstellt und Sie erhalten eine Einladung zu Ihrem Talentportal."
+        }
+      }
+    },
+    "faq": {
+      "eyebrow": "Praktische Details",
+      "title": "Vor Ihrer Bewerbung.",
+      "description": "Die Details, die Engineers zuerst wissen möchten.",
+      "items": {
+        "eligibility": {
+          "question": "Wer kann sich bewerben?",
+          "answer": "Software-Engineers und technische Spezialisten mit echter Erfahrung und guten Kommunikationsfähigkeiten sind unabhängig vom Senioritätsgrad eingeladen, sich zu bewerben."
+        },
+        "timeline": {
+          "question": "Wie lange dauert der Prozess?",
+          "answer": "Das hängt von Ihrer Rolle und dem Stand Ihrer Bewerbung ab. Wir prüfen, screenen und halten Sie über jeden Schritt informiert."
+        },
+        "location": {
+          "question": "Muss ich in Äthiopien sein?",
+          "answer": "Blih Ops arbeitet vorwiegend mit Engineers mit Sitz in Äthiopien und betreut Unternehmen in Europa, dem Nahen Osten und Afrika."
+        },
+        "afterApproval": {
+          "question": "Was passiert nach der Freigabe?",
+          "answer": "Aus Ihrer Bewerbung wird ein Talentprofil erstellt und Sie erhalten eine Einladung zu Ihrem Talentportal, wo Sie Ihre Informationen aktuell halten und für qualifizierte Kunden sichtbar werden."
+        }
+      }
     }
   }
 }

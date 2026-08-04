@@ -28,7 +28,10 @@ const primaryLinks = [
   { id: 'process', href: '/how-we-work' },
 ] as const;
 
-const trailingLinks = [{ id: 'careers', href: '/careers' }] as const;
+const trailingLinks = [
+  { id: 'careers', href: '/careers' },
+  { id: 'talent', href: '/talent' },
+] as const;
 
 const aboutHrefs = ['/who-we-are', '/case-studies', '/insights'] as const;
 

@@ -45,17 +45,15 @@
       "openGraphTitle": "Careers at Blih Ops",
       "openGraphDescription": "Build your career with a team combining skilled African talent, reliable systems, and practical AI."
     },
-    "skills": {
-      "title": "Skills",
-      "description": "Explore practical Blih Ops learning tracks designed to build, assess, and verify skills for real operational opportunities.",
-      "openGraphTitle": "Blih Ops Skills",
-      "openGraphDescription": "Build practical skills, complete real assessments, and prepare for opportunities in the Blih Ops talent pool."
-    },
     "talent": {
-      "title": "Talent",
-      "description": "Explore partner-company opportunities as verified talent or find skills-backed professionals for your team through Blih Ops Talent.",
-      "openGraphTitle": "Blih Ops Talent",
-      "openGraphDescription": "A marketplace connecting verified professionals with opportunities from partner companies."
+      "title": "Join the Blih Ops Talent Pool",
+      "description": "Join the Blih Ops talent pool of pre-vetted Ethiopian software engineers. Apply once, complete screening and assessments, and become visible to global companies.",
+      "openGraphTitle": "Join the Blih Ops Talent Pool",
+      "openGraphDescription": "Apply to a vetted talent pool serving global companies. Screening, assessments, and invitation-only client introductions."
+    },
+    "talentApply": {
+      "title": "Apply to Join the Blih Ops Talent Pool",
+      "description": "Submit your engineering profile, resume, and availability to join the Blih Ops talent pool. We review every application before inviting approved engineers."
     }
   },
   "Shared": {
@@ -65,8 +63,7 @@
       "getFreePilot": "Get free pilot",
       "learnMore": "Learn more",
       "goHome": "Go home",
-      "exploreSkills": "Explore Blih Ops Skills",
-      "exploreTalent": "Explore Blih Ops Talent"
+      "applyToTalentPool": "Apply to the talent pool"
     },
     "header": {
       "homeAriaLabel": "Blih Ops homepage",
@@ -136,17 +133,11 @@
         "promptTitle": "Prefer a conversation first?",
         "promptDescription": "Book a discovery call and we'll help clarify the right next step."
       },
-      "skills": {
-        "bannerTitle": "Ready to build skills that lead somewhere?",
-        "bannerDescription": "Explore practical tracks, complete assessments, and prepare for Blih Ops talent opportunities.",
-        "promptTitle": "Build skill. Show evidence.",
-        "promptDescription": "Choose a practical track and start building verified, opportunity-ready ability."
-      },
       "talent": {
-        "bannerTitle": "Ready to find the right match?",
-        "bannerDescription": "Explore partner opportunities as verified talent or find skills-backed professionals for your company.",
-        "promptTitle": "One marketplace. Two ways forward.",
-        "promptDescription": "Use Blih Ops Talent to pursue relevant work or discover verified people for your team."
+        "bannerTitle": "Ready to join the talent pool?",
+        "bannerDescription": "Apply once. Complete screening and assessments, and get introduced to global companies on a managed basis.",
+        "promptTitle": "Take the first step",
+        "promptDescription": "Submit your profile, resume, and availability - then we take it from there."
       }
     },
     "localeSelector": {
@@ -1066,351 +1057,349 @@
       }
     }
   },
-  "SkillsPage": {
-    "hero": {
-      "eyebrow": "Blih Ops Skills",
-      "title": "Learn practical skills that lead somewhere.",
-      "description": "Build practical ability, prove it through assessment, and prepare for Blih Ops talent opportunities.",
-      "exploreTracks": "Explore learning tracks",
-      "visitPlatform": "Visit Skills platform"
-    },
-    "samplePathway": {
-      "eyebrow": "Sample learning pathway",
-      "title": "Customer Support Operations",
-      "stageProgress": "Stage {current} of {total}",
-      "steps": {
-        "learn": {
-          "title": "Learn",
-          "description": "Core knowledge"
-        },
-        "practice": {
-          "title": "Practice",
-          "description": "Applied exercises"
-        },
-        "assess": {
-          "title": "Assess",
-          "description": "Reviewed project"
-        },
-        "qualify": {
-          "title": "Qualify",
-          "description": "Talent eligibility"
-        }
-      },
-      "details": {
-        "currentWork": {
-          "label": "Current work",
-          "value": "Handling live scenarios"
-        },
-        "evidence": {
-          "label": "Evidence collected",
-          "value": "{count} practical submissions"
-        },
-        "outcome": {
-          "label": "Track outcome",
-          "value": "Support-ready assessment"
-        }
-      }
-    },
-    "principles": {
-      "practical": {
-        "title": "Practical",
-        "description": "Role-focused learning"
-      },
-      "assessed": {
-        "title": "Assessed",
-        "description": "Applied work, reviewed"
-      },
-      "connected": {
-        "title": "Connected",
-        "description": "A path toward opportunity"
-      }
-    },
-    "catalog": {
-      "eyebrow": "Preview catalog",
-      "title": "Start with work worth learning.",
-      "description": "Representative tracks are shown while the full platform catalog is being prepared. Each path connects learning to practical evidence.",
-      "exploreAriaLabel": "Explore {title} on Blih Ops Skills",
-      "labels": {
-        "level": "Level",
-        "length": "Length",
-        "study": "Study",
-        "outcome": "Track outcome"
-      },
-      "tracks": {
-        "customerSupportOperations": {
-          "title": "Customer Support Operations",
-          "category": "Customer experience",
-          "description": "Build the communication, ticket handling, escalation, and quality habits required for dependable customer support.",
-          "level": "Foundation",
-          "duration": "6 weeks",
-          "modules": "8 modules",
-          "outcome": "Support-ready assessment"
-        },
-        "backOfficeDataQuality": {
-          "title": "Back-Office & Data Quality",
-          "category": "Operations",
-          "description": "Learn accurate data handling, document processing, SOP execution, and practical quality-control routines.",
-          "level": "Foundation",
-          "duration": "5 weeks",
-          "modules": "7 modules",
-          "outcome": "Operations skills review"
-        },
-        "softwareQualityAssurance": {
-          "title": "Software Quality Assurance",
-          "category": "Technology",
-          "description": "Practice test planning, issue reporting, regression checks, and the workflows used by reliable product teams.",
-          "level": "Intermediate",
-          "duration": "8 weeks",
-          "modules": "10 modules",
-          "outcome": "Portfolio QA project"
-        },
-        "aiWorkflowAutomation": {
-          "title": "AI Workflow Automation",
-          "category": "AI & automation",
-          "description": "Map repetitive work, identify safe automation opportunities, and build practical AI-assisted workflows.",
-          "level": "Intermediate",
-          "duration": "6 weeks",
-          "modules": "8 modules",
-          "outcome": "Automation case project"
-        }
-      }
-    },
-    "pathway": {
-      "title": "A course is only the beginning.",
-      "description": "Blih Ops Skills is designed around a clear progression from learning to verified, opportunity-ready ability.",
-      "steps": {
-        "chooseTrack": {
-          "title": "Choose a track",
-          "description": "Start with a role-focused path that matches where you want to grow."
-        },
-        "learnByDoing": {
-          "title": "Learn by doing",
-          "description": "Complete practical lessons, exercises, and realistic project work."
-        },
-        "showKnowledge": {
-          "title": "Show what you know",
-          "description": "Finish an assessment that checks applied skill, not attendance."
-        },
-        "opportunityReady": {
-          "title": "Become opportunity-ready",
-          "description": "Qualified learners can become eligible for the Blih Ops talent pool."
-        }
-      }
-    }
-  },
   "TalentPage": {
     "hero": {
-      "eyebrow": "Blih Ops Talent marketplace",
-      "title": "Verified talent. Real company demand.",
-      "description": "Verified professionals meet partner opportunities while subscribed teams find talent backed by practical evidence.",
-      "forTalent": "Find opportunities",
-      "forCompanies": "Find verified talent",
-      "marketplace": {
-        "label": "Marketplace signal",
-        "title": "Evidence meets demand",
-        "status": "Open for matching",
-        "talentLabel": "Verified professionals",
-        "talentTitle": "Skills you can prove",
-        "talentDescription": "Profiles connect completed courses or assessments with practical evidence, preferences, and availability.",
-        "companyLabel": "Subscribed companies",
-        "companyTitle": "People who fit the work",
-        "companyDescription": "Teams review relevant profiles against role requirements instead of starting with an unfiltered applicant pool.",
-        "note": "Matching considers verified ability, work preferences, availability, and current company demand."
-      }
-    },
-    "audiences": {
-      "ariaLabel": "Ways to use Blih Ops Talent",
-      "talent": {
-        "label": "For talent",
-        "title": "Turn verified ability into visibility.",
-        "description": "Complete a practical Blih Ops Skills course or take an assessment, build your verified profile, and explore opportunities from partner companies.",
-        "cta": "Enter Talent platform",
-        "skillsCta": "Get verified on Skills"
+      "eyebrow": "Blih Ops talent pool",
+      "title": "Join a vetted pool of Ethiopian software engineers.",
+      "description": "Apply once, complete screening and assessments, and become visible to global companies through a managed, invitation-only introduction process.",
+      "apply": "Apply now",
+      "howItWorks": "How it works",
+      "pool": {
+        "label": "The talent pool",
+        "title": "Reviewed before you are seen",
+        "status": "Reviewing applications",
+        "reviewedLabel": "For engineers",
+        "reviewedTitle": "Reviewed and vetted",
+        "reviewedDescription": "Every application is screened and assessed before it is introduced to a client, so your profile carries meaningful evidence.",
+        "introductionLabel": "For clients",
+        "introductionTitle": "Introduced by Blih Ops",
+        "introductionDescription": "Approved engineers are organized into the visible talent pool that qualified companies review through a private workspace."
       },
-      "companies": {
-        "label": "For companies",
-        "title": "Start with evidence, not claims.",
-        "description": "Subscribed companies can find profiles by verified skills, work preferences, location, and availability, then focus on people who fit the need.",
-        "cta": "Explore verified talent"
-      }
+      "poolValues": [
+        "Screening and assessments",
+        "Invitation-only access",
+        "Managed client introductions"
+      ]
     },
-    "sampleMatch": {
-      "title": "A shared view of fit.",
-      "description": "The marketplace connects what a professional has proved with what a partner company actually needs.",
-      "eyebrow": "Sample talent match",
-      "area": "Support operations",
-      "profileLabel": "Verified profile",
-      "candidate": "Profile",
-      "pathway": "Customer support pathway",
-      "skills": [
-        "Written communication",
-        "Ticket handling",
-        "Quality routines"
-      ],
-      "opportunityLabel": "Partner opportunity",
-      "opportunityTitle": "Customer Support Specialist",
-      "opportunityDescription": "A role requiring clear written support, reliable escalation, and consistent customer-care standards.",
-      "details": {
-        "skillFit": {
-          "label": "Skill fit",
-          "value": "Strong"
-        },
-        "availability": {
-          "label": "Availability",
-          "value": "Aligned"
-        }
-      }
-    },
-    "opportunities": {
-      "eyebrow": "Partner opportunities",
-      "title": "Work from companies looking for verified talent.",
-      "disclaimerTitle": "Partner roles, not Blih Ops vacancies",
-      "disclaimer": "Listings shown here represent opportunities from companies using Blih Ops Talent. They are not employment roles at Blih Ops.",
-      "partnerLabel": "Partner company opportunity",
-      "exploreAriaLabel": "Explore {title} on Blih Ops Talent",
+    "criteria": {
+      "eyebrow": "What we look for",
+      "title": "Built for reliable, professional delivery.",
+      "description": "We look for people who combine solid technical ability with the communication and working habits global teams rely on.",
       "items": {
-        "customerSupportSpecialist": {
-          "title": "Customer Support Specialist",
-          "area": "Customer experience",
-          "description": "Support customers across email and chat while maintaining clear response, escalation, and quality standards.",
-          "workMode": "Remote",
-          "location": "Addis Ababa",
-          "commitment": "Full-time pathway",
-          "skills": [
-            "Ticket handling",
-            "Written communication",
-            "Quality routines"
-          ]
+        "skill": {
+          "title": "Skill",
+          "description": "Demonstrated ability in your primary role, backed by real projects and a verifiable profile."
         },
-        "backOfficeAssociate": {
-          "title": "Back-Office Associate",
-          "area": "Operations",
-          "description": "Run structured data, document, and administrative workflows with consistent accuracy and documented checks.",
-          "workMode": "Remote",
-          "location": "Addis Ababa",
-          "commitment": "Full-time pathway",
-          "skills": ["Data accuracy", "SOP execution", "Document review"]
+        "communication": {
+          "title": "Communication",
+          "description": "Clear written and spoken English so you can work effectively with clients across time zones."
         },
-        "juniorQaAnalyst": {
-          "title": "Junior QA Analyst",
-          "area": "Technology",
-          "description": "Help product teams test releases, document issues, and maintain dependable regression coverage.",
-          "workMode": "Remote",
-          "location": "Addis Ababa",
-          "commitment": "Project or full-time",
-          "skills": ["Test planning", "Issue reporting", "Regression testing"]
+        "remote": {
+          "title": "Remote readiness",
+          "description": "The tools, scheduling, and reliability needed to work as part of a distributed team."
         },
-        "aiAutomationAssistant": {
-          "title": "AI Automation Assistant",
-          "area": "AI and automation",
-          "description": "Support workflow mapping, AI-assisted operations, and practical automation projects with human review built in.",
-          "workMode": "Remote",
-          "location": "Addis Ababa",
-          "commitment": "Project pathway",
-          "skills": [
-            "Workflow mapping",
-            "Prompt practice",
-            "Process documentation"
-          ]
-        }
-      }
-    },
-    "profiles": {
-      "title": "See the evidence behind the profile.",
-      "description": "Sample profiles show how subscribed companies can compare verified ability, availability, and preferred ways of working.",
-      "sampleLabel": "Sample profile",
-      "verified": "Verified",
-      "viewProfile": "View on Talent platform",
-      "viewAriaLabel": "View sample {title} profile on Blih Ops Talent",
-      "labels": {
-        "verification": "Verification",
-        "availability": "Availability",
-        "location": "Location",
-        "workMode": "Preferred work",
-        "skills": "Verified capabilities"
-      },
-      "items": {
-        "supportSpecialist": {
-          "title": "Customer Support Specialist",
-          "verification": "Course and assessment",
-          "availability": "Available now",
-          "location": "Addis Ababa",
-          "workMode": "Remote",
-          "skills": ["Ticket handling", "Written support", "Escalation"]
-        },
-        "dataAssociate": {
-          "title": "Data Operations Associate",
-          "verification": "Direct assessment",
-          "availability": "Available in 2 weeks",
-          "location": "Addis Ababa",
-          "workMode": "Remote",
-          "skills": ["Data quality", "SOP execution", "Document review"]
-        },
-        "qaAnalyst": {
-          "title": "Junior QA Analyst",
-          "verification": "Course and assessment",
-          "availability": "Project-ready",
-          "location": "Addis Ababa",
-          "workMode": "Remote",
-          "skills": ["Test planning", "Bug reporting", "Regression testing"]
-        },
-        "automationAssistant": {
-          "title": "Automation Assistant",
-          "verification": "Direct assessment",
-          "availability": "Part-time available",
-          "location": "Addis Ababa",
-          "workMode": "Remote",
-          "skills": ["Workflow mapping", "Prompt practice", "Documentation"]
+        "growth": {
+          "title": "Growth mindset",
+          "description": "A habit of learning that keeps your skills aligned with what modern companies need."
         }
       }
     },
     "process": {
-      "title": "Two paths, one clearer match.",
-      "description": "Professionals build credible profiles. Companies narrow the search around evidence and real operating needs.",
-      "talentTitle": "For talent",
-      "companyTitle": "For companies",
-      "talentSteps": {
-        "learnOrAssess": {
-          "title": "Learn or take an assessment",
-          "description": "Complete a Blih Ops Skills course or prove existing ability through direct assessment."
+      "eyebrow": "How to join",
+      "title": "Four steps from application to introduction.",
+      "description": "A focused process that keeps the pool credible for engineers and the companies that depend on it.",
+      "apply": "Start your application",
+      "steps": {
+        "apply": {
+          "title": "Apply",
+          "description": "Submit your contact details, professional profile, links, resume, and availability once."
         },
-        "becomeVerified": {
-          "title": "Earn verification",
-          "description": "Connect practical evidence and assessment outcomes to your professional identity."
+        "screening": {
+          "title": "Screening and assessments",
+          "description": "Our team reviews your profile and runs practical, role-focused screening and assessments."
         },
-        "buildProfile": {
-          "title": "Build your profile",
-          "description": "Add your interests, availability, location, and preferred way of working."
+        "approval": {
+          "title": "Approval and profile",
+          "description": "Approved engineers have a Talent Profile created from their application, ready for client review."
         },
-        "meetDemand": {
-          "title": "Meet relevant demand",
-          "description": "Explore partner opportunities and become visible when your evidence fits a role."
+        "invitation": {
+          "title": "Invitation and visibility",
+          "description": "You are invited to your Talent Portal to keep your profile current and become visible to qualified clients."
         }
-      },
-      "companySteps": {
-        "subscribe": {
-          "title": "Access the company experience",
-          "description": "Subscribed companies enter the platform with a clear hiring or outsourcing need."
+      }
+    },
+    "next": {
+      "eyebrow": "What happens after",
+      "title": "A professional profile that works for you.",
+      "description": "Once approved, your information is turned into a controlled profile that stays accurate and client-ready.",
+      "items": {
+        "invitation": {
+          "title": "Invitation-only access",
+          "description": "You activate your Talent Portal with a secure invite and keep your professional information up to date."
         },
-        "defineNeed": {
-          "title": "Define the requirement",
-          "description": "Set the skills, availability, location, and working model the role needs."
+        "profile": {
+          "title": "A focused profile",
+          "description": "Your headline, bio, skills, links, resume, and availability form the profile clients review."
         },
-        "reviewProfiles": {
-          "title": "Review verified profiles",
-          "description": "Compare relevant people using practical evidence rather than claims alone."
+        "matching": {
+          "title": "Visible to clients",
+          "description": "Qualified companies can discover and consider you through the private Client Workspace."
+        }
+      }
+    },
+    "faq": {
+      "eyebrow": "Practical details",
+      "title": "Joining, answered.",
+      "description": "The essentials most engineers ask before applying.",
+      "items": {
+        "eligibility": {
+          "question": "Who can apply?",
+          "answer": "Software engineers and technical specialists with real experience and strong communication are encouraged to apply, regardless of seniority. Every application is reviewed."
         },
-        "connect": {
-          "title": "Connect around fit",
-          "description": "Move forward with professionals whose verified ability matches the work."
+        "timeline": {
+          "question": "How long does the process take?",
+          "answer": "Timing depends on the role and the stage of your application. We review applications, run screening and assessments, and keep you informed at each step."
+        },
+        "location": {
+          "question": "Do I need to be in Ethiopia?",
+          "answer": "Blih Ops works primarily with engineers based in Ethiopia, serving companies across Europe, the Middle East, and Africa."
+        },
+        "afterApproval": {
+          "question": "What happens after I am approved?",
+          "answer": "A Talent Profile is created for you and you receive an invitation to your Talent Portal, where you maintain your professional information and become visible to qualified clients."
         }
       }
     },
     "finalCta": {
-      "title": "Choose what you came to find.",
-      "description": "The same platform supports verified professionals pursuing work and companies looking for evidence-backed talent.",
-      "talent": "I want opportunities",
-      "companies": "I want verified talent"
+      "title": "Bring your skills where they are wanted.",
+      "description": "Join a vetted pool that global companies trust, with your profile managed and kept current for you.",
+      "eyebrow": "Ready to apply",
+      "actionTitle": "Your next opportunity starts here.",
+      "actionDescription": "Apply once with your profile, resume, and availability. We do the rest.",
+      "apply": "Apply to the talent pool"
+    }
+  },
+  "TalentApplyPage": {
+    "hero": {
+      "label": "Talent application",
+      "context": "Talent pool / Vetted engineers",
+      "eyebrow": "Join the talent pool",
+      "title": "Apply once to join a vetted talent pool.",
+      "description": "Tell us about your experience and what you want to build. We review every application before inviting approved engineers.",
+      "benefits": [
+        "Reviewed by a real team",
+        "Role-focused screening",
+        "Invitation to your Talent Portal"
+      ],
+      "imageAlt": "A Blih Ops delivery team discussing an operational workflow",
+      "imageCaption": "A team of engineers delivering for global clients.",
+      "locationCaption": "Addis Ababa"
+    },
+    "form": {
+      "label": "Talent application",
+      "duration": "Approx. {minutes} min",
+      "title": "Tell us who you are and what you build.",
+      "description": "A complete profile helps us review your skills and prepare the right assessment. Keep your details accurate and current.",
+      "sections": {
+        "details": "Your details",
+        "profile": "Professional profile",
+        "links": "Links and evidence",
+        "availability": "Availability and preferences"
+      },
+      "fields": {
+        "email": {
+          "label": "Email",
+          "placeholder": "you@example.com"
+        },
+        "phone": {
+          "label": "Phone",
+          "placeholder": "+251 ..."
+        },
+        "country": {
+          "label": "Country",
+          "placeholder": "Country"
+        },
+        "city": {
+          "label": "City",
+          "placeholder": "City"
+        },
+        "photo": {
+          "label": "Profile photo",
+          "hint": "Choose a clear, recent headshot. JPG, PNG or WEBP."
+        },
+        "headline": {
+          "label": "Professional headline",
+          "placeholder": "e.g. Senior Full-Stack Engineer"
+        },
+        "bio": {
+          "label": "Short bio",
+          "placeholder": "Summarize your experience, the work you enjoy, and the problems you solve.",
+          "help": "A few sentences that help a reviewer understand your background."
+        },
+        "primaryRole": {
+          "label": "Primary role",
+          "placeholder": "Select your primary role",
+          "options": {
+            "frontend": "Frontend Developer",
+            "backend": "Backend Developer",
+            "fullStack": "Full-Stack Developer",
+            "mobile": "Mobile Developer",
+            "devops": "DevOps Engineer",
+            "qa": "QA Engineer",
+            "data": "Data Engineer / Analyst",
+            "aiMl": "AI / ML Engineer",
+            "automation": "Automation Engineer",
+            "customerSupport": "Customer Support Specialist",
+            "backOffice": "Back-Office Specialist",
+            "other": "Other"
+          }
+        },
+        "techStack": {
+          "label": "Tech stack",
+          "hint": "Select the technologies you work with most."
+        },
+        "secondarySkills": {
+          "label": "Secondary skills",
+          "hint": "Optional additional skills that support your primary role."
+        },
+        "yearsExperience": {
+          "label": "Years of experience",
+          "placeholder": "Select experience",
+          "options": {
+            "underOne": "Under 1 year",
+            "oneToTwo": "1-2 years",
+            "threeToFive": "3-5 years",
+            "fiveToEight": "5-8 years",
+            "eightPlus": "8+ years"
+          }
+        },
+        "portfolio": {
+          "label": "Portfolio",
+          "placeholder": "https://..."
+        },
+        "github": {
+          "label": "GitHub",
+          "placeholder": "https://github.com/..."
+        },
+        "linkedin": {
+          "label": "LinkedIn",
+          "placeholder": "https://linkedin.com/in/..."
+        },
+        "resume": {
+          "label": "Resume",
+          "hint": "Upload your resume. PDF, DOC or DOCX."
+        },
+        "availability": {
+          "label": "Availability",
+          "placeholder": "Select availability",
+          "options": {
+            "immediate": "Immediately",
+            "withinTwoWeeks": "Within 2 weeks",
+            "withinOneMonth": "Within 1 month",
+            "oneToThreeMonths": "Within 1-3 months"
+          }
+        },
+        "earliestStartDate": {
+          "label": "Earliest start date"
+        },
+        "engagement": {
+          "label": "Preferred engagement",
+          "placeholder": "Select engagement",
+          "options": {
+            "fullTime": "Full-time",
+            "partTime": "Part-time",
+            "contract": "Contract / Freelance",
+            "projectBased": "Project-based"
+          }
+        },
+        "screening": {
+          "label": "Why do you want to join?",
+          "placeholder": "Tell us briefly what you are looking for and what you can offer.",
+          "help": "A short, honest answer helps us understand your motivation."
+        }
+      },
+      "submit": "Submit your application",
+      "submitting": "Submitting...",
+      "consent": "By submitting, you agree that Blih Ops may contact you about your application.",
+      "validation": {
+        "emailInvalid": "Enter a valid email address.",
+        "phoneRequired": "Enter your phone number.",
+        "phoneMax": "Keep your phone number under 40 characters.",
+        "countryRequired": "Enter your country.",
+        "cityRequired": "Enter your city.",
+        "photoRequired": "Add a profile photo.",
+        "photoInvalidType": "Upload a JPG, PNG or WEBP image.",
+        "photoTooLarge": "Keep your photo under 5 MB.",
+        "headlineRequired": "Enter a professional headline.",
+        "headlineMax": "Keep your headline under 120 characters.",
+        "bioRequired": "Tell us a little more about your background.",
+        "bioMax": "Keep your bio under 1,200 characters.",
+        "primaryRoleRequired": "Select your primary role.",
+        "techStackRequired": "Select at least one technology.",
+        "yearsExperienceRequired": "Select your years of experience.",
+        "urlInvalid": "Enter a valid URL.",
+        "urlMax": "Keep your link under 300 characters.",
+        "resumeRequired": "Upload your resume.",
+        "resumeInvalidType": "Upload a PDF, DOC or DOCX file.",
+        "resumeTooLarge": "Keep your resume under 10 MB.",
+        "availabilityRequired": "Select your availability.",
+        "startDateRequired": "Select your earliest start date.",
+        "engagementRequired": "Select your preferred engagement.",
+        "screeningRequired": "Tell us a little about why you want to join.",
+        "screeningMax": "Keep this under 500 characters."
+      },
+      "success": {
+        "title": "Your application is in.",
+        "description": "We have received your application and will review it. You will hear from us about next steps.",
+        "anotherPrompt": "Need to submit for a different person?",
+        "startAnother": "Start another application"
+      }
+    },
+    "process": {
+      "eyebrow": "What happens next",
+      "title": "A clear, deliberate review.",
+      "description": "Your application moves through a focused process so the pool stays credible for you and for clients.",
+      "steps": {
+        "applicationReceived": {
+          "title": "Application received",
+          "description": "Your profile and resume are logged for review by our team."
+        },
+        "review": {
+          "title": "Review",
+          "description": "We assess your experience, skills, and fit for the talent pool."
+        },
+        "screening": {
+          "title": "Screening and assessments",
+          "description": "You complete practical, role-focused screening and assessments."
+        },
+        "approval": {
+          "title": "Approval and invitation",
+          "description": "If approved, a Talent Profile is created and you receive an invitation to your Talent Portal."
+        }
+      }
+    },
+    "faq": {
+      "eyebrow": "Practical details",
+      "title": "Before you apply.",
+      "description": "The details most engineers want to know first.",
+      "items": {
+        "eligibility": {
+          "question": "Who can apply?",
+          "answer": "Software engineers and technical specialists with real experience and strong communication are encouraged to apply, regardless of seniority."
+        },
+        "timeline": {
+          "question": "How long does the process take?",
+          "answer": "It depends on your role and the stage of your application. We review, screen, and keep you informed at each step."
+        },
+        "location": {
+          "question": "Do I need to be in Ethiopia?",
+          "answer": "Blih Ops works primarily with engineers based in Ethiopia, serving companies across Europe, the Middle East, and Africa."
+        },
+        "afterApproval": {
+          "question": "What happens after approval?",
+          "answer": "A Talent Profile is created from your application and you receive an invitation to your Talent Portal, where you keep your information current and become visible to qualified clients."
+        }
+      }
     }
   }
 }
