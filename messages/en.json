@@ -58,6 +58,14 @@
     "signIn": {
       "title": "Sign in",
       "description": "Sign in to your Blih Ops workspace to access your managed pods, reports, and SLAs."
+    },
+    "forgotPassword": {
+      "title": "Reset your password",
+      "description": "Enter the email associated with your Blih Ops account to receive password reset instructions."
+    },
+    "resetPassword": {
+      "title": "Create a new password",
+      "description": "Set a new password for your Blih Ops workspace account."
     }
   },
   "Shared": {
@@ -1421,6 +1429,88 @@
       "secureAccess": "Secure access",
       "copyright": "© {year} Blih Ops. All rights reserved.",
       "needHelp": "Need help?"
+    },
+    "forgotPassword": {
+      "request": {
+        "eyebrow": "Password recovery",
+        "title": "Reset your password",
+        "description": "Enter the email associated with your Blih Ops account. We'll send password reset instructions if it matches an account.",
+        "fields": {
+          "email": {
+            "label": "Email address",
+            "placeholder": "name@company.com",
+            "helper": "We'll send the reset link to this address."
+          }
+        },
+        "submit": "Send reset link",
+        "backToSignIn": "Back to sign in"
+      },
+      "sent": {
+        "badge": "Reset email sent",
+        "title": "Check your email",
+        "description": "If the address matches a Blih Ops account, password reset instructions are on the way.",
+        "summaryLabel": "Email entered",
+        "deliveryNote": "Check your spam or junk folder if the email doesn't appear after a few minutes.",
+        "resend": "Resend email"
+      },
+      "validation": {
+        "emailRequired": "Enter your email address.",
+        "emailInvalid": "Enter a valid email address.",
+        "emailMax": "Keep the email under 254 characters."
+      }
+    },
+    "resetPassword": {
+      "default": {
+        "verifiedBadge": "Reset link verified",
+        "title": "Create a new password",
+        "description": "Your new password must be different from the password you used before.",
+        "fields": {
+          "newPassword": {
+            "label": "New password",
+            "placeholder": "Create a secure password"
+          },
+          "confirmPassword": {
+            "label": "Confirm password",
+            "placeholder": "Repeat your new password"
+          }
+        },
+        "showPassword": "Show password",
+        "hidePassword": "Hide password",
+        "requirements": {
+          "label": "Password requirements",
+          "items": [
+            "8+ characters",
+            "Upper & lowercase",
+            "One number",
+            "One symbol"
+          ]
+        },
+        "submit": "Reset password",
+        "backToSignIn": "Back to sign in"
+      },
+      "invalid": {
+        "badge": "Reset link unavailable",
+        "title": "This reset link is no longer valid",
+        "description": "The link may have expired or already been used. Request a new link to reset your password.",
+        "recoveryTitle": "Reset links are single use",
+        "recoveryDescription": "Creating a new request safely replaces the expired link.",
+        "requestNewLink": "Request new reset link",
+        "backToSignIn": "Back to sign in"
+      },
+      "success": {
+        "badge": "Password updated",
+        "title": "Your password has been reset",
+        "description": "Your new password is active and ready to use the next time you sign in.",
+        "goToSignIn": "Go to sign in",
+        "note": "Use the password you just created."
+      },
+      "validation": {
+        "newPasswordRequired": "Create a new password.",
+        "passwordMin": "Password must be at least 8 characters.",
+        "passwordRequirements": "Password must include uppercase, lowercase, a number, and a symbol.",
+        "confirmRequired": "Confirm your new password.",
+        "confirmMismatch": "Passwords do not match."
+      }
     }
   },
   "SignInPage": {
