@@ -7,7 +7,6 @@ import {
   CheckCircle2Icon,
   CheckIcon,
   FileTextIcon,
-  ImageIcon,
   LoaderCircleIcon,
   RotateCcwIcon,
   XIcon,
@@ -31,9 +30,6 @@ import { cn } from '@/lib/utils';
 const inputClassName =
   'h-12 w-full rounded-none border-0 border-b border-border bg-transparent px-0 text-base text-foreground outline-none transition-[border-color,background-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] placeholder:text-muted-foreground/70 focus-visible:border-primary focus-visible:bg-muted/40 aria-invalid:border-destructive sm:text-sm';
 
-const textareaClassName =
-  'min-h-32 w-full resize-y rounded-none border-0 border-b border-border bg-transparent px-0 py-3 text-base leading-relaxed text-foreground outline-none transition-[border-color,background-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] placeholder:text-muted-foreground/70 focus-visible:border-primary focus-visible:bg-muted/40 aria-invalid:border-destructive sm:text-sm';
-
 const primaryRoleOptions = [
   { value: 'Frontend Developer', key: 'frontend' },
   { value: 'Backend Developer', key: 'backend' },
@@ -55,20 +51,6 @@ const yearsExperienceOptions = [
   { value: '3-5 years', key: 'threeToFive' },
   { value: '5-8 years', key: 'fiveToEight' },
   { value: '8+ years', key: 'eightPlus' },
-] as const;
-
-const availabilityOptions = [
-  { value: 'Immediately', key: 'immediate' },
-  { value: 'Within 2 weeks', key: 'withinTwoWeeks' },
-  { value: 'Within 1 month', key: 'withinOneMonth' },
-  { value: 'Within 1-3 months', key: 'oneToThreeMonths' },
-] as const;
-
-const engagementOptions = [
-  { value: 'Full-time', key: 'fullTime' },
-  { value: 'Part-time', key: 'partTime' },
-  { value: 'Contract / Freelance', key: 'contract' },
-  { value: 'Project-based', key: 'projectBased' },
 ] as const;
 
 const techStackSkills = [
@@ -326,15 +308,7 @@ export function TalentApplicationForm() {
     emailMax: tForms('validation.emailMax'),
     phoneRequired: t('validation.phoneRequired'),
     phoneMax: t('validation.phoneMax'),
-    countryRequired: t('validation.countryRequired'),
     cityRequired: t('validation.cityRequired'),
-    photoRequired: t('validation.photoRequired'),
-    photoInvalidType: t('validation.photoInvalidType'),
-    photoTooLarge: t('validation.photoTooLarge'),
-    headlineRequired: t('validation.headlineRequired'),
-    headlineMax: t('validation.headlineMax'),
-    bioRequired: t('validation.bioRequired'),
-    bioMax: t('validation.bioMax'),
     primaryRoleRequired: t('validation.primaryRoleRequired'),
     techStackRequired: t('validation.techStackRequired'),
     yearsExperienceRequired: t('validation.yearsExperienceRequired'),
@@ -343,11 +317,6 @@ export function TalentApplicationForm() {
     resumeRequired: t('validation.resumeRequired'),
     resumeInvalidType: t('validation.resumeInvalidType'),
     resumeTooLarge: t('validation.resumeTooLarge'),
-    availabilityRequired: t('validation.availabilityRequired'),
-    startDateRequired: t('validation.startDateRequired'),
-    engagementRequired: t('validation.engagementRequired'),
-    screeningRequired: t('validation.screeningRequired'),
-    screeningMax: t('validation.screeningMax'),
   });
 
   const {
@@ -363,10 +332,7 @@ export function TalentApplicationForm() {
       fullName: '',
       email: '',
       phone: '',
-      country: '',
       city: '',
-      headline: '',
-      bio: '',
       primaryRole: '',
       techStack: [],
       secondarySkills: [],
@@ -374,10 +340,6 @@ export function TalentApplicationForm() {
       portfolio: '',
       github: '',
       linkedin: '',
-      availability: '',
-      earliestStartDate: '',
-      engagement: '',
-      screening: '',
     },
   });
 
@@ -474,7 +436,7 @@ export function TalentApplicationForm() {
           {t('label')}
         </span>
         <span className="font-mono text-[10px] tracking-wider text-muted-foreground uppercase">
-          {t('duration', { minutes: 12 })}
+          {t('duration', { minutes: 7 })}
         </span>
       </div>
 
@@ -599,62 +561,32 @@ export function TalentApplicationForm() {
             <div className="space-y-2">
               <label
                 className="text-sm font-medium text-foreground"
-                htmlFor="country"
+                htmlFor="city"
               >
-                {t('fields.country.label')}{' '}
+                {t('fields.city.label')}{' '}
                 <span className="text-destructive">*</span>
               </label>
               <input
-                id="country"
+                id="city"
                 type="text"
-                autoComplete="country-name"
-                placeholder={t('fields.country.placeholder')}
+                autoComplete="address-level2"
+                placeholder={t('fields.city.placeholder')}
                 required
-                aria-invalid={Boolean(errors.country)}
-                aria-describedby={errors.country ? 'country-error' : undefined}
+                aria-invalid={Boolean(errors.city)}
+                aria-describedby={errors.city ? 'city-error' : undefined}
                 className={inputClassName}
-                {...register('country')}
+                {...register('city')}
               />
-              {errors.country ? (
+              {errors.city ? (
                 <p
-                  id="country-error"
+                  id="city-error"
                   role="alert"
                   className="text-sm text-destructive"
                 >
-                  {errors.country.message}
+                  {errors.city.message}
                 </p>
               ) : null}
             </div>
-          </div>
-
-          <div className="space-y-2">
-            <label
-              className="text-sm font-medium text-foreground"
-              htmlFor="city"
-            >
-              {t('fields.city.label')}{' '}
-              <span className="text-destructive">*</span>
-            </label>
-            <input
-              id="city"
-              type="text"
-              autoComplete="address-level2"
-              placeholder={t('fields.city.placeholder')}
-              required
-              aria-invalid={Boolean(errors.city)}
-              aria-describedby={errors.city ? 'city-error' : undefined}
-              className={inputClassName}
-              {...register('city')}
-            />
-            {errors.city ? (
-              <p
-                id="city-error"
-                role="alert"
-                className="text-sm text-destructive"
-              >
-                {errors.city.message}
-              </p>
-            ) : null}
           </div>
         </fieldset>
 
@@ -663,86 +595,6 @@ export function TalentApplicationForm() {
             <span className="text-primary">02</span>
             {t('sections.profile')}
           </legend>
-
-          <Controller
-            control={control}
-            name="photo"
-            render={({ field }) => (
-              <FileField
-                id="photo"
-                label={t('fields.photo.label')}
-                required
-                accept="image/jpeg,image/png,image/webp"
-                hint={t('fields.photo.hint')}
-                value={field.value}
-                onChange={field.onChange}
-                error={errors.photo?.message}
-                Icon={ImageIcon}
-              />
-            )}
-          />
-
-          <div className="space-y-2">
-            <label
-              className="text-sm font-medium text-foreground"
-              htmlFor="headline"
-            >
-              {t('fields.headline.label')}{' '}
-              <span className="text-destructive">*</span>
-            </label>
-            <input
-              id="headline"
-              type="text"
-              placeholder={t('fields.headline.placeholder')}
-              required
-              aria-invalid={Boolean(errors.headline)}
-              aria-describedby={errors.headline ? 'headline-error' : undefined}
-              className={inputClassName}
-              {...register('headline')}
-            />
-            {errors.headline ? (
-              <p
-                id="headline-error"
-                role="alert"
-                className="text-sm text-destructive"
-              >
-                {errors.headline.message}
-              </p>
-            ) : null}
-          </div>
-
-          <div className="space-y-2">
-            <label
-              className="text-sm font-medium text-foreground"
-              htmlFor="bio"
-            >
-              {t('fields.bio.label')}{' '}
-              <span className="text-destructive">*</span>
-            </label>
-            <textarea
-              id="bio"
-              rows={5}
-              placeholder={t('fields.bio.placeholder')}
-              aria-invalid={Boolean(errors.bio)}
-              aria-describedby={errors.bio ? 'bio-error' : 'bio-help'}
-              className={textareaClassName}
-              required
-              {...register('bio')}
-            />
-            {errors.bio ? (
-              <p
-                id="bio-error"
-                role="alert"
-                className="text-sm text-destructive"
-              >
-                {errors.bio.message}
-              </p>
-            ) : (
-              <p id="bio-help" className="text-xs text-muted-foreground">
-                {t('fields.bio.help')}
-              </p>
-            )}
-          </div>
 
           <div className="grid gap-8 sm:grid-cols-2">
             <div className="space-y-2">
@@ -986,154 +838,6 @@ export function TalentApplicationForm() {
               />
             )}
           />
-        </fieldset>
-
-        <fieldset className="space-y-8 border-t border-border/80 pt-12">
-          <legend className="mb-8 flex items-center gap-4 font-mono text-[10px] tracking-[0.16em] text-muted-foreground uppercase">
-            <span className="text-primary">04</span>
-            {t('sections.availability')}
-          </legend>
-
-          <div className="grid gap-8 sm:grid-cols-2">
-            <div className="space-y-2">
-              <label
-                className="text-sm font-medium text-foreground"
-                htmlFor="availability"
-              >
-                {t('fields.availability.label')}{' '}
-                <span className="text-destructive">*</span>
-              </label>
-              <select
-                id="availability"
-                aria-invalid={Boolean(errors.availability)}
-                aria-describedby={
-                  errors.availability ? 'availability-error' : undefined
-                }
-                className={inputClassName}
-                required
-                {...register('availability')}
-              >
-                <option value="">{t('fields.availability.placeholder')}</option>
-                {availabilityOptions.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {t(`fields.availability.options.${option.key}`)}
-                  </option>
-                ))}
-              </select>
-              {errors.availability ? (
-                <p
-                  id="availability-error"
-                  role="alert"
-                  className="text-sm text-destructive"
-                >
-                  {errors.availability.message}
-                </p>
-              ) : null}
-            </div>
-
-            <div className="space-y-2">
-              <label
-                className="text-sm font-medium text-foreground"
-                htmlFor="earliestStartDate"
-              >
-                {t('fields.earliestStartDate.label')}{' '}
-                <span className="text-destructive">*</span>
-              </label>
-              <input
-                id="earliestStartDate"
-                type="date"
-                aria-invalid={Boolean(errors.earliestStartDate)}
-                aria-describedby={
-                  errors.earliestStartDate
-                    ? 'earliestStartDate-error'
-                    : undefined
-                }
-                className={inputClassName}
-                required
-                {...register('earliestStartDate')}
-              />
-              {errors.earliestStartDate ? (
-                <p
-                  id="earliestStartDate-error"
-                  role="alert"
-                  className="text-sm text-destructive"
-                >
-                  {errors.earliestStartDate.message}
-                </p>
-              ) : null}
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <label
-              className="text-sm font-medium text-foreground"
-              htmlFor="engagement"
-            >
-              {t('fields.engagement.label')}{' '}
-              <span className="text-destructive">*</span>
-            </label>
-            <select
-              id="engagement"
-              aria-invalid={Boolean(errors.engagement)}
-              aria-describedby={
-                errors.engagement ? 'engagement-error' : undefined
-              }
-              className={inputClassName}
-              required
-              {...register('engagement')}
-            >
-              <option value="">{t('fields.engagement.placeholder')}</option>
-              {engagementOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {t(`fields.engagement.options.${option.key}`)}
-                </option>
-              ))}
-            </select>
-            {errors.engagement ? (
-              <p
-                id="engagement-error"
-                role="alert"
-                className="text-sm text-destructive"
-              >
-                {errors.engagement.message}
-              </p>
-            ) : null}
-          </div>
-
-          <div className="space-y-2">
-            <label
-              className="text-sm font-medium text-foreground"
-              htmlFor="screening"
-            >
-              {t('fields.screening.label')}{' '}
-              <span className="text-destructive">*</span>
-            </label>
-            <textarea
-              id="screening"
-              rows={4}
-              placeholder={t('fields.screening.placeholder')}
-              aria-invalid={Boolean(errors.screening)}
-              aria-describedby={
-                errors.screening ? 'screening-error' : 'screening-help'
-              }
-              className={textareaClassName}
-              required
-              {...register('screening')}
-            />
-            {errors.screening ? (
-              <p
-                id="screening-error"
-                role="alert"
-                className="text-sm text-destructive"
-              >
-                {errors.screening.message}
-              </p>
-            ) : (
-              <p id="screening-help" className="text-xs text-muted-foreground">
-                {t('fields.screening.help')}
-              </p>
-            )}
-          </div>
         </fieldset>
 
         <div className="border-t border-border/80 pt-8">

@@ -1,9 +1,7 @@
 import { z } from 'zod';
 
-const MAX_PHOTO_BYTES = 5 * 1024 * 1024;
 const MAX_RESUME_BYTES = 10 * 1024 * 1024;
 
-const photoTypes = ['image/jpeg', 'image/png', 'image/webp'];
 const resumeTypes = [
   'application/pdf',
   'application/msword',
@@ -17,15 +15,7 @@ type TalentApplicationValidationMessages = {
   emailMax: string;
   phoneRequired: string;
   phoneMax: string;
-  countryRequired: string;
   cityRequired: string;
-  photoRequired: string;
-  photoInvalidType: string;
-  photoTooLarge: string;
-  headlineRequired: string;
-  headlineMax: string;
-  bioRequired: string;
-  bioMax: string;
   primaryRoleRequired: string;
   techStackRequired: string;
   yearsExperienceRequired: string;
@@ -34,11 +24,6 @@ type TalentApplicationValidationMessages = {
   resumeRequired: string;
   resumeInvalidType: string;
   resumeTooLarge: string;
-  availabilityRequired: string;
-  startDateRequired: string;
-  engagementRequired: string;
-  screeningRequired: string;
-  screeningMax: string;
 };
 
 const fileValidator = ({
@@ -83,32 +68,11 @@ export function createTalentApplicationSchema(
       .trim()
       .min(7, messages.phoneRequired)
       .max(40, messages.phoneMax),
-    country: z
-      .string()
-      .trim()
-      .min(2, messages.countryRequired)
-      .max(80, messages.countryRequired),
     city: z
       .string()
       .trim()
       .min(2, messages.cityRequired)
       .max(80, messages.cityRequired),
-    photo: fileValidator({
-      types: photoTypes,
-      maxBytes: MAX_PHOTO_BYTES,
-      invalidType: messages.photoInvalidType,
-      tooLarge: messages.photoTooLarge,
-    }),
-    headline: z
-      .string()
-      .trim()
-      .min(5, messages.headlineRequired)
-      .max(120, messages.headlineMax),
-    bio: z
-      .string()
-      .trim()
-      .min(40, messages.bioRequired)
-      .max(1200, messages.bioMax),
     primaryRole: z.string().min(1, messages.primaryRoleRequired),
     techStack: z.array(z.string()).min(1, messages.techStackRequired),
     secondarySkills: z.array(z.string()),
@@ -122,14 +86,6 @@ export function createTalentApplicationSchema(
       invalidType: messages.resumeInvalidType,
       tooLarge: messages.resumeTooLarge,
     }),
-    availability: z.string().min(1, messages.availabilityRequired),
-    earliestStartDate: z.string().min(1, messages.startDateRequired),
-    engagement: z.string().min(1, messages.engagementRequired),
-    screening: z
-      .string()
-      .trim()
-      .min(20, messages.screeningRequired)
-      .max(500, messages.screeningMax),
   });
 }
 
