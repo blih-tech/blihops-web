@@ -168,20 +168,20 @@ export default async function TalentApplyPage({
       </SectionWrapper>
 
       <section className="border-y border-border/80 bg-muted/50">
-        <SectionWrapper className="grid gap-14 py-24 md:py-32 lg:grid-cols-[0.72fr_1.28fr] lg:gap-24">
-          <div>
+        <SectionWrapper className="py-24 md:py-32">
+          <div className="mx-auto max-w-2xl text-center">
             <p className="font-mono text-[10px] tracking-[0.16em] text-muted-foreground uppercase">
               {t('faq.eyebrow')}
             </p>
-            <h2 className="mt-6 max-w-md font-heading text-4xl leading-[1.02] font-semibold tracking-[-0.035em] text-foreground sm:text-5xl">
+            <h2 className="mt-6 font-heading text-4xl leading-[1.02] font-semibold tracking-[-0.035em] text-foreground sm:text-5xl">
               {t('faq.title')}
             </h2>
-            <p className="mt-6 max-w-sm text-base leading-7 text-muted-foreground">
+            <p className="mt-6 text-base leading-7 text-muted-foreground">
               {t('faq.description')}
             </p>
           </div>
 
-          <div className="border-b border-border/80">
+          <div className="mx-auto mt-12 max-w-2xl border-b border-border/80">
             {faqs.map((faq, index) => (
               <details key={faq} className="group border-t border-border/80">
                 <summary className="grid cursor-pointer list-none grid-cols-[2rem_1fr_auto] items-center gap-4 py-7 font-medium text-foreground outline-none transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary [&::-webkit-details-marker]:hidden">
