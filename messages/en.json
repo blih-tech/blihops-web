@@ -1480,6 +1480,7 @@
         },
         "showPassword": "Show password",
         "hidePassword": "Hide password",
+        "minLength": "Min. 8 characters",
         "requirements": {
           "label": "Password requirements",
           "items": [

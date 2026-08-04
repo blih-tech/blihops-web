@@ -35,23 +35,23 @@ export function AuthShell({ children }: AuthShellProps) {
             <Logo className="h-8 w-auto" />
           </div>
         </div>
-        <div className="absolute inset-x-8 bottom-6">
+        <div className="absolute inset-x-8 bottom-5">
           <div className="max-w-[430px]">
             <span
-              className="mb-4 block h-0.5 w-6 bg-primary"
+              className="mb-3 block h-0.5 w-6 bg-primary"
               aria-hidden="true"
             />
             <p className="font-mono text-[10px] font-semibold tracking-[0.14em] text-white/70 uppercase">
               {t('eyebrow')}
             </p>
-            <h1 className="mt-3 font-heading text-3xl leading-[1.05] font-semibold tracking-[-0.025em] text-white xl:text-4xl">
+            <h1 className="mt-2 font-heading text-2xl leading-[1.1] font-semibold tracking-[-0.025em] text-white xl:text-3xl">
               {t('headline')}
             </h1>
-            <p className="mt-3 max-w-[400px] text-sm leading-[1.55] text-white/70">
+            <p className="mt-2 max-w-[400px] text-[13px] leading-[1.5] text-white/70">
               {t('description')}
             </p>
           </div>
-          <ul className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2">
+          <ul className="mt-3.5 flex flex-wrap items-center gap-x-5 gap-y-2">
             {trust.map((item) => (
               <li
                 key={item}
@@ -69,7 +69,7 @@ export function AuthShell({ children }: AuthShellProps) {
       </aside>
 
       <div className="flex min-h-0 flex-1 flex-col bg-background">
-        <div className="flex items-center justify-between px-4 py-3 lg:hidden">
+        <div className="flex items-center justify-between px-4 py-2.5 lg:hidden">
           <div className="rounded-lg border border-border bg-white p-1">
             <Logo className="h-7 w-auto" />
           </div>
@@ -82,7 +82,7 @@ export function AuthShell({ children }: AuthShellProps) {
           </span>
         </div>
 
-        <div className="hidden justify-end px-6 py-4 lg:flex">
+        <div className="hidden justify-end px-6 py-2.5 lg:flex">
           <span className="inline-flex items-center gap-1.5 font-mono text-[9px] font-semibold tracking-[0.08em] text-muted-foreground uppercase">
             <ShieldCheckIcon
               className="size-3 text-primary"
@@ -92,11 +92,11 @@ export function AuthShell({ children }: AuthShellProps) {
           </span>
         </div>
 
-        <div className="flex min-h-0 flex-1 items-center justify-center overflow-y-auto px-5 py-8 sm:px-8 lg:px-12">
-          <div className="w-full max-w-[400px]">{children}</div>
+        <div className="flex min-h-0 flex-1 overflow-y-auto px-5 py-6 sm:px-8 lg:px-12">
+          <div className="m-auto w-full max-w-[400px]">{children}</div>
         </div>
 
-        <footer className="flex items-center justify-between gap-4 px-4 py-3 text-muted-foreground sm:px-6">
+        <footer className="flex items-center justify-between gap-4 px-4 py-2 text-muted-foreground sm:px-6">
           <span className="font-mono text-[9px] font-semibold tracking-[0.07em] uppercase">
             {t('copyright', { year: new Date().getFullYear() })}
           </span>

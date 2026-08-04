@@ -79,7 +79,7 @@ export function AcceptInvitationForm({
     return (
       <motion.div
         key="invalid-invitation"
-        className="flex flex-col gap-5"
+        className="flex flex-col gap-4"
         initial={reduceMotion ? false : { opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
@@ -103,10 +103,10 @@ export function AcceptInvitationForm({
               aria-hidden="true"
             />
           </div>
-          <h2 className="font-heading text-2xl leading-tight font-semibold tracking-[-0.02em] text-foreground sm:text-3xl">
+          <h2 className="font-heading text-xl leading-snug font-semibold tracking-[-0.02em] text-foreground sm:text-2xl">
             {t('invalid.title')}
           </h2>
-          <p className="text-sm leading-[1.6] text-muted-foreground">
+          <p className="text-[13px] leading-[1.5] text-muted-foreground">
             {t('invalid.description')}
           </p>
         </div>
@@ -149,7 +149,7 @@ export function AcceptInvitationForm({
         role="status"
         aria-live="polite"
         tabIndex={-1}
-        className="flex flex-col gap-5 outline-none"
+        className="flex flex-col gap-4 outline-none"
         initial={reduceMotion ? false : { opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
@@ -173,10 +173,10 @@ export function AcceptInvitationForm({
               aria-hidden="true"
             />
           </div>
-          <h2 className="font-heading text-2xl leading-tight font-semibold tracking-[-0.02em] text-foreground sm:text-3xl">
+          <h2 className="font-heading text-xl leading-snug font-semibold tracking-[-0.02em] text-foreground sm:text-2xl">
             {t('created.title')}
           </h2>
-          <p className="text-sm leading-[1.6] text-muted-foreground">
+          <p className="text-[13px] leading-[1.5] text-muted-foreground">
             {t('created.description')}
           </p>
         </div>
@@ -201,7 +201,7 @@ export function AcceptInvitationForm({
 
         <Link
           href="/auth/sign-in"
-          className={buttonVariants({ size: 'lg', className: 'h-10 w-full' })}
+          className={buttonVariants({ size: 'lg', className: 'h-9 w-full' })}
         >
           {t('created.goToSignIn')}
           <ArrowRightIcon data-icon="inline-end" aria-hidden="true" />
@@ -237,17 +237,17 @@ export function AcceptInvitationForm({
         {t('default.verifiedBadge')}
       </span>
 
-      <div className="flex flex-col gap-1.5">
-        <h2 className="font-heading text-2xl leading-tight font-semibold tracking-[-0.02em] text-foreground sm:text-3xl">
+      <div className="flex flex-col gap-1">
+        <h2 className="font-heading text-xl leading-snug font-semibold tracking-[-0.02em] text-foreground sm:text-2xl">
           {t('default.title')}
         </h2>
-        <p className="text-sm leading-[1.6] text-muted-foreground">
+        <p className="text-[13px] leading-[1.5] text-muted-foreground">
           {t('default.description')}
         </p>
       </div>
 
       <div className="space-y-3">
-        <div className="space-y-1.5">
+        <div className="space-y-1">
           <label
             className="text-xs font-medium text-foreground"
             htmlFor="invitedEmail"
@@ -277,7 +277,7 @@ export function AcceptInvitationForm({
           </p>
         </div>
 
-        <div className="space-y-1.5">
+        <div className="space-y-1">
           <label
             className="text-xs font-medium text-foreground"
             htmlFor="newPassword"
@@ -325,7 +325,7 @@ export function AcceptInvitationForm({
           ) : null}
         </div>
 
-        <div className="space-y-1.5">
+        <div className="space-y-1">
           <label
             className="text-xs font-medium text-foreground"
             htmlFor="confirmPassword"
@@ -411,7 +411,7 @@ export function AcceptInvitationForm({
         </Link>
       </p>
 
-      <Button type="submit" size="lg" className="h-10 w-full">
+      <Button type="submit" size="lg" className="h-9 w-full">
         {t('default.submit')}
         <ArrowRightIcon data-icon="inline-end" aria-hidden="true" />
       </Button>

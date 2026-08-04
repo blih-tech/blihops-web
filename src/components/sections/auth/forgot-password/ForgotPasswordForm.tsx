@@ -76,7 +76,7 @@ export function ForgotPasswordForm() {
         role="status"
         aria-live="polite"
         tabIndex={-1}
-        className="flex flex-col gap-5 outline-none"
+        className="flex flex-col gap-4 outline-none"
         initial={reduceMotion ? false : { opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
@@ -100,10 +100,10 @@ export function ForgotPasswordForm() {
               aria-hidden="true"
             />
           </div>
-          <h2 className="font-heading text-2xl leading-tight font-semibold tracking-[-0.02em] text-foreground sm:text-3xl">
+          <h2 className="font-heading text-xl leading-snug font-semibold tracking-[-0.02em] text-foreground sm:text-2xl">
             {t('sent.title')}
           </h2>
-          <p className="text-sm leading-[1.6] text-muted-foreground">
+          <p className="text-[13px] leading-[1.5] text-muted-foreground">
             {t('sent.description')}
           </p>
         </div>
@@ -141,14 +141,14 @@ export function ForgotPasswordForm() {
           type="button"
           variant="outline"
           size="lg"
-          className="h-10 w-full"
+          className="h-9 w-full"
           onClick={onResend}
         >
           <RotateCwIcon data-icon="inline-start" aria-hidden="true" />
           {t('sent.resend')}
         </Button>
 
-        <div className="flex justify-center pt-1">{backToSignIn}</div>
+        <div className="flex justify-center pt-0.5">{backToSignIn}</div>
       </motion.div>
     );
   }
@@ -162,25 +162,25 @@ export function ForgotPasswordForm() {
         ease: [0.22, 1, 0.36, 1],
       }}
     >
-      <div className="flex flex-col gap-1.5">
+      <div className="flex flex-col gap-1">
         <p className="font-mono text-[10px] font-semibold tracking-[0.11em] text-primary uppercase">
           {t('request.eyebrow')}
         </p>
-        <h2 className="font-heading text-2xl leading-tight font-semibold tracking-[-0.02em] text-foreground sm:text-3xl">
+        <h2 className="font-heading text-xl leading-snug font-semibold tracking-[-0.02em] text-foreground sm:text-2xl">
           {t('request.title')}
         </h2>
-        <p className="text-sm leading-[1.6] text-muted-foreground">
+        <p className="text-[13px] leading-[1.5] text-muted-foreground">
           {t('request.description')}
         </p>
       </div>
 
       <form
         id="forgot-password-form"
-        className="mt-6 space-y-4"
+        className="mt-5 space-y-3.5"
         onSubmit={handleSubmit(onSubmit)}
         noValidate
       >
-        <div className="space-y-1.5">
+        <div className="space-y-1">
           <label
             className="text-xs font-medium text-foreground"
             htmlFor="email"
@@ -194,7 +194,7 @@ export function ForgotPasswordForm() {
             autoComplete="email"
             placeholder={t('request.fields.email.placeholder')}
             aria-invalid={Boolean(errors.email)}
-            aria-describedby={errors.email ? 'email-error' : 'email-help'}
+            aria-describedby={errors.email ? 'email-error' : undefined}
             className={authInputClassName}
             {...register('email')}
           />
@@ -206,22 +206,15 @@ export function ForgotPasswordForm() {
             >
               {errors.email.message}
             </p>
-          ) : (
-            <p
-              id="email-help"
-              className="text-xs leading-[1.4] text-muted-foreground"
-            >
-              {t('request.fields.email.helper')}
-            </p>
-          )}
+          ) : null}
         </div>
 
-        <Button type="submit" size="lg" className="h-10 w-full">
+        <Button type="submit" size="lg" className="h-9 w-full">
           {t('request.submit')}
           <ArrowRightIcon data-icon="inline-end" aria-hidden="true" />
         </Button>
 
-        <div className="flex justify-center pt-1">{backToSignIn}</div>
+        <div className="flex justify-center pt-0.5">{backToSignIn}</div>
       </form>
     </motion.div>
   );
