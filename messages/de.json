@@ -58,6 +58,14 @@
     "signIn": {
       "title": "Anmelden",
       "description": "Melden Sie sich in Ihrem Blih-Ops-Workspace an, um auf Ihre verwalteten Pods, Berichte und SLAs zuzugreifen."
+    },
+    "forgotPassword": {
+      "title": "Passwort zurücksetzen",
+      "description": "Geben Sie die E-Mail ein, die mit Ihrem Blih-Ops-Konto verbunden ist, um Anweisungen zum Zurücksetzen des Passworts zu erhalten."
+    },
+    "resetPassword": {
+      "title": "Neues Passwort erstellen",
+      "description": "Legen Sie ein neues Passwort für Ihr Blih-Ops-Workspace-Konto fest."
     }
   },
   "ServicesPage": {
@@ -1421,6 +1429,88 @@
       "secureAccess": "Sicherer Zugang",
       "copyright": "© {year} Blih Ops. Alle Rechte vorbehalten.",
       "needHelp": "Hilfe nötig?"
+    },
+    "forgotPassword": {
+      "request": {
+        "eyebrow": "Passwort-Wiederherstellung",
+        "title": "Passwort zurücksetzen",
+        "description": "Geben Sie die E-Mail ein, die mit Ihrem Blih-Ops-Konto verbunden ist. Wir senden Anweisungen zum Zurücksetzen des Passworts, wenn sie zu einem Konto gehört.",
+        "fields": {
+          "email": {
+            "label": "E-Mail-Adresse",
+            "placeholder": "name@unternehmen.com",
+            "helper": "Wir senden den Zurücksetzen-Link an diese Adresse."
+          }
+        },
+        "submit": "Zurücksetzen-Link senden",
+        "backToSignIn": "Zurück zur Anmeldung"
+      },
+      "sent": {
+        "badge": "Zurücksetzen-E-Mail gesendet",
+        "title": "Prüfen Sie Ihre E-Mail",
+        "description": "Wenn die Adresse zu einem Blih-Ops-Konto gehört, sind die Anweisungen zum Zurücksetzen des Passworts unterwegs.",
+        "summaryLabel": "Eingegebene E-Mail",
+        "deliveryNote": "Prüfen Sie Ihren Spam-Ordner, falls die E-Mail nach einigen Minuten nicht erscheint.",
+        "resend": "E-Mail erneut senden"
+      },
+      "validation": {
+        "emailRequired": "Geben Sie Ihre E-Mail-Adresse ein.",
+        "emailInvalid": "Geben Sie eine gültige E-Mail-Adresse ein.",
+        "emailMax": "Halten Sie die E-Mail unter 254 Zeichen."
+      }
+    },
+    "resetPassword": {
+      "default": {
+        "verifiedBadge": "Zurücksetzen-Link verifiziert",
+        "title": "Neues Passwort erstellen",
+        "description": "Ihr neues Passwort muss sich von dem zuvor verwendeten Passwort unterscheiden.",
+        "fields": {
+          "newPassword": {
+            "label": "Neues Passwort",
+            "placeholder": "Sicheres Passwort erstellen"
+          },
+          "confirmPassword": {
+            "label": "Passwort bestätigen",
+            "placeholder": "Neues Passwort wiederholen"
+          }
+        },
+        "showPassword": "Passwort anzeigen",
+        "hidePassword": "Passwort ausblenden",
+        "requirements": {
+          "label": "Passwort-Anforderungen",
+          "items": [
+            "8+ Zeichen",
+            "Groß- & Kleinschreibung",
+            "Eine Zahl",
+            "Ein Symbol"
+          ]
+        },
+        "submit": "Passwort zurücksetzen",
+        "backToSignIn": "Zurück zur Anmeldung"
+      },
+      "invalid": {
+        "badge": "Zurücksetzen-Link nicht verfügbar",
+        "title": "Dieser Zurücksetzen-Link ist nicht mehr gültig",
+        "description": "Der Link ist möglicherweise abgelaufen oder wurde bereits verwendet. Fordern Sie einen neuen Link an, um Ihr Passwort zurückzusetzen.",
+        "recoveryTitle": "Zurücksetzen-Links sind nur einmal gültig",
+        "recoveryDescription": "Eine neue Anfrage ersetzt den abgelaufenen Link sicher.",
+        "requestNewLink": "Neuen Zurücksetzen-Link anfordern",
+        "backToSignIn": "Zurück zur Anmeldung"
+      },
+      "success": {
+        "badge": "Passwort aktualisiert",
+        "title": "Ihr Passwort wurde zurückgesetzt",
+        "description": "Ihr neues Passwort ist aktiv und beim nächsten Anmelden einsatzbereit.",
+        "goToSignIn": "Zur Anmeldung",
+        "note": "Verwenden Sie das Passwort, das Sie gerade erstellt haben."
+      },
+      "validation": {
+        "newPasswordRequired": "Erstellen Sie ein neues Passwort.",
+        "passwordMin": "Das Passwort muss mindestens 8 Zeichen lang sein.",
+        "passwordRequirements": "Das Passwort muss Groß- und Kleinbuchstaben, eine Zahl und ein Symbol enthalten.",
+        "confirmRequired": "Bestätigen Sie Ihr neues Passwort.",
+        "confirmMismatch": "Die Passwörter stimmen nicht überein."
+      }
     }
   },
   "SignInPage": {

@@ -8,12 +8,10 @@ import { useTranslations } from 'next-intl';
 import { useForm } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
+import { authInputClassName } from '@/components/sections/auth/auth-form-styles';
 import { createSignInSchema, type SignInFormValues } from '@/lib/forms/sign-in';
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
-
-const inputClassName =
-  'h-10 w-full rounded-md border border-border bg-background px-3 text-sm text-foreground outline-none transition-[border-color,box-shadow,background-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] placeholder:text-muted-foreground/70 focus-visible:border-primary focus-visible:ring-3 focus-visible:ring-ring/30 aria-invalid:border-destructive aria-invalid:ring-3 aria-invalid:ring-destructive/20';
 
 export function SignInForm() {
   const t = useTranslations('SignInPage.form');
@@ -55,7 +53,7 @@ export function SignInForm() {
       }}
     >
       <div className="flex flex-col gap-1.5">
-        <p className="font-mono text-[10px] font-semibold tracking-[0.11em] text-foreground uppercase">
+        <p className="font-mono text-[10px] font-semibold tracking-[0.11em] text-primary uppercase">
           {t('eyebrow')}
         </p>
         <h2 className="font-heading text-2xl leading-tight font-semibold tracking-[-0.02em] text-foreground sm:text-3xl">
@@ -89,7 +87,7 @@ export function SignInForm() {
             aria-describedby={
               errors.workEmail ? 'workEmail-error' : 'workEmail-help'
             }
-            className={inputClassName}
+            className={authInputClassName}
             {...register('workEmail')}
           />
           {errors.workEmail ? (
@@ -127,7 +125,7 @@ export function SignInForm() {
               aria-describedby={
                 errors.password ? 'password-error' : 'password-help'
               }
-              className={cn(inputClassName, 'pr-10')}
+              className={cn(authInputClassName, 'pr-10')}
               {...register('password')}
             />
             <button
