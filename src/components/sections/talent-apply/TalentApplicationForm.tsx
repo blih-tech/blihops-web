@@ -14,7 +14,12 @@ import {
 } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
 import { useTranslations } from 'next-intl';
-import { Controller, useForm, type UseFormRegister } from 'react-hook-form';
+import {
+  Controller,
+  useForm,
+  useWatch,
+  type UseFormRegister,
+} from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -350,7 +355,6 @@ export function TalentApplicationForm() {
     handleSubmit,
     reset,
     control,
-    watch,
     formState: { errors, isSubmitting },
   } = useForm<TalentApplicationValues>({
     resolver: standardSchemaResolver(schema),
@@ -377,8 +381,9 @@ export function TalentApplicationForm() {
     },
   });
 
-  const selectedTech = watch('techStack') ?? [];
-  const selectedSecondary = watch('secondarySkills') ?? [];
+  const selectedTech = useWatch({ control, name: 'techStack' }) ?? [];
+  const selectedSecondary =
+    useWatch({ control, name: 'secondarySkills' }) ?? [];
 
   useEffect(() => {
     if (submitted) {

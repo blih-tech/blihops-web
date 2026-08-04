@@ -3,9 +3,7 @@ import { Inter, Source_Serif_4, JetBrains_Mono } from 'next/font/google';
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { Footer } from '@/components/layout/Footer';
-import { Header } from '@/components/layout/Header';
-import { SmoothScroll } from '@/components/layout/SmoothScroll';
+import { SiteChrome } from '@/components/layout/SiteChrome';
 import { routing } from '@/i18n/routing';
 
 const fontSans = Inter({
@@ -102,11 +100,7 @@ export default async function LocaleLayout({
         className={`${fontSans.variable} ${fontSerif.variable} ${fontMono.variable} antialiased`}
       >
         <NextIntlClientProvider>
-          <SmoothScroll>
-            <Header />
-            {children}
-            <Footer />
-          </SmoothScroll>
+          <SiteChrome>{children}</SiteChrome>
         </NextIntlClientProvider>
       </body>
     </html>

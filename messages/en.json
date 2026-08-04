@@ -54,6 +54,10 @@
     "talentApply": {
       "title": "Apply to Join the Blih Ops Talent Pool",
       "description": "Submit your engineering profile, resume, and availability to join the Blih Ops talent pool. We review every application before inviting approved engineers."
+    },
+    "signIn": {
+      "title": "Sign in",
+      "description": "Sign in to your Blih Ops workspace to access your managed pods, reports, and SLAs."
     }
   },
   "Shared": {
@@ -1399,6 +1403,54 @@
           "question": "What happens after approval?",
           "answer": "A Talent Profile is created from your application and you receive an invitation to your Talent Portal, where you keep your information current and become visible to qualified clients."
         }
+      }
+    }
+  },
+  "Auth": {
+    "shell": {
+      "brandImageAlt": "A Blih Ops delivery team at work in Addis Ababa",
+      "eyebrow": "Blih Ops workspace",
+      "headline": "Operations, running on structure, automation, and accountability.",
+      "description": "Access your managed pods, live reports, and SLA performance from one place. Your work, measured and on track.",
+      "trust": [
+        "AI-powered operations",
+        "Dedicated pods",
+        "Clear SLAs",
+        "Weekly reporting"
+      ],
+      "secureAccess": "Secure access",
+      "copyright": "© {year} Blih Ops. All rights reserved.",
+      "needHelp": "Need help?"
+    }
+  },
+  "SignInPage": {
+    "form": {
+      "eyebrow": "Account access",
+      "title": "Sign in to your workspace",
+      "description": "Use the email and password associated with your Blih Ops account.",
+      "fields": {
+        "email": {
+          "label": "Work email",
+          "placeholder": "you@company.com",
+          "helper": "Use the email your Blih Ops pods are managed under."
+        },
+        "password": {
+          "label": "Password",
+          "placeholder": "Enter your password",
+          "show": "Show password",
+          "hide": "Hide password",
+          "helper": "At least 8 characters including letters and numbers."
+        }
+      },
+      "remember": "Keep me signed in",
+      "forgotPassword": "Forgot password?",
+      "submit": "Sign in",
+      "validation": {
+        "emailRequired": "Enter your work email.",
+        "emailInvalid": "Enter a valid email address.",
+        "emailMax": "Keep the email under 254 characters.",
+        "passwordRequired": "Enter your password.",
+        "passwordMin": "Password must be at least 8 characters."
       }
     }
   }

@@ -54,6 +54,10 @@
     "talentApply": {
       "title": "Bewerbung für den Blih Ops-Talentpool",
       "description": "Reichen Sie Ihr Engineer-Profil, Ihren Lebenslauf und Ihre Verfügbarkeit ein, um dem Blih Ops-Talentpool beizutreten. Wir prüfen jede Bewerbung, bevor wir geprüfte Engineers einladen."
+    },
+    "signIn": {
+      "title": "Anmelden",
+      "description": "Melden Sie sich in Ihrem Blih-Ops-Workspace an, um auf Ihre verwalteten Pods, Berichte und SLAs zuzugreifen."
     }
   },
   "ServicesPage": {
@@ -1399,6 +1403,54 @@
           "question": "Was passiert nach der Freigabe?",
           "answer": "Aus Ihrer Bewerbung wird ein Talentprofil erstellt und Sie erhalten eine Einladung zu Ihrem Talentportal, wo Sie Ihre Informationen aktuell halten und für qualifizierte Kunden sichtbar werden."
         }
+      }
+    }
+  },
+  "Auth": {
+    "shell": {
+      "brandImageAlt": "Ein Blih-Ops-Delivery-Team bei der Arbeit in Addis Abeba",
+      "eyebrow": "Blih-Ops-Workspace",
+      "headline": "Operations, die auf Struktur, Automatisierung und Verantwortlichkeit laufen.",
+      "description": "Greifen Sie von einem Ort auf Ihre verwalteten Pods, Live-Berichte und SLA-Performance zu. Ihre Arbeit – gemessen und im Plan.",
+      "trust": [
+        "KI-gestützte Operations",
+        "Dedizierte Pods",
+        "Klare SLAs",
+        "Wöchentliche Berichte"
+      ],
+      "secureAccess": "Sicherer Zugang",
+      "copyright": "© {year} Blih Ops. Alle Rechte vorbehalten.",
+      "needHelp": "Hilfe nötig?"
+    }
+  },
+  "SignInPage": {
+    "form": {
+      "eyebrow": "Kontozugriff",
+      "title": "In Ihren Workspace anmelden",
+      "description": "Nutzen Sie die E-Mail und das Passwort, die mit Ihrem Blih-Ops-Konto verbunden sind.",
+      "fields": {
+        "email": {
+          "label": "Geschäftliche E-Mail",
+          "placeholder": "sie@unternehmen.com",
+          "helper": "Nutzen Sie die E-Mail, unter der Ihre Blih-Ops-Pods verwaltet werden."
+        },
+        "password": {
+          "label": "Passwort",
+          "placeholder": "Ihr Passwort eingeben",
+          "show": "Passwort anzeigen",
+          "hide": "Passwort ausblenden",
+          "helper": "Mindestens 8 Zeichen inklusive Buchstaben und Zahlen."
+        }
+      },
+      "remember": "Angemeldet bleiben",
+      "forgotPassword": "Passwort vergessen?",
+      "submit": "Anmelden",
+      "validation": {
+        "emailRequired": "Geben Sie Ihre geschäftliche E-Mail ein.",
+        "emailInvalid": "Geben Sie eine gültige E-Mail-Adresse ein.",
+        "emailMax": "Halten Sie die E-Mail unter 254 Zeichen.",
+        "passwordRequired": "Geben Sie Ihr Passwort ein.",
+        "passwordMin": "Das Passwort muss mindestens 8 Zeichen lang sein."
       }
     }
   }
