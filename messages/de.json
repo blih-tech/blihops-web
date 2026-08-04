@@ -1219,8 +1219,7 @@
       "sections": {
         "details": "Ihre Angaben",
         "profile": "Berufliches Profil",
-        "links": "Links und Nachweise",
-        "availability": "Verfügbarkeit und Präferenzen"
+        "links": "Links und Nachweise"
       },
       "fields": {
         "email": {
@@ -1231,26 +1230,9 @@
           "label": "Telefon",
           "placeholder": "+251 ..."
         },
-        "country": {
-          "label": "Land",
-          "placeholder": "Land"
-        },
         "city": {
           "label": "Stadt",
           "placeholder": "Stadt"
-        },
-        "photo": {
-          "label": "Profilfoto",
-          "hint": "Wählen Sie ein klares, aktuelles Porträt. JPG, PNG oder WEBP."
-        },
-        "headline": {
-          "label": "Berufliche Headline",
-          "placeholder": "z. B. Senior Full-Stack-Engineer"
-        },
-        "bio": {
-          "label": "Kurzprofil",
-          "placeholder": "Fassen Sie Ihre Erfahrung, die Arbeit, die Sie mögen, und die Probleme zusammen, die Sie lösen.",
-          "help": "Ein paar Sätze, die einer prüfenden Person helfen, Ihren Hintergrund zu verstehen."
         },
         "primaryRole": {
           "label": "Primäre Rolle",
@@ -1304,34 +1286,6 @@
         "resume": {
           "label": "Lebenslauf",
           "hint": "Laden Sie Ihren Lebenslauf hoch. PDF, DOC oder DOCX."
-        },
-        "availability": {
-          "label": "Verfügbarkeit",
-          "placeholder": "Verfügbarkeit wählen",
-          "options": {
-            "immediate": "Sofort",
-            "withinTwoWeeks": "Innerhalb von 2 Wochen",
-            "withinOneMonth": "Innerhalb von 1 Monat",
-            "oneToThreeMonths": "Innerhalb von 1-3 Monaten"
-          }
-        },
-        "earliestStartDate": {
-          "label": "Frühestmögliches Startdatum"
-        },
-        "engagement": {
-          "label": "Bevorzugte Zusammenarbeit",
-          "placeholder": "Zusammenarbeit wählen",
-          "options": {
-            "fullTime": "Vollzeit",
-            "partTime": "Teilzeit",
-            "contract": "Vertrag / Freelance",
-            "projectBased": "Projektbasiert"
-          }
-        },
-        "screening": {
-          "label": "Warum möchten Sie beitreten?",
-          "placeholder": "Erzählen Sie uns kurz, was Sie suchen und was Sie anbieten können.",
-          "help": "Eine kurze, ehrliche Antwort hilft uns, Ihre Motivation zu verstehen."
         }
       },
       "submit": "Bewerbung absenden",
@@ -1341,15 +1295,7 @@
         "emailInvalid": "Geben Sie eine gültige E-Mail-Adresse ein.",
         "phoneRequired": "Geben Sie Ihre Telefonnummer ein.",
         "phoneMax": "Ihre Telefonnummer darf höchstens 40 Zeichen lang sein.",
-        "countryRequired": "Geben Sie Ihr Land ein.",
         "cityRequired": "Geben Sie Ihre Stadt ein.",
-        "photoRequired": "Fügen Sie ein Profilfoto hinzu.",
-        "photoInvalidType": "Laden Sie ein Bild im JPG-, PNG- oder WEBP-Format hoch.",
-        "photoTooLarge": "Ihr Foto darf höchstens 5 MB groß sein.",
-        "headlineRequired": "Geben Sie eine berufliche Headline ein.",
-        "headlineMax": "Ihre Headline darf höchstens 120 Zeichen lang sein.",
-        "bioRequired": "Erzählen Sie uns etwas mehr über Ihren Hintergrund.",
-        "bioMax": "Ihr Kurzprofil darf höchstens 1.200 Zeichen lang sein.",
         "primaryRoleRequired": "Wählen Sie Ihre primäre Rolle.",
         "techStackRequired": "Wählen Sie mindestens eine Technologie.",
         "yearsExperienceRequired": "Wählen Sie Ihre Berufserfahrung.",
@@ -1357,12 +1303,7 @@
         "urlMax": "Ihr Link darf höchstens 300 Zeichen lang sein.",
         "resumeRequired": "Laden Sie Ihren Lebenslauf hoch.",
         "resumeInvalidType": "Laden Sie eine PDF-, DOC- oder DOCX-Datei hoch.",
-        "resumeTooLarge": "Ihr Lebenslauf darf höchstens 10 MB groß sein.",
-        "availabilityRequired": "Wählen Sie Ihre Verfügbarkeit.",
-        "startDateRequired": "Wählen Sie Ihr frühestmögliches Startdatum.",
-        "engagementRequired": "Wählen Sie Ihre bevorzugte Zusammenarbeit.",
-        "screeningRequired": "Erzählen Sie uns kurz, warum Sie beitreten möchten.",
-        "screeningMax": "Dieses Feld darf höchstens 500 Zeichen lang sein."
+        "resumeTooLarge": "Ihr Lebenslauf darf höchstens 10 MB groß sein."
       },
       "success": {
         "title": "Ihre Bewerbung ist eingegangen.",
