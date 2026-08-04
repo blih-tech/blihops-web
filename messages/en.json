@@ -66,6 +66,10 @@
     "resetPassword": {
       "title": "Create a new password",
       "description": "Set a new password for your Blih Ops workspace account."
+    },
+    "acceptInvitation": {
+      "title": "Create your Blih Ops account",
+      "description": "Set a secure password to activate the account linked to your invitation."
     }
   },
   "Shared": {
@@ -1509,6 +1513,67 @@
         "passwordMin": "Password must be at least 8 characters.",
         "passwordRequirements": "Password must include uppercase, lowercase, a number, and a symbol.",
         "confirmRequired": "Confirm your new password.",
+        "confirmMismatch": "Passwords do not match."
+      }
+    },
+    "acceptInvitation": {
+      "default": {
+        "verifiedBadge": "Invitation verified",
+        "title": "Create your BlihOps account",
+        "description": "Your invitation is valid. Set a secure password to activate your account.",
+        "fields": {
+          "invitedEmail": {
+            "label": "Invited email",
+            "helper": "This email is linked to your invitation."
+          },
+          "newPassword": {
+            "label": "New password",
+            "placeholder": "Create a secure password"
+          },
+          "confirmPassword": {
+            "label": "Confirm password",
+            "placeholder": "Repeat your password"
+          }
+        },
+        "showPassword": "Show password",
+        "hidePassword": "Hide password",
+        "requirements": {
+          "label": "Password requirements",
+          "items": [
+            "8+ characters",
+            "Upper & lowercase",
+            "One number",
+            "One symbol"
+          ]
+        },
+        "termsPrefix": "By creating an account, you agree to the",
+        "termsLink": "Terms",
+        "privacyLink": "and Privacy Policy.",
+        "submit": "Create account",
+        "existingPrompt": "Already have an account?",
+        "existingAction": "Sign in"
+      },
+      "invalid": {
+        "badge": "Invitation unavailable",
+        "title": "This invitation link is no longer valid",
+        "description": "The link may have expired, already been used, or been replaced by a newer invitation.",
+        "guidanceTitle": "Contact your BlihOps administrator",
+        "guidanceDescription": "Ask the administrator who invited you to resend a new invitation link.",
+        "safetyNote": "No account changes were made."
+      },
+      "created": {
+        "badge": "Account created",
+        "title": "Your account is ready",
+        "description": "Your password is set and your BlihOps account has been created successfully.",
+        "summaryLabel": "Account email",
+        "goToSignIn": "Go to sign in",
+        "note": "Use the password you just created."
+      },
+      "validation": {
+        "newPasswordRequired": "Create a password.",
+        "passwordMin": "Password must be at least 8 characters.",
+        "passwordRequirements": "Password must include uppercase, lowercase, a number, and a symbol.",
+        "confirmRequired": "Confirm your password.",
         "confirmMismatch": "Passwords do not match."
       }
     }

@@ -21,7 +21,8 @@ type MetadataNamespace =
   | 'talentApply'
   | 'signIn'
   | 'forgotPassword'
-  | 'resetPassword';
+  | 'resetPassword'
+  | 'acceptInvitation';
 
 function getLocalizedPath(locale: string, pathname: string) {
   return `/${locale}${pathname}`;
