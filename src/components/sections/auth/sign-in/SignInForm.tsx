@@ -52,25 +52,25 @@ export function SignInForm() {
         ease: [0.22, 1, 0.36, 1],
       }}
     >
-      <div className="flex flex-col gap-1.5">
+      <div className="flex flex-col gap-1">
         <p className="font-mono text-[10px] font-semibold tracking-[0.11em] text-primary uppercase">
           {t('eyebrow')}
         </p>
-        <h2 className="font-heading text-2xl leading-tight font-semibold tracking-[-0.02em] text-foreground sm:text-3xl">
+        <h2 className="font-heading text-xl leading-snug font-semibold tracking-[-0.02em] text-foreground sm:text-2xl">
           {t('title')}
         </h2>
-        <p className="text-sm leading-[1.6] text-muted-foreground">
+        <p className="text-[13px] leading-[1.5] text-muted-foreground">
           {t('description')}
         </p>
       </div>
 
       <form
         id="sign-in-form"
-        className="mt-6 space-y-4"
+        className="mt-5 space-y-3.5"
         onSubmit={handleSubmit(onSubmit)}
         noValidate
       >
-        <div className="space-y-1.5">
+        <div className="space-y-1">
           <label
             className="text-xs font-medium text-foreground"
             htmlFor="workEmail"
@@ -84,9 +84,7 @@ export function SignInForm() {
             autoComplete="email"
             placeholder={t('fields.email.placeholder')}
             aria-invalid={Boolean(errors.workEmail)}
-            aria-describedby={
-              errors.workEmail ? 'workEmail-error' : 'workEmail-help'
-            }
+            aria-describedby={errors.workEmail ? 'workEmail-error' : undefined}
             className={authInputClassName}
             {...register('workEmail')}
           />
@@ -98,17 +96,10 @@ export function SignInForm() {
             >
               {errors.workEmail.message}
             </p>
-          ) : (
-            <p
-              id="workEmail-help"
-              className="text-xs leading-[1.4] text-muted-foreground"
-            >
-              {t('fields.email.helper')}
-            </p>
-          )}
+          ) : null}
         </div>
 
-        <div className="space-y-1.5">
+        <div className="space-y-1">
           <label
             className="text-xs font-medium text-foreground"
             htmlFor="password"
@@ -122,9 +113,7 @@ export function SignInForm() {
               autoComplete="current-password"
               placeholder={t('fields.password.placeholder')}
               aria-invalid={Boolean(errors.password)}
-              aria-describedby={
-                errors.password ? 'password-error' : 'password-help'
-              }
+              aria-describedby={errors.password ? 'password-error' : undefined}
               className={cn(authInputClassName, 'pr-10')}
               {...register('password')}
             />
@@ -153,17 +142,10 @@ export function SignInForm() {
             >
               {errors.password.message}
             </p>
-          ) : (
-            <p
-              id="password-help"
-              className="text-xs leading-[1.4] text-muted-foreground"
-            >
-              {t('fields.password.helper')}
-            </p>
-          )}
+          ) : null}
         </div>
 
-        <div className="flex items-center justify-between pt-1">
+        <div className="flex items-center justify-between pt-0.5">
           <label className="flex items-center gap-2 text-xs font-normal text-foreground">
             <input
               type="checkbox"
@@ -180,7 +162,7 @@ export function SignInForm() {
           </Link>
         </div>
 
-        <Button type="submit" size="lg" className="h-10 w-full">
+        <Button type="submit" size="lg" className="h-9 w-full">
           {t('submit')}
           <ArrowRightIcon data-icon="inline-end" aria-hidden="true" />
         </Button>

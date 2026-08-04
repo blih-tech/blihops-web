@@ -76,13 +76,11 @@ export function ResetPasswordForm({ invalidToken }: ResetPasswordFormProps) {
     </Link>
   );
 
-  const requirements = t.raw('default.requirements.items') as string[];
-
   if (invalidToken) {
     return (
       <motion.div
         key="invalid-token"
-        className="flex flex-col gap-5"
+        className="flex flex-col gap-4"
         initial={reduceMotion ? false : { opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
@@ -106,10 +104,10 @@ export function ResetPasswordForm({ invalidToken }: ResetPasswordFormProps) {
               aria-hidden="true"
             />
           </div>
-          <h2 className="font-heading text-2xl leading-tight font-semibold tracking-[-0.02em] text-foreground sm:text-3xl">
+          <h2 className="font-heading text-xl leading-snug font-semibold tracking-[-0.02em] text-foreground sm:text-2xl">
             {t('invalid.title')}
           </h2>
-          <p className="text-sm leading-[1.6] text-muted-foreground">
+          <p className="text-[13px] leading-[1.5] text-muted-foreground">
             {t('invalid.description')}
           </p>
         </div>
@@ -134,13 +132,13 @@ export function ResetPasswordForm({ invalidToken }: ResetPasswordFormProps) {
 
         <Link
           href="/auth/forgot-password"
-          className={buttonVariants({ size: 'lg', className: 'h-10 w-full' })}
+          className={buttonVariants({ size: 'lg', className: 'h-9 w-full' })}
         >
           {t('invalid.requestNewLink')}
           <ArrowRightIcon data-icon="inline-end" aria-hidden="true" />
         </Link>
 
-        <div className="flex justify-center pt-1">{backToSignIn}</div>
+        <div className="flex justify-center pt-0.5">{backToSignIn}</div>
       </motion.div>
     );
   }
@@ -153,7 +151,7 @@ export function ResetPasswordForm({ invalidToken }: ResetPasswordFormProps) {
         role="status"
         aria-live="polite"
         tabIndex={-1}
-        className="flex flex-col gap-5 outline-none"
+        className="flex flex-col gap-4 outline-none"
         initial={reduceMotion ? false : { opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{
@@ -177,17 +175,17 @@ export function ResetPasswordForm({ invalidToken }: ResetPasswordFormProps) {
               aria-hidden="true"
             />
           </div>
-          <h2 className="font-heading text-2xl leading-tight font-semibold tracking-[-0.02em] text-foreground sm:text-3xl">
+          <h2 className="font-heading text-xl leading-snug font-semibold tracking-[-0.02em] text-foreground sm:text-2xl">
             {t('success.title')}
           </h2>
-          <p className="text-sm leading-[1.6] text-muted-foreground">
+          <p className="text-[13px] leading-[1.5] text-muted-foreground">
             {t('success.description')}
           </p>
         </div>
 
         <Link
           href="/auth/sign-in"
-          className={buttonVariants({ size: 'lg', className: 'h-10 w-full' })}
+          className={buttonVariants({ size: 'lg', className: 'h-9 w-full' })}
         >
           {t('success.goToSignIn')}
           <ArrowRightIcon data-icon="inline-end" aria-hidden="true" />
@@ -208,7 +206,7 @@ export function ResetPasswordForm({ invalidToken }: ResetPasswordFormProps) {
   return (
     <motion.form
       id="reset-password-form"
-      className="flex flex-col gap-5"
+      className="flex flex-col gap-4"
       onSubmit={handleSubmit(onSubmit)}
       noValidate
       initial={reduceMotion ? false : { opacity: 0, y: 20 }}
@@ -223,17 +221,14 @@ export function ResetPasswordForm({ invalidToken }: ResetPasswordFormProps) {
         {t('default.verifiedBadge')}
       </span>
 
-      <div className="flex flex-col gap-1.5">
-        <h2 className="font-heading text-2xl leading-tight font-semibold tracking-[-0.02em] text-foreground sm:text-3xl">
+      <div className="flex flex-col gap-1">
+        <h2 className="font-heading text-xl leading-snug font-semibold tracking-[-0.02em] text-foreground sm:text-2xl">
           {t('default.title')}
         </h2>
-        <p className="text-sm leading-[1.6] text-muted-foreground">
-          {t('default.description')}
-        </p>
       </div>
 
       <div className="space-y-3">
-        <div className="space-y-1.5">
+        <div className="space-y-1">
           <label
             className="text-xs font-medium text-foreground"
             htmlFor="newPassword"
@@ -281,7 +276,7 @@ export function ResetPasswordForm({ invalidToken }: ResetPasswordFormProps) {
           ) : null}
         </div>
 
-        <div className="space-y-1.5">
+        <div className="space-y-1">
           <label
             className="text-xs font-medium text-foreground"
             htmlFor="confirmPassword"
@@ -330,33 +325,16 @@ export function ResetPasswordForm({ invalidToken }: ResetPasswordFormProps) {
         </div>
       </div>
 
-      <div className="rounded-md border border-border bg-muted p-3">
-        <p className="font-mono text-[9px] font-semibold tracking-[0.08em] text-muted-foreground uppercase">
-          {t('default.requirements.label')}
-        </p>
-        <ul className="mt-2 grid grid-cols-2 gap-x-4 gap-y-2">
-          {requirements.map((requirement) => (
-            <li
-              key={requirement}
-              className="flex items-center gap-1.5 text-[11px] text-foreground/70"
-            >
-              <CheckIcon
-                className="size-3 shrink-0 text-primary"
-                strokeWidth={2}
-                aria-hidden="true"
-              />
-              {requirement}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <p className="text-xs leading-[1.4] text-muted-foreground">
+        {t('default.minLength')}
+      </p>
 
-      <Button type="submit" size="lg" className="h-10 w-full">
+      <Button type="submit" size="lg" className="h-9 w-full">
         {t('default.submit')}
         <ArrowRightIcon data-icon="inline-end" aria-hidden="true" />
       </Button>
 
-      <div className="flex justify-center pt-1">{backToSignIn}</div>
+      <div className="flex justify-center pt-0.5">{backToSignIn}</div>
     </motion.form>
   );
 }
