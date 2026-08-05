@@ -55,6 +55,10 @@
       "title": "Apply to Join the Blih Ops Talent Pool",
       "description": "Submit your engineering profile, resume, and availability to join the Blih Ops talent pool. We review every application before inviting approved engineers."
     },
+    "talentCompleteProfile": {
+      "title": "Complete Your Profile — Blih Ops Talent Pool",
+      "description": "Complete your remaining profile fields to finalize your talent application. Your screening is complete this is the last step before your profile goes live."
+    },
     "signIn": {
       "title": "Sign in",
       "description": "Sign in to your Blih Ops workspace to access your managed pods, reports, and SLAs."
@@ -1356,6 +1360,82 @@
           "question": "What happens after approval?",
           "answer": "A Talent Profile is created from your application and you receive an invitation to your Talent Portal, where you keep your information current and become visible to qualified clients."
         }
+      }
+    }
+  },
+  "TalentCompleteProfilePage": {
+    "hero": {
+      "label": "Complete your profile",
+      "context": "Round 2 / Profile completion"
+    },
+    "form": {
+      "label": "Profile completion",
+      "duration": "Approx. {minutes} min",
+      "title": "Tell us a little more about yourself.",
+      "description": "Complete the remaining profile fields so we can build your full talent profile. Your application has been assessed  this is the final step before activation.",
+      "received": "Profile submitted",
+      "sections": {
+        "profile": "Professional identity",
+        "availability": "Availability & engagement"
+      },
+      "fields": {
+        "professionalHeadline": {
+          "label": "Professional headline",
+          "placeholder": "e.g. Senior Frontend Developer"
+        },
+        "bio": {
+          "label": "Short bio",
+          "placeholder": "Briefly describe your background, strengths, and what you are looking for."
+        },
+        "photo": {
+          "label": "Profile photo",
+          "hint": "Upload a professional headshot (JPEG, PNG, WebP, max 5 MB)"
+        },
+        "availability": {
+          "label": "Availability",
+          "placeholder": "Select your availability",
+          "options": {
+            "immediately": "Immediately available",
+            "twoWeeks": "Available within 2 weeks",
+            "oneMonth": "Available within 1 month",
+            "twoMonths": "Available within 2 months",
+            "threePlus": "Available in 3+ months"
+          }
+        },
+        "startDate": {
+          "label": "Earliest start date",
+          "placeholder": "Select a date"
+        },
+        "engagement": {
+          "label": "Preferred engagement",
+          "placeholder": "Select engagement type",
+          "options": {
+            "fullTime": "Full-time",
+            "partTime": "Part-time",
+            "contract": "Contract / Freelance",
+            "open": "Open to discuss"
+          }
+        }
+      },
+      "submit": "Submit profile",
+      "submitting": "Submitting...",
+      "consent": "By submitting, you confirm the information is accurate and complete.",
+      "validation": {
+        "professionalHeadlineRequired": "Enter a professional headline.",
+        "professionalHeadlineMax": "Keep your headline under 120 characters.",
+        "bioRequired": "Tell us a bit about yourself (at least 10 characters).",
+        "bioMax": "Keep your bio under 1,000 characters.",
+        "availabilityRequired": "Select your availability.",
+        "startDateRequired": "Select your earliest start date.",
+        "engagementRequired": "Select your preferred engagement type.",
+        "photoRequired": "Upload a profile photo.",
+        "photoInvalidType": "Use a JPEG, PNG, or WebP image.",
+        "photoTooLarge": "Keep the photo under 5 MB."
+      },
+      "success": {
+        "title": "Profile submitted.",
+        "description": "Your completed profile has been received. The Blih Ops team will review it and reach out about next steps.",
+        "startAnother": "Edit submission"
       }
     }
   },

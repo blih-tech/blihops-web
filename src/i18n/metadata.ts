@@ -19,6 +19,7 @@ type MetadataNamespace =
   | 'careers'
   | 'talent'
   | 'talentApply'
+  | 'talentCompleteProfile'
   | 'signIn'
   | 'forgotPassword'
   | 'resetPassword'
