@@ -55,6 +55,10 @@
       "title": "Bewerbung für den Blih Ops-Talentpool",
       "description": "Reichen Sie Ihr Engineer-Profil, Ihren Lebenslauf und Ihre Verfügbarkeit ein, um dem Blih Ops-Talentpool beizutreten. Wir prüfen jede Bewerbung, bevor wir geprüfte Engineers einladen."
     },
+    "talentCompleteProfile": {
+      "title": "Profil vervollständigen — Blih Ops Talentpool",
+      "description": "Vervollständigen Sie Ihre verbleibenden Profilfelder, um Ihre Talentbewerbung abzuschließen. Ihr Screening ist abgeschlossen — dies ist der letzte Schritt, bevor Ihr Profil live geht."
+    },
     "signIn": {
       "title": "Anmelden",
       "description": "Melden Sie sich in Ihrem Blih-Ops-Workspace an, um auf Ihre verwalteten Pods, Berichte und SLAs zuzugreifen."
@@ -1356,6 +1360,82 @@
           "question": "Was passiert nach der Freigabe?",
           "answer": "Aus Ihrer Bewerbung wird ein Talentprofil erstellt und Sie erhalten eine Einladung zu Ihrem Talentportal, wo Sie Ihre Informationen aktuell halten und für qualifizierte Kunden sichtbar werden."
         }
+      }
+    }
+  },
+  "TalentCompleteProfilePage": {
+    "hero": {
+      "label": "Profil vervollständigen",
+      "context": "Runde 2 / Profilvervollständigung"
+    },
+    "form": {
+      "label": "Profilvervollständigung",
+      "duration": "Ca. {minutes} Min.",
+      "title": "Erzählen Sie uns etwas mehr über sich.",
+      "description": "Vervollständigen Sie die verbleibenden Profilfelder, damit wir Ihr vollständiges Talentprofil erstellen können. Ihre Bewerbung wurde bewertet — dies ist der letzte Schritt vor der Aktivierung.",
+      "received": "Profil eingereicht",
+      "sections": {
+        "profile": "Berufliche Identität",
+        "availability": "Verfügbarkeit & Engagement"
+      },
+      "fields": {
+        "professionalHeadline": {
+          "label": "Berufliche Überschrift",
+          "placeholder": "z. B. Senior Frontend Developer"
+        },
+        "bio": {
+          "label": "Kurzbeschreibung",
+          "placeholder": "Beschreiben Sie kurz Ihren Hintergrund, Ihre Stärken und wonach Sie suchen."
+        },
+        "photo": {
+          "label": "Profilfoto",
+          "hint": "Laden Sie ein professionelles Porträtfoto hoch (JPEG, PNG, WebP, max. 5 MB)"
+        },
+        "availability": {
+          "label": "Verfügbarkeit",
+          "placeholder": "Verfügbarkeit auswählen",
+          "options": {
+            "immediately": "Sofort verfügbar",
+            "twoWeeks": "Verfügbar innerhalb von 2 Wochen",
+            "oneMonth": "Verfügbar innerhalb von 1 Monat",
+            "twoMonths": "Verfügbar innerhalb von 2 Monaten",
+            "threePlus": "Verfügbar in 3+ Monaten"
+          }
+        },
+        "startDate": {
+          "label": "Frühestes Startdatum",
+          "placeholder": "Datum auswählen"
+        },
+        "engagement": {
+          "label": "Bevorzugtes Engagement",
+          "placeholder": "Engagement-Typ auswählen",
+          "options": {
+            "fullTime": "Vollzeit",
+            "partTime": "Teilzeit",
+            "contract": "Vertrag / Freelance",
+            "open": "Offen für Gespräche"
+          }
+        }
+      },
+      "submit": "Profil einreichen",
+      "submitting": "Wird gesendet...",
+      "consent": "Mit dem Absenden bestätigen Sie, dass die Angaben korrekt und vollständig sind.",
+      "validation": {
+        "professionalHeadlineRequired": "Geben Sie eine berufliche Überschrift ein.",
+        "professionalHeadlineMax": "Ihre Überschrift darf höchstens 120 Zeichen lang sein.",
+        "bioRequired": "Erzählen Sie uns etwas über sich (mindestens 10 Zeichen).",
+        "bioMax": "Ihre Kurzbeschreibung darf höchstens 1.000 Zeichen lang sein.",
+        "availabilityRequired": "Wählen Sie Ihre Verfügbarkeit aus.",
+        "startDateRequired": "Wählen Sie Ihr frühestes Startdatum aus.",
+        "engagementRequired": "Wählen Sie Ihren bevorzugten Engagement-Typ aus.",
+        "photoInvalidType": "Verwenden Sie ein JPEG-, PNG- oder WebP-Bild.",
+        "photoTooLarge": "Das Foto darf höchstens 5 MB groß sein.",
+        "photoRequired": "Laden Sie ein Profilfoto hoch."
+      },
+      "success": {
+        "title": "Profil eingereicht.",
+        "description": "Ihr vervollständigtes Profil ist eingegangen. Das Blih-Ops-Team wird es prüfen und sich mit den nächsten Schritten bei Ihnen melden.",
+        "startAnother": "Einreichung bearbeiten"
       }
     }
   },
