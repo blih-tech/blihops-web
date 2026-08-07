@@ -17,13 +17,23 @@ import { useTranslations } from 'next-intl';
 import { useForm } from 'react-hook-form';
 
 import { Button, buttonVariants } from '@/components/ui/button';
-import { authInputClassName } from '@/components/sections/auth/auth-form-styles';
+import {
+  Field,
+  FieldError,
+  FieldGroup,
+  FieldLabel,
+} from '@/components/ui/field';
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupInput,
+} from '@/components/ui/input-group';
 import {
   createResetPasswordSchema,
   type ResetPasswordFormValues,
 } from '@/lib/forms/reset-password';
 import { Link } from '@/i18n/navigation';
-import { cn } from '@/lib/utils';
 
 type ResetPasswordFormProps = {
   invalidToken: boolean;
@@ -227,16 +237,16 @@ export function ResetPasswordForm({ invalidToken }: ResetPasswordFormProps) {
         </h2>
       </div>
 
-      <div className="space-y-3">
-        <div className="space-y-1">
-          <label
-            className="text-xs font-medium text-foreground"
+      <FieldGroup className="gap-3">
+        <Field data-invalid={Boolean(errors.newPassword)}>
+          <FieldLabel
             htmlFor="newPassword"
+            className="text-xs font-medium text-foreground"
           >
             {t('default.fields.newPassword.label')}
-          </label>
-          <div className="relative">
-            <input
+          </FieldLabel>
+          <InputGroup>
+            <InputGroupInput
               id="newPassword"
               type={showNewPassword ? 'text' : 'password'}
               autoComplete="new-password"
@@ -245,46 +255,38 @@ export function ResetPasswordForm({ invalidToken }: ResetPasswordFormProps) {
               aria-describedby={
                 errors.newPassword ? 'newPassword-error' : undefined
               }
-              className={cn(authInputClassName, 'pr-10')}
               {...register('newPassword')}
             />
-            <button
-              type="button"
-              onClick={() => setShowNewPassword((v) => !v)}
-              aria-label={
-                showNewPassword
-                  ? t('default.hidePassword')
-                  : t('default.showPassword')
-              }
-              className="absolute inset-y-0 right-0 flex w-10 items-center justify-center text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {showNewPassword ? (
-                <EyeOffIcon className="size-4" aria-hidden="true" />
-              ) : (
-                <EyeIcon className="size-4" aria-hidden="true" />
-              )}
-            </button>
-          </div>
-          {errors.newPassword ? (
-            <p
-              id="newPassword-error"
-              role="alert"
-              className="text-xs leading-[1.4] text-destructive"
-            >
-              {errors.newPassword.message}
-            </p>
-          ) : null}
-        </div>
+            <InputGroupAddon align="inline-end">
+              <InputGroupButton
+                size="icon-sm"
+                aria-label={
+                  showNewPassword
+                    ? t('default.hidePassword')
+                    : t('default.showPassword')
+                }
+                onClick={() => setShowNewPassword((v) => !v)}
+              >
+                {showNewPassword ? (
+                  <EyeOffIcon aria-hidden="true" />
+                ) : (
+                  <EyeIcon aria-hidden="true" />
+                )}
+              </InputGroupButton>
+            </InputGroupAddon>
+          </InputGroup>
+          <FieldError id="newPassword-error" errors={[errors.newPassword]} />
+        </Field>
 
-        <div className="space-y-1">
-          <label
-            className="text-xs font-medium text-foreground"
+        <Field data-invalid={Boolean(errors.confirmPassword)}>
+          <FieldLabel
             htmlFor="confirmPassword"
+            className="text-xs font-medium text-foreground"
           >
             {t('default.fields.confirmPassword.label')}
-          </label>
-          <div className="relative">
-            <input
+          </FieldLabel>
+          <InputGroup>
+            <InputGroupInput
               id="confirmPassword"
               type={showConfirmPassword ? 'text' : 'password'}
               autoComplete="new-password"
@@ -293,37 +295,32 @@ export function ResetPasswordForm({ invalidToken }: ResetPasswordFormProps) {
               aria-describedby={
                 errors.confirmPassword ? 'confirmPassword-error' : undefined
               }
-              className={cn(authInputClassName, 'pr-10')}
               {...register('confirmPassword')}
             />
-            <button
-              type="button"
-              onClick={() => setShowConfirmPassword((v) => !v)}
-              aria-label={
-                showConfirmPassword
-                  ? t('default.hidePassword')
-                  : t('default.showPassword')
-              }
-              className="absolute inset-y-0 right-0 flex w-10 items-center justify-center text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {showConfirmPassword ? (
-                <EyeOffIcon className="size-4" aria-hidden="true" />
-              ) : (
-                <EyeIcon className="size-4" aria-hidden="true" />
-              )}
-            </button>
-          </div>
-          {errors.confirmPassword ? (
-            <p
-              id="confirmPassword-error"
-              role="alert"
-              className="text-xs leading-[1.4] text-destructive"
-            >
-              {errors.confirmPassword.message}
-            </p>
-          ) : null}
-        </div>
-      </div>
+            <InputGroupAddon align="inline-end">
+              <InputGroupButton
+                size="icon-sm"
+                aria-label={
+                  showConfirmPassword
+                    ? t('default.hidePassword')
+                    : t('default.showPassword')
+                }
+                onClick={() => setShowConfirmPassword((v) => !v)}
+              >
+                {showConfirmPassword ? (
+                  <EyeOffIcon aria-hidden="true" />
+                ) : (
+                  <EyeIcon aria-hidden="true" />
+                )}
+              </InputGroupButton>
+            </InputGroupAddon>
+          </InputGroup>
+          <FieldError
+            id="confirmPassword-error"
+            errors={[errors.confirmPassword]}
+          />
+        </Field>
+      </FieldGroup>
 
       <p className="text-xs leading-[1.4] text-muted-foreground">
         {t('default.minLength')}
