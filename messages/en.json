@@ -74,6 +74,14 @@
     "acceptInvitation": {
       "title": "Create your Blih Ops account",
       "description": "Set a secure password to activate the account linked to your invitation."
+    },
+    "talentPortal": {
+      "title": "Talent portal",
+      "description": "Your Blih Ops talent portal: applications, profile, interviews, and onboarding."
+    },
+    "clientWorkspace": {
+      "title": "Client workspace",
+      "description": "Your Blih Ops workspace: pods, SLAs, reports, and billing."
     }
   },
   "Shared": {
@@ -1630,5 +1638,13 @@
         "passwordMin": "Password must be at least 8 characters."
       }
     }
+  },
+  "TalentPortal": {
+    "title": "Talent portal",
+    "idLabel": "Portal"
+  },
+  "ClientWorkspace": {
+    "title": "Client workspace",
+    "idLabel": "Workspace"
   }
 }
