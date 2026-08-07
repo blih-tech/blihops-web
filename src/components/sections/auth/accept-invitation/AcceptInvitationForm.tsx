@@ -64,6 +64,7 @@ export function AcceptInvitationForm({
       createAcceptInvitationSchema({
         newPasswordRequired: t('validation.newPasswordRequired'),
         passwordMin: t('validation.passwordMin'),
+        passwordMax: t('validation.passwordMax'),
         passwordRequirements: t('validation.passwordRequirements'),
         confirmRequired: t('validation.confirmRequired'),
         confirmMismatch: t('validation.confirmMismatch'),
