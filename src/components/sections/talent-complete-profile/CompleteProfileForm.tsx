@@ -20,6 +20,7 @@ import {
   type TalentCompleteProfileValues,
 } from '@/lib/forms/talent-complete-profile';
 import { cn } from '@/lib/utils';
+import Image from 'next/image';
 
 const inputClassName =
   'h-12 w-full rounded-none border-0 border-b border-border bg-transparent px-0 text-base text-foreground outline-none transition-[border-color,background-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] placeholder:text-muted-foreground/70 focus-visible:border-primary focus-visible:bg-muted/40 aria-invalid:border-destructive sm:text-sm';
@@ -482,7 +483,7 @@ function PhotoField({
         )}
       >
         {previewUrl && value ? (
-          <img
+          <Image
             src={previewUrl}
             alt=""
             className="size-14 shrink-0 rounded-full border border-border bg-background object-cover"
