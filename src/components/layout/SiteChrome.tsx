@@ -13,8 +13,11 @@ type SiteChromeProps = {
 export function SiteChrome({ children }: SiteChromeProps) {
   const pathname = usePathname();
   const isAuthRoute = pathname.startsWith('/auth');
+  const isWorkspaceRoute =
+    pathname.startsWith('/talent-portal') ||
+    pathname.startsWith('/client-workspace');
 
-  if (isAuthRoute) {
+  if (isAuthRoute || isWorkspaceRoute) {
     return <>{children}</>;
   }
 
