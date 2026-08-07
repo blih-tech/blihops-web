@@ -1543,7 +1543,8 @@
         "passwordMin": "Password must be at least 8 characters.",
         "passwordRequirements": "Password must include uppercase, lowercase, a number, and a symbol.",
         "confirmRequired": "Confirm your new password.",
-        "confirmMismatch": "Passwords do not match."
+        "confirmMismatch": "Passwords do not match.",
+        "passwordMax": "Keep the password under 128 characters."
       }
     },
     "acceptInvitation": {
@@ -1604,7 +1605,8 @@
         "passwordMin": "Password must be at least 8 characters.",
         "passwordRequirements": "Password must include uppercase, lowercase, a number, and a symbol.",
         "confirmRequired": "Confirm your password.",
-        "confirmMismatch": "Passwords do not match."
+        "confirmMismatch": "Passwords do not match.",
+        "passwordMax": "Keep the password under 128 characters."
       }
     }
   },
