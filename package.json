@@ -34,6 +34,7 @@
     "@hookform/resolvers": "^5.4.0",
     "@number-flow/react": "^0.6.1",
     "@react-three/fiber": "^9.6.1",
+    "better-auth": "^1.6.26",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cobe": "^0.6.5",

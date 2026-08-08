@@ -25,21 +25,13 @@ export default async function AcceptInvitationPage({
   const sp = await searchParams;
   setRequestLocale(locale);
 
-  // TODO: Resolve the invitee email from the token stored in the DB
-  // (blihop-api) so clients and talents share this page. Mock until wired.
-  const invitedEmail = 'alex@company.com';
-
-  // TODO: Replace this transient URL-query mock with real token validation
-  // once the accept-invitation endpoint is wired. Append ?invalid=1 to
-  // preview the invalid-invitation variant.
-  const tokenInvalid = typeof sp.invalid === 'string' && sp.invalid === '1';
+  const token = typeof sp.token === 'string' ? sp.token : undefined;
+  const tokenError = typeof sp.error === 'string' ? sp.error : undefined;
+  const tokenInvalid = token === undefined || tokenError !== undefined;
 
   return (
     <AuthShell>
-      <AcceptInvitationForm
-        invalidToken={tokenInvalid}
-        invitedEmail={invitedEmail}
-      />
+      <AcceptInvitationForm invalidToken={tokenInvalid} token={token ?? ''} />
     </AuthShell>
   );
 }

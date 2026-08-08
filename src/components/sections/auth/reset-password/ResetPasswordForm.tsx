@@ -16,7 +16,13 @@ import { motion, useReducedMotion } from 'motion/react';
 import { useTranslations } from 'next-intl';
 import { useForm } from 'react-hook-form';
 
+import { Dots } from '@/components/shared/Dots';
+import {
+  fadeUpItem,
+  staggerContainer,
+} from '@/components/shared/motion-variants';
 import { Button, buttonVariants } from '@/components/ui/button';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 import {
   Field,
   FieldError,
@@ -29,6 +35,7 @@ import {
   InputGroupButton,
   InputGroupInput,
 } from '@/components/ui/input-group';
+import { authClient } from '@/lib/auth-client';
 import {
   createResetPasswordSchema,
   type ResetPasswordFormValues,
@@ -37,12 +44,20 @@ import { Link } from '@/i18n/navigation';
 
 type ResetPasswordFormProps = {
   invalidToken: boolean;
+  token: string;
 };
 
-export function ResetPasswordForm({ invalidToken }: ResetPasswordFormProps) {
+export function ResetPasswordForm({
+  invalidToken,
+  token,
+}: ResetPasswordFormProps) {
   const t = useTranslations('Auth.resetPassword');
   const reduceMotion = useReducedMotion();
+  const requirements = t.raw('default.requirements.items') as string[];
+  const [invalid, setInvalid] = useState(invalidToken);
   const [resetted, setResetted] = useState(false);
+  const [isPending, setIsPending] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const successRef = useRef<HTMLDivElement>(null);
@@ -72,9 +87,28 @@ export function ResetPasswordForm({ invalidToken }: ResetPasswordFormProps) {
     }
   }, [resetted]);
 
-  function onSubmit(data: ResetPasswordFormValues) {
-    console.info('Password reset submitted:', data.newPassword);
-    setResetted(true);
+  async function onSubmit(data: ResetPasswordFormValues) {
+    setSubmitError(null);
+    setIsPending(true);
+    try {
+      const result = await authClient.resetPassword({
+        newPassword: data.newPassword,
+        token,
+      });
+      if (result.error !== null) {
+        if (result.error.status === 400 || result.error.status === 403) {
+          setInvalid(true);
+          return;
+        }
+        setSubmitError(t('errors.generic'));
+        return;
+      }
+      setResetted(true);
+    } catch {
+      setSubmitError(t('errors.generic'));
+    } finally {
+      setIsPending(false);
+    }
   }
 
   const backToSignIn = (
@@ -87,7 +121,7 @@ export function ResetPasswordForm({ invalidToken }: ResetPasswordFormProps) {
     </Link>
   );
 
-  if (invalidToken) {
+  if (invalid) {
     return (
       <motion.div
         key="invalid-token"
@@ -220,119 +254,169 @@ export function ResetPasswordForm({ invalidToken }: ResetPasswordFormProps) {
       className="flex flex-col gap-4"
       onSubmit={handleSubmit(onSubmit)}
       noValidate
-      initial={reduceMotion ? false : { opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{
-        duration: reduceMotion ? 0 : 0.55,
-        ease: [0.22, 1, 0.36, 1],
-      }}
+      variants={staggerContainer}
+      initial={reduceMotion ? 'show' : 'hidden'}
+      animate="show"
     >
-      <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-primary/30 bg-primary/10 px-2.5 py-1.5 text-[11px] font-semibold tracking-[0.02em] text-primary">
-        <span className="size-1.5 rounded-full bg-primary" aria-hidden="true" />
-        {t('default.verifiedBadge')}
-      </span>
-
-      <div className="flex flex-col gap-1">
-        <h2 className="font-heading text-xl leading-snug font-semibold tracking-[-0.02em] text-foreground sm:text-2xl">
-          {t('default.title')}
-        </h2>
-      </div>
-
-      <FieldGroup className="gap-3">
-        <Field data-invalid={Boolean(errors.newPassword)}>
-          <FieldLabel
-            htmlFor="newPassword"
-            className="text-xs font-medium text-foreground"
-          >
-            {t('default.fields.newPassword.label')}
-          </FieldLabel>
-          <InputGroup>
-            <InputGroupInput
-              id="newPassword"
-              type={showNewPassword ? 'text' : 'password'}
-              autoComplete="new-password"
-              placeholder={t('default.fields.newPassword.placeholder')}
-              aria-invalid={Boolean(errors.newPassword)}
-              aria-describedby={
-                errors.newPassword ? 'newPassword-error' : undefined
-              }
-              {...register('newPassword')}
-            />
-            <InputGroupAddon align="inline-end">
-              <InputGroupButton
-                size="icon-sm"
-                aria-label={
-                  showNewPassword
-                    ? t('default.hidePassword')
-                    : t('default.showPassword')
-                }
-                onClick={() => setShowNewPassword((v) => !v)}
-              >
-                {showNewPassword ? (
-                  <EyeOffIcon aria-hidden="true" />
-                ) : (
-                  <EyeIcon aria-hidden="true" />
-                )}
-              </InputGroupButton>
-            </InputGroupAddon>
-          </InputGroup>
-          <FieldError id="newPassword-error" errors={[errors.newPassword]} />
-        </Field>
-
-        <Field data-invalid={Boolean(errors.confirmPassword)}>
-          <FieldLabel
-            htmlFor="confirmPassword"
-            className="text-xs font-medium text-foreground"
-          >
-            {t('default.fields.confirmPassword.label')}
-          </FieldLabel>
-          <InputGroup>
-            <InputGroupInput
-              id="confirmPassword"
-              type={showConfirmPassword ? 'text' : 'password'}
-              autoComplete="new-password"
-              placeholder={t('default.fields.confirmPassword.placeholder')}
-              aria-invalid={Boolean(errors.confirmPassword)}
-              aria-describedby={
-                errors.confirmPassword ? 'confirmPassword-error' : undefined
-              }
-              {...register('confirmPassword')}
-            />
-            <InputGroupAddon align="inline-end">
-              <InputGroupButton
-                size="icon-sm"
-                aria-label={
-                  showConfirmPassword
-                    ? t('default.hidePassword')
-                    : t('default.showPassword')
-                }
-                onClick={() => setShowConfirmPassword((v) => !v)}
-              >
-                {showConfirmPassword ? (
-                  <EyeOffIcon aria-hidden="true" />
-                ) : (
-                  <EyeIcon aria-hidden="true" />
-                )}
-              </InputGroupButton>
-            </InputGroupAddon>
-          </InputGroup>
-          <FieldError
-            id="confirmPassword-error"
-            errors={[errors.confirmPassword]}
+      <motion.div variants={fadeUpItem}>
+        <span className="inline-flex w-fit items-center gap-1.5 rounded-full border border-primary/30 bg-primary/10 px-2.5 py-1.5 text-[11px] font-semibold tracking-[0.02em] text-primary">
+          <span
+            className="size-1.5 rounded-full bg-primary"
+            aria-hidden="true"
           />
-        </Field>
-      </FieldGroup>
+          {t('default.verifiedBadge')}
+        </span>
+      </motion.div>
 
-      <p className="text-xs leading-[1.4] text-muted-foreground">
-        {t('default.minLength')}
-      </p>
+      <motion.div variants={fadeUpItem}>
+        <div className="flex flex-col gap-1">
+          <h2 className="font-heading text-xl leading-snug font-semibold tracking-[-0.02em] text-foreground sm:text-2xl">
+            {t('default.title')}
+          </h2>
+        </div>
+      </motion.div>
 
-      <Button type="submit" size="lg" className="h-9 w-full">
-        {t('default.submit')}
-        <ArrowRightIcon data-icon="inline-end" aria-hidden="true" />
-      </Button>
+      <motion.div variants={fadeUpItem}>
+        <FieldGroup className="gap-3">
+          <Field data-invalid={Boolean(errors.newPassword)}>
+            <FieldLabel
+              htmlFor="newPassword"
+              className="text-xs font-medium text-foreground"
+            >
+              {t('default.fields.newPassword.label')}
+            </FieldLabel>
+            <InputGroup>
+              <InputGroupInput
+                id="newPassword"
+                type={showNewPassword ? 'text' : 'password'}
+                autoComplete="new-password"
+                placeholder={t('default.fields.newPassword.placeholder')}
+                aria-invalid={Boolean(errors.newPassword)}
+                aria-describedby={
+                  errors.newPassword ? 'newPassword-error' : undefined
+                }
+                {...register('newPassword')}
+              />
+              <InputGroupAddon align="inline-end">
+                <InputGroupButton
+                  size="icon-sm"
+                  aria-label={
+                    showNewPassword
+                      ? t('default.hidePassword')
+                      : t('default.showPassword')
+                  }
+                  onClick={() => setShowNewPassword((v) => !v)}
+                >
+                  {showNewPassword ? (
+                    <EyeOffIcon aria-hidden="true" />
+                  ) : (
+                    <EyeIcon aria-hidden="true" />
+                  )}
+                </InputGroupButton>
+              </InputGroupAddon>
+            </InputGroup>
+            <FieldError id="newPassword-error" errors={[errors.newPassword]} />
+          </Field>
 
-      <div className="flex justify-center pt-0.5">{backToSignIn}</div>
+          <Field data-invalid={Boolean(errors.confirmPassword)}>
+            <FieldLabel
+              htmlFor="confirmPassword"
+              className="text-xs font-medium text-foreground"
+            >
+              {t('default.fields.confirmPassword.label')}
+            </FieldLabel>
+            <InputGroup>
+              <InputGroupInput
+                id="confirmPassword"
+                type={showConfirmPassword ? 'text' : 'password'}
+                autoComplete="new-password"
+                placeholder={t('default.fields.confirmPassword.placeholder')}
+                aria-invalid={Boolean(errors.confirmPassword)}
+                aria-describedby={
+                  errors.confirmPassword ? 'confirmPassword-error' : undefined
+                }
+                {...register('confirmPassword')}
+              />
+              <InputGroupAddon align="inline-end">
+                <InputGroupButton
+                  size="icon-sm"
+                  aria-label={
+                    showConfirmPassword
+                      ? t('default.hidePassword')
+                      : t('default.showPassword')
+                  }
+                  onClick={() => setShowConfirmPassword((v) => !v)}
+                >
+                  {showConfirmPassword ? (
+                    <EyeOffIcon aria-hidden="true" />
+                  ) : (
+                    <EyeIcon aria-hidden="true" />
+                  )}
+                </InputGroupButton>
+              </InputGroupAddon>
+            </InputGroup>
+            <FieldError
+              id="confirmPassword-error"
+              errors={[errors.confirmPassword]}
+            />
+          </Field>
+        </FieldGroup>
+      </motion.div>
+
+      <motion.div variants={fadeUpItem}>
+        <div className="rounded-md border border-border bg-muted p-3">
+          <p className="font-mono text-[9px] font-semibold tracking-[0.08em] text-muted-foreground uppercase">
+            {t('default.requirements.label')}
+          </p>
+          <ul className="mt-2 grid grid-cols-2 gap-x-4 gap-y-2">
+            {requirements.map((requirement) => (
+              <li
+                key={requirement}
+                className="flex items-center gap-1.5 text-[11px] text-foreground/70"
+              >
+                <CheckIcon
+                  className="size-3 shrink-0 text-primary"
+                  strokeWidth={2}
+                  aria-hidden="true"
+                />
+                {requirement}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </motion.div>
+
+      <motion.div variants={fadeUpItem}>
+        {submitError !== null ? (
+          <Alert variant="destructive" className="rounded-md px-3 py-2">
+            <AlertDescription className="text-xs leading-[1.5]">
+              {submitError}
+            </AlertDescription>
+          </Alert>
+        ) : null}
+      </motion.div>
+
+      <motion.div variants={fadeUpItem}>
+        <Button
+          type="submit"
+          size="lg"
+          className="h-9 w-full"
+          disabled={isPending}
+        >
+          {isPending ? (
+            <Dots />
+          ) : (
+            <>
+              {t('default.submit')}
+              <ArrowRightIcon data-icon="inline-end" aria-hidden="true" />
+            </>
+          )}
+        </Button>
+      </motion.div>
+
+      <motion.div variants={fadeUpItem}>
+        <div className="flex justify-center pt-0.5">{backToSignIn}</div>
+      </motion.div>
     </motion.form>
   );
 }
