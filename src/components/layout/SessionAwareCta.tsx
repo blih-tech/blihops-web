@@ -21,16 +21,17 @@ export function SessionAwareCta({
 }: SessionAwareCtaProps) {
   const tActions = useTranslations('Shared.actions');
   const { data: session } = authClient.useSession();
-  const role = (session?.user as { role?: string } | undefined)?.role;
+  const user = session?.user as { role?: string; id?: string } | undefined;
+  const role = user?.role;
 
   let href = '/pilot';
   let label = tActions('getPilot');
 
-  if (role === 'talent') {
-    href = '/talent-portal/placeholder';
+  if (role === 'talent' && user?.id !== undefined) {
+    href = `/talent-portal/${user.id}`;
     label = tActions('goToPortal');
-  } else if (role === 'client') {
-    href = '/client-workspace/placeholder';
+  } else if (role === 'client' && user?.id !== undefined) {
+    href = `/client-workspace/${user.id}`;
     label = tActions('goToWorkspace');
   }
 
