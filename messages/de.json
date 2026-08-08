@@ -473,6 +473,8 @@
       "getPilot": "2-wöchiges Pilotprojekt starten",
       "getFreePilot": "Kostenloses Pilotprojekt starten",
       "learnMore": "Mehr erfahren",
+      "goToPortal": "Zum Portal",
+      "goToWorkspace": "Zum Workspace",
       "goHome": "Zur Startseite",
       "applyToTalentPool": "Dem Talentpool beitreten"
     },
