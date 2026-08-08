@@ -1490,6 +1490,9 @@
         "emailRequired": "Geben Sie Ihre E-Mail-Adresse ein.",
         "emailInvalid": "Geben Sie eine gültige E-Mail-Adresse ein.",
         "emailMax": "Halten Sie die E-Mail unter 254 Zeichen."
+      },
+      "errors": {
+        "generic": "Der Zurücksetzen-Link konnte nicht gesendet werden. Bitte versuchen Sie es gleich noch einmal."
       }
     },
     "resetPassword": {
@@ -1545,6 +1548,9 @@
         "confirmRequired": "Bestätigen Sie Ihr neues Passwort.",
         "confirmMismatch": "Die Passwörter stimmen nicht überein.",
         "passwordMax": "Halten Sie das Passwort unter 128 Zeichen."
+      },
+      "errors": {
+        "generic": "Ihr Passwort konnte nicht zurückgesetzt werden. Bitte versuchen Sie es gleich noch einmal."
       }
     },
     "acceptInvitation": {
@@ -1553,10 +1559,6 @@
         "title": "Blih-Ops-Konto erstellen",
         "description": "Ihre Einladung ist gültig. Legen Sie ein sicheres Passwort fest, um Ihr Konto zu aktivieren.",
         "fields": {
-          "invitedEmail": {
-            "label": "Eingeladene E-Mail",
-            "helper": "Diese E-Mail ist mit Ihrer Einladung verknüpft."
-          },
           "newPassword": {
             "label": "Neues Passwort",
             "placeholder": "Sicheres Passwort erstellen"
@@ -1592,14 +1594,6 @@
         "guidanceDescription": "Bitten Sie den Administrator, der Sie eingeladen hat, einen neuen Einladungslink zu senden.",
         "safetyNote": "Es wurden keine Kontenänderungen vorgenommen."
       },
-      "created": {
-        "badge": "Konto erstellt",
-        "title": "Ihr Konto ist bereit",
-        "description": "Ihr Passwort ist festgelegt und Ihr BlihOps-Konto wurde erfolgreich erstellt.",
-        "summaryLabel": "Konto-E-Mail",
-        "goToSignIn": "Zur Anmeldung",
-        "note": "Verwenden Sie das Passwort, das Sie gerade erstellt haben."
-      },
       "validation": {
         "newPasswordRequired": "Erstellen Sie ein Passwort.",
         "passwordMin": "Das Passwort muss mindestens 8 Zeichen lang sein.",
@@ -1607,6 +1601,9 @@
         "confirmRequired": "Bestätigen Sie Ihr Passwort.",
         "confirmMismatch": "Die Passwörter stimmen nicht überein.",
         "passwordMax": "Halten Sie das Passwort unter 128 Zeichen."
+      },
+      "errors": {
+        "generic": "Ihr Konto konnte nicht aktiviert werden. Bitte versuchen Sie es gleich noch einmal."
       }
     }
   },
@@ -1638,15 +1635,23 @@
         "emailMax": "Halten Sie die E-Mail unter 254 Zeichen.",
         "passwordRequired": "Geben Sie Ihr Passwort ein.",
         "passwordMin": "Das Passwort muss mindestens 8 Zeichen lang sein."
+      },
+      "errors": {
+        "invalidCredentials": "E-Mail oder Passwort ungültig.",
+        "notVerified": "Ihre E-Mail ist noch nicht verifiziert.",
+        "tooManyAttempts": "Zu viele Versuche. Bitte versuchen Sie es gleich noch einmal.",
+        "generic": "Anmeldung fehlgeschlagen. Bitte versuchen Sie es erneut."
       }
     }
   },
   "TalentPortal": {
     "title": "Talent-Portal",
-    "idLabel": "Portal"
+    "idLabel": "Portal",
+    "signOut": "Abmelden"
   },
   "ClientWorkspace": {
     "title": "Client-Workspace",
-    "idLabel": "Workspace"
+    "idLabel": "Workspace",
+    "signOut": "Abmelden"
   }
 }

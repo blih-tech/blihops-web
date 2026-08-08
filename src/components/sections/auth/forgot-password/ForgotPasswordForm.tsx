@@ -11,10 +11,16 @@ import {
   RotateCwIcon,
 } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useForm } from 'react-hook-form';
 
+import { Dots } from '@/components/shared/Dots';
+import {
+  fadeUpItem,
+  staggerContainer,
+} from '@/components/shared/motion-variants';
 import { Button } from '@/components/ui/button';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 import {
   Field,
   FieldError,
@@ -22,6 +28,7 @@ import {
   FieldLabel,
 } from '@/components/ui/field';
 import { Input } from '@/components/ui/input';
+import { authClient } from '@/lib/auth-client';
 import {
   createForgotPasswordSchema,
   type ForgotPasswordFormValues,
@@ -30,8 +37,11 @@ import { Link } from '@/i18n/navigation';
 
 export function ForgotPasswordForm() {
   const t = useTranslations('Auth.forgotPassword');
+  const locale = useLocale();
   const reduceMotion = useReducedMotion();
   const [sentTo, setSentTo] = useState<string | null>(null);
+  const [isPending, setIsPending] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const successRef = useRef<HTMLDivElement>(null);
 
   const {
@@ -56,9 +66,24 @@ export function ForgotPasswordForm() {
     }
   }, [sentTo]);
 
-  function onSubmit(data: ForgotPasswordFormValues) {
-    console.info('Password reset requested for:', data.email);
-    setSentTo(data.email);
+  async function onSubmit(data: ForgotPasswordFormValues) {
+    setSubmitError(null);
+    setIsPending(true);
+    try {
+      const result = await authClient.requestPasswordReset({
+        email: data.email,
+        redirectTo: `${window.location.origin}/${locale}/auth/reset-password`,
+      });
+      if (result.error !== null) {
+        setSubmitError(t('errors.generic'));
+        return;
+      }
+      setSentTo(data.email);
+    } catch {
+      setSubmitError(t('errors.generic'));
+    } finally {
+      setIsPending(false);
+    }
   }
 
   function onResend() {
@@ -161,60 +186,83 @@ export function ForgotPasswordForm() {
 
   return (
     <motion.div
-      initial={reduceMotion ? false : { opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{
-        duration: reduceMotion ? 0 : 0.55,
-        ease: [0.22, 1, 0.36, 1],
-      }}
+      variants={staggerContainer}
+      initial={reduceMotion ? 'show' : 'hidden'}
+      animate="show"
+      className="flex flex-col gap-1"
     >
-      <div className="flex flex-col gap-1">
+      <motion.div variants={fadeUpItem}>
         <p className="font-mono text-[10px] font-semibold tracking-[0.11em] text-primary uppercase">
           {t('request.eyebrow')}
         </p>
+      </motion.div>
+      <motion.div variants={fadeUpItem}>
         <h2 className="font-heading text-xl leading-snug font-semibold tracking-[-0.02em] text-foreground sm:text-2xl">
           {t('request.title')}
         </h2>
+      </motion.div>
+      <motion.div variants={fadeUpItem}>
         <p className="text-[13px] leading-[1.5] text-muted-foreground">
           {t('request.description')}
         </p>
-      </div>
+      </motion.div>
 
-      <form
-        id="forgot-password-form"
-        className="mt-5 flex flex-col gap-3.5"
-        onSubmit={handleSubmit(onSubmit)}
-        noValidate
-      >
-        <FieldGroup className="gap-3.5">
-          <Field data-invalid={Boolean(errors.email)}>
-            <FieldLabel
-              htmlFor="email"
-              className="text-xs font-medium text-foreground"
-            >
-              {t('request.fields.email.label')}
-            </FieldLabel>
-            <Input
-              id="email"
-              type="email"
-              inputMode="email"
-              autoComplete="email"
-              placeholder={t('request.fields.email.placeholder')}
-              aria-invalid={Boolean(errors.email)}
-              aria-describedby={errors.email ? 'email-error' : undefined}
-              {...register('email')}
-            />
-            <FieldError id="email-error" errors={[errors.email]} />
-          </Field>
-        </FieldGroup>
+      <motion.div variants={fadeUpItem}>
+        <form
+          id="forgot-password-form"
+          className="mt-5 flex flex-col gap-3.5"
+          onSubmit={handleSubmit(onSubmit)}
+          noValidate
+        >
+          <FieldGroup className="gap-3.5">
+            <Field data-invalid={Boolean(errors.email)}>
+              <FieldLabel
+                htmlFor="email"
+                className="text-xs font-medium text-foreground"
+              >
+                {t('request.fields.email.label')}
+              </FieldLabel>
+              <Input
+                id="email"
+                type="email"
+                inputMode="email"
+                autoComplete="email"
+                placeholder={t('request.fields.email.placeholder')}
+                aria-invalid={Boolean(errors.email)}
+                aria-describedby={errors.email ? 'email-error' : undefined}
+                {...register('email')}
+              />
+              <FieldError id="email-error" errors={[errors.email]} />
+            </Field>
+          </FieldGroup>
 
-        <Button type="submit" size="lg" className="h-9 w-full">
-          {t('request.submit')}
-          <ArrowRightIcon data-icon="inline-end" aria-hidden="true" />
-        </Button>
+          {submitError !== null ? (
+            <Alert variant="destructive" className="rounded-md px-3 py-2">
+              <AlertDescription className="text-xs leading-[1.5]">
+                {submitError}
+              </AlertDescription>
+            </Alert>
+          ) : null}
 
-        <div className="flex justify-center pt-0.5">{backToSignIn}</div>
-      </form>
+          <Button
+            type="submit"
+            size="lg"
+            className="h-9 w-full"
+            disabled={isPending}
+          >
+            {isPending ? (
+              <Dots />
+            ) : (
+              <>
+                {t('request.submit')}
+                <ArrowRightIcon data-icon="inline-end" aria-hidden="true" />
+              </>
+            )}
+          </Button>
+
+          <div className="flex justify-center pt-0.5">{backToSignIn}</div>
+        </form>
+      </motion.div>
     </motion.div>
   );
 }

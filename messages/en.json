@@ -1490,6 +1490,9 @@
         "emailRequired": "Enter your email address.",
         "emailInvalid": "Enter a valid email address.",
         "emailMax": "Keep the email under 254 characters."
+      },
+      "errors": {
+        "generic": "Unable to send the reset link. Please try again in a moment."
       }
     },
     "resetPassword": {
@@ -1545,6 +1548,9 @@
         "confirmRequired": "Confirm your new password.",
         "confirmMismatch": "Passwords do not match.",
         "passwordMax": "Keep the password under 128 characters."
+      },
+      "errors": {
+        "generic": "Unable to reset your password. Please try again in a moment."
       }
     },
     "acceptInvitation": {
@@ -1553,10 +1559,6 @@
         "title": "Create your BlihOps account",
         "description": "Your invitation is valid. Set a secure password to activate your account.",
         "fields": {
-          "invitedEmail": {
-            "label": "Invited email",
-            "helper": "This email is linked to your invitation."
-          },
           "newPassword": {
             "label": "New password",
             "placeholder": "Create a secure password"
@@ -1592,14 +1594,6 @@
         "guidanceDescription": "Ask the administrator who invited you to resend a new invitation link.",
         "safetyNote": "No account changes were made."
       },
-      "created": {
-        "badge": "Account created",
-        "title": "Your account is ready",
-        "description": "Your password is set and your BlihOps account has been created successfully.",
-        "summaryLabel": "Account email",
-        "goToSignIn": "Go to sign in",
-        "note": "Use the password you just created."
-      },
       "validation": {
         "newPasswordRequired": "Create a password.",
         "passwordMin": "Password must be at least 8 characters.",
@@ -1607,6 +1601,9 @@
         "confirmRequired": "Confirm your password.",
         "confirmMismatch": "Passwords do not match.",
         "passwordMax": "Keep the password under 128 characters."
+      },
+      "errors": {
+        "generic": "Unable to activate your account. Please try again in a moment."
       }
     }
   },
@@ -1638,15 +1635,23 @@
         "emailMax": "Keep the email under 254 characters.",
         "passwordRequired": "Enter your password.",
         "passwordMin": "Password must be at least 8 characters."
+      },
+      "errors": {
+        "invalidCredentials": "Invalid email or password.",
+        "notVerified": "Your email is not verified yet.",
+        "tooManyAttempts": "Too many attempts. Please try again in a moment.",
+        "generic": "Unable to sign in. Please try again."
       }
     }
   },
   "TalentPortal": {
     "title": "Talent portal",
-    "idLabel": "Portal"
+    "idLabel": "Portal",
+    "signOut": "Sign out"
   },
   "ClientWorkspace": {
     "title": "Client workspace",
-    "idLabel": "Workspace"
+    "idLabel": "Workspace",
+    "signOut": "Sign out"
   }
 }
