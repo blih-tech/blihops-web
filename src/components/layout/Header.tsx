@@ -3,7 +3,6 @@
 import { useCallback, useEffect, useId, useRef, useState } from 'react';
 import { Link, usePathname } from '@/i18n/navigation';
 import {
-  ArrowRight,
   ChevronDown,
   Lightbulb,
   Menu,
@@ -20,7 +19,7 @@ import { LocaleSwitcher } from '@/components/layout/LocaleSwitcher';
 import { Logo } from '@/components/layout/Logo';
 import { MegaMenu, type MegaMenuLink } from '@/components/layout/MegaMenu';
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
-import { buttonVariants } from '@/components/ui/button';
+import { SessionAwareCta } from '@/components/layout/SessionAwareCta';
 import { cn } from '@/lib/utils';
 
 const primaryLinks = [
@@ -62,7 +61,6 @@ function NavHighlight() {
 export function Header() {
   const pathname = usePathname();
   const t = useTranslations('Shared.header');
-  const tActions = useTranslations('Shared.actions');
   const [whoOpen, setWhoOpen] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [mobileWhoOpen, setMobileWhoOpen] = useState(false);
@@ -277,19 +275,7 @@ export function Header() {
 
         <div className="flex items-center gap-2">
           <LocaleSwitcher />
-          <Link
-            href="/pilot"
-            className={cn(
-              buttonVariants({ size: 'sm' }),
-              'group/cta hidden sm:inline-flex',
-            )}
-          >
-            {tActions('getPilot')}
-            <ArrowRight
-              className="size-3.5 transition-transform group-hover/cta:translate-x-0.5"
-              aria-hidden="true"
-            />
-          </Link>
+          <SessionAwareCta size="sm" className="hidden sm:inline-flex" />
 
           <button
             type="button"
@@ -405,17 +391,7 @@ export function Header() {
             })}
 
             <div className="space-y-2 pt-4 pb-2">
-              <Link
-                href="/pilot"
-                onClick={closeAll}
-                className={cn(buttonVariants(), 'group/cta w-full')}
-              >
-                {tActions('getPilot')}
-                <ArrowRight
-                  className="size-4 transition-transform group-hover/cta:translate-x-0.5"
-                  aria-hidden="true"
-                />
-              </Link>
+              <SessionAwareCta className="w-full" onClick={closeAll} />
               <BookCallButton
                 calLink="blih-marketing-fzifjy/blih-ops-desicovery-call"
                 namespace="blih-ops-desicovery-call"

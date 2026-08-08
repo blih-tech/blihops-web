@@ -90,6 +90,8 @@
       "getPilot": "Get a 2-week pilot",
       "getFreePilot": "Get free pilot",
       "learnMore": "Learn more",
+      "goToPortal": "Go to portal",
+      "goToWorkspace": "Go to workspace",
       "goHome": "Go home",
       "applyToTalentPool": "Apply to the talent pool"
     },
