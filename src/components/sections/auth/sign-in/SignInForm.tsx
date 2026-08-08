@@ -81,11 +81,12 @@ export function SignInForm() {
   const remember = useWatch({ control, name: 'remember' });
 
   useEffect(() => {
+    if (isPending) return;
     const role = (session?.user as { role?: string } | undefined)?.role;
     if (session !== null && session !== undefined) {
       router.replace(workspacePath(role));
     }
-  }, [session, router]);
+  }, [isPending, session, router]);
 
   function signInErrorMessage(status: number | undefined): string {
     switch (status) {
