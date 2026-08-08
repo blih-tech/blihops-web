@@ -33,14 +33,15 @@ import { apiFetch } from '@/lib/api';
 import { createSignInSchema, type SignInFormValues } from '@/lib/forms/sign-in';
 import { Link, useRouter } from '@/i18n/navigation';
 
-// TODO: Replace the placeholder workspace id with the user's real workspace
-// once workspace resolution is wired to the API.
-function workspacePath(role: string | undefined): string {
+function workspacePath(
+  role: string | undefined,
+  userId: string | undefined,
+): string {
   switch (role) {
     case 'client':
-      return '/client-workspace/placeholder';
+      return `/client-workspace/${userId ?? 'placeholder'}`;
     case 'talent':
-      return '/talent-portal/placeholder';
+      return `/talent-portal/${userId ?? 'placeholder'}`;
     default:
       return '/';
   }
@@ -82,9 +83,9 @@ export function SignInForm() {
 
   useEffect(() => {
     if (isPending) return;
-    const role = (session?.user as { role?: string } | undefined)?.role;
+    const user = session?.user as { role?: string; id?: string } | undefined;
     if (session !== null && session !== undefined) {
-      router.replace(workspacePath(role));
+      router.replace(workspacePath(user?.role, user?.id));
     }
   }, [isPending, session, router]);
 
@@ -131,11 +132,9 @@ export function SignInForm() {
         throw new Error('Failed to mirror session');
       }
 
-      const role = (
-        (await authClient.getSession())?.data?.user as
-          { role?: string } | undefined
-      )?.role;
-      router.push(workspacePath(role));
+      const user = (await authClient.getSession())?.data?.user as
+        { role?: string; id?: string } | undefined;
+      router.push(workspacePath(user?.role, user?.id));
     } catch {
       setSubmitError(t('errors.generic'));
     } finally {
