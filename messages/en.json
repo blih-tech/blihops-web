@@ -1005,6 +1005,31 @@
       "title": "Couldn't load open roles.",
       "description": "Something went wrong on our side. Please try again.",
       "retry": "Try again"
+    },
+    "detail": {
+      "back": "Back to open roles",
+      "brief": {
+        "department": "Department",
+        "location": "Location",
+        "employment": "Employment"
+      },
+      "apply": {
+        "title": "Apply by email",
+        "description": "Send your application to <mail>{email}</mail>.",
+        "subjectLabel": "Use this subject",
+        "steps": {
+          "resume": "Attach your resume or CV as a PDF.",
+          "portfolio": "Include a portfolio, GitHub, or relevant work link where applicable.",
+          "intro": "Add a short introduction explaining why this role fits you."
+        },
+        "cta": "Start application"
+      },
+      "sections": {
+        "overview": "About the role",
+        "responsibilities": "What you will do",
+        "requirements": "What you bring"
+      },
+      "viewAll": "View all open positions"
     }
   },
   "TalentPage": {

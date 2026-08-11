@@ -1,47 +1,67 @@
 import type { Metadata } from 'next';
-import { notFound, redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import { CareerDetail } from '@/components/sections/careers/CareerDetail';
-import { careerRoles, getCareerRoleBySlug } from '@/content/careers';
 import { noIndexRobots } from '@/i18n/metadata';
+import { routing } from '@/i18n/routing';
+import {
+  getCareerBySlug,
+  getCareers,
+  type CareerDetail as CareerDetailData,
+} from '@/lib/api/content';
 
 type CareerPageProps = {
   params: Promise<{ locale: string; slug: string }>;
 };
 
-export function generateStaticParams() {
-  return careerRoles.map((role) => ({ slug: role.slug }));
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  try {
+    const roles = await getCareers();
+    return routing.locales.flatMap((locale) =>
+      roles.map((role) => ({ locale, slug: role.slug })),
+    );
+  } catch {
+    return [];
+  }
 }
 
 export async function generateMetadata({
   params,
 }: CareerPageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const role = getCareerRoleBySlug(slug);
+  const { locale, slug } = await params;
 
-  if (!role) return { title: 'Role not found', robots: noIndexRobots };
+  try {
+    const role = await getCareerBySlug(slug);
 
-  return {
-    title: `${role.title} - Careers`,
-    description: role.summary,
-    robots: noIndexRobots,
-    alternates: { canonical: `/en/careers/${role.slug}` },
-    openGraph: {
-      title: `${role.title} at Blih Ops`,
+    return {
+      title: `${role.title} - Careers`,
       description: role.summary,
-      url: `/en/careers/${role.slug}`,
-    },
-  };
+      robots: noIndexRobots,
+      alternates: { canonical: `/${locale}/careers/${role.slug}` },
+      openGraph: {
+        title: `${role.title} at Blih Ops`,
+        description: role.summary,
+        url: `https://blihops.com/${locale}/careers/${role.slug}`,
+      },
+    };
+  } catch {
+    return { title: 'Role not found', robots: noIndexRobots };
+  }
 }
 
 export default async function CareerDetailPage({ params }: CareerPageProps) {
   const { locale, slug } = await params;
-  if (locale !== 'en') redirect(`/en/careers/${slug}`);
 
-  const role = getCareerRoleBySlug(slug);
+  let role: CareerDetailData;
 
-  if (!role) notFound();
+  try {
+    role = await getCareerBySlug(slug);
+  } catch {
+    notFound();
+  }
 
   return (
     <main className="min-h-screen bg-background text-foreground">
