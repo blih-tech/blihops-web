@@ -8,7 +8,7 @@ import { useTranslations } from 'next-intl';
 import { InfiniteSlider } from '@/components/infinite-slider';
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
-import { testimonials, type Testimonial } from '@/content/testimonials';
+import type { Testimonial } from '@/lib/api/content';
 import { cn } from '@/lib/utils';
 
 const motionVariants: Variants = {
@@ -29,28 +29,19 @@ const motionVariants: Variants = {
   },
 };
 
-const testimonialMessageKeys = [
-  'sarahChen',
-  'marcusWebb',
-  'amiraHassan',
-  'jamesOkonkwo',
-  'elenaPetrova',
-  'davidKim',
-] as const;
+const MIN_MARQUEE_TESTIMONIALS = 4;
 
-export function Testimonials() {
+export function Testimonials({
+  testimonials,
+}: {
+  testimonials: Testimonial[];
+}) {
   const sectionRef = useRef<HTMLElement>(null);
   const t = useTranslations('Home.testimonials');
-  const localizedTestimonials = testimonials.map((testimonial, index) => {
-    const key = testimonialMessageKeys[index];
 
-    return {
-      ...testimonial,
-      quote: t(`items.${key}.quote`),
-      name: t(`items.${key}.name`),
-      role: t(`items.${key}.role`),
-    };
-  });
+  if (testimonials.length === 0) return null;
+
+  const isMarquee = testimonials.length >= MIN_MARQUEE_TESTIMONIALS;
 
   return (
     <section
@@ -82,42 +73,61 @@ export function Testimonials() {
           </TimelineAnimation>
         </div>
 
-        <TimelineAnimation
-          as="div"
-          animationNum={2}
-          timelineRef={sectionRef}
-          once={false}
-          customVariants={motionVariants}
-          className="relative border-y border-border"
-          data-lenis-prevent
-        >
-          <ul className="sr-only">
-            {localizedTestimonials.map((testimonial) => (
-              <li key={testimonial.id}>
-                {t('screenReader', {
-                  name: testimonial.name,
-                  role: testimonial.role,
-                  company: testimonial.company,
-                  quote: testimonial.quote,
-                })}
-              </li>
-            ))}
-          </ul>
+        <ul className="sr-only">
+          {testimonials.map((testimonial) => (
+            <li key={testimonial.id}>
+              {t('screenReader', {
+                name: testimonial.name,
+                role: testimonial.role,
+                company: testimonial.company,
+                quote: testimonial.quote,
+              })}
+            </li>
+          ))}
+        </ul>
 
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-linear-to-r from-background to-transparent sm:w-24" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-linear-to-l from-background to-transparent sm:w-24" />
-
-          <InfiniteSlider
-            gap={0}
-            speed={40}
-            speedOnHover={12}
-            className="w-full"
+        {isMarquee ? (
+          <TimelineAnimation
+            as="div"
+            animationNum={2}
+            timelineRef={sectionRef}
+            once={false}
+            customVariants={motionVariants}
+            className="relative border-y border-border"
+            data-lenis-prevent
           >
-            {localizedTestimonials.map((item) => (
-              <TestimonialCard key={item.id} testimonial={item} />
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-8 bg-linear-to-r from-background to-transparent sm:w-24" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-8 bg-linear-to-l from-background to-transparent sm:w-24" />
+
+            <InfiniteSlider
+              gap={0}
+              speed={40}
+              speedOnHover={12}
+              className="w-full"
+            >
+              {testimonials.map((item) => (
+                <TestimonialCard key={item.id} testimonial={item} />
+              ))}
+            </InfiniteSlider>
+          </TimelineAnimation>
+        ) : (
+          <TimelineAnimation
+            as="div"
+            animationNum={2}
+            timelineRef={sectionRef}
+            once={false}
+            customVariants={motionVariants}
+            className="flex flex-wrap items-stretch justify-center gap-6"
+          >
+            {testimonials.map((item) => (
+              <TestimonialCard
+                key={item.id}
+                testimonial={item}
+                className="w-full max-w-sm border border-border"
+              />
             ))}
-          </InfiniteSlider>
-        </TimelineAnimation>
+          </TimelineAnimation>
+        )}
       </SectionWrapper>
     </section>
   );
@@ -139,11 +149,8 @@ function TestimonialCard({
         className,
       )}
     >
-      <div className="flex items-center justify-between border-b border-border px-5 py-3.5">
+      <div className="flex items-center border-b border-border px-5 py-3.5">
         <QuoteMark className="size-5 text-muted-foreground/50" />
-        <span className="font-sans text-xs text-muted-foreground">
-          {testimonial.source}
-        </span>
       </div>
 
       <div className="flex flex-1 flex-col justify-center px-5 py-6">
@@ -154,7 +161,7 @@ function TestimonialCard({
 
       <div className="flex items-center gap-3 border-t border-border px-5 py-4">
         <Image
-          src={testimonial.avatar}
+          src={testimonial.avatarUrl}
           alt=""
           width={40}
           height={40}

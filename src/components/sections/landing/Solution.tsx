@@ -9,6 +9,7 @@ import { useTranslations } from 'next-intl';
 import { DecorIcon } from '@/components/decor-icon';
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
 import { Globe } from '@/components/ui/globe';
+import type { Testimonial } from '@/lib/api/content';
 import { cn } from '@/lib/utils';
 
 const motionVariants: Variants = {
@@ -52,9 +53,13 @@ const globeConfig = {
   ],
 };
 
-export function Solution() {
+export function Solution({ testimonials }: { testimonials: Testimonial[] }) {
   const sectionRef = useRef<HTMLElement>(null);
   const t = useTranslations('Home.solution');
+  const primary =
+    testimonials.find((testimonial) => testimonial.isPrimary) ??
+    testimonials[0] ??
+    null;
 
   return (
     <section
@@ -134,7 +139,10 @@ export function Solution() {
           <GridPlus className="top-0 left-1/2 max-lg:hidden" />
           <div className="grid grid-cols-1 lg:grid-cols-2">
             <StatsRow />
-            <QuoteCell className="border-b border-border" />
+            <QuoteCell
+              testimonial={primary}
+              className="border-b border-border"
+            />
           </div>
         </div>
 
@@ -289,8 +297,18 @@ function StatBlock({
   );
 }
 
-function QuoteCell({ className }: { className?: string }) {
+function QuoteCell({
+  testimonial,
+  className,
+}: {
+  testimonial: Testimonial | null;
+  className?: string;
+}) {
   const t = useTranslations('Home.solution.quote');
+
+  const text = testimonial?.quote ?? t('text');
+  const name = testimonial?.name ?? t('role');
+  const detail = testimonial?.role ?? t('companyType');
 
   return (
     <div
@@ -303,12 +321,12 @@ function QuoteCell({ className }: { className?: string }) {
         <div className="w-0.5 shrink-0 self-stretch rounded-full bg-background/40" />
         <div className="space-y-4">
           <p className="font-sans text-sm leading-relaxed text-background md:text-[15px]">
-            {t('text')}
+            {text}
           </p>
           <p className="font-sans text-sm text-background/70">
-            <span className="font-medium text-background">{t('role')}</span>
+            <span className="font-medium text-background">{name}</span>
             <span className="mx-1.5">·</span>
-            {t('companyType')}
+            {detail}
           </p>
         </div>
       </div>
