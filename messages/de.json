@@ -1005,6 +1005,31 @@
       "title": "Offene Stellen konnten nicht geladen werden.",
       "description": "Bei uns ist etwas schiefgelaufen. Bitte versuchen Sie es erneut.",
       "retry": "Erneut versuchen"
+    },
+    "detail": {
+      "back": "Zurück zu offenen Stellen",
+      "brief": {
+        "department": "Abteilung",
+        "location": "Standort",
+        "employment": "Anstellung"
+      },
+      "apply": {
+        "title": "Per E-Mail bewerben",
+        "description": "Senden Sie Ihre Bewerbung an <mail>{email}</mail>.",
+        "subjectLabel": "Diesen Betreff verwenden",
+        "steps": {
+          "resume": "Fügen Sie Ihren Lebenslauf oder CV als PDF bei.",
+          "portfolio": "Fügen Sie, falls zutreffend, einen Link zu Portfolio, GitHub oder relevanter Arbeit hinzu.",
+          "intro": "Ergänzen Sie eine kurze Einführung, warum diese Rolle zu Ihnen passt."
+        },
+        "cta": "Bewerbung starten"
+      },
+      "sections": {
+        "overview": "Über die Rolle",
+        "responsibilities": "Was Sie tun werden",
+        "requirements": "Was Sie mitbringen"
+      },
+      "viewAll": "Alle offenen Stellen ansehen"
     }
   },
   "TalentPage": {

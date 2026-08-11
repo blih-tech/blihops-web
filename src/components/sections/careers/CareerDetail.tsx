@@ -11,14 +11,12 @@ import {
   PaperclipIcon,
 } from 'lucide-react';
 import type { Variants } from 'motion/react';
+import { useTranslations } from 'next-intl';
 
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
 import { buttonVariants } from '@/components/ui/button';
-import {
-  CAREERS_EMAIL,
-  getApplicationSubject,
-  type CareerRole,
-} from '@/content/careers';
+import { CAREERS_EMAIL } from '@/content/careers';
+import type { CareerDetail } from '@/lib/api/content';
 import { cn } from '@/lib/utils';
 
 const revealVariants: Variants = {
@@ -39,7 +37,10 @@ const revealVariants: Variants = {
   },
 };
 
-export function CareerDetail({ role }: { role: CareerRole }) {
+const applicationSubject = (title: string) =>
+  `Application: ${title} - [Applicant Name]`;
+
+export function CareerDetail({ role }: { role: CareerDetail }) {
   return (
     <>
       <RoleHeader role={role} />
@@ -48,8 +49,9 @@ export function CareerDetail({ role }: { role: CareerRole }) {
   );
 }
 
-function RoleHeader({ role }: { role: CareerRole }) {
+function RoleHeader({ role }: { role: CareerDetail }) {
   const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations('CareersPage.detail');
 
   return (
     <section ref={sectionRef} className="border-b border-border py-12 md:py-20">
@@ -67,7 +69,7 @@ function RoleHeader({ role }: { role: CareerRole }) {
             className="size-4 transition-transform group-hover:-translate-x-0.5"
             aria-hidden="true"
           />
-          Back to open roles
+          {t('back')}
         </Link>
       </TimelineAnimation>
 
@@ -115,10 +117,12 @@ function RoleHeader({ role }: { role: CareerRole }) {
           >
             <CornerExtensions />
             <dl className="grid grid-cols-1 gap-px border border-border bg-border">
-              <RoleFact label="Department" value={role.department} />
-              <RoleFact label="Location" value={role.location} />
-              <RoleFact label="Work mode" value={role.workMode} />
-              <RoleFact label="Employment" value={role.employmentType} />
+              <RoleFact label={t('brief.department')} value={role.department} />
+              <RoleFact label={t('brief.location')} value={role.location} />
+              <RoleFact
+                label={t('brief.employment')}
+                value={role.employmentType}
+              />
             </dl>
           </TimelineAnimation>
         </div>
@@ -159,9 +163,10 @@ function CornerExtensions() {
   ));
 }
 
-function RoleContent({ role }: { role: CareerRole }) {
+function RoleContent({ role }: { role: CareerDetail }) {
   const sectionRef = useRef<HTMLElement>(null);
-  const subject = getApplicationSubject(role);
+  const t = useTranslations('CareersPage.detail');
+  const subject = applicationSubject(role.title);
   const emailHref = `mailto:${CAREERS_EMAIL}?subject=${encodeURIComponent(subject)}`;
 
   return (
@@ -183,22 +188,25 @@ function RoleContent({ role }: { role: CareerRole }) {
               <MailIcon className="size-4" aria-hidden="true" />
             </span>
             <h2 className="mt-5 font-heading text-2xl font-semibold tracking-tight">
-              Apply by email
+              {t('apply.title')}
             </h2>
             <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-              Send your application to{' '}
-              <a
-                href={`mailto:${CAREERS_EMAIL}`}
-                className="font-medium text-foreground underline decoration-border underline-offset-4 transition-colors hover:text-primary"
-              >
-                {CAREERS_EMAIL}
-              </a>
-              .
+              {t.rich('apply.description', {
+                email: CAREERS_EMAIL,
+                mail: (chunks) => (
+                  <a
+                    href={`mailto:${CAREERS_EMAIL}`}
+                    className="font-medium text-foreground underline decoration-border underline-offset-4 transition-colors hover:text-primary"
+                  >
+                    {chunks}
+                  </a>
+                ),
+              })}
             </p>
 
             <div className="mt-6 border-t border-border pt-5">
               <p className="font-mono text-[10px] font-medium tracking-widest text-muted-foreground uppercase">
-                Use this subject
+                {t('apply.subjectLabel')}
               </p>
               <p className="mt-2 break-words border border-border bg-background p-3 font-mono text-xs leading-relaxed text-foreground">
                 {subject}
@@ -207,14 +215,13 @@ function RoleContent({ role }: { role: CareerRole }) {
 
             <ul className="mt-6 space-y-4 text-sm text-muted-foreground">
               <ApplicationStep icon={PaperclipIcon}>
-                Attach your resume or CV as a PDF.
+                {t('apply.steps.resume')}
               </ApplicationStep>
               <ApplicationStep icon={Link2Icon}>
-                Include a portfolio, GitHub, or relevant work link where
-                applicable.
+                {t('apply.steps.portfolio')}
               </ApplicationStep>
               <ApplicationStep icon={CheckIcon}>
-                Add a short introduction explaining why this role fits you.
+                {t('apply.steps.intro')}
               </ApplicationStep>
             </ul>
 
@@ -225,7 +232,7 @@ function RoleContent({ role }: { role: CareerRole }) {
                 'group mt-7 w-full bg-primary hover:bg-primary',
               )}
             >
-              Start application
+              {t('apply.cta')}
               <ArrowRightIcon className="size-4 transition-transform group-hover:translate-x-0.5" />
             </a>
           </TimelineAnimation>
@@ -234,7 +241,7 @@ function RoleContent({ role }: { role: CareerRole }) {
         <div className="divide-y divide-border lg:col-span-8">
           <AnimatedRoleSection
             number="01"
-            title="About the role"
+            title={t('sections.overview')}
             animationNum={1}
             timelineRef={sectionRef}
           >
@@ -246,7 +253,7 @@ function RoleContent({ role }: { role: CareerRole }) {
           </AnimatedRoleSection>
           <AnimatedRoleSection
             number="02"
-            title="What you will do"
+            title={t('sections.responsibilities')}
             animationNum={2}
             timelineRef={sectionRef}
           >
@@ -254,23 +261,15 @@ function RoleContent({ role }: { role: CareerRole }) {
           </AnimatedRoleSection>
           <AnimatedRoleSection
             number="03"
-            title="What you bring"
+            title={t('sections.requirements')}
             animationNum={3}
             timelineRef={sectionRef}
           >
             <RoleList items={role.requirements} />
           </AnimatedRoleSection>
-          <AnimatedRoleSection
-            number="04"
-            title="Good to have"
-            animationNum={4}
-            timelineRef={sectionRef}
-          >
-            <RoleList items={role.preferred} />
-          </AnimatedRoleSection>
 
           <TimelineAnimation
-            animationNum={5}
+            animationNum={4}
             timelineRef={sectionRef}
             once={false}
             customVariants={revealVariants}
@@ -280,7 +279,7 @@ function RoleContent({ role }: { role: CareerRole }) {
               href="/careers#open-roles"
               className="group inline-flex items-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-primary"
             >
-              View all open positions
+              {t('viewAll')}
               <ArrowRightIcon className="size-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
           </TimelineAnimation>

@@ -155,6 +155,22 @@ export type CareerListItem = {
   createdAt: string;
 };
 
+export type CareerDetail = {
+  id: string;
+  title: string;
+  slug: string;
+  department: string;
+  location: string;
+  employmentType: string;
+  summary: string;
+  overview: string[];
+  responsibilities: string[];
+  requirements: string[];
+  isActive: boolean;
+  createdAt: string;
+  updatedAt: string;
+};
+
 type PaginationMeta = Record<string, unknown>;
 
 type ListResponse<T> = { items: T[]; meta: PaginationMeta };
@@ -292,6 +308,16 @@ export async function getCareers(): Promise<CareerListItem[]> {
     },
   );
   return items;
+}
+
+export async function getCareerBySlug(slug: string): Promise<CareerDetail> {
+  const { data } = await apiFetch<{ data: CareerDetail }>(
+    `/api/v1/content/careers/${encodeURIComponent(slug)}`,
+    {
+      next: { revalidate: CONTENT_TTL_SECONDS, tags: ['content:careers'] },
+    },
+  );
+  return data;
 }
 
 export function localizeCaseStudy(
