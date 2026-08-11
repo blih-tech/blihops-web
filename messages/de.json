@@ -341,62 +341,18 @@
     },
     "archive": {
       "ariaLabel": "Fallstudienarchiv",
-      "filterLabel": "Nach Service filtern",
-      "filterAriaLabel": "Fallstudien nach Service filtern",
+      "filterLabel": "Nach Kategorie filtern",
+      "filterAriaLabel": "Fallstudien nach Kategorie filtern",
       "all": "Alle",
       "count": "{count, plural, one {# Projekt} other {# Projekte}}",
-      "empty": "Für diesen Service sind noch keine Fallstudien vorhanden.",
+      "empty": "In dieser Kategorie gibt es noch keine Fallstudien.",
+      "emptyAll": "Noch keine Fallstudien.",
+      "emptyDescription": "Wir arbeiten ständig an neuen Projekten – schauen Sie bald wieder vorbei.",
       "readAriaLabel": "Fallstudie lesen: {title}",
-      "outcomeLabel": "Ergebnis:"
-    },
-    "studies": {
-      "scalingSupportAcrossChannels": {
-        "title": "Customer Support kanalübergreifend skalieren",
-        "client": "Europäische SaaS-Plattform",
-        "excerpt": "Ein dedizierter Supportbetrieb, ausgerichtet auf klare Reaktionsziele, Eskalationswege und wöchentliche Qualitätsprüfungen.",
-        "outcome": "Schnellere Reaktionszeiten und konsistentere Servicequalität"
-      },
-      "streamliningDocumentProcessing": {
-        "title": "Dokumentenverarbeitung optimieren",
-        "client": "Regionale Logistikgruppe",
-        "excerpt": "Aus einer fragmentierten Dokumentenwarteschlange wurde ein kontrollierter Workflow mit klarer Verantwortung, Validierung und täglicher Transparenz.",
-        "outcome": "Sauberere Daten und weniger Verzögerungen bei der Verarbeitung"
-      },
-      "engineeringSupportForProductRoadmap": {
-        "title": "Entwicklungsunterstützung für eine Produkt-Roadmap",
-        "client": "B2B-Softwareunternehmen",
-        "excerpt": "Ein integriertes Engineering- und QA-Team erhöhte die Bereitstellungskapazität und bewahrte zugleich die Standards und den Sprint-Rhythmus des Kunden.",
-        "outcome": "Konstantere Bereitstellung und verbesserte Produktstabilität"
-      },
-      "automatingRepetitiveOperations": {
-        "title": "Repetitive Abläufe automatisieren",
-        "client": "Versicherungsdienstleister",
-        "excerpt": "Praxisnahe Automatisierung reduzierte repetitive Erfassungsarbeit, während Beurteilung und Ausnahmen bei geschulten Mitarbeitenden verblieben.",
-        "outcome": "Weniger manueller Aufwand und kürzere Durchlaufzeiten"
-      },
-      "turningDataIntoClearDecisions": {
-        "title": "Daten in klare Entscheidungen verwandeln",
-        "client": "Dienstleistungsunternehmen mit mehreren Standorten",
-        "excerpt": "Getrennte Berichte wurden in einer verlässlichen Übersicht über Arbeitslast, Qualität und Teamleistung zusammengeführt.",
-        "outcome": "Bessere Transparenz und fundiertere Entscheidungen"
-      },
-      "optimizingProviderOnboarding": {
-        "title": "Onboarding von Leistungserbringern optimieren",
-        "client": "Netzwerk für Gesundheitsdienstleistungen",
-        "excerpt": "Ein dokumentierter Onboarding-Prozess verbesserte Übergaben, Dokumentenqualität und Transparenz über jeden aktiven Fall hinweg.",
-        "outcome": "Reibungsloseres Onboarding und weniger Nachbearbeitungsschleifen"
-      },
-      "qualitySystemForCustomerConversations": {
-        "title": "Ein Qualitätssystem für jedes Kundengespräch",
-        "client": "Marke im digitalen Handel",
-        "excerpt": "Ein gemeinsamer Bewertungsrahmen verknüpfte Kundengespräche mit Coaching-Prioritäten und operativem Reporting.",
-        "outcome": "Gezielteres Coaching auf Basis konsistenter QA-Daten"
-      },
-      "softwareSupportWithClearOwnership": {
-        "title": "Software-Support mit klarer Verantwortung",
-        "client": "Finanztechnologieunternehmen",
-        "excerpt": "Ein strukturierter Wartungsworkflow gab Produktverantwortlichen verlässliche Triage, klare Verantwortung und Transparenz über Releases.",
-        "outcome": "Klarere Triage und besser planbare Problemlösung"
+      "error": {
+        "title": "Fallstudien konnten nicht geladen werden.",
+        "description": "Bei uns ist etwas schiefgelaufen. Bitte versuchen Sie es erneut.",
+        "retry": "Erneut versuchen"
       }
     }
   },

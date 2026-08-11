@@ -695,62 +695,18 @@
     },
     "archive": {
       "ariaLabel": "Case study archive",
-      "filterLabel": "Filter by service",
-      "filterAriaLabel": "Filter case studies by service",
+      "filterLabel": "Filter by category",
+      "filterAriaLabel": "Filter case studies by category",
       "all": "All",
       "count": "{count, plural, one {# project} other {# projects}}",
-      "empty": "No case studies in this service yet.",
+      "empty": "No case studies in this category yet.",
+      "emptyAll": "No case studies yet.",
+      "emptyDescription": "We're always working on new projects — check back soon.",
       "readAriaLabel": "Read case study: {title}",
-      "outcomeLabel": "Outcome:"
-    },
-    "studies": {
-      "scalingSupportAcrossChannels": {
-        "title": "Scaling customer support across channels",
-        "client": "European SaaS platform",
-        "excerpt": "A dedicated support operation designed around clear response targets, escalation paths, and weekly quality reviews.",
-        "outcome": "Faster response times and more consistent service quality"
-      },
-      "streamliningDocumentProcessing": {
-        "title": "Streamlining document processing",
-        "client": "Regional logistics group",
-        "excerpt": "A fragmented document queue became a controlled workflow with clear ownership, validation, and daily visibility.",
-        "outcome": "Cleaner data and fewer processing delays"
-      },
-      "engineeringSupportForProductRoadmap": {
-        "title": "Engineering support for a product roadmap",
-        "client": "B2B software company",
-        "excerpt": "An embedded engineering and QA team added delivery capacity while preserving the client's standards and sprint rhythm.",
-        "outcome": "Steadier delivery and improved product stability"
-      },
-      "automatingRepetitiveOperations": {
-        "title": "Automating repetitive operations",
-        "client": "Insurance services provider",
-        "excerpt": "Practical automation reduced repetitive intake work while keeping judgment and exceptions with trained operators.",
-        "outcome": "Less manual effort and faster cycle times"
-      },
-      "turningDataIntoClearDecisions": {
-        "title": "Turning data into clear decisions",
-        "client": "Multi-location services company",
-        "excerpt": "Disconnected reports were consolidated into one dependable view of workload, quality, and team performance.",
-        "outcome": "Better visibility and more informed decisions"
-      },
-      "optimizingProviderOnboarding": {
-        "title": "Optimizing provider onboarding",
-        "client": "Healthcare services network",
-        "excerpt": "A documented onboarding operation improved handoffs, document quality, and visibility across every active case.",
-        "outcome": "Smoother onboarding and fewer rework loops"
-      },
-      "qualitySystemForCustomerConversations": {
-        "title": "A quality system for every customer conversation",
-        "client": "Digital commerce brand",
-        "excerpt": "A shared review framework connected customer conversations to coaching priorities and operational reporting.",
-        "outcome": "More focused coaching backed by consistent QA data"
-      },
-      "softwareSupportWithClearOwnership": {
-        "title": "Software support with clear ownership",
-        "client": "Financial technology company",
-        "excerpt": "A structured maintenance workflow gave product leaders dependable triage, ownership, and release visibility.",
-        "outcome": "Clearer triage and more predictable issue resolution"
+      "error": {
+        "title": "Couldn't load case studies.",
+        "description": "Something went wrong on our side. Please try again.",
+        "retry": "Try again"
       }
     }
   },
