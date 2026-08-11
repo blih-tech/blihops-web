@@ -12,7 +12,7 @@ import { HeroBackdrop } from '@/components/sections/shared/HeroBackdrop';
 import { LogoCloud } from '@/components/sections/shared/LogoCloud';
 import HoverPlayCard from '@/components/shared/video-card';
 import { buttonVariants } from '@/components/ui/button';
-import type { ServicesHero } from '@/lib/api/content';
+import type { Logo, ServicesHero } from '@/lib/api/content';
 import { cn } from '@/lib/utils';
 
 const motionVariants: Variants = {
@@ -35,8 +35,10 @@ const motionVariants: Variants = {
 
 export function WhatWeOfferHero({
   servicesHero,
+  logos,
 }: {
   servicesHero: ServicesHero | null;
+  logos: Logo[];
 }) {
   const sectionRef = useRef<HTMLElement>(null);
   const t = useTranslations('ServicesPage.hero');
@@ -125,7 +127,7 @@ export function WhatWeOfferHero({
         customVariants={motionVariants}
         className="relative mx-auto mt-12 max-w-4xl md:mt-14"
       >
-        <LogoCloud />
+        {logos.length > 0 ? <LogoCloud logos={logos} /> : null}
       </TimelineAnimation>
 
       {servicesHero?.videoUrl ? (

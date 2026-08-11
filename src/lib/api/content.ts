@@ -195,6 +195,12 @@ export type ServicesHero = {
   lastUpdatedAt: string;
 };
 
+export type Logo = {
+  id: string;
+  imageUrl: string;
+  alt: string;
+};
+
 type PaginationMeta = Record<string, unknown>;
 
 type ListResponse<T> = { items: T[]; meta: PaginationMeta };
@@ -371,6 +377,16 @@ export async function getServicesHero(): Promise<ServicesHero | null> {
     },
   );
   return data;
+}
+
+export async function getLogos(): Promise<Logo[]> {
+  const { items } = await apiFetch<ListResponse<Logo>>(
+    '/api/v1/content/logos?pageSize=100',
+    {
+      next: { revalidate: CONTENT_TTL_SECONDS, tags: ['content:logos'] },
+    },
+  );
+  return items;
 }
 
 export function localizeCaseStudy(

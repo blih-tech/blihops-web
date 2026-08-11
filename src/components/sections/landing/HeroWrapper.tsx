@@ -1,11 +1,13 @@
+import type { Logo } from '@/lib/api/content';
+
 import { Hero } from '@/components/sections/landing/Hero';
 import { LogosSection } from '@/components/sections/landing/LogosSection';
 
-export function HeroWrapper() {
+export function HeroWrapper({ logos }: { logos: Logo[] }) {
   return (
     <div className="relative w-full">
       <Hero />
-      <LogosSection />
+      <LogosSection logos={logos} />
     </div>
   );
 }
