@@ -103,7 +103,7 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           <SiteChrome>{children}</SiteChrome>
         </NextIntlClientProvider>
-        <SplashCursor
+        {/* <SplashCursor
           DENSITY_DISSIPATION={10}
           VELOCITY_DISSIPATION={0.5}
           PRESSURE={0.1}
@@ -114,7 +114,7 @@ export default async function LocaleLayout({
           SHADING
           RAINBOW_MODE={false}
           COLOR="#3B82F6"
-        />
+        /> */}
       </body>
     </html>
   );

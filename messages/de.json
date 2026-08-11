@@ -389,58 +389,16 @@
       "all": "Alle",
       "count": "{count, plural, one {# Artikel} other {# Artikel}}",
       "empty": "In dieser Kategorie sind noch keine Einblicke vorhanden.",
+      "emptyAll": "Noch keine Einblicke.",
+      "emptyDescription": "Wir arbeiten ständig an neuen Artikeln – schauen Sie bald wieder vorbei.",
       "readAriaLabel": "Einblick lesen: {title}",
-      "byLabel": "Von:"
+      "byLabel": "Von:",
+      "readTime": "{count} Min. Lesezeit"
     },
-    "categories": {
-      "operationsDesign": "Prozessdesign",
-      "aiAutomation": "AI & Automatisierung",
-      "customerExperience": "Kundenerlebnis",
-      "dataReporting": "Daten & Reporting",
-      "teamDelivery": "Team & Bereitstellung"
-    },
-    "author": "Blih Ops-Redaktion",
-    "articles": {
-      "designingOutsourcingPilot": {
-        "title": "Ein Outsourcing-Pilotprojekt konzipieren, das Mehrwert belegt",
-        "excerpt": "Ein aussagekräftiges Pilotprojekt prüft das Betriebsmodell, nicht nur, ob ein anderes Team einige Aufgaben erledigen kann.",
-        "readTime": "6 Min. Lesezeit"
-      },
-      "whatToAutomateFirst": {
-        "title": "Was in Back-Office-Abläufen zuerst automatisiert werden sollte",
-        "excerpt": "Die beste erste Automatisierung ist selten der größte Workflow. Es ist der wiederholbare Schritt mit klaren Regeln und sichtbaren Ausnahmen.",
-        "readTime": "7 Min. Lesezeit"
-      },
-      "slasNeedOperatingCadence": {
-        "title": "Warum SLAs einen operativen Rhythmus benötigen",
-        "excerpt": "Ein Ziel auf dem Papier steuert keinen Service. Teams benötigen einen wiederkehrenden Prozess, um Leistung, Risiken und Verantwortung zu prüfen.",
-        "readTime": "5 Min. Lesezeit"
-      },
-      "humanInTheLoop": {
-        "title": "Human-in-the-Loop ist ein Betriebsmodell",
-        "excerpt": "Menschliche Prüfung funktioniert nur, wenn Konfidenz, Ausnahmen, Befugnisse und Feedback als ein System konzipiert werden.",
-        "readTime": "8 Min. Lesezeit"
-      },
-      "qualityScorecard": {
-        "title": "Eine praxistaugliche Qualitäts-Scorecard entwickeln",
-        "excerpt": "Eine Scorecard sollte gute Arbeit leichter erkennbar und coachbar machen, statt jedes Gespräch auf eine Zahl zu reduzieren.",
-        "readTime": "6 Min. Lesezeit"
-      },
-      "operationalReporting": {
-        "title": "Operatives Reporting, das tatsächlich genutzt wird",
-        "excerpt": "Nützliches Reporting reduziert Unsicherheit und weist auf eine Entscheidung hin. Mehr Diagramme schaffen nicht automatisch mehr Transparenz.",
-        "readTime": "5 Min. Lesezeit"
-      },
-      "embeddedPod": {
-        "title": "Wie sich ein integrierter Pod einem Produktteam anschließt",
-        "excerpt": "Externe Bereitstellungskapazität funktioniert am besten, wenn sie die Standards des Teams übernimmt, statt einen parallelen Prozess einzuführen.",
-        "readTime": "7 Min. Lesezeit"
-      },
-      "sharedInboxToQueue": {
-        "title": "Vom gemeinsamen Posteingang zur kontrollierten Warteschlange",
-        "excerpt": "Eine Warteschlange wird beherrschbar, wenn jedes Element einen Status, eine verantwortliche Person, eine Definition der Bearbeitungsreife und einen Ausnahmeweg hat.",
-        "readTime": "6 Min. Lesezeit"
-      }
+    "error": {
+      "title": "Einblicke konnten nicht geladen werden.",
+      "description": "Bei uns ist etwas schiefgelaufen. Bitte versuchen Sie es erneut.",
+      "retry": "Erneut versuchen"
     }
   },
   "Shared": {
