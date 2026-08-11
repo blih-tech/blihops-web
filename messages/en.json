@@ -750,58 +750,16 @@
       "all": "All",
       "count": "{count, plural, one {# article} other {# articles}}",
       "empty": "No insights in this category yet.",
+      "emptyAll": "No insights yet.",
+      "emptyDescription": "We're always working on new articles — check back soon.",
       "readAriaLabel": "Read insight: {title}",
-      "byLabel": "By:"
+      "byLabel": "By:",
+      "readTime": "{count} min read"
     },
-    "categories": {
-      "operationsDesign": "Operations Design",
-      "aiAutomation": "AI & Automation",
-      "customerExperience": "Customer Experience",
-      "dataReporting": "Data & Reporting",
-      "teamDelivery": "Team & Delivery"
-    },
-    "author": "Blih Ops Editorial",
-    "articles": {
-      "designingOutsourcingPilot": {
-        "title": "Designing an outsourcing pilot that proves value",
-        "excerpt": "A useful pilot tests the operating model, not just whether a few tasks can be completed by another team.",
-        "readTime": "6 min read"
-      },
-      "whatToAutomateFirst": {
-        "title": "What to automate first in back-office operations",
-        "excerpt": "The best first automation is rarely the largest workflow. It is the repeatable step with clear rules and visible exceptions.",
-        "readTime": "7 min read"
-      },
-      "slasNeedOperatingCadence": {
-        "title": "Why SLAs need an operating cadence",
-        "excerpt": "A target on paper does not manage a service. Teams need a recurring way to review performance, risk, and ownership.",
-        "readTime": "5 min read"
-      },
-      "humanInTheLoop": {
-        "title": "Human-in-the-loop is an operating model",
-        "excerpt": "Human review works only when confidence, exceptions, authority, and feedback are designed as one system.",
-        "readTime": "8 min read"
-      },
-      "qualityScorecard": {
-        "title": "Building a quality scorecard people can use",
-        "excerpt": "A scorecard should make good work easier to recognize and coach, not reduce every conversation to a number.",
-        "readTime": "6 min read"
-      },
-      "operationalReporting": {
-        "title": "Operational reporting people actually use",
-        "excerpt": "Useful reporting reduces uncertainty and points to a decision. More charts do not automatically create more visibility.",
-        "readTime": "5 min read"
-      },
-      "embeddedPod": {
-        "title": "How an embedded pod joins a product team",
-        "excerpt": "External delivery capacity works best when it adopts the team's standards instead of introducing a parallel process.",
-        "readTime": "7 min read"
-      },
-      "sharedInboxToQueue": {
-        "title": "From shared inbox to controlled queue",
-        "excerpt": "A queue becomes manageable when every item has a state, an owner, a readiness definition, and an exception path.",
-        "readTime": "6 min read"
-      }
+    "error": {
+      "title": "Couldn't load insights.",
+      "description": "Something went wrong on our side. Please try again.",
+      "retry": "Try again"
     }
   },
   "ContactPage": {

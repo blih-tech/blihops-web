@@ -80,6 +80,33 @@ export type LocalizedCaseStudy = {
   createdAt: string;
 };
 
+export type InsightListItem = {
+  id: string;
+  slugs: { en: string; de: string };
+  titles: { en: string; de: string };
+  excerpts: { en: string; de: string };
+  author: string;
+  readTimeMinutes: number;
+  category: Category | null;
+  media: Media;
+  tags: ContentTag[];
+  createdAt: string;
+};
+
+/** An insight resolved for one locale. */
+export type LocalizedInsight = {
+  id: string;
+  slug: string;
+  title: string;
+  excerpt: string;
+  author: string;
+  readTimeMinutes: number;
+  category: Category | null;
+  media: Media;
+  tags: ContentTag[];
+  createdAt: string;
+};
+
 type PaginationMeta = Record<string, unknown>;
 
 type ListResponse<T> = { items: T[]; meta: PaginationMeta };
@@ -116,6 +143,37 @@ export async function getCaseStudyBySlug(
     },
   );
   return data;
+}
+
+export async function getInsights(): Promise<InsightListItem[]> {
+  const { items } = await apiFetch<ListResponse<InsightListItem>>(
+    '/api/v1/content/insights?pageSize=100',
+    {
+      next: { revalidate: CONTENT_TTL_SECONDS, tags: ['content:insights'] },
+    },
+  );
+  return items;
+}
+
+export function localizeInsight(
+  insight: InsightListItem,
+  locale: LocaleCode,
+): LocalizedInsight {
+  const isDe = locale === 'de';
+  return {
+    id: insight.id,
+    slug: isDe ? insight.slugs.de || insight.slugs.en : insight.slugs.en,
+    title: isDe ? insight.titles.de || insight.titles.en : insight.titles.en,
+    excerpt: isDe
+      ? insight.excerpts.de || insight.excerpts.en
+      : insight.excerpts.en,
+    author: insight.author,
+    readTimeMinutes: insight.readTimeMinutes,
+    category: insight.category,
+    media: insight.media,
+    tags: insight.tags,
+    createdAt: insight.createdAt,
+  };
 }
 
 export function localizeCaseStudy(
