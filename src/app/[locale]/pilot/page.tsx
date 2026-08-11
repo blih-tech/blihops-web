@@ -6,6 +6,8 @@ import { BookCallButton } from '@/components/BookCallButton';
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import { PilotForm } from '@/components/sections/pilot/PilotForm';
 import { createGenerateMetadata } from '@/i18n/metadata';
+import { routing } from '@/i18n/routing';
+import { getFaqs, localizeFaq, type LocalizedFaq } from '@/lib/api/content';
 
 export const generateMetadata = createGenerateMetadata('pilot', '/pilot');
 
@@ -30,6 +32,10 @@ const pilotSteps = [
 
 const faqs = ['isFree', 'bestProcess', 'replaceTools', 'afterPilot'] as const;
 
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
 export default async function PilotPage({
   params,
 }: {
@@ -40,6 +46,17 @@ export default async function PilotPage({
   const t = await getTranslations('PilotPage');
   const tActions = await getTranslations('Shared.actions');
   const benefits = t.raw('hero.benefits') as string[];
+
+  // CMS FAQs, falling back to the static i18n copy when the API errors or
+  // returns nothing.
+  let cmsFaqs: LocalizedFaq[] = [];
+  try {
+    const items = await getFaqs();
+    cmsFaqs = items.map((faq) => localizeFaq(faq, locale as 'en' | 'de'));
+  } catch {
+    cmsFaqs = [];
+  }
+  const hasCmsFaqs = cmsFaqs.length > 0;
 
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -179,25 +196,24 @@ export default async function PilotPage({
             </p>
           </div>
 
-          <div className="border-b border-border/80">
-            {faqs.map((faq, index) => (
-              <details key={faq} className="group border-t border-border/80">
-                <summary className="grid cursor-pointer list-none grid-cols-[2rem_1fr_auto] items-center gap-4 py-7 font-medium text-foreground outline-none transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary [&::-webkit-details-marker]:hidden">
-                  <span className="font-mono text-[10px] text-muted-foreground">
-                    0{index + 1}
-                  </span>
-                  {t(`faq.items.${faq}.question`)}
-                  <ChevronDownIcon
-                    className="size-4 shrink-0 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-open:rotate-180"
-                    strokeWidth={1.5}
-                    aria-hidden="true"
+          <div className="self-start border-b border-border/80">
+            {hasCmsFaqs
+              ? cmsFaqs.map((faq, index) => (
+                  <FaqItem
+                    key={faq.id}
+                    number={index + 1}
+                    question={faq.question}
+                    answer={faq.answer}
                   />
-                </summary>
-                <p className="max-w-2xl pr-8 pb-8 pl-12 text-sm leading-6 text-muted-foreground sm:text-base sm:leading-7">
-                  {t(`faq.items.${faq}.answer`)}
-                </p>
-              </details>
-            ))}
+                ))
+              : faqs.map((faq, index) => (
+                  <FaqItem
+                    key={faq}
+                    number={index + 1}
+                    question={t(`faq.items.${faq}.question`)}
+                    answer={t(`faq.items.${faq}.answer`)}
+                  />
+                ))}
           </div>
         </SectionWrapper>
       </section>
@@ -222,5 +238,34 @@ export default async function PilotPage({
         </div>
       </SectionWrapper>
     </main>
+  );
+}
+
+function FaqItem({
+  number,
+  question,
+  answer,
+}: {
+  number: number;
+  question: string;
+  answer: string;
+}) {
+  return (
+    <details className="group border-t border-border/80">
+      <summary className="grid cursor-pointer list-none grid-cols-[2rem_1fr_auto] items-center gap-4 py-7 font-medium text-foreground outline-none transition-colors duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] hover:text-primary focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary [&::-webkit-details-marker]:hidden">
+        <span className="font-mono text-[10px] text-muted-foreground">
+          {String(number).padStart(2, '0')}
+        </span>
+        {question}
+        <ChevronDownIcon
+          className="size-4 shrink-0 transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] group-open:rotate-180"
+          strokeWidth={1.5}
+          aria-hidden="true"
+        />
+      </summary>
+      <p className="max-w-2xl pr-8 pl-12 pb-6 text-sm leading-6 text-muted-foreground sm:text-base sm:leading-7">
+        {answer}
+      </p>
+    </details>
   );
 }

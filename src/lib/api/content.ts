@@ -171,6 +171,22 @@ export type CareerDetail = {
   updatedAt: string;
 };
 
+export type FaqLocaleContent = { question: string; answer: string };
+
+export type Faq = {
+  id: string;
+  isActive: boolean;
+  displayOrder: number;
+  content: { en: FaqLocaleContent; de: FaqLocaleContent };
+};
+
+/** An FAQ resolved for one locale. */
+export type LocalizedFaq = {
+  id: string;
+  question: string;
+  answer: string;
+};
+
 type PaginationMeta = Record<string, unknown>;
 
 type ListResponse<T> = { items: T[]; meta: PaginationMeta };
@@ -318,6 +334,22 @@ export async function getCareerBySlug(slug: string): Promise<CareerDetail> {
     },
   );
   return data;
+}
+
+export async function getFaqs(): Promise<Faq[]> {
+  const { items } = await apiFetch<ListResponse<Faq>>(
+    '/api/v1/content/faqs?pageSize=100',
+    {
+      next: { revalidate: CONTENT_TTL_SECONDS, tags: ['content:faqs'] },
+    },
+  );
+  return items;
+}
+
+export function localizeFaq(faq: Faq, locale: LocaleCode): LocalizedFaq {
+  const isDe = locale === 'de';
+  const content = isDe ? (faq.content.de ?? faq.content.en) : faq.content.en;
+  return { id: faq.id, question: content.question, answer: content.answer };
 }
 
 export function localizeCaseStudy(
