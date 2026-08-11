@@ -10,7 +10,7 @@ export function HeroBackdrop() {
 
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 mx-auto hidden min-h-full w-full max-w-6xl lg:block"
+        className="pointer-events-none absolute inset-0 mx-auto hidden min-h-full w-full max-w-7xl lg:block"
       >
         <div className="mask-y-from-80% mask-y-to-100% absolute inset-y-0 left-0 z-10 h-full w-px bg-border" />
         <div className="mask-y-from-80% mask-y-to-100% absolute inset-y-0 right-0 z-10 h-full w-px bg-border" />
