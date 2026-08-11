@@ -10,8 +10,9 @@ import { BookCallButton } from '@/components/BookCallButton';
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
 import { HeroBackdrop } from '@/components/sections/shared/HeroBackdrop';
 import { LogoCloud } from '@/components/sections/shared/LogoCloud';
-import { HeroVideo } from '@/components/sections/what-we-offer/HeroVideo';
+import HoverPlayCard from '@/components/shared/video-card';
 import { buttonVariants } from '@/components/ui/button';
+import type { ServicesHero } from '@/lib/api/content';
 import { cn } from '@/lib/utils';
 
 const motionVariants: Variants = {
@@ -32,13 +33,11 @@ const motionVariants: Variants = {
   },
 };
 
-const POSTER =
-  'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&h=900&fit=crop&q=80';
-// Sample open MP4 (placeholder until final asset)
-const VIDEO =
-  'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4';
-
-export function WhatWeOfferHero() {
+export function WhatWeOfferHero({
+  servicesHero,
+}: {
+  servicesHero: ServicesHero | null;
+}) {
   const sectionRef = useRef<HTMLElement>(null);
   const t = useTranslations('ServicesPage.hero');
   const tActions = useTranslations('Shared.actions');
@@ -129,16 +128,23 @@ export function WhatWeOfferHero() {
         <LogoCloud />
       </TimelineAnimation>
 
-      <TimelineAnimation
-        as="div"
-        animationNum={5}
-        timelineRef={sectionRef}
-        once={false}
-        customVariants={motionVariants}
-        className="relative mx-auto mt-10 w-full max-w-5xl md:mt-12"
-      >
-        <HeroVideo poster={POSTER} src={VIDEO} />
-      </TimelineAnimation>
+      {servicesHero?.videoUrl ? (
+        <TimelineAnimation
+          as="div"
+          animationNum={5}
+          timelineRef={sectionRef}
+          once={false}
+          customVariants={motionVariants}
+          className="relative mx-auto mt-10 w-full max-w-5xl md:mt-12"
+        >
+          <HoverPlayCard
+            src={servicesHero.videoUrl}
+            poster={servicesHero.coverUrl || undefined}
+            loop
+            className="aspect-video w-full rounded-2xl border border-border bg-muted shadow-lg [&_video]:max-w-none [&_video]:object-cover"
+          />
+        </TimelineAnimation>
+      ) : null}
     </section>
   );
 }

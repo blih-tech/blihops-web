@@ -187,6 +187,14 @@ export type LocalizedFaq = {
   answer: string;
 };
 
+export type ServicesHero = {
+  id: string;
+  videoUrl: string;
+  coverUrl: string;
+  altLabel: string;
+  lastUpdatedAt: string;
+};
+
 type PaginationMeta = Record<string, unknown>;
 
 type ListResponse<T> = { items: T[]; meta: PaginationMeta };
@@ -350,6 +358,19 @@ export function localizeFaq(faq: Faq, locale: LocaleCode): LocalizedFaq {
   const isDe = locale === 'de';
   const content = isDe ? (faq.content.de ?? faq.content.en) : faq.content.en;
   return { id: faq.id, question: content.question, answer: content.answer };
+}
+
+export async function getServicesHero(): Promise<ServicesHero | null> {
+  const { data } = await apiFetch<{ data: ServicesHero | null }>(
+    '/api/v1/content/services-hero',
+    {
+      next: {
+        revalidate: CONTENT_TTL_SECONDS,
+        tags: ['content:services-hero'],
+      },
+    },
+  );
+  return data;
 }
 
 export function localizeCaseStudy(
