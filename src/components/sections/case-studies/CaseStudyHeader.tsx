@@ -4,10 +4,11 @@ import { Link } from '@/i18n/navigation';
 import { useRef } from 'react';
 import { ArrowLeftIcon } from 'lucide-react';
 import type { Variants } from 'motion/react';
+import { useLocale, useTranslations } from 'next-intl';
 
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
 import { buttonVariants } from '@/components/ui/button';
-import type { CaseStudy } from '@/content/case-studies';
+import type { LocalizedCaseStudyDetail } from '@/lib/api/content';
 import { cn } from '@/lib/utils';
 
 const headerVariants: Variants = {
@@ -28,17 +29,24 @@ const headerVariants: Variants = {
   },
 };
 
-function formatDate(iso: string): string {
-  const date = new Date(`${iso}T00:00:00`);
-  return new Intl.DateTimeFormat('en-US', {
+function formatDate(iso: string, locale: string): string {
+  const date = new Date(iso);
+  return new Intl.DateTimeFormat(locale === 'de' ? 'de-DE' : 'en-US', {
     month: 'long',
     day: 'numeric',
     year: 'numeric',
+    timeZone: 'UTC',
   }).format(date);
 }
 
-export function CaseStudyHeader({ study }: { study: CaseStudy }) {
+export function CaseStudyHeader({
+  study,
+}: {
+  study: LocalizedCaseStudyDetail;
+}) {
   const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations('CaseStudiesPage.detail');
+  const locale = useLocale();
 
   return (
     <section
@@ -61,7 +69,7 @@ export function CaseStudyHeader({ study }: { study: CaseStudy }) {
           )}
         >
           <ArrowLeftIcon className="size-4" />
-          Back to case studies
+          {t('back')}
         </Link>
       </TimelineAnimation>
 
@@ -79,7 +87,7 @@ export function CaseStudyHeader({ study }: { study: CaseStudy }) {
               <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-75" />
               <span className="relative inline-flex size-2 rounded-full bg-primary" />
             </span>
-            <span>{study.services.join('  ·  ')}</span>
+            <span>{study.category?.name ?? study.client}</span>
           </TimelineAnimation>
 
           <TimelineAnimation
@@ -101,7 +109,7 @@ export function CaseStudyHeader({ study }: { study: CaseStudy }) {
             customVariants={headerVariants}
             className="mt-5 max-w-2xl font-sans text-base leading-relaxed text-muted-foreground sm:text-lg"
           >
-            {study.excerpt}
+            {study.summary}
           </TimelineAnimation>
         </div>
 
@@ -151,14 +159,22 @@ export function CaseStudyHeader({ study }: { study: CaseStudy }) {
               className="pointer-events-none absolute bottom-0 -right-4 h-px w-4 bg-border"
             />
             <dl className="grid grid-cols-1 gap-px border border-border bg-border">
-              <BriefRow label="Client" value={study.client} />
-              <BriefRow label="Services" value={study.services.join(', ')} />
+              <BriefRow label={t('brief.client')} value={study.client} />
+              {study.category ? (
+                <BriefRow
+                  label={t('brief.category')}
+                  value={study.category.name}
+                />
+              ) : null}
               <BriefRow
-                label="Published"
-                value={formatDate(study.publishedAt)}
+                label={t('brief.date')}
+                value={formatDate(study.createdAt, locale)}
               />
               {study.tags.length > 0 ? (
-                <BriefRow label="Tags" value={study.tags.join(', ')} />
+                <BriefRow
+                  label={t('brief.tags')}
+                  value={study.tags.map((tag) => tag.name).join(', ')}
+                />
               ) : null}
             </dl>
           </TimelineAnimation>

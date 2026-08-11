@@ -20,6 +20,41 @@ export type ContentTag = {
   name: string;
 };
 
+export type CaseStudySectionKey = 'challenge' | 'approach' | 'outcome';
+
+export type CaseStudyLocaleContent = {
+  title: string;
+  slug: string;
+  summary: string;
+  body: Record<CaseStudySectionKey, string>;
+};
+
+export type CaseStudyDetail = {
+  id: string;
+  client: string;
+  category: Category | null;
+  media: Media;
+  status: 'DRAFT' | 'PUBLISHED';
+  tags: ContentTag[];
+  content: { en: CaseStudyLocaleContent; de: CaseStudyLocaleContent };
+  createdAt: string;
+  updatedAt: string;
+};
+
+/** A case study detail resolved for one locale. */
+export type LocalizedCaseStudyDetail = {
+  id: string;
+  client: string;
+  category: Category | null;
+  media: Media;
+  tags: ContentTag[];
+  createdAt: string;
+  updatedAt: string;
+  title: string;
+  summary: string;
+  body: Record<CaseStudySectionKey, string>;
+};
+
 export type CaseStudyListItem = {
   id: string;
   slugs: { en: string; de: string };
@@ -71,6 +106,18 @@ export async function getCaseStudies(): Promise<CaseStudyListItem[]> {
   return items;
 }
 
+export async function getCaseStudyBySlug(
+  slug: string,
+): Promise<CaseStudyDetail> {
+  const { data } = await apiFetch<{ data: CaseStudyDetail }>(
+    `/api/v1/content/case-studies/${encodeURIComponent(slug)}`,
+    {
+      next: { revalidate: CONTENT_TTL_SECONDS, tags: ['content:case-studies'] },
+    },
+  );
+  return data;
+}
+
 export function localizeCaseStudy(
   study: CaseStudyListItem,
   locale: LocaleCode,
@@ -89,4 +136,53 @@ export function localizeCaseStudy(
     tags: study.tags,
     createdAt: study.createdAt,
   };
+}
+
+export function localizeCaseStudyDetail(
+  detail: CaseStudyDetail,
+  locale: LocaleCode,
+): LocalizedCaseStudyDetail {
+  const isDe = locale === 'de';
+  const content = isDe
+    ? (detail.content.de ?? detail.content.en)
+    : detail.content.en;
+  return {
+    id: detail.id,
+    client: detail.client,
+    category: detail.category,
+    media: detail.media,
+    tags: detail.tags,
+    createdAt: detail.createdAt,
+    updatedAt: detail.updatedAt,
+    title: content.title,
+    summary: content.summary,
+    body: content.body,
+  };
+}
+
+/**
+ * Related studies share at least one tag; the rest are filled with the most
+ * recent published studies. Reuses the cached public list.
+ */
+export async function getRelatedCaseStudies(
+  slug: string,
+  locale: LocaleCode,
+  limit = 2,
+): Promise<LocalizedCaseStudy[]> {
+  const all = await getCaseStudies();
+  const current = all.find(
+    (study) => study.slugs.en === slug || study.slugs.de === slug,
+  );
+  if (!current) return [];
+
+  const others = all.filter((study) => study.id !== current.id);
+  const currentTagIds = new Set(current.tags.map((tag) => tag.id));
+  const byTags = others.filter((study) =>
+    study.tags.some((tag) => currentTagIds.has(tag.id)),
+  );
+  const rest = others.filter((study) => !byTags.includes(study));
+
+  return [...byTags, ...rest]
+    .slice(0, limit)
+    .map((study) => localizeCaseStudy(study, locale));
 }
