@@ -5,10 +5,15 @@ import { Link } from '@/i18n/navigation';
 import { useRef } from 'react';
 import { ArrowLeftIcon, ArrowUpRightIcon } from 'lucide-react';
 import type { Variants } from 'motion/react';
+import { useLocale, useTranslations } from 'next-intl';
 
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
+import HoverPlayCard from '@/components/shared/video-card';
 import { buttonVariants } from '@/components/ui/button';
-import type { Insight } from '@/content/insights';
+import type {
+  LocalizedInsight,
+  LocalizedInsightDetail,
+} from '@/lib/api/content';
 import { useActiveSection } from '@/hooks/use-active-section';
 import { cn } from '@/lib/utils';
 
@@ -37,46 +42,47 @@ type ArticleSection = {
   html: string;
 };
 
-function parseSections(contentHtml: string): ArticleSection[] {
-  const headingRegex = /<h2[^>]*>(.*?)<\/h2>/gi;
-  const matches = Array.from(contentHtml.matchAll(headingRegex));
-
-  return matches.map((match, index) => {
-    const heading = match[1].trim();
-    const start = (match.index ?? 0) + match[0].length;
-    const end = matches[index + 1]?.index ?? contentHtml.length;
-
-    return {
-      id: heading.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
-      label: String(index + 1).padStart(2, '0'),
-      heading,
-      html: contentHtml.slice(start, end).trim(),
-    };
-  });
+function slugifyHeading(heading: string): string {
+  const slug = heading.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  return slug.replace(/^-+|-+$/g, '');
 }
 
-function formatDate(iso: string): string {
-  return new Intl.DateTimeFormat('en-US', {
+function formatDate(iso: string, locale: string): string {
+  const date = new Date(iso);
+  return new Intl.DateTimeFormat(locale === 'de' ? 'de-DE' : 'en-US', {
     month: 'long',
     day: 'numeric',
     year: 'numeric',
-  }).format(new Date(`${iso}T00:00:00`));
+    timeZone: 'UTC',
+  }).format(date);
 }
 
-export function InsightDetail({ insight }: { insight: Insight }) {
+export function InsightDetail({
+  insight,
+}: {
+  insight: LocalizedInsightDetail;
+}) {
   return (
     <article>
       <InsightHeader insight={insight} />
 
       <figure className="group relative aspect-video w-full overflow-hidden border border-border bg-muted">
-        <Image
-          src={insight.heroImage}
-          alt={`${insight.title} — Blih Ops insight`}
-          fill
-          priority
-          sizes="(max-width: 768px) 100vw, 72rem"
-          className="object-cover motion-safe:transition-transform motion-safe:duration-700 motion-safe:ease-out motion-safe:group-hover:scale-[1.015]"
-        />
+        {insight.media.type === 'video' ? (
+          <HoverPlayCard
+            src={insight.media.url}
+            loop
+            className="absolute inset-0 rounded-none shadow-none [&_video]:max-w-none [&_video]:object-cover"
+          />
+        ) : (
+          <Image
+            src={insight.media.url}
+            alt={`${insight.title} — Blih Ops insight`}
+            fill
+            priority
+            sizes="(max-width: 768px) 100vw, 72rem"
+            className="object-cover motion-safe:transition-transform motion-safe:duration-700 motion-safe:ease-out motion-safe:group-hover:scale-[1.015]"
+          />
+        )}
       </figure>
 
       <InsightArticle insight={insight} />
@@ -84,8 +90,10 @@ export function InsightDetail({ insight }: { insight: Insight }) {
   );
 }
 
-function InsightHeader({ insight }: { insight: Insight }) {
+function InsightHeader({ insight }: { insight: LocalizedInsightDetail }) {
   const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations('InsightsPage.detail');
+  const locale = useLocale();
 
   return (
     <section
@@ -108,7 +116,7 @@ function InsightHeader({ insight }: { insight: Insight }) {
           )}
         >
           <ArrowLeftIcon className="size-4" />
-          Back to insights
+          {t('back')}
         </Link>
       </TimelineAnimation>
 
@@ -126,7 +134,7 @@ function InsightHeader({ insight }: { insight: Insight }) {
               <span className="absolute inline-flex size-full animate-ping rounded-full bg-primary opacity-75" />
               <span className="relative inline-flex size-2 rounded-full bg-primary" />
             </span>
-            <span>{insight.category}</span>
+            <span>{insight.category?.name}</span>
           </TimelineAnimation>
 
           <TimelineAnimation
@@ -163,13 +171,21 @@ function InsightHeader({ insight }: { insight: Insight }) {
           >
             <CornerExtensions />
             <dl className="grid grid-cols-1 gap-px border border-border bg-border">
-              <BriefRow label="Author" value={insight.author} />
+              <BriefRow label={t('brief.author')} value={insight.author} />
               <BriefRow
-                label="Published"
-                value={formatDate(insight.publishedAt)}
+                label={t('brief.date')}
+                value={formatDate(insight.createdAt, locale)}
               />
-              <BriefRow label="Reading time" value={insight.readTime} />
-              <BriefRow label="Topic" value={insight.category} />
+              <BriefRow
+                label={t('brief.readTime')}
+                value={t('readTime', { count: insight.readTimeMinutes })}
+              />
+              {insight.category ? (
+                <BriefRow
+                  label={t('brief.topic')}
+                  value={insight.category.name}
+                />
+              ) : null}
             </dl>
           </TimelineAnimation>
         </div>
@@ -210,9 +226,19 @@ function CornerExtensions() {
   ));
 }
 
-function InsightArticle({ insight }: { insight: Insight }) {
+function InsightArticle({ insight }: { insight: LocalizedInsightDetail }) {
   const sectionRef = useRef<HTMLElement>(null);
-  const sections = parseSections(insight.contentHtml);
+  const t = useTranslations('InsightsPage.detail');
+
+  const sections: ArticleSection[] = insight.body
+    .filter((section) => section.content?.trim())
+    .map((section, index) => ({
+      id: slugifyHeading(section.section) || `section-${index + 1}`,
+      label: String(index + 1).padStart(2, '0'),
+      heading: section.section,
+      html: section.content,
+    }));
+
   const [activeSection, setActiveSection] = useActiveSection(
     sections.map((section) => section.id).join(','),
   );
@@ -235,7 +261,7 @@ function InsightArticle({ insight }: { insight: Insight }) {
             customVariants={revealVariants}
             className="font-mono text-[11px] font-medium tracking-widest text-muted-foreground uppercase"
           >
-            In this article
+            {t('articleLabel')}
           </TimelineAnimation>
 
           <nav aria-label="Article sections">
@@ -274,7 +300,9 @@ function InsightArticle({ insight }: { insight: Insight }) {
 
           <div className="mt-8 border-t border-border pt-5 font-sans text-xs leading-relaxed text-muted-foreground">
             <p>{insight.author}</p>
-            <p className="mt-1">{insight.readTime}</p>
+            <p className="mt-1">
+              {t('readTime', { count: insight.readTimeMinutes })}
+            </p>
           </div>
         </aside>
 
@@ -309,23 +337,27 @@ function InsightArticle({ insight }: { insight: Insight }) {
             ))}
           </div>
 
-          <div className="mt-10 flex flex-wrap gap-2 border-t border-border pt-6">
-            {insight.tags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-md border border-border bg-muted px-3 py-1.5 font-sans text-xs font-medium text-muted-foreground"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
+          {insight.tags.length > 0 ? (
+            <div className="mt-10 flex flex-wrap gap-2 border-t border-border pt-6">
+              {insight.tags.map((tag) => (
+                <span
+                  key={tag.id}
+                  className="rounded-md border border-border bg-muted px-3 py-1.5 font-sans text-xs font-medium text-muted-foreground"
+                >
+                  {tag.name}
+                </span>
+              ))}
+            </div>
+          ) : null}
         </div>
       </div>
     </section>
   );
 }
 
-export function InsightRelated({ insights }: { insights: Insight[] }) {
+export function InsightRelated({ insights }: { insights: LocalizedInsight[] }) {
+  const t = useTranslations('InsightsPage.detail.related');
+
   if (insights.length === 0) return null;
 
   return (
@@ -335,27 +367,27 @@ export function InsightRelated({ insights }: { insights: Insight[] }) {
     >
       <div className="mb-10 flex items-baseline justify-between gap-6">
         <h2 className="font-heading text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
-          Related insights
+          {t('title')}
         </h2>
         <Link
           href="/insights"
           className="hidden font-sans text-sm font-medium text-muted-foreground transition-colors hover:text-foreground sm:inline-flex"
         >
-          View all
+          {t('viewAll')}
         </Link>
       </div>
 
       <div className="grid grid-cols-1 gap-px border border-border bg-border md:grid-cols-2">
         {insights.map((insight) => (
           <Link
-            key={insight.slug}
+            key={insight.id}
             href={`/insights/${insight.slug}`}
             className="group flex flex-col bg-background p-5 transition-colors hover:bg-muted/50"
-            aria-label={`Read insight: ${insight.title}`}
+            aria-label={t('readAriaLabel', { title: insight.title })}
           >
             <div className="relative aspect-video w-full overflow-hidden border border-border bg-muted">
               <Image
-                src={insight.heroImage}
+                src={insight.media.url}
                 alt=""
                 fill
                 sizes="(max-width: 768px) 100vw, 560px"
@@ -365,11 +397,13 @@ export function InsightRelated({ insights }: { insights: Insight[] }) {
 
             <div className="mt-4 flex flex-1 flex-col">
               <p className="font-sans text-[11px] font-medium text-primary">
-                {insight.category}
-                <span className="text-muted-foreground">
-                  {' '}
-                  · {formatDate(insight.publishedAt)}
-                </span>
+                {insight.category ? (
+                  <>
+                    {insight.category.name}
+                    <span className="text-muted-foreground"> · </span>
+                  </>
+                ) : null}
+                <span className="text-muted-foreground">{insight.author}</span>
               </p>
               <h3 className="mt-3 max-w-lg font-heading text-lg font-semibold leading-tight tracking-tight text-foreground">
                 {insight.title}
@@ -379,7 +413,7 @@ export function InsightRelated({ insights }: { insights: Insight[] }) {
               </p>
               <div className="mt-auto flex items-end justify-between gap-4 pt-6">
                 <p className="font-sans text-xs text-muted-foreground">
-                  {insight.author} · {insight.readTime}
+                  {insight.author} · {insight.readTimeMinutes} min
                 </p>
                 <ArrowUpRightIcon className="size-5 shrink-0 text-primary motion-safe:transition-transform motion-safe:duration-300 motion-safe:group-hover:translate-x-0.5 motion-safe:group-hover:-translate-y-0.5" />
               </div>

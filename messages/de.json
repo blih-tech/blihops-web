@@ -399,6 +399,22 @@
       "title": "Einblicke konnten nicht geladen werden.",
       "description": "Bei uns ist etwas schiefgelaufen. Bitte versuchen Sie es erneut.",
       "retry": "Erneut versuchen"
+    },
+    "detail": {
+      "back": "Zurück zu Einblicken",
+      "articleLabel": "In diesem Artikel",
+      "brief": {
+        "author": "Autor",
+        "date": "Veröffentlicht",
+        "readTime": "Lesezeit",
+        "topic": "Thema"
+      },
+      "readTime": "{count} Min. Lesezeit",
+      "related": {
+        "title": "Verwandte Einblicke",
+        "viewAll": "Alle ansehen",
+        "readAriaLabel": "Einblick lesen: {title}"
+      }
     }
   },
   "Shared": {

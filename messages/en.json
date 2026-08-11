@@ -760,6 +760,22 @@
       "title": "Couldn't load insights.",
       "description": "Something went wrong on our side. Please try again.",
       "retry": "Try again"
+    },
+    "detail": {
+      "back": "Back to insights",
+      "articleLabel": "In this article",
+      "brief": {
+        "author": "Author",
+        "date": "Published",
+        "readTime": "Reading time",
+        "topic": "Topic"
+      },
+      "readTime": "{count} min read",
+      "related": {
+        "title": "Related insights",
+        "viewAll": "View all",
+        "readAriaLabel": "Read insight: {title}"
+      }
     }
   },
   "ContactPage": {
