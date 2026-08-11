@@ -144,6 +144,17 @@ export type LocalizedInsightDetail = {
   body: InsightSection[];
 };
 
+export type CareerListItem = {
+  id: string;
+  title: string;
+  slug: string;
+  department: string;
+  location: string;
+  employmentType: string;
+  summary: string;
+  createdAt: string;
+};
+
 type PaginationMeta = Record<string, unknown>;
 
 type ListResponse<T> = { items: T[]; meta: PaginationMeta };
@@ -271,6 +282,16 @@ export async function getRelatedInsights(
   return [...byTags, ...rest]
     .slice(0, limit)
     .map((insight) => localizeInsight(insight, locale));
+}
+
+export async function getCareers(): Promise<CareerListItem[]> {
+  const { items } = await apiFetch<ListResponse<CareerListItem>>(
+    '/api/v1/content/careers?pageSize=100',
+    {
+      next: { revalidate: CONTENT_TTL_SECONDS, tags: ['content:careers'] },
+    },
+  );
+  return items;
 }
 
 export function localizeCaseStudy(

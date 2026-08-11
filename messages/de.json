@@ -999,49 +999,12 @@
       "title": "Finden Sie Ihren Platz",
       "description": "Wir schätzen klares Denken, zuverlässige Ausführung und Menschen, die das System um sich herum verbessern.",
       "emptyTitle": "Derzeit keine offenen Stellen",
-      "emptyDescription": "Unsere Teams wachsen weiter. Schauen Sie später nach neuen Chancen.",
-      "items": {
-        "operationsDeliveryLead": {
-          "title": "Leitung operative Bereitstellung",
-          "department": "Operations",
-          "location": "Addis Ababa, Äthiopien",
-          "workMode": "Vor Ort",
-          "employmentType": "Vollzeit",
-          "summary": "Leiten Sie einen Managed Delivery Pod und überführen Sie Kundenzusagen in zuverlässige tägliche Abläufe."
-        },
-        "aiAutomationEngineer": {
-          "title": "AI-Automatisierungsingenieur",
-          "department": "AI & Automatisierung",
-          "location": "Addis Ababa, Äthiopien",
-          "workMode": "Hybrid",
-          "employmentType": "Vollzeit",
-          "summary": "Konzipieren Sie zuverlässige Automatisierungen, die repetitive Arbeit beseitigen und menschliche Prüfung transparent halten."
-        },
-        "fullStackSoftwareEngineer": {
-          "title": "Full-Stack-Softwareentwickler",
-          "department": "Softwareentwicklung",
-          "location": "Addis Ababa, Äthiopien",
-          "workMode": "Hybrid",
-          "employmentType": "Vollzeit",
-          "summary": "Entwickeln Sie interne und kundenorientierte Software, mit der Managed Operations einfacher gesteuert und verbessert werden können."
-        },
-        "customerExperienceSpecialist": {
-          "title": "Spezialist für Kundenerlebnis",
-          "department": "Kundenerlebnis",
-          "location": "Addis Ababa, Äthiopien",
-          "workMode": "Vor Ort",
-          "employmentType": "Vollzeit",
-          "summary": "Vertreten Sie Kundenmarken kanalübergreifend mit Empathie, sicherem Urteilsvermögen und verlässlicher Nachverfolgung."
-        },
-        "businessDevelopmentAssociate": {
-          "title": "Mitarbeiter Geschäftsentwicklung",
-          "department": "Wachstum",
-          "location": "Addis Ababa, Äthiopien",
-          "workMode": "Hybrid",
-          "employmentType": "Vollzeit",
-          "summary": "Helfen Sie wachsenden Unternehmen zu verstehen, wo ein Managed Blih Ops-Team messbaren operativen Mehrwert schaffen kann."
-        }
-      }
+      "emptyDescription": "Unsere Teams wachsen weiter. Schauen Sie später nach neuen Chancen."
+    },
+    "error": {
+      "title": "Offene Stellen konnten nicht geladen werden.",
+      "description": "Bei uns ist etwas schiefgelaufen. Bitte versuchen Sie es erneut.",
+      "retry": "Erneut versuchen"
     }
   },
   "TalentPage": {
