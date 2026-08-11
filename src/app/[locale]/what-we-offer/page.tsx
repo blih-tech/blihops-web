@@ -4,7 +4,12 @@ import { WhatWeOfferHero } from '@/components/sections/what-we-offer/Hero';
 import { ServicesList } from '@/components/sections/what-we-offer/ServicesList';
 import { createGenerateMetadata } from '@/i18n/metadata';
 import { routing } from '@/i18n/routing';
-import { getServicesHero, type ServicesHero } from '@/lib/api/content';
+import {
+  getLogos,
+  getServicesHero,
+  type Logo,
+  type ServicesHero,
+} from '@/lib/api/content';
 import { setRequestLocale } from 'next-intl/server';
 
 export const generateMetadata = createGenerateMetadata(
@@ -25,16 +30,18 @@ export default async function WhatWeOfferPage({
   setRequestLocale(locale);
 
   let servicesHero: ServicesHero | null = null;
+  let logos: Logo[] = [];
   try {
-    servicesHero = await getServicesHero();
+    [servicesHero, logos] = await Promise.all([getServicesHero(), getLogos()]);
   } catch {
     servicesHero = null;
+    logos = [];
   }
 
   return (
     <main className="min-h-screen bg-background text-foreground">
       <SectionWrapper>
-        <WhatWeOfferHero servicesHero={servicesHero} />
+        <WhatWeOfferHero servicesHero={servicesHero} logos={logos} />
         <Approach />
         <ServicesList />
       </SectionWrapper>

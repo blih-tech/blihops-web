@@ -1,7 +1,12 @@
-import { LogoCloud } from '@/components/sections/shared/LogoCloud';
+import { useTranslations } from 'next-intl';
 
-export function LogosSection() {
+import { LogoCloud } from '@/components/sections/shared/LogoCloud';
+import type { Logo } from '@/lib/api/content';
+
+export function LogosSection({ logos }: { logos: Logo[] }) {
   const t = useTranslations('Home.logoCloud');
+
+  if (logos.length === 0) return null;
 
   return (
     <section className="relative space-y-4 border-t pt-6 pb-10">
@@ -9,9 +14,8 @@ export function LogosSection() {
         {t('heading')}
       </h2>
       <div className="relative z-10 mx-auto max-w-4xl">
-        <LogoCloud />
+        <LogoCloud logos={logos} />
       </div>
     </section>
   );
 }
-import { useTranslations } from 'next-intl';

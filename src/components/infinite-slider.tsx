@@ -1,4 +1,5 @@
 'use client';
+import { Fragment } from 'react';
 import { cn } from '@/lib/utils';
 import { animate, motion, useMotionValue } from 'motion/react';
 import { useEffect, useState } from 'react';
@@ -11,6 +12,8 @@ export type InfiniteSliderProps = {
   speedOnHover?: number;
   direction?: 'horizontal' | 'vertical';
   reverse?: boolean;
+  /** How many times the children are repeated for seamless looping. */
+  copies?: number;
   className?: string;
 };
 
@@ -21,6 +24,7 @@ export function InfiniteSlider({
   speedOnHover,
   direction = 'horizontal',
   reverse = false,
+  copies = 4,
   className,
 }: InfiniteSliderProps) {
   const [currentSpeed, setCurrentSpeed] = useState(speed);
@@ -32,8 +36,9 @@ export function InfiniteSlider({
     let controls: ReturnType<typeof animate> | undefined;
     const size = direction === 'horizontal' ? width : height;
     const contentSize = size + gap;
-    const from = reverse ? -contentSize / 2 : 0;
-    const to = reverse ? 0 : -contentSize / 2;
+    const travel = contentSize / copies;
+    const from = reverse ? -travel : 0;
+    const to = reverse ? 0 : -travel;
 
     const distanceToTravel = Math.abs(to - from);
     const duration = distanceToTravel / currentSpeed;
@@ -72,6 +77,7 @@ export function InfiniteSlider({
     isTransitioning,
     direction,
     reverse,
+    copies,
   ]);
 
   const hoverProps = speedOnHover
@@ -101,8 +107,9 @@ export function InfiniteSlider({
         }}
         {...hoverProps}
       >
-        {children}
-        {children}
+        {Array.from({ length: copies }).map((_, index) => (
+          <Fragment key={index}>{children}</Fragment>
+        ))}
       </motion.div>
     </div>
   );

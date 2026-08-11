@@ -7,6 +7,12 @@ import { Services } from '@/components/sections/landing/Services';
 import { Solution } from '@/components/sections/landing/Solution';
 import { Testimonials } from '@/components/sections/landing/Testimonials';
 import { Trust } from '@/components/sections/landing/Trust';
+import { routing } from '@/i18n/routing';
+import { getLogos, type Logo } from '@/lib/api/content';
+
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
 export default async function Home({
   params,
@@ -16,10 +22,17 @@ export default async function Home({
   const { locale } = await params;
   setRequestLocale(locale);
 
+  let logos: Logo[] = [];
+  try {
+    logos = await getLogos();
+  } catch {
+    logos = [];
+  }
+
   return (
     <main className="min-h-screen bg-background text-foreground">
       <SectionWrapper>
-        <HeroWrapper />
+        <HeroWrapper logos={logos} />
         <Problem />
         <Solution />
         <Services />

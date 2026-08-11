@@ -1,6 +1,9 @@
 import { InfiniteSlider } from '@/components/infinite-slider';
+import type { Logo } from '@/lib/api/content';
 
-export function LogoCloud() {
+export function LogoCloud({ logos }: { logos: Logo[] }) {
+  if (logos.length === 0) return null;
+
   return (
     <div className="mask-[linear-gradient(to_right,transparent,black,transparent)] overflow-hidden py-4">
       <InfiniteSlider gap={42} reverse speed={80} speedOnHover={25}>
@@ -8,11 +11,11 @@ export function LogoCloud() {
           // eslint-disable-next-line @next/next/no-img-element
           <img
             alt={logo.alt}
-            className="pointer-events-none h-4 select-none md:h-5 dark:brightness-0 dark:invert"
+            className="pointer-events-none h-6 select-none md:h-8 dark:brightness-0 dark:invert"
             height="auto"
-            key={`logo-${logo.alt}`}
+            key={logo.id}
             loading="lazy"
-            src={logo.src}
+            src={logo.imageUrl}
             width="auto"
           />
         ))}
@@ -20,38 +23,3 @@ export function LogoCloud() {
     </div>
   );
 }
-
-const logos = [
-  {
-    src: 'https://storage.efferd.com/logo/nvidia-wordmark.svg',
-    alt: 'Nvidia Logo',
-  },
-  {
-    src: 'https://storage.efferd.com/logo/supabase-wordmark.svg',
-    alt: 'Supabase Logo',
-  },
-  {
-    src: 'https://storage.efferd.com/logo/openai-wordmark.svg',
-    alt: 'OpenAI Logo',
-  },
-  {
-    src: 'https://storage.efferd.com/logo/turso-wordmark.svg',
-    alt: 'Turso Logo',
-  },
-  {
-    src: 'https://storage.efferd.com/logo/vercel-wordmark.svg',
-    alt: 'Vercel Logo',
-  },
-  {
-    src: 'https://storage.efferd.com/logo/github-wordmark.svg',
-    alt: 'GitHub Logo',
-  },
-  {
-    src: 'https://storage.efferd.com/logo/claude-wordmark.svg',
-    alt: 'Claude AI Logo',
-  },
-  {
-    src: 'https://storage.efferd.com/logo/clerk-wordmark.svg',
-    alt: 'Clerk Logo',
-  },
-];
