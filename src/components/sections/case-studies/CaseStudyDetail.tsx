@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import type { LocalizedCaseStudyDetail } from '@/lib/api/content';
+import HoverPlayCard from '@/components/shared/video-card';
 
 import { CaseStudyHeader } from './CaseStudyHeader';
 import { CaseStudyNarrative } from './CaseStudyNarrative';
@@ -29,14 +30,10 @@ function CaseStudyHeroImage({ study }: { study: LocalizedCaseStudyDetail }) {
   return (
     <figure className="group relative aspect-video w-full overflow-hidden border border-border bg-muted">
       {study.media.type === 'video' ? (
-        <video
+        <HoverPlayCard
           src={study.media.url}
-          aria-label={alt}
-          autoPlay
-          muted
           loop
-          playsInline
-          className="absolute inset-0 size-full object-cover"
+          className="absolute inset-0 rounded-none shadow-none [&_video]:max-w-none [&_video]:object-cover"
         />
       ) : (
         <Image

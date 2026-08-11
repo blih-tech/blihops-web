@@ -14,6 +14,7 @@ import { useTranslations } from 'next-intl';
 
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
 import type { Category, LocalizedCaseStudy } from '@/lib/api/content';
+import HoverPlayCard from '@/components/shared/video-card';
 import { cn } from '@/lib/utils';
 
 type CaseStudiesArchiveProps = {
@@ -222,13 +223,21 @@ function CaseStudyCard({ study }: { study: LocalizedCaseStudy }) {
       aria-label={t('readAriaLabel', { title: study.title })}
     >
       <div className="relative aspect-video overflow-hidden rounded-md border border-border bg-muted">
-        <Image
-          src={study.media.url}
-          alt=""
-          fill
-          sizes="(max-width: 768px) 100vw, 470px"
-          className="object-cover motion-safe:transition-transform motion-safe:duration-700 motion-safe:ease-out motion-safe:group-hover:scale-[1.025]"
-        />
+        {study.media.type === 'video' ? (
+          <HoverPlayCard
+            src={study.media.url}
+            loop
+            className="absolute inset-0 rounded-none shadow-none [&_video]:max-w-none [&_video]:object-cover"
+          />
+        ) : (
+          <Image
+            src={study.media.url}
+            alt=""
+            fill
+            sizes="(max-width: 768px) 100vw, 470px"
+            className="object-cover motion-safe:transition-transform motion-safe:duration-700 motion-safe:ease-out motion-safe:group-hover:scale-[1.025]"
+          />
+        )}
       </div>
 
       <article className="flex flex-1 flex-col pt-4">
