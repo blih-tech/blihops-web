@@ -4,6 +4,7 @@ import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { SiteChrome } from '@/components/layout/SiteChrome';
+import SplashCursor from '@/components/SplashCursor';
 import { routing } from '@/i18n/routing';
 
 const fontSans = Inter({
@@ -102,6 +103,18 @@ export default async function LocaleLayout({
         <NextIntlClientProvider>
           <SiteChrome>{children}</SiteChrome>
         </NextIntlClientProvider>
+        <SplashCursor
+          DENSITY_DISSIPATION={10}
+          VELOCITY_DISSIPATION={0.5}
+          PRESSURE={0.1}
+          CURL={3}
+          SPLAT_RADIUS={0.2}
+          SPLAT_FORCE={6000}
+          COLOR_UPDATE_SPEED={10}
+          SHADING
+          RAINBOW_MODE={false}
+          COLOR="#3B82F6"
+        />
       </body>
     </html>
   );
