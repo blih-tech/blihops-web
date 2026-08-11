@@ -38,7 +38,7 @@ export function Hero() {
   return (
     <section
       ref={sectionRef}
-      className="relative mx-auto w-full max-w-6xl font-sans"
+      className="relative mx-auto w-full max-w-7xl font-sans"
     >
       <HeroBackdrop />
 
