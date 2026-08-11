@@ -201,6 +201,16 @@ export type Logo = {
   alt: string;
 };
 
+export type Testimonial = {
+  id: string;
+  avatarUrl: string;
+  name: string;
+  role: string;
+  company: string;
+  quote: string;
+  isPrimary: boolean;
+};
+
 type PaginationMeta = Record<string, unknown>;
 
 type ListResponse<T> = { items: T[]; meta: PaginationMeta };
@@ -384,6 +394,19 @@ export async function getLogos(): Promise<Logo[]> {
     '/api/v1/content/logos?pageSize=100',
     {
       next: { revalidate: CONTENT_TTL_SECONDS, tags: ['content:logos'] },
+    },
+  );
+  return items;
+}
+
+export async function getTestimonials(): Promise<Testimonial[]> {
+  const { items } = await apiFetch<ListResponse<Testimonial>>(
+    '/api/v1/content/testimonials?pageSize=100',
+    {
+      next: {
+        revalidate: CONTENT_TTL_SECONDS,
+        tags: ['content:testimonials'],
+      },
     },
   );
   return items;

@@ -410,39 +410,7 @@
       "title": "What our clients say",
       "description": "See how teams run operations with structure, SLAs, and clear ownership.",
       "screenReader": "{name}, {role} at {company}: {quote}",
-      "attribution": "{role}, {company}",
-      "items": {
-        "sarahChen": {
-          "quote": "Blih Ops took support off our plate in two weeks. SLAs are real - we finally see response times every Monday.",
-          "name": "Sarah Chen",
-          "role": "Head of Operations"
-        },
-        "marcusWebb": {
-          "quote": "We tried three offshore vendors before this. Dedicated pods and weekly reporting changed how we scale operations.",
-          "name": "Marcus Webb",
-          "role": "COO"
-        },
-        "amiraHassan": {
-          "quote": "Back-office accuracy jumped after they documented SOPs. Our team reclaimed leadership hours almost immediately.",
-          "name": "Amira Hassan",
-          "role": "Founder"
-        },
-        "jamesOkonkwo": {
-          "quote": "AI-assisted triage cut ticket noise without losing the human handoff. QA is built in, not bolted on.",
-          "name": "James Okonkwo",
-          "role": "VP Customer Success"
-        },
-        "elenaPetrova": {
-          "quote": "Pilot to live in under three weeks. Clear ownership, one pod lead, and reporting we actually use.",
-          "name": "Elena Petrova",
-          "role": "Director of Operations"
-        },
-        "davidKim": {
-          "quote": "Cost dropped versus our in-house plan, but quality held. That combination is rare in outsourcing.",
-          "name": "David Kim",
-          "role": "CEO"
-        }
-      }
+      "attribution": "{role}, {company}"
     }
   },
   "ServicesPage": {

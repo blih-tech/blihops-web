@@ -8,7 +8,12 @@ import { Solution } from '@/components/sections/landing/Solution';
 import { Testimonials } from '@/components/sections/landing/Testimonials';
 import { Trust } from '@/components/sections/landing/Trust';
 import { routing } from '@/i18n/routing';
-import { getLogos, type Logo } from '@/lib/api/content';
+import {
+  getLogos,
+  getTestimonials,
+  type Logo,
+  type Testimonial,
+} from '@/lib/api/content';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -23,10 +28,12 @@ export default async function Home({
   setRequestLocale(locale);
 
   let logos: Logo[] = [];
+  let testimonials: Testimonial[] = [];
   try {
-    logos = await getLogos();
+    [logos, testimonials] = await Promise.all([getLogos(), getTestimonials()]);
   } catch {
     logos = [];
+    testimonials = [];
   }
 
   return (
@@ -34,10 +41,10 @@ export default async function Home({
       <SectionWrapper>
         <HeroWrapper logos={logos} />
         <Problem />
-        <Solution />
+        <Solution testimonials={testimonials} />
         <Services />
         <Trust />
-        <Testimonials />
+        <Testimonials testimonials={testimonials} />
       </SectionWrapper>
     </main>
   );
