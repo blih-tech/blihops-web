@@ -4,9 +4,11 @@ import * as motion from 'motion/react-client';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
+import { CareersError } from '@/components/sections/careers/CareersError';
 import { CareersHero } from '@/components/sections/careers/Hero';
-import { careerRoles } from '@/content/careers';
 import { createGenerateMetadata } from '@/i18n/metadata';
+import { routing } from '@/i18n/routing';
+import { getCareers, type CareerListItem } from '@/lib/api/content';
 
 const sectionReveal = {
   initial: { opacity: 0, y: 18, filter: 'blur(10px)' },
@@ -17,13 +19,9 @@ const sectionReveal = {
 
 export const generateMetadata = createGenerateMetadata('careers', '/careers');
 
-const roleMessageKeys = {
-  'operations-delivery-lead': 'operationsDeliveryLead',
-  'ai-automation-engineer': 'aiAutomationEngineer',
-  'full-stack-software-engineer': 'fullStackSoftwareEngineer',
-  'customer-experience-specialist': 'customerExperienceSpecialist',
-  'business-development-associate': 'businessDevelopmentAssociate',
-} as const;
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
 
 export default async function CareersPage({
   params,
@@ -34,42 +32,50 @@ export default async function CareersPage({
   setRequestLocale(locale);
   const t = await getTranslations('CareersPage.roles');
 
+  let roles: CareerListItem[] = [];
+  let failed = false;
+
+  try {
+    roles = await getCareers();
+  } catch {
+    failed = true;
+  }
+
   return (
     <main className="min-h-screen bg-background text-foreground">
       <SectionWrapper>
         <CareersHero />
 
-        <motion.section
-          {...sectionReveal}
-          id="open-roles"
-          className="scroll-mt-24 py-16 md:py-24"
-          aria-labelledby="open-roles-heading"
-        >
-          <div className="grid min-w-0 items-start gap-10 lg:grid-cols-12 lg:gap-16">
-            <div className="min-w-0 lg:sticky lg:top-24 lg:col-span-4">
-              <p className="font-mono text-[11px] font-medium tracking-widest text-primary uppercase">
-                {t('eyebrow')}
-              </p>
-              <h2
-                id="open-roles-heading"
-                className="mt-3 font-heading text-3xl font-semibold tracking-tight sm:text-4xl"
-              >
-                {t('title')}
-              </h2>
-              <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground sm:text-base">
-                {t('description')}
-              </p>
-            </div>
+        {failed ? (
+          <CareersError />
+        ) : (
+          <motion.section
+            {...sectionReveal}
+            id="open-roles"
+            className="scroll-mt-24 pt-16 pb-6 md:pt-24 md:pb-8"
+            aria-labelledby="open-roles-heading"
+          >
+            <div className="grid min-w-0 items-start gap-10 lg:grid-cols-12 lg:gap-16">
+              <div className="min-w-0 lg:sticky lg:top-24 lg:col-span-4">
+                <p className="font-mono text-[11px] font-medium tracking-widest text-primary uppercase">
+                  {t('eyebrow')}
+                </p>
+                <h2
+                  id="open-roles-heading"
+                  className="mt-3 font-heading text-3xl font-semibold tracking-tight sm:text-4xl"
+                >
+                  {t('title')}
+                </h2>
+                <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground sm:text-base">
+                  {t('description')}
+                </p>
+              </div>
 
-            <div className="min-w-0 border-t border-border lg:col-span-8">
-              {careerRoles.length > 0 ? (
-                careerRoles.map((role, index) => {
-                  const key =
-                    roleMessageKeys[role.slug as keyof typeof roleMessageKeys];
-
-                  return (
+              <div className="min-w-0 border-t border-border lg:col-span-8">
+                {roles.length > 0 ? (
+                  roles.map((role, index) => (
                     <motion.div
-                      key={role.slug}
+                      key={role.id}
                       className="min-w-0"
                       initial={{ opacity: 0, y: 16 }}
                       whileInView={{ opacity: 1, y: 0 }}
@@ -89,22 +95,21 @@ export default async function CareersPage({
                         </span>
                         <span className="min-w-0">
                           <span className="block break-words font-heading text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
-                            {t(`items.${key}.title`)}
+                            {role.title}
                           </span>
                           <span className="mt-3 block max-w-xl break-words text-sm leading-relaxed text-muted-foreground">
-                            {t(`items.${key}.summary`)}
+                            {role.summary}
                           </span>
                           <span className="mt-4 flex min-w-0 flex-wrap items-center gap-x-4 gap-y-2 break-words text-xs font-medium text-muted-foreground">
-                            <span>{t(`items.${key}.department`)}</span>
+                            <span>{role.department}</span>
                             <span className="inline-flex items-center gap-1.5">
                               <MapPinIcon
                                 className="size-3.5"
                                 aria-hidden="true"
                               />
-                              {t(`items.${key}.location`)}
+                              {role.location}
                             </span>
-                            <span>{t(`items.${key}.workMode`)}</span>
-                            <span>{t(`items.${key}.employmentType`)}</span>
+                            <span>{role.employmentType}</span>
                           </span>
                         </span>
                         <span className="flex size-10 items-center justify-center self-start rounded-md border border-border bg-background text-primary transition-[color,background-color,border-color,transform] group-hover:translate-x-0.5 group-hover:border-primary group-hover:bg-primary group-hover:text-primary-foreground">
@@ -115,21 +120,21 @@ export default async function CareersPage({
                         </span>
                       </Link>
                     </motion.div>
-                  );
-                })
-              ) : (
-                <div className="border-b border-border py-12">
-                  <h3 className="font-heading text-2xl font-semibold">
-                    {t('emptyTitle')}
-                  </h3>
-                  <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">
-                    {t('emptyDescription')}
-                  </p>
-                </div>
-              )}
+                  ))
+                ) : (
+                  <div className="border-b border-border py-12">
+                    <h3 className="font-heading text-2xl font-semibold">
+                      {t('emptyTitle')}
+                    </h3>
+                    <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted-foreground">
+                      {t('emptyDescription')}
+                    </p>
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
-        </motion.section>
+          </motion.section>
+        )}
       </SectionWrapper>
     </main>
   );

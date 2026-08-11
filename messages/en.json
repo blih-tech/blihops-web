@@ -999,49 +999,12 @@
       "title": "Find where you fit",
       "description": "We value clear thinking, dependable execution, and people who improve the system around them.",
       "emptyTitle": "No open roles right now",
-      "emptyDescription": "Our teams are still growing. Check back for new opportunities.",
-      "items": {
-        "operationsDeliveryLead": {
-          "title": "Operations Delivery Lead",
-          "department": "Operations",
-          "location": "Addis Ababa, Ethiopia",
-          "workMode": "On-site",
-          "employmentType": "Full-time",
-          "summary": "Lead a managed delivery pod and turn client commitments into dependable daily operations."
-        },
-        "aiAutomationEngineer": {
-          "title": "AI Automation Engineer",
-          "department": "AI & Automation",
-          "location": "Addis Ababa, Ethiopia",
-          "workMode": "Hybrid",
-          "employmentType": "Full-time",
-          "summary": "Design reliable automations that remove repetitive work while keeping human review visible."
-        },
-        "fullStackSoftwareEngineer": {
-          "title": "Full-Stack Software Engineer",
-          "department": "Engineering",
-          "location": "Addis Ababa, Ethiopia",
-          "workMode": "Hybrid",
-          "employmentType": "Full-time",
-          "summary": "Build internal and client-facing software that makes managed operations easier to run and improve."
-        },
-        "customerExperienceSpecialist": {
-          "title": "Customer Experience Specialist",
-          "department": "Customer Experience",
-          "location": "Addis Ababa, Ethiopia",
-          "workMode": "On-site",
-          "employmentType": "Full-time",
-          "summary": "Represent client brands with empathy, sound judgment, and consistent follow-through across customer channels."
-        },
-        "businessDevelopmentAssociate": {
-          "title": "Business Development Associate",
-          "department": "Growth",
-          "location": "Addis Ababa, Ethiopia",
-          "workMode": "Hybrid",
-          "employmentType": "Full-time",
-          "summary": "Help growing companies understand where a managed Blih Ops team can create measurable operational value."
-        }
-      }
+      "emptyDescription": "Our teams are still growing. Check back for new opportunities."
+    },
+    "error": {
+      "title": "Couldn't load open roles.",
+      "description": "Something went wrong on our side. Please try again.",
+      "retry": "Try again"
     }
   },
   "TalentPage": {
