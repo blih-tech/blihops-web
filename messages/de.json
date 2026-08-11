@@ -354,6 +354,26 @@
         "description": "Bei uns ist etwas schiefgelaufen. Bitte versuchen Sie es erneut.",
         "retry": "Erneut versuchen"
       }
+    },
+    "detail": {
+      "back": "Zurück zu Fallstudien",
+      "narrativeLabel": "Die Erzählung",
+      "sections": {
+        "challenge": "Die Herausforderung",
+        "approach": "Der Ansatz",
+        "outcome": "Das Ergebnis"
+      },
+      "brief": {
+        "client": "Kunde",
+        "category": "Kategorie",
+        "date": "Veröffentlicht",
+        "tags": "Tags"
+      },
+      "related": {
+        "title": "Verwandte Fallstudien",
+        "viewAll": "Alle ansehen",
+        "readAriaLabel": "Fallstudie lesen: {title}"
+      }
     }
   },
   "InsightsPage": {
@@ -622,6 +642,13 @@
     "notFound": {
       "title": "Seite nicht gefunden",
       "description": "Diese Adresse existiert nicht oder wurde verschoben. Kehren Sie zur Startseite zurück und erfahren Sie weiter, wie Blih Ops Abläufe übernimmt."
+    },
+    "detailCta": {
+      "ariaLabel": "Mit Blih Ops zusammenarbeiten",
+      "eyebrow": "Ihr Betrieb, als Nächstes",
+      "title": "Bereit, die Arbeit leichter zu gestalten?",
+      "description": "Sprechen Sie über die Möglichkeit oder testen Sie einen fokussierten Workflow mit klaren Erfolgskriterien.",
+      "pilotCta": "2-Wochen-Pilot starten"
     }
   },
   "Home": {

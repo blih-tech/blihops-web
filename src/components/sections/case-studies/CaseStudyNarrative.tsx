@@ -2,9 +2,13 @@
 
 import { useRef } from 'react';
 import type { Variants } from 'motion/react';
+import { useTranslations } from 'next-intl';
 
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
-import type { CaseStudy } from '@/content/case-studies';
+import type {
+  CaseStudySectionKey,
+  LocalizedCaseStudyDetail,
+} from '@/lib/api/content';
 import { useActiveSection } from '@/hooks/use-active-section';
 import { cn } from '@/lib/utils';
 
@@ -33,36 +37,29 @@ type Chapter = {
   html: string;
 };
 
-function parseChapters(contentHtml: string): Chapter[] {
-  const sections: Chapter[] = [];
-  const headingRegex = /<h2[^>]*>(.*?)<\/h2>/gi;
-  const matches = Array.from(contentHtml.matchAll(headingRegex));
+const SECTION_KEYS: CaseStudySectionKey[] = [
+  'challenge',
+  'approach',
+  'outcome',
+];
 
-  matches.forEach((match, index) => {
-    const headingText = match[1].trim();
-    const start = match.index !== undefined ? match.index + match[0].length : 0;
-    const end =
-      index + 1 < matches.length
-        ? matches[index + 1].index
-        : contentHtml.length;
-    const html = contentHtml.slice(start, end).trim();
-
-    const id = headingText.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-
-    sections.push({
-      id,
-      label: String(index + 1).padStart(2, '0'),
-      heading: headingText,
-      html,
-    });
-  });
-
-  return sections;
-}
-
-export function CaseStudyNarrative({ study }: { study: CaseStudy }) {
+export function CaseStudyNarrative({
+  study,
+}: {
+  study: LocalizedCaseStudyDetail;
+}) {
   const sectionRef = useRef<HTMLElement>(null);
-  const chapters = parseChapters(study.contentHtml);
+  const t = useTranslations('CaseStudiesPage.detail');
+
+  const chapters: Chapter[] = SECTION_KEYS.filter((key) =>
+    study.body[key]?.trim(),
+  ).map((key, index) => ({
+    id: key,
+    label: String(index + 1).padStart(2, '0'),
+    heading: t(`sections.${key}`),
+    html: study.body[key],
+  }));
+
   const [activeChapter, setActiveChapter] = useActiveSection(
     chapters.map((chapter) => chapter.id).join(','),
   );
@@ -85,7 +82,7 @@ export function CaseStudyNarrative({ study }: { study: CaseStudy }) {
             customVariants={narrativeVariants}
             className="font-mono text-[11px] font-medium tracking-widest text-muted-foreground uppercase"
           >
-            The narrative
+            {t('narrativeLabel')}
           </TimelineAnimation>
           <TimelineAnimation
             as="h2"

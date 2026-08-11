@@ -283,6 +283,13 @@
     "notFound": {
       "title": "Page not found",
       "description": "That route doesn't exist or it moved. Head home and keep exploring how Blih Ops runs operations."
+    },
+    "detailCta": {
+      "ariaLabel": "Work with Blih Ops",
+      "eyebrow": "Your operation, next",
+      "title": "Ready to make the work easier to run?",
+      "description": "Talk through the opportunity or test one focused workflow with clear success measures.",
+      "pilotCta": "Get a 2-week pilot"
     }
   },
   "Home": {
@@ -707,6 +714,26 @@
         "title": "Couldn't load case studies.",
         "description": "Something went wrong on our side. Please try again.",
         "retry": "Try again"
+      }
+    },
+    "detail": {
+      "back": "Back to case studies",
+      "narrativeLabel": "The narrative",
+      "sections": {
+        "challenge": "The challenge",
+        "approach": "The approach",
+        "outcome": "The outcome"
+      },
+      "brief": {
+        "client": "Client",
+        "category": "Category",
+        "date": "Published",
+        "tags": "Tags"
+      },
+      "related": {
+        "title": "Related case studies",
+        "viewAll": "View all",
+        "readAriaLabel": "Read case study: {title}"
       }
     }
   },

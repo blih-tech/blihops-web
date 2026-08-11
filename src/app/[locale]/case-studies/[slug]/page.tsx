@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { notFound, redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import {
@@ -7,49 +7,70 @@ import {
   CaseStudyRelated,
 } from '@/components/sections/case-studies/CaseStudyDetail';
 import { DetailConversionCta } from '@/components/sections/shared/DetailConversionCta';
+import { noIndexRobots } from '@/i18n/metadata';
+import { routing } from '@/i18n/routing';
 import {
-  caseStudies,
+  getCaseStudies,
   getCaseStudyBySlug,
   getRelatedCaseStudies,
-} from '@/content/case-studies';
-import { noIndexRobots } from '@/i18n/metadata';
+  localizeCaseStudyDetail,
+  type LocaleCode,
+  type LocalizedCaseStudyDetail,
+} from '@/lib/api/content';
 
-export function generateStaticParams() {
-  return caseStudies.map((study) => ({ slug: study.slug }));
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  try {
+    const studies = await getCaseStudies();
+    return routing.locales.flatMap((locale) =>
+      studies.map((study) => ({
+        locale,
+        slug: study.slugs[locale as LocaleCode],
+      })),
+    );
+  } catch {
+    return [];
+  }
 }
 
-export function generateMetadata({
+export async function generateMetadata({
   params,
 }: {
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
-  return params.then(({ slug }) => {
-    const study = getCaseStudyBySlug(slug);
-    if (!study) {
-      return { title: 'Case study not found', robots: noIndexRobots };
-    }
+  const { locale, slug } = await params;
+
+  try {
+    const detail = await getCaseStudyBySlug(slug);
+    const study = localizeCaseStudyDetail(detail, locale as LocaleCode);
+
+    const images =
+      study.media.type === 'image' ? [{ url: study.media.url }] : undefined;
 
     return {
       title: study.title,
-      description: study.excerpt,
+      description: study.summary,
       robots: noIndexRobots,
-      alternates: { canonical: `/en/case-studies/${study.slug}` },
+      alternates: { canonical: `/${locale}/case-studies/${slug}` },
       openGraph: {
         title: `${study.title} | Blih Ops`,
-        description: study.excerpt,
+        description: study.summary,
         type: 'article',
-        publishedTime: study.publishedAt,
-        url: `https://blihops.com/en/case-studies/${study.slug}`,
-        images: [{ url: study.heroImage }],
+        publishedTime: study.createdAt,
+        url: `https://blihops.com/${locale}/case-studies/${slug}`,
+        images,
       },
       twitter: {
         card: 'summary_large_image',
         title: `${study.title} | Blih Ops`,
-        description: study.excerpt,
-        images: [study.heroImage],
+        description: study.summary,
+        images,
       },
     };
-  });
+  } catch {
+    return { title: 'Case study not found', robots: noIndexRobots };
+  }
 }
 
 export default async function CaseStudyDetailPage({
@@ -58,12 +79,17 @@ export default async function CaseStudyDetailPage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
-  if (locale !== 'en') redirect(`/en/case-studies/${slug}`);
 
-  const study = getCaseStudyBySlug(slug);
-  if (!study) notFound();
+  let study: LocalizedCaseStudyDetail;
+  let related: Awaited<ReturnType<typeof getRelatedCaseStudies>> = [];
 
-  const related = getRelatedCaseStudies(slug, 2);
+  try {
+    const detail = await getCaseStudyBySlug(slug);
+    study = localizeCaseStudyDetail(detail, locale as LocaleCode);
+    related = await getRelatedCaseStudies(slug, locale as LocaleCode, 2);
+  } catch {
+    notFound();
+  }
 
   return (
     <main className="min-h-screen bg-background text-foreground">
