@@ -4,7 +4,7 @@ import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { SiteChrome } from '@/components/layout/SiteChrome';
-import SplashCursor from '@/components/SplashCursor';
+// import SplashCursor from '@/components/SplashCursor';
 import { routing } from '@/i18n/routing';
 
 const fontSans = Inter({

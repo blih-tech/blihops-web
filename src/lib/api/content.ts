@@ -107,6 +107,43 @@ export type LocalizedInsight = {
   createdAt: string;
 };
 
+export type InsightSection = { section: string; content: string };
+
+export type InsightLocaleContent = {
+  title: string;
+  slug: string;
+  excerpt: string;
+  body: InsightSection[];
+};
+
+export type InsightDetail = {
+  id: string;
+  author: string;
+  readTimeMinutes: number;
+  category: Category | null;
+  media: Media;
+  status: 'DRAFT' | 'PUBLISHED';
+  tags: ContentTag[];
+  content: { en: InsightLocaleContent; de: InsightLocaleContent };
+  createdAt: string;
+  updatedAt: string;
+};
+
+/** An insight detail resolved for one locale; section titles come from CMS. */
+export type LocalizedInsightDetail = {
+  id: string;
+  author: string;
+  readTimeMinutes: number;
+  category: Category | null;
+  media: Media;
+  tags: ContentTag[];
+  createdAt: string;
+  updatedAt: string;
+  title: string;
+  excerpt: string;
+  body: InsightSection[];
+};
+
 type PaginationMeta = Record<string, unknown>;
 
 type ListResponse<T> = { items: T[]; meta: PaginationMeta };
@@ -174,6 +211,66 @@ export function localizeInsight(
     tags: insight.tags,
     createdAt: insight.createdAt,
   };
+}
+
+export async function getInsightBySlug(slug: string): Promise<InsightDetail> {
+  const { data } = await apiFetch<{ data: InsightDetail }>(
+    `/api/v1/content/insights/${encodeURIComponent(slug)}`,
+    {
+      next: { revalidate: CONTENT_TTL_SECONDS, tags: ['content:insights'] },
+    },
+  );
+  return data;
+}
+
+export function localizeInsightDetail(
+  detail: InsightDetail,
+  locale: LocaleCode,
+): LocalizedInsightDetail {
+  const isDe = locale === 'de';
+  const content = isDe
+    ? (detail.content.de ?? detail.content.en)
+    : detail.content.en;
+  return {
+    id: detail.id,
+    author: detail.author,
+    readTimeMinutes: detail.readTimeMinutes,
+    category: detail.category,
+    media: detail.media,
+    tags: detail.tags,
+    createdAt: detail.createdAt,
+    updatedAt: detail.updatedAt,
+    title: content.title,
+    excerpt: content.excerpt,
+    body: content.body,
+  };
+}
+
+/**
+ * Related insights share at least one tag; the rest are filled with the most
+ * recent published insights. Reuses the cached public list.
+ */
+export async function getRelatedInsights(
+  slug: string,
+  locale: LocaleCode,
+  limit = 2,
+): Promise<LocalizedInsight[]> {
+  const all = await getInsights();
+  const current = all.find(
+    (insight) => insight.slugs.en === slug || insight.slugs.de === slug,
+  );
+  if (!current) return [];
+
+  const others = all.filter((insight) => insight.id !== current.id);
+  const currentTagIds = new Set(current.tags.map((tag) => tag.id));
+  const byTags = others.filter((insight) =>
+    insight.tags.some((tag) => currentTagIds.has(tag.id)),
+  );
+  const rest = others.filter((insight) => !byTags.includes(insight));
+
+  return [...byTags, ...rest]
+    .slice(0, limit)
+    .map((insight) => localizeInsight(insight, locale));
 }
 
 export function localizeCaseStudy(

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { notFound, redirect } from 'next/navigation';
+import { notFound } from 'next/navigation';
 
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import {
@@ -7,15 +7,31 @@ import {
   InsightRelated,
 } from '@/components/sections/insights/InsightDetail';
 import { DetailConversionCta } from '@/components/sections/shared/DetailConversionCta';
+import { noIndexRobots } from '@/i18n/metadata';
+import { routing } from '@/i18n/routing';
 import {
   getInsightBySlug,
+  getInsights,
   getRelatedInsights,
-  insights,
-} from '@/content/insights';
-import { noIndexRobots } from '@/i18n/metadata';
+  localizeInsightDetail,
+  type LocaleCode,
+  type LocalizedInsightDetail,
+} from '@/lib/api/content';
 
-export function generateStaticParams() {
-  return insights.map((insight) => ({ slug: insight.slug }));
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  try {
+    const insights = await getInsights();
+    return routing.locales.flatMap((locale) =>
+      insights.map((insight) => ({
+        locale,
+        slug: insight.slugs[locale as LocaleCode],
+      })),
+    );
+  } catch {
+    return [];
+  }
 }
 
 export async function generateMetadata({
@@ -23,33 +39,40 @@ export async function generateMetadata({
 }: {
   params: Promise<{ locale: string; slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await params;
-  const insight = getInsightBySlug(slug);
+  const { locale, slug } = await params;
 
-  if (!insight) return { title: 'Insight not found', robots: noIndexRobots };
+  try {
+    const detail = await getInsightBySlug(slug);
+    const insight = localizeInsightDetail(detail, locale as LocaleCode);
 
-  return {
-    title: insight.title,
-    description: insight.excerpt,
-    robots: noIndexRobots,
-    authors: [{ name: insight.author }],
-    alternates: { canonical: `/en/insights/${insight.slug}` },
-    openGraph: {
-      title: `${insight.title} | Blih Ops`,
+    const images =
+      insight.media.type === 'image' ? [{ url: insight.media.url }] : undefined;
+
+    return {
+      title: insight.title,
       description: insight.excerpt,
-      type: 'article',
-      publishedTime: insight.publishedAt,
-      authors: [insight.author],
-      url: `https://blihops.com/en/insights/${insight.slug}`,
-      images: [{ url: insight.heroImage }],
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: `${insight.title} | Blih Ops`,
-      description: insight.excerpt,
-      images: [insight.heroImage],
-    },
-  };
+      robots: noIndexRobots,
+      authors: [{ name: insight.author }],
+      alternates: { canonical: `/${locale}/insights/${slug}` },
+      openGraph: {
+        title: `${insight.title} | Blih Ops`,
+        description: insight.excerpt,
+        type: 'article',
+        publishedTime: insight.createdAt,
+        authors: [insight.author],
+        url: `https://blihops.com/${locale}/insights/${slug}`,
+        images,
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: `${insight.title} | Blih Ops`,
+        description: insight.excerpt,
+        images,
+      },
+    };
+  } catch {
+    return { title: 'Insight not found', robots: noIndexRobots };
+  }
 }
 
 export default async function InsightDetailPage({
@@ -58,19 +81,24 @@ export default async function InsightDetailPage({
   params: Promise<{ locale: string; slug: string }>;
 }) {
   const { locale, slug } = await params;
-  if (locale !== 'en') redirect(`/en/insights/${slug}`);
 
-  const insight = getInsightBySlug(slug);
-  if (!insight) notFound();
+  let insight: LocalizedInsightDetail;
+  let related: Awaited<ReturnType<typeof getRelatedInsights>> = [];
 
-  const related = getRelatedInsights(slug, 2);
+  try {
+    const detail = await getInsightBySlug(slug);
+    insight = localizeInsightDetail(detail, locale as LocaleCode);
+    related = await getRelatedInsights(slug, locale as LocaleCode, 2);
+  } catch {
+    notFound();
+  }
 
   return (
     <main className="min-h-screen bg-background text-foreground">
       <SectionWrapper>
         <InsightDetail insight={insight} />
         <DetailConversionCta />
-        <InsightRelated insights={related} />
+        {related.length > 0 ? <InsightRelated insights={related} /> : null}
       </SectionWrapper>
     </main>
   );
