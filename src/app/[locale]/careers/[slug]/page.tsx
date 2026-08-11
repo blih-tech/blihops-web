@@ -53,7 +53,7 @@ export async function generateMetadata({
 }
 
 export default async function CareerDetailPage({ params }: CareerPageProps) {
-  const { locale, slug } = await params;
+  const { slug } = await params;
 
   let role: CareerDetailData;
 
