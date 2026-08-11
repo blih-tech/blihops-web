@@ -17,6 +17,9 @@ type ApiFetchOptions = {
   timeoutMs?: number;
   retries?: number;
   credentials?: RequestCredentials;
+  /** Next.js data-cache options (server components only). */
+  next?: NextFetchRequestConfig;
+  cache?: RequestCache;
 };
 
 const DEFAULT_TIMEOUT_MS = 15_000;
@@ -37,6 +40,8 @@ export async function apiFetch<T>(
     timeoutMs = DEFAULT_TIMEOUT_MS,
     retries = DEFAULT_RETRIES,
     credentials = 'include',
+    next,
+    cache,
   } = options;
 
   const baseURL = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000';
@@ -47,6 +52,8 @@ export async function apiFetch<T>(
     const timeout = setTimeout(() => controller.abort(), timeoutMs);
     try {
       return await fetch(url, {
+        ...(next !== undefined ? { next } : {}),
+        ...(cache !== undefined ? { cache } : {}),
         method,
         headers: {
           ...(body !== undefined ? { 'content-type': 'application/json' } : {}),

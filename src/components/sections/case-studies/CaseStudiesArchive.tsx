@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { useRef, useState } from 'react';
-import { ArrowUpRightIcon } from 'lucide-react';
+import { ArrowUpRightIcon, SearchXIcon } from 'lucide-react';
 import {
   AnimatePresence,
   LayoutGroup,
@@ -13,44 +13,15 @@ import {
 import { useTranslations } from 'next-intl';
 
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
-import {
-  caseStudyServiceNames,
-  type CaseStudy,
-  type CaseStudyService,
-} from '@/content/case-studies';
+import type { Category, LocalizedCaseStudy } from '@/lib/api/content';
 import { cn } from '@/lib/utils';
 
 type CaseStudiesArchiveProps = {
-  caseStudies: CaseStudy[];
+  categories: Category[];
+  caseStudies: LocalizedCaseStudy[];
 };
 
-const ALL_SERVICES = 'All';
-
-const studyMessageKeys = {
-  'scaling-support-across-channels': 'scalingSupportAcrossChannels',
-  'streamlining-document-processing': 'streamliningDocumentProcessing',
-  'engineering-support-for-product-roadmap':
-    'engineeringSupportForProductRoadmap',
-  'automating-repetitive-operations': 'automatingRepetitiveOperations',
-  'turning-data-into-clear-decisions': 'turningDataIntoClearDecisions',
-  'optimizing-provider-onboarding': 'optimizingProviderOnboarding',
-  'quality-system-for-customer-conversations':
-    'qualitySystemForCustomerConversations',
-  'software-support-with-clear-ownership': 'softwareSupportWithClearOwnership',
-} as const;
-
-const serviceMessageKeys = {
-  'Customer Support': 'customerSupport',
-  'Back-Office': 'backOffice',
-  'IT & Software': 'itSoftware',
-  'AI & Automation': 'aiAutomation',
-  'Data & Reporting': 'dataReporting',
-} as const satisfies Record<CaseStudyService, string>;
-
-type LocalizedCaseStudy = CaseStudy & {
-  outcome: string;
-  serviceLabels: string[];
-};
+const ALL_CATEGORIES = 'all';
 
 const archiveIntroVariants: Variants = {
   visible: {
@@ -96,45 +67,29 @@ const cardVariants: Variants = {
   },
 };
 
-export function CaseStudiesArchive({ caseStudies }: CaseStudiesArchiveProps) {
+export function CaseStudiesArchive({
+  categories,
+  caseStudies,
+}: CaseStudiesArchiveProps) {
   const sectionRef = useRef<HTMLElement>(null);
-  const [activeService, setActiveService] = useState<
-    CaseStudyService | typeof ALL_SERVICES
-  >(ALL_SERVICES);
+  const [activeCategoryId, setActiveCategoryId] =
+    useState<string>(ALL_CATEGORIES);
   const t = useTranslations('CaseStudiesPage.archive');
-  const tStudies = useTranslations('CaseStudiesPage.studies');
-  const tServices = useTranslations('Shared.services');
-  const localizedCaseStudies = caseStudies.map((study) => {
-    const key = studyMessageKeys[study.slug as keyof typeof studyMessageKeys];
 
-    return {
-      ...study,
-      title: tStudies(`${key}.title`),
-      client: tStudies(`${key}.client`),
-      excerpt: tStudies(`${key}.excerpt`),
-      outcome: tStudies(`${key}.outcome`),
-      serviceLabels: study.services.map((service) =>
-        tServices(`${serviceMessageKeys[service]}.title`),
-      ),
-    };
-  });
-  const serviceFilters: {
-    value: CaseStudyService | typeof ALL_SERVICES;
-    label: string;
-  }[] = [
-    { value: ALL_SERVICES, label: t('all') },
-    ...caseStudyServiceNames.map((service) => ({
-      value: service,
-      label: tServices(`${serviceMessageKeys[service]}.title`),
+  const categoryFilters = [
+    { value: ALL_CATEGORIES, label: t('all') },
+    ...categories.map((category) => ({
+      value: category.id,
+      label: category.name,
     })),
   ];
 
   const visibleStudies =
-    activeService === ALL_SERVICES
-      ? localizedCaseStudies
-      : localizedCaseStudies.filter((study) =>
-          study.services.some((service) => service === activeService),
-        );
+    activeCategoryId === ALL_CATEGORIES
+      ? caseStudies
+      : caseStudies.filter((study) => study.category?.id === activeCategoryId);
+
+  const isGloballyEmpty = caseStudies.length === 0;
 
   return (
     <section
@@ -156,15 +111,15 @@ export function CaseStudiesArchive({ caseStudies }: CaseStudiesArchiveProps) {
             className="flex gap-2 overflow-x-auto pb-1 lg:flex-col lg:gap-0 lg:overflow-visible lg:pb-0"
             aria-label={t('filterAriaLabel')}
           >
-            {serviceFilters.map((service) => {
-              const isActive = activeService === service.value;
+            {categoryFilters.map((category) => {
+              const isActive = activeCategoryId === category.value;
 
               return (
                 <button
-                  key={service.value}
+                  key={category.value}
                   type="button"
                   aria-pressed={isActive}
-                  onClick={() => setActiveService(service.value)}
+                  onClick={() => setActiveCategoryId(category.value)}
                   className={cn(
                     'relative shrink-0 cursor-pointer rounded-md border px-3 py-2 text-left font-sans text-xs font-medium transition-colors lg:w-full lg:border-0 lg:px-4 lg:py-2.5',
                     isActive
@@ -178,7 +133,9 @@ export function CaseStudiesArchive({ caseStudies }: CaseStudiesArchiveProps) {
                       aria-hidden
                     />
                   ) : null}
-                  <span className="relative z-10 lg:pl-1">{service.label}</span>
+                  <span className="relative z-10 lg:pl-1">
+                    {category.label}
+                  </span>
                 </button>
               );
             })}
@@ -204,7 +161,7 @@ export function CaseStudiesArchive({ caseStudies }: CaseStudiesArchiveProps) {
               <AnimatePresence mode="popLayout">
                 {visibleStudies.map((study, index) => (
                   <motion.div
-                    key={study.slug}
+                    key={study.id}
                     layout
                     custom={index}
                     initial="hidden"
@@ -227,14 +184,31 @@ export function CaseStudiesArchive({ caseStudies }: CaseStudiesArchiveProps) {
             </motion.div>
           </LayoutGroup>
         ) : (
-          <div className="min-h-72 border-b border-border px-6 py-20 text-center">
-            <p className="font-heading text-2xl text-foreground">
-              {t('empty')}
-            </p>
-          </div>
+          <EmptyState
+            title={t(isGloballyEmpty ? 'emptyAll' : 'empty')}
+            description={t('emptyDescription')}
+          />
         )}
       </div>
     </section>
+  );
+}
+
+function EmptyState({
+  title,
+  description,
+}: {
+  title: string;
+  description: string;
+}) {
+  return (
+    <div className="flex min-h-72 flex-col items-center justify-center gap-3 border-b border-border px-6 py-20 text-center">
+      <SearchXIcon className="size-8 text-muted-foreground/50" aria-hidden />
+      <p className="font-heading text-2xl text-foreground">{title}</p>
+      <p className="max-w-sm font-sans text-sm leading-relaxed text-muted-foreground">
+        {description}
+      </p>
+    </div>
   );
 }
 
@@ -249,7 +223,7 @@ function CaseStudyCard({ study }: { study: LocalizedCaseStudy }) {
     >
       <div className="relative aspect-video overflow-hidden rounded-md border border-border bg-muted">
         <Image
-          src={study.heroImage}
+          src={study.media.url}
           alt=""
           fill
           sizes="(max-width: 768px) 100vw, 470px"
@@ -259,8 +233,13 @@ function CaseStudyCard({ study }: { study: LocalizedCaseStudy }) {
 
       <article className="flex flex-1 flex-col pt-4">
         <p className="font-sans text-[11px] font-medium text-primary">
-          {study.serviceLabels.join('  ·  ')}
-          <span className="text-muted-foreground"> · {study.client}</span>
+          {study.category ? (
+            <>
+              {study.category.name}
+              <span className="text-muted-foreground"> · </span>
+            </>
+          ) : null}
+          <span className="text-muted-foreground">{study.client}</span>
         </p>
 
         <h2 className="mt-3 max-w-lg font-heading text-xl font-semibold leading-tight tracking-tight text-foreground sm:text-2xl">
@@ -268,16 +247,15 @@ function CaseStudyCard({ study }: { study: LocalizedCaseStudy }) {
         </h2>
 
         <p className="mt-3 line-clamp-3 max-w-lg font-sans text-sm leading-relaxed text-muted-foreground">
-          {study.excerpt}
+          {study.summary}
         </p>
 
         <div className="mt-auto flex items-end justify-between gap-5 pt-6">
-          <p className="max-w-md font-sans text-xs leading-relaxed text-muted-foreground">
-            <span className="font-semibold text-primary">
-              {t('outcomeLabel')}
-            </span>{' '}
-            {study.outcome}
-          </p>
+          {study.tags[0] ? (
+            <p className="font-sans text-xs text-muted-foreground">
+              {study.tags[0].name}
+            </p>
+          ) : null}
           <ArrowUpRightIcon className="size-5 shrink-0 text-primary motion-safe:transition-transform motion-safe:duration-300 motion-safe:group-hover:translate-x-0.5 motion-safe:group-hover:-translate-y-0.5" />
         </div>
       </article>
