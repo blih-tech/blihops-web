@@ -156,7 +156,7 @@ export function CaseStudiesArchive({
           <LayoutGroup>
             <motion.div
               layout
-              className="grid min-w-0 grid-cols-1 gap-px bg-border md:grid-cols-2"
+              className="grid min-w-0 grid-cols-1 gap-4 md:grid-cols-2"
             >
               <AnimatePresence mode="popLayout">
                 {visibleStudies.map((study, index) => (
@@ -218,7 +218,7 @@ function CaseStudyCard({ study }: { study: LocalizedCaseStudy }) {
   return (
     <Link
       href={`/case-studies/${study.slug}`}
-      className="group flex min-h-full min-w-0 flex-col bg-background p-4 transition-colors duration-300 hover:bg-muted/50 sm:p-5"
+      className="group flex min-h-full min-w-0 flex-col rounded-md border border-border bg-background p-4 transition-colors duration-300 hover:border-foreground/20 sm:p-5"
       aria-label={t('readAriaLabel', { title: study.title })}
     >
       <div className="relative aspect-video overflow-hidden rounded-md border border-border bg-muted">
