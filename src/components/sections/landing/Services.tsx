@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { createElement, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { AnimatePresence, motion } from 'motion/react';
@@ -9,7 +9,8 @@ import { useTranslations } from 'next-intl';
 
 import { DecorIcon } from '@/components/decor-icon';
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
-import { services, type ServiceItem } from '@/content/services';
+import type { ServiceItem } from '@/content/services';
+import { getServiceIcon } from '@/lib/service-icons';
 import { cn } from '@/lib/utils';
 
 const motionVariants: Variants = {
@@ -36,31 +37,11 @@ const highlightTransition = {
   damping: 30,
 };
 
-const serviceMessageKeys = {
-  'customer-support': 'customerSupport',
-  'back-office': 'backOffice',
-  'it-software': 'itSoftware',
-  'ai-automation': 'aiAutomation',
-  'data-reporting': 'dataReporting',
-} as const;
-
-export function Services() {
+export function Services({ services }: { services: ServiceItem[] }) {
   const sectionRef = useRef<HTMLElement>(null);
   const t = useTranslations('Home.services');
-  const tServices = useTranslations('Shared.services');
   const [activeId, setActiveId] = useState(services[0]?.id ?? '');
   const [direction, setDirection] = useState(0);
-  const localizedServices = services.map((service) => {
-    const key =
-      serviceMessageKeys[service.id as keyof typeof serviceMessageKeys];
-
-    return {
-      ...service,
-      title: tServices(`${key}.title`),
-      shortDescription: tServices(`${key}.shortDescription`),
-      details: tServices(`${key}.details`),
-    };
-  });
 
   // Warm the browser cache so rapid hover swaps don't flash empty
   useEffect(() => {
@@ -68,18 +49,18 @@ export function Services() {
       const img = new window.Image();
       img.src = service.image;
     }
-  }, []);
+  }, [services]);
 
   const activeIndex = Math.max(
     0,
-    localizedServices.findIndex((s) => s.id === activeId),
+    services.findIndex((s) => s.id === activeId),
   );
-  const active = localizedServices[activeIndex] ?? localizedServices[0];
+  const active = services[activeIndex] ?? services[0];
 
   if (!active) return null;
 
   const select = (id: string) => {
-    const next = localizedServices.findIndex((s) => s.id === id);
+    const next = services.findIndex((s) => s.id === id);
     if (next === -1 || next === activeIndex) return;
     setDirection(next > activeIndex ? 1 : -1);
     setActiveId(id);
@@ -137,7 +118,7 @@ export function Services() {
           role="listbox"
           aria-label={t('serviceListAriaLabel')}
         >
-          {localizedServices.map((service) => (
+          {services.map((service) => (
             <ServiceListItem
               key={service.id}
               service={service}
@@ -180,7 +161,7 @@ export function Services() {
             role="tablist"
             aria-label={t('serviceSlidesAriaLabel')}
           >
-            {localizedServices.map((service) => {
+            {services.map((service) => {
               const isActive = service.id === active.id;
               return (
                 <button
@@ -232,8 +213,6 @@ function ServiceListItem({
   isActive: boolean;
   onSelect: () => void;
 }) {
-  const Icon = service.icon;
-
   return (
     <li role="option" aria-selected={isActive}>
       <button
@@ -260,7 +239,10 @@ function ServiceListItem({
               : 'bg-muted text-muted-foreground',
           )}
         >
-          <Icon className="size-4.5" strokeWidth={1.75} />
+          {createElement(getServiceIcon(service.icon), {
+            className: 'size-4.5',
+            strokeWidth: 1.75,
+          })}
         </span>
 
         <span className="relative z-10 min-w-0 pt-0.5">
@@ -287,7 +269,6 @@ function ServiceListItem({
 }
 
 function ServicePreview({ service }: { service: ServiceItem }) {
-  const Icon = service.icon;
   const tActions = useTranslations('Shared.actions');
 
   return (
@@ -305,7 +286,10 @@ function ServicePreview({ service }: { service: ServiceItem }) {
 
       <div className="relative z-10 mt-auto flex items-start gap-3 border-t border-border/60 bg-card/90 px-5 py-4 backdrop-blur-sm md:px-6 md:py-5">
         <span className="flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-          <Icon className="size-4.5" strokeWidth={1.75} />
+          {createElement(getServiceIcon(service.icon), {
+            className: 'size-4.5',
+            strokeWidth: 1.75,
+          })}
         </span>
         <div className="min-w-0">
           <p className="font-sans text-sm font-semibold text-foreground md:text-base">

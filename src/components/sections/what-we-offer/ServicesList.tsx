@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { createElement, useRef } from 'react';
 import Image from 'next/image';
 import { Link } from '@/i18n/navigation';
 import { ArrowRightIcon, CheckIcon } from 'lucide-react';
@@ -9,7 +9,8 @@ import { useTranslations } from 'next-intl';
 
 import { TimelineAnimation } from '@/components/layout/TimelineAnimation';
 import { buttonVariants } from '@/components/ui/button';
-import { services, type ServiceItem } from '@/content/services';
+import type { ServiceItem } from '@/content/services';
+import { getServiceIcon } from '@/lib/service-icons';
 import { cn } from '@/lib/utils';
 
 const headerVariants: Variants = {
@@ -43,34 +44,9 @@ const rowVariants: Variants = {
   },
 };
 
-const serviceMessageKeys = {
-  'customer-support': 'customerSupport',
-  'back-office': 'backOffice',
-  'it-software': 'itSoftware',
-  'ai-automation': 'aiAutomation',
-  'data-reporting': 'dataReporting',
-} as const;
-
-export function ServicesList() {
+export function ServicesList({ services }: { services: ServiceItem[] }) {
   const sectionRef = useRef<HTMLElement>(null);
   const t = useTranslations('ServicesPage.servicesList');
-  const tServices = useTranslations('Shared.services');
-  const localizedServices = services.map((service) => {
-    const key =
-      serviceMessageKeys[service.id as keyof typeof serviceMessageKeys];
-
-    return {
-      ...service,
-      title: tServices(`${key}.title`),
-      subtitle: tServices(`${key}.subtitle`),
-      shortDescription: tServices(`${key}.shortDescription`),
-      details: tServices(`${key}.details`),
-      body: tServices(`${key}.body`),
-      tag: tServices(`${key}.tag`),
-      features: tServices.raw(`${key}.features`) as string[],
-      whoThisIsFor: tServices(`${key}.whoThisIsFor`),
-    };
-  });
 
   return (
     <section
@@ -112,7 +88,7 @@ export function ServicesList() {
       </div>
 
       <div className="flex flex-col gap-20 md:gap-28">
-        {localizedServices.map((service, index) => (
+        {services.map((service, index) => (
           <ServiceRow
             key={service.id}
             service={service}
@@ -131,7 +107,6 @@ function ServiceRow({
   service: ServiceItem;
   reverse: boolean;
 }) {
-  const Icon = service.icon;
   const rowRef = useRef<HTMLDivElement>(null);
   const inView = useInView(rowRef, { once: false, margin: '-10% 0px' });
   const t = useTranslations('ServicesPage.servicesList');
@@ -223,7 +198,10 @@ function ServiceRow({
       >
         <div className="flex items-center gap-3">
           <span className="flex size-9 shrink-0 items-center justify-center rounded-md border border-border bg-muted text-foreground">
-            <Icon className="size-4" strokeWidth={1.75} />
+            {createElement(getServiceIcon(service.icon), {
+              className: 'size-4',
+              strokeWidth: 1.75,
+            })}
           </span>
           <p className="font-sans text-xs font-medium tracking-widest text-muted-foreground uppercase">
             {service.tag}
