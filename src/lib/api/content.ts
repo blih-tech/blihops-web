@@ -201,6 +201,47 @@ export type Logo = {
   alt: string;
 };
 
+export type ServiceLocaleContent = {
+  slug: string;
+  title: string;
+  subtitle: string;
+  shortDescription: string;
+  details: string;
+  tag: string;
+  body: string;
+  features: string[];
+  whoThisIsFor: string;
+};
+
+export type Service = {
+  id: string;
+  icon: string;
+  imageUrl: string;
+  alt: string;
+  displayOrder: number;
+  content: { en: ServiceLocaleContent; de: ServiceLocaleContent };
+  createdAt: string;
+  updatedAt: string;
+};
+
+/** A service resolved for one locale. */
+export type LocalizedService = {
+  id: string;
+  icon: string;
+  imageUrl: string;
+  alt: string;
+  displayOrder: number;
+  slug: string;
+  title: string;
+  subtitle: string;
+  shortDescription: string;
+  details: string;
+  tag: string;
+  body: string;
+  features: string[];
+  whoThisIsFor: string;
+};
+
 export type Testimonial = {
   id: string;
   avatarUrl: string;
@@ -410,6 +451,42 @@ export async function getTestimonials(): Promise<Testimonial[]> {
     },
   );
   return items;
+}
+
+export async function getServices(): Promise<Service[]> {
+  const { items } = await apiFetch<ListResponse<Service>>(
+    '/api/v1/content/services',
+    {
+      next: { revalidate: CONTENT_TTL_SECONDS, tags: ['content:services'] },
+    },
+  );
+  return items;
+}
+
+export function localizeService(
+  service: Service,
+  locale: LocaleCode,
+): LocalizedService {
+  const isDe = locale === 'de';
+  const content = isDe
+    ? (service.content.de ?? service.content.en)
+    : service.content.en;
+  return {
+    id: service.id,
+    icon: service.icon,
+    imageUrl: service.imageUrl,
+    alt: service.alt,
+    displayOrder: service.displayOrder,
+    slug: content.slug,
+    title: content.title,
+    subtitle: content.subtitle,
+    shortDescription: content.shortDescription,
+    details: content.details,
+    tag: content.tag,
+    body: content.body,
+    features: content.features,
+    whoThisIsFor: content.whoThisIsFor,
+  };
 }
 
 export function localizeCaseStudy(

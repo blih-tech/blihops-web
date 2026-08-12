@@ -1,7 +1,7 @@
 import { SectionWrapper } from '@/components/layout/SectionWrapper';
 import { Approach } from '@/components/sections/what-we-offer/Approach';
 import { WhatWeOfferHero } from '@/components/sections/what-we-offer/Hero';
-import { ServicesList } from '@/components/sections/what-we-offer/ServicesList';
+import { ServicesListSection } from '@/components/sections/what-we-offer/services-list-section';
 import { createGenerateMetadata } from '@/i18n/metadata';
 import { routing } from '@/i18n/routing';
 import {
@@ -43,7 +43,7 @@ export default async function WhatWeOfferPage({
       <SectionWrapper>
         <WhatWeOfferHero servicesHero={servicesHero} logos={logos} />
         <Approach />
-        <ServicesList />
+        <ServicesListSection locale={locale} />
       </SectionWrapper>
     </main>
   );

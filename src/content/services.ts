@@ -1,12 +1,3 @@
-import type { LucideIcon } from 'lucide-react';
-import {
-  BotIcon,
-  ChartColumnIcon,
-  CodeIcon,
-  HeadsetIcon,
-  FilesIcon,
-} from 'lucide-react';
-
 export type ServiceItem = {
   id: string;
   title: string;
@@ -14,7 +5,8 @@ export type ServiceItem = {
   details: string;
   tag: string;
   href: string;
-  icon: LucideIcon;
+  /** Whitelist key — resolve to a component via getServiceIcon(). */
+  icon: string;
   image: string;
   subtitle: string;
   body: string;
@@ -34,7 +26,7 @@ export const services: ServiceItem[] = [
     body: 'Email, chat, and voice with trained agents, AI-assisted routing, and clear response SLAs. Tracked and reported every week.',
     tag: 'SUPPORT THAT SCALES',
     href: '/what-we-offer#customer-support',
-    icon: HeadsetIcon,
+    icon: 'headset',
     image: '/services/customer.jpg',
     features: [
       'Omnichannel: email, chat, voice',
@@ -56,7 +48,7 @@ export const services: ServiceItem[] = [
     body: 'Data entry, documents, CRM, and admin on documented SOPs with QA checks. Structured execution you can measure weekly.',
     tag: 'EXECUTION YOU CAN TRUST',
     href: '/what-we-offer#back-office',
-    icon: FilesIcon,
+    icon: 'files',
     image: '/services/back-office.jpg',
     features: [
       'Data entry & validation',
@@ -78,7 +70,7 @@ export const services: ServiceItem[] = [
     body: 'Dedicated developers, support, and QA from Ethiopia with GMT+3 overlap. Sprint cadence and code standards, not freelancers.',
     tag: 'TECH TALENT ON DEMAND',
     href: '/what-we-offer#it-software',
-    icon: CodeIcon,
+    icon: 'code',
     image: '/services/software.jpg',
     features: [
       'Dedicated dev teams',
@@ -100,7 +92,7 @@ export const services: ServiceItem[] = [
     body: 'We map workflows, cut busywork, and deploy automation where judgment is not required. Practical, measurable, ROI-tracked.',
     tag: 'INTELLIGENCE THAT WORKS',
     href: '/what-we-offer#ai-automation',
-    icon: BotIcon,
+    icon: 'bot',
     image: '/services/ai.jpg',
     features: [
       'Workflow mapping',
@@ -122,7 +114,7 @@ export const services: ServiceItem[] = [
     body: 'KPI dashboards, automated reports, and clean operational data so leadership sees performance clearly. No guesswork.',
     tag: 'CLARITY YOU CAN ACT ON',
     href: '/what-we-offer#data-reporting',
-    icon: ChartColumnIcon,
+    icon: 'chart-column',
     image: '/services/data.jpg',
     features: [
       'KPI dashboards',
