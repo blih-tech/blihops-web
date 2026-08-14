@@ -4,9 +4,9 @@
   "private": true,
   "scripts": {
     "predev": "node -e \"require('node:fs').rmSync('.next/dev',{recursive:true,force:true})\"",
-    "dev": "next dev",
+    "dev": "node api.js && next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "node api.js && next start",
     "lint": "eslint",
     "typecheck": "tsc --noEmit",
     "check": "pnpm lint && pnpm typecheck && pnpm format:check && pnpm audit --audit-level=high && pnpm build",
