@@ -89,8 +89,8 @@ export function Hero() {
           className="flex w-full flex-col items-center justify-center gap-3 pt-1 sm:w-auto sm:flex-row sm:flex-wrap"
         >
           <BookCallButton
-            calLink="blih-marketing-fzifjy/blih-ops-desicovery-call"
-            namespace="blih-ops-desicovery-call"
+            calLink="yonatane-mk-sa4cic/discovery-call"
+            namespace="discovery-call"
             className="h-10 w-full rounded-md border border-border bg-background! px-4 text-foreground! hover:bg-muted! hover:text-foreground! sm:w-auto"
           />
           <Link

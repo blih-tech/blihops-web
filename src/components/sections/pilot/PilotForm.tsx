@@ -46,8 +46,8 @@ const timelineOptions = [
   { value: 'Just exploring for now', key: 'exploring' },
 ] as const;
 
-const calLink = 'blih-marketing-fzifjy/blih-ops-desicovery-call';
-const calNamespace = 'blih-ops-desicovery-call';
+const calLink = 'yonatane-mk-sa4cic/discovery-call';
+const calNamespace = 'discovery-call';
 
 export function PilotForm() {
   const t = useTranslations('PilotPage.form');

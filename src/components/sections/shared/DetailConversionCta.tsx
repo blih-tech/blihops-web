@@ -29,8 +29,8 @@ export async function DetailConversionCta() {
         </p>
         <div className="mt-7 flex flex-wrap gap-3">
           <BookCallButton
-            calLink="blih-marketing-fzifjy/blih-ops-desicovery-call"
-            namespace="blih-ops-desicovery-call"
+            calLink="yonatane-mk-sa4cic/discovery-call"
+            namespace="discovery-call"
             className="h-10 rounded-md border border-border bg-background px-4 text-foreground hover:bg-muted hover:text-foreground"
           />
           <Link

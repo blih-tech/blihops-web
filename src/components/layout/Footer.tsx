@@ -117,8 +117,8 @@ export function Footer() {
               </p>
               {isPilotPage ? (
                 <BookCallButton
-                  calLink="blih-marketing-fzifjy/blih-ops-desicovery-call"
-                  namespace="blih-ops-desicovery-call"
+                  calLink="yonatane-mk-sa4cic/discovery-call"
+                  namespace="discovery-call"
                   className="h-auto min-h-10 w-full whitespace-normal bg-primary py-2.5 text-center leading-tight text-primary-foreground hover:bg-primary/90 sm:w-fit sm:whitespace-nowrap sm:py-0"
                 />
               ) : isTalentPage ? (
@@ -312,8 +312,8 @@ export function Footer() {
                   ) : null}
                   {!isContactPage && !isTalentPage ? (
                     <BookCallButton
-                      calLink="blih-marketing-fzifjy/blih-ops-desicovery-call"
-                      namespace="blih-ops-desicovery-call"
+                      calLink="yonatane-mk-sa4cic/discovery-call"
+                      namespace="discovery-call"
                       className="border border-border bg-background text-foreground hover:bg-background hover:text-primary"
                     />
                   ) : null}

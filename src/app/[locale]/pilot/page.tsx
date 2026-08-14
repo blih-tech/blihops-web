@@ -229,8 +229,8 @@ export default async function PilotPage({
             </p>
           </div>
           <BookCallButton
-            calLink="blih-marketing-fzifjy/blih-ops-desicovery-call"
-            namespace="blih-ops-desicovery-call"
+            calLink="yonatane-mk-sa4cic/discovery-call"
+            namespace="discovery-call"
             className="shrink-0 border border-border bg-background text-foreground hover:bg-muted hover:text-foreground"
           >
             {tActions('bookCall')}
