@@ -201,6 +201,13 @@
         "fullNameMax": "Keep your name under 80 characters.",
         "emailMax": "Keep your email under 254 characters.",
         "companyMax": "Keep your company name under 120 characters."
+      },
+      "errors": {
+        "generic": "Something went wrong. Please try again.",
+        "network": "We couldn't reach our servers. Check your connection and try again.",
+        "validation": "Some fields need attention. Please review your input.",
+        "rateLimited": "Too many attempts. Please wait a moment and try again.",
+        "server": "Our servers are busy right now. Please try again in a moment."
       }
     },
     "services": {
@@ -806,7 +813,8 @@
         "title": "Thanks for reaching out.",
         "description": "We will review your message and reply within one business day.",
         "sendAnother": "Send another message"
-      }
+      },
+      "submitting": "Sending..."
     },
     "pilotCta": {
       "eyebrow": "Looking for proof first?",

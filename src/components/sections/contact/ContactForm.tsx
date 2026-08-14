@@ -2,9 +2,14 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { standardSchemaResolver } from '@hookform/resolvers/standard-schema';
-import { ArrowRightIcon, CheckCircle2Icon, RotateCcwIcon } from 'lucide-react';
+import {
+  ArrowRightIcon,
+  CheckCircle2Icon,
+  LoaderCircleIcon,
+  RotateCcwIcon,
+} from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useForm } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
@@ -12,6 +17,12 @@ import {
   createContactSchema,
   type ContactFormValues,
 } from '@/lib/forms/contact';
+import {
+  submitContactLead,
+  toSubmitErrorMessage,
+  type ContactLeadPayload,
+  type SubmitErrorMessages,
+} from '@/lib/api/leads';
 
 const inputClassName =
   'h-12 w-full rounded-none border-0 border-b border-border bg-transparent px-0 text-base text-foreground outline-none transition-[border-color,background-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] placeholder:text-muted-foreground/70 focus-visible:border-primary focus-visible:bg-muted/40 aria-invalid:border-destructive sm:text-sm';
@@ -29,14 +40,16 @@ const topics = [
 export function ContactForm() {
   const t = useTranslations('ContactPage.form');
   const tForms = useTranslations('Shared.forms');
+  const locale = useLocale();
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const successRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<ContactFormValues>({
     resolver: standardSchemaResolver(
       createContactSchema({
@@ -57,6 +70,7 @@ export function ContactForm() {
       company: '',
       topic: '',
       message: '',
+      website: '',
     },
   });
 
@@ -66,9 +80,33 @@ export function ContactForm() {
     }
   }, [submitted]);
 
-  function onSubmit(data: ContactFormValues) {
-    console.info('Contact enquiry submitted:', data);
-    setSubmitted(true);
+  const errorMessages: SubmitErrorMessages = {
+    generic: tForms('errors.generic'),
+    network: tForms('errors.network'),
+    validation: tForms('errors.validation'),
+    rateLimited: tForms('errors.rateLimited'),
+    server: tForms('errors.server'),
+  };
+
+  async function onSubmit(data: ContactFormValues) {
+    setSubmitError(null);
+
+    const payload: ContactLeadPayload = {
+      fullName: data.fullName,
+      workEmail: data.workEmail,
+      ...(data.company ? { company: data.company } : {}),
+      topic: data.topic,
+      message: data.message,
+      locale: locale === 'de' ? 'de' : 'en',
+      website: data.website ?? '',
+    };
+
+    try {
+      await submitContactLead(payload);
+      setSubmitted(true);
+    } catch (err) {
+      setSubmitError(toSubmitErrorMessage(err, errorMessages));
+    }
   }
 
   function startAnotherMessage() {
@@ -164,6 +202,15 @@ export function ContactForm() {
         onSubmit={handleSubmit(onSubmit)}
         noValidate
       >
+        <input
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          className="sr-only"
+          {...register('website')}
+        />
+
         <div className="grid gap-8 sm:grid-cols-2">
           <div className="space-y-2">
             <label
@@ -328,13 +375,30 @@ export function ContactForm() {
         </div>
 
         <div className="border-t border-border/80 pt-8">
+          {submitError ? (
+            <p
+              role="alert"
+              className="mb-6 border-l-2 border-destructive pl-3 text-sm leading-6 text-destructive"
+            >
+              {submitError}
+            </p>
+          ) : null}
           <Button
             type="submit"
             size="lg"
+            disabled={isSubmitting}
             className="h-12 w-full justify-between rounded-none px-5"
           >
-            {t('submit')}
-            <ArrowRightIcon data-icon="inline-end" aria-hidden="true" />
+            {isSubmitting ? t('submitting') : t('submit')}
+            {isSubmitting ? (
+              <LoaderCircleIcon
+                className="size-5 animate-spin"
+                data-icon="inline-end"
+                aria-hidden="true"
+              />
+            ) : (
+              <ArrowRightIcon data-icon="inline-end" aria-hidden="true" />
+            )}
           </Button>
           <p className="mt-3 text-center text-xs leading-relaxed text-muted-foreground">
             {t('consent')}

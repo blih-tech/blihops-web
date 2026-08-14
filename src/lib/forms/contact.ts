@@ -30,6 +30,7 @@ export function createContactSchema(messages: ContactValidationMessages) {
       .trim()
       .min(20, messages.messageRequired)
       .max(1500, messages.messageMax),
+    website: z.string().max(200).optional(),
   });
 }
 
