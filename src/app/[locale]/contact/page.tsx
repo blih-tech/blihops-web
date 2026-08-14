@@ -78,8 +78,8 @@ export default async function ContactPage({
                     {tHero('preferToTalk')}
                   </span>
                   <BookCallButton
-                    calLink="blih-marketing-fzifjy/blih-ops-desicovery-call"
-                    namespace="blih-ops-desicovery-call"
+                    calLink="yonatane-mk-sa4cic/discovery-call"
+                    namespace="discovery-call"
                     className="h-10 rounded-md border border-border bg-background px-4 text-foreground hover:bg-muted hover:text-foreground"
                   >
                     {tActions('bookCall')}

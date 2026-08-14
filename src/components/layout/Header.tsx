@@ -393,8 +393,8 @@ export function Header() {
             <div className="space-y-2 pt-4 pb-2">
               <SessionAwareCta className="w-full" onClick={closeAll} />
               <BookCallButton
-                calLink="blih-marketing-fzifjy/blih-ops-desicovery-call"
-                namespace="blih-ops-desicovery-call"
+                calLink="yonatane-mk-sa4cic/discovery-call"
+                namespace="discovery-call"
                 onClick={closeAll}
                 className="w-full border border-border bg-background text-foreground hover:bg-muted hover:text-foreground"
               />
