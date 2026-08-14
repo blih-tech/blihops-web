@@ -534,6 +534,13 @@
         "fullNameMax": "Ihr Name darf höchstens 80 Zeichen lang sein.",
         "emailMax": "Ihre E-Mail-Adresse darf höchstens 254 Zeichen lang sein.",
         "companyMax": "Ihr Unternehmensname darf höchstens 120 Zeichen lang sein."
+      },
+      "errors": {
+        "generic": "Etwas ist schiefgelaufen. Bitte versuche es erneut.",
+        "network": "Wir konnten unsere Server nicht erreichen. Bitte prüfe deine Verbindung und versuche es erneut.",
+        "validation": "Einige Felder müssen korrigiert werden. Bitte überprüfe deine Eingaben.",
+        "rateLimited": "Zu viele Versuche. Bitte warte einen Moment und versuche es erneut.",
+        "server": "Unsere Server sind gerade ausgelastet. Bitte versuche es in einem Moment erneut."
       }
     },
     "services": {
@@ -806,7 +813,8 @@
         "title": "Vielen Dank für Ihre Nachricht.",
         "description": "Wir prüfen Ihre Nachricht und antworten innerhalb eines Arbeitstages.",
         "sendAnother": "Weitere Nachricht senden"
-      }
+      },
+      "submitting": "Wird gesendet..."
     },
     "pilotCta": {
       "eyebrow": "Möchten Sie zuerst einen Nachweis?",

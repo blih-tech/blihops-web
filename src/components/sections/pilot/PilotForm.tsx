@@ -10,11 +10,17 @@ import {
   RotateCcwIcon,
 } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useForm } from 'react-hook-form';
 
 import { Button } from '@/components/ui/button';
 import { createPilotFormSchema, type PilotFormValues } from '@/lib/forms/pilot';
+import {
+  submitPilotLead,
+  toSubmitErrorMessage,
+  type PilotLeadPayload,
+  type SubmitErrorMessages,
+} from '@/lib/api/leads';
 
 const inputClassName =
   'h-12 w-full rounded-none border-0 border-b border-border bg-transparent px-0 text-base text-foreground outline-none transition-[border-color,background-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] placeholder:text-muted-foreground/70 focus-visible:border-primary focus-visible:bg-muted/40 aria-invalid:border-destructive sm:text-sm';
@@ -52,7 +58,9 @@ const calNamespace = 'discovery-call';
 export function PilotForm() {
   const t = useTranslations('PilotPage.form');
   const tForms = useTranslations('Shared.forms');
+  const locale = useLocale();
   const [submitted, setSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const successRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
   const pilotFormSchema = createPilotFormSchema({
@@ -86,6 +94,7 @@ export function PilotForm() {
       volume: '',
       timeline: '',
       context: '',
+      website: '',
     },
   });
 
@@ -95,10 +104,37 @@ export function PilotForm() {
     }
   }, [submitted]);
 
+  const errorMessages: SubmitErrorMessages = {
+    generic: tForms('errors.generic'),
+    network: tForms('errors.network'),
+    validation: tForms('errors.validation'),
+    rateLimited: tForms('errors.rateLimited'),
+    server: tForms('errors.server'),
+  };
+
   async function onSubmit(data: PilotFormValues) {
-    console.info('Pilot request submitted:', data);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setSubmitted(true);
+    setSubmitError(null);
+
+    const payload: PilotLeadPayload = {
+      fullName: data.fullName,
+      workEmail: data.workEmail,
+      company: data.company,
+      service: data.service,
+      challenge: data.challenge,
+      volume: data.volume,
+      timeline: data.timeline,
+      ...(data.context ? { context: data.context } : {}),
+      locale: locale === 'de' ? 'de' : 'en',
+      website: data.website ?? '',
+    };
+
+    try {
+      await submitPilotLead(payload);
+      setSubmitted(true);
+    } catch (err) {
+      setSubmitError(toSubmitErrorMessage(err, errorMessages));
+      return; // the booking modal only opens after a successful submission
+    }
 
     const cal = await getCalApi({ namespace: calNamespace });
     cal('modal', {
@@ -207,6 +243,15 @@ export function PilotForm() {
         onSubmit={handleSubmit(onSubmit)}
         noValidate
       >
+        <input
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          className="sr-only"
+          {...register('website')}
+        />
+
         <fieldset className="space-y-8">
           <legend className="mb-8 flex items-center gap-4 font-mono text-[10px] tracking-[0.16em] text-muted-foreground uppercase">
             <span className="text-primary">01</span>
@@ -490,6 +535,14 @@ export function PilotForm() {
         </fieldset>
 
         <div className="border-t border-border/80 pt-8">
+          {submitError ? (
+            <p
+              role="alert"
+              className="mb-6 border-l-2 border-destructive pl-3 text-sm leading-6 text-destructive"
+            >
+              {submitError}
+            </p>
+          ) : null}
           <Button
             type="submit"
             size="lg"

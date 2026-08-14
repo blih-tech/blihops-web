@@ -41,6 +41,7 @@ export function createPilotFormSchema(messages: PilotFormValidationMessages) {
     volume: z.string().min(1, messages.volumeRequired),
     timeline: z.string().min(1, messages.timelineRequired),
     context: z.string().trim().max(1000, messages.contextMax),
+    website: z.string().max(200).optional(),
   });
 }
 
