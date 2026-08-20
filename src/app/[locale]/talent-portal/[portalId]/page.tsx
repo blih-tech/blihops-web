@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 import { getTranslations } from 'next-intl/server';
 
 import { noIndexRobots } from '@/i18n/metadata';
-import { SignOutButton } from '@/components/sections/workspace/SignOutButton';
+import { TalentPortalContent } from '@/components/sections/talent-portal/TalentPortalContent';
 
 export async function generateMetadata({
   params,
@@ -36,17 +36,5 @@ export default async function TalentPortalPage({
 
   const t = await getTranslations('TalentPortal');
 
-  return (
-    <main className="flex min-h-svh flex-col items-center justify-center gap-6 bg-background px-4">
-      <div className="flex flex-col items-center gap-1.5 text-center">
-        <h1 className="font-heading text-2xl font-semibold tracking-[-0.02em] text-foreground">
-          {t('title')}
-        </h1>
-        <p className="font-mono text-[10px] font-semibold tracking-[0.08em] text-muted-foreground uppercase">
-          {t('idLabel')} {portalId}
-        </p>
-      </div>
-      <SignOutButton label={t('signOut')} />
-    </main>
-  );
+  return <TalentPortalContent portalId={portalId} signOutLabel={t('signOut')} />;
 }

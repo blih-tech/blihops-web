@@ -125,6 +125,55 @@ export function submitTalentCompletion(token: string, payload: SubmitCompletionP
   );
 }
 
+export type TalentPortalProfile = {
+  id: string;
+  fullName: string;
+  workEmail: string;
+  phone: string;
+  country: string;
+  city: string;
+  profilePhotoKey: string;
+  professionalHeadline: string;
+  shortBio: string;
+  primaryRole: string;
+  techStack: string[];
+  secondarySkills: string[];
+  yearsExperience: number;
+  portfolioUrl: string | null;
+  githubUrl: string | null;
+  linkedinUrl: string | null;
+  resumeFileKey: string;
+  seniority: string;
+  englishLevel: string;
+  clientMonthlyRateEur: string;
+  isVerified: boolean;
+  visibility: string;
+  accountStatus: string;
+};
+
+export type TalentMeResponse = {
+  data: {
+    user: { id: string; name: string; email: string };
+    talentAccount: { id: string; status: string };
+    talentProfile: { id: string; visibility: string; isVerified: boolean };
+  };
+};
+
+export function getTalentMe() {
+  return apiFetch<TalentMeResponse>('/api/v1/talent/me');
+}
+
+export function getTalentPortalProfile() {
+  return apiFetch<{ data: TalentPortalProfile }>('/api/v1/talent/profile');
+}
+
+export function updateTalentPortalProfile(payload: Record<string, unknown>) {
+  return apiFetch<{ data: TalentPortalProfile }>('/api/v1/talent/profile', {
+    method: 'PATCH',
+    body: payload,
+  });
+}
+
 export const yearsExperienceToNumber: Record<string, number> = {
   'Under 1 year': 0,
   '1-2 years': 2,
