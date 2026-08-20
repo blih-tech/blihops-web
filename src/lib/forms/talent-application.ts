@@ -15,6 +15,7 @@ type TalentApplicationValidationMessages = {
   emailMax: string;
   phoneRequired: string;
   phoneMax: string;
+  countryRequired: string;
   cityRequired: string;
   primaryRoleRequired: string;
   techStackRequired: string;
@@ -68,6 +69,11 @@ export function createTalentApplicationSchema(
       .trim()
       .min(7, messages.phoneRequired)
       .max(40, messages.phoneMax),
+    country: z
+      .string()
+      .trim()
+      .min(2, messages.countryRequired)
+      .max(80, messages.countryRequired),
     city: z
       .string()
       .trim()

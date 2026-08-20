@@ -25,6 +25,12 @@ import {
   createTalentApplicationSchema,
   type TalentApplicationValues,
 } from '@/lib/forms/talent-application';
+import {
+  submitTalentApplication,
+  toTalentSubmitErrorMessage,
+  uploadResumeFile,
+  yearsExperienceToNumber,
+} from '@/lib/api/talent';
 import { cn } from '@/lib/utils';
 
 const inputClassName =
@@ -308,6 +314,9 @@ export function TalentApplicationForm() {
     emailMax: tForms('validation.emailMax'),
     phoneRequired: t('validation.phoneRequired'),
     phoneMax: t('validation.phoneMax'),
+    countryRequired: t.has('validation.countryRequired')
+      ? t('validation.countryRequired')
+      : t('validation.cityRequired'),
     cityRequired: t('validation.cityRequired'),
     primaryRoleRequired: t('validation.primaryRoleRequired'),
     techStackRequired: t('validation.techStackRequired'),
@@ -332,6 +341,7 @@ export function TalentApplicationForm() {
       fullName: '',
       email: '',
       phone: '',
+      country: 'Ethiopia',
       city: '',
       primaryRole: '',
       techStack: [],
@@ -347,6 +357,8 @@ export function TalentApplicationForm() {
   const selectedSecondary =
     useWatch({ control, name: 'secondarySkills' }) ?? [];
 
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
   useEffect(() => {
     if (submitted) {
       successRef.current?.focus();
@@ -354,9 +366,45 @@ export function TalentApplicationForm() {
   }, [submitted]);
 
   async function onSubmit(data: TalentApplicationValues) {
-    console.info('Talent application submitted:', data);
-    await new Promise((resolve) => setTimeout(resolve, 900));
-    setSubmitted(true);
+    setSubmitError(null);
+    try {
+      const resumeFileKey = await uploadResumeFile(data.resume);
+      const yearsExperience =
+        yearsExperienceToNumber[data.yearsExperience] ?? 0;
+      await submitTalentApplication({
+        fullName: data.fullName.trim(),
+        workEmail: data.email.trim().toLowerCase(),
+        phone: data.phone.trim(),
+        country: data.country.trim(),
+        city: data.city.trim(),
+        primaryRole: data.primaryRole,
+        techStack: data.techStack,
+        secondarySkills: data.secondarySkills ?? [],
+        yearsExperience,
+        portfolioUrl: data.portfolio?.trim() || undefined,
+        githubUrl: data.github?.trim() || undefined,
+        linkedinUrl: data.linkedin?.trim() || undefined,
+        resumeFileKey,
+      });
+      setSubmitted(true);
+    } catch (err) {
+      const message = toTalentSubmitErrorMessage(err, {
+        generic: t.has('errors.generic')
+          ? t('errors.generic')
+          : 'Something went wrong. Please try again.',
+        network: t.has('errors.network')
+          ? t('errors.network')
+          : 'Network error. Check your connection.',
+        validation: (err as Error).message || 'Please check your inputs.',
+        rateLimited: t.has('errors.rateLimited')
+          ? t('errors.rateLimited')
+          : 'Too many attempts. Please wait a moment.',
+        server: t.has('errors.server')
+          ? t('errors.server')
+          : 'Server error. Please try again later.',
+      });
+      setSubmitError(message);
+    }
   }
 
   function startAnotherApplication() {
@@ -561,32 +609,68 @@ export function TalentApplicationForm() {
             <div className="space-y-2">
               <label
                 className="text-sm font-medium text-foreground"
-                htmlFor="city"
+                htmlFor="country"
               >
-                {t('fields.city.label')}{' '}
+                {t.has('fields.country.label')
+                  ? t('fields.country.label')
+                  : 'Country'}{' '}
                 <span className="text-destructive">*</span>
               </label>
               <input
-                id="city"
+                id="country"
                 type="text"
-                autoComplete="address-level2"
-                placeholder={t('fields.city.placeholder')}
+                autoComplete="country-name"
+                placeholder={
+                  t.has('fields.country.placeholder')
+                    ? t('fields.country.placeholder')
+                    : 'Ethiopia'
+                }
                 required
-                aria-invalid={Boolean(errors.city)}
-                aria-describedby={errors.city ? 'city-error' : undefined}
+                aria-invalid={Boolean(errors.country)}
+                aria-describedby={errors.country ? 'country-error' : undefined}
                 className={inputClassName}
-                {...register('city')}
+                {...register('country')}
               />
-              {errors.city ? (
+              {errors.country ? (
                 <p
-                  id="city-error"
+                  id="country-error"
                   role="alert"
                   className="text-sm text-destructive"
                 >
-                  {errors.city.message}
+                  {errors.country.message}
                 </p>
               ) : null}
             </div>
+          </div>
+
+          <div className="space-y-2">
+            <label
+              className="text-sm font-medium text-foreground"
+              htmlFor="city"
+            >
+              {t('fields.city.label')}{' '}
+              <span className="text-destructive">*</span>
+            </label>
+            <input
+              id="city"
+              type="text"
+              autoComplete="address-level2"
+              placeholder={t('fields.city.placeholder')}
+              required
+              aria-invalid={Boolean(errors.city)}
+              aria-describedby={errors.city ? 'city-error' : undefined}
+              className={inputClassName}
+              {...register('city')}
+            />
+            {errors.city ? (
+              <p
+                id="city-error"
+                role="alert"
+                className="text-sm text-destructive"
+              >
+                {errors.city.message}
+              </p>
+            ) : null}
           </div>
         </fieldset>
 
@@ -840,6 +924,14 @@ export function TalentApplicationForm() {
           />
         </fieldset>
 
+        {submitError ? (
+          <div
+            role="alert"
+            className="rounded-md border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive"
+          >
+            {submitError}
+          </div>
+        ) : null}
         <div className="border-t border-border/80 pt-8">
           <Button
             type="submit"
