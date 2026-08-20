@@ -34,21 +34,6 @@ const inputClassName =
 const textareaClassName =
   'w-full min-h-28 rounded-none border-0 border-b border-border bg-transparent px-0 py-3 text-base text-foreground outline-none transition-[border-color,background-color] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] placeholder:text-muted-foreground/70 focus-visible:border-primary focus-visible:bg-muted/40 aria-invalid:border-destructive resize-y sm:text-sm';
 
-const availabilityOptions = [
-  { value: 'Immediately available', key: 'immediately' },
-  { value: 'Available within 2 weeks', key: 'twoWeeks' },
-  { value: 'Available within 1 month', key: 'oneMonth' },
-  { value: 'Available within 2 months', key: 'twoMonths' },
-  { value: 'Available in 3+ months', key: 'threePlus' },
-] as const;
-
-const engagementOptions = [
-  { value: 'Full-time', key: 'fullTime' },
-  { value: 'Part-time', key: 'partTime' },
-  { value: 'Contract / Freelance', key: 'contract' },
-  { value: 'Open to discuss', key: 'open' },
-] as const;
-
 function formatFileSize(bytes: number) {
   if (bytes < 1024) return `${bytes} B`;
   if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(0)} KB`;
@@ -74,9 +59,6 @@ export function CompleteProfileForm({ token }: CompleteProfileFormProps) {
     professionalHeadlineMax: t('validation.professionalHeadlineMax'),
     bioRequired: t('validation.bioRequired'),
     bioMax: t('validation.bioMax'),
-    availabilityRequired: t('validation.availabilityRequired'),
-    startDateRequired: t('validation.startDateRequired'),
-    engagementRequired: t('validation.engagementRequired'),
     photoRequired: t('validation.photoRequired'),
     photoInvalidType: t('validation.photoInvalidType'),
     photoTooLarge: t('validation.photoTooLarge'),
@@ -94,9 +76,6 @@ export function CompleteProfileForm({ token }: CompleteProfileFormProps) {
     defaultValues: {
       professionalHeadline: '',
       bio: '',
-      availability: '',
-      startDate: '',
-      engagement: '',
     },
   });
 
@@ -145,10 +124,9 @@ export function CompleteProfileForm({ token }: CompleteProfileFormProps) {
     setSubmitError(null);
     try {
       const photoFileKey = await uploadResumeFile(data.photo);
-      const combinedBio = `${data.bio.trim()}\n\nAvailability: ${data.availability} | Start: ${data.startDate} | Engagement: ${data.engagement}`.slice(0, 1000);
       await submitTalentCompletion(token, {
         photoFileKey,
-        shortBio: combinedBio,
+        shortBio: data.bio.trim(),
         professionalHeadline: data.professionalHeadline.trim(),
       });
       setSubmitted(true);
@@ -356,117 +334,6 @@ export function CompleteProfileForm({ token }: CompleteProfileFormProps) {
               />
             )}
           />
-        </fieldset>
-
-        <fieldset className="space-y-8 border-t border-border/80 pt-12">
-          <legend className="mb-8 flex items-center gap-4 font-mono text-[10px] tracking-[0.16em] text-muted-foreground uppercase">
-            <span className="text-primary">02</span>
-            {t('sections.availability')}
-          </legend>
-
-          <div className="grid gap-8 sm:grid-cols-2">
-            <div className="space-y-2">
-              <label
-                className="text-sm font-medium text-foreground"
-                htmlFor="availability"
-              >
-                {t('fields.availability.label')}{' '}
-                <span className="text-destructive">*</span>
-              </label>
-              <select
-                id="availability"
-                required
-                aria-invalid={Boolean(errors.availability)}
-                aria-describedby={
-                  errors.availability ? 'availability-error' : undefined
-                }
-                className={inputClassName}
-                {...register('availability')}
-              >
-                <option value="">{t('fields.availability.placeholder')}</option>
-                {availabilityOptions.map((o) => (
-                  <option key={o.value} value={o.value}>
-                    {t(`fields.availability.options.${o.key}`)}
-                  </option>
-                ))}
-              </select>
-              {errors.availability ? (
-                <p
-                  id="availability-error"
-                  role="alert"
-                  className="text-sm text-destructive"
-                >
-                  {errors.availability.message}
-                </p>
-              ) : null}
-            </div>
-
-            <div className="space-y-2">
-              <label
-                className="text-sm font-medium text-foreground"
-                htmlFor="startDate"
-              >
-                {t('fields.startDate.label')}{' '}
-                <span className="text-destructive">*</span>
-              </label>
-              <input
-                id="startDate"
-                type="date"
-                required
-                aria-invalid={Boolean(errors.startDate)}
-                aria-describedby={
-                  errors.startDate ? 'startDate-error' : undefined
-                }
-                className={inputClassName}
-                {...register('startDate')}
-              />
-              {errors.startDate ? (
-                <p
-                  id="startDate-error"
-                  role="alert"
-                  className="text-sm text-destructive"
-                >
-                  {errors.startDate.message}
-                </p>
-              ) : null}
-            </div>
-          </div>
-
-          <div className="space-y-2">
-            <label
-              className="text-sm font-medium text-foreground"
-              htmlFor="engagement"
-            >
-              {t('fields.engagement.label')}{' '}
-              <span className="text-destructive">*</span>
-            </label>
-            <select
-              id="engagement"
-              required
-              aria-invalid={Boolean(errors.engagement)}
-              aria-describedby={
-                errors.engagement ? 'engagement-error' : undefined
-              }
-              className={inputClassName}
-              {...register('engagement')}
-            >
-              <option value="">{t('fields.engagement.placeholder')}</option>
-              {engagementOptions.map((o) => (
-                <option key={o.value} value={o.value}>
-                  {t(`fields.engagement.options.${o.key}`)}
-                </option>
-              ))}
-            </select>
-            {errors.engagement ? (
-              <p
-                id="engagement-error"
-                role="alert"
-                className="text-sm text-destructive"
-              >
-                {errors.engagement.message}
-              </p>
-            ) : null}
-          </div>
         </fieldset>
 
         {submitError ? (

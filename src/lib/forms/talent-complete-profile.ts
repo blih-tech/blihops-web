@@ -9,9 +9,6 @@ type TalentCompleteProfileValidationMessages = {
   professionalHeadlineMax: string;
   bioRequired: string;
   bioMax: string;
-  availabilityRequired: string;
-  startDateRequired: string;
-  engagementRequired: string;
   photoRequired: string;
   photoInvalidType: string;
   photoTooLarge: string;
@@ -50,9 +47,6 @@ export function createTalentCompleteProfileSchema(
       .trim()
       .min(10, messages.bioRequired)
       .max(1000, messages.bioMax),
-    availability: z.string().min(1, messages.availabilityRequired),
-    startDate: z.string().min(1, messages.startDateRequired),
-    engagement: z.string().min(1, messages.engagementRequired),
     photo: imageFileValidator({
       types: photoTypes,
       maxBytes: MAX_PHOTO_BYTES,
