@@ -11,10 +11,14 @@ export const generateMetadata = createGenerateMetadata(
 
 export default async function TalentCompleteProfilePage({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string }>;
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const { locale } = await params;
+  const sp = await searchParams;
+  const token = typeof sp.token === 'string' ? sp.token : Array.isArray(sp.token) ? sp.token[0] : null;
   setRequestLocale(locale);
   const t = await getTranslations('TalentCompleteProfilePage');
 
@@ -46,7 +50,7 @@ export default async function TalentCompleteProfilePage({
             </div>
 
             <div className="mx-auto max-w-2xl border-t border-border/80 px-5 py-12 sm:px-8 md:py-16 lg:px-10 lg:py-20">
-              <CompleteProfileForm />
+              <CompleteProfileForm token={token} />
             </div>
           </div>
         </SectionWrapper>

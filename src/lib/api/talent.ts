@@ -93,6 +93,38 @@ export function toTalentSubmitErrorMessage(
   return messages.generic;
 }
 
+export type CompletionRequestInfo = {
+  data: {
+    applicationId: string;
+    fullName: string;
+    workEmail: string;
+    expiresAt: string;
+  };
+};
+
+export type SubmitCompletionPayload = {
+  photoFileKey: string;
+  shortBio: string;
+  professionalHeadline: string;
+};
+
+export type SubmitCompletionResponse = {
+  data: { applicationId: string; status: string };
+};
+
+export function getCompletionRequest(token: string) {
+  return apiFetch<CompletionRequestInfo>(
+    `/api/v1/profile-completion-requests/${encodeURIComponent(token)}`,
+  );
+}
+
+export function submitTalentCompletion(token: string, payload: SubmitCompletionPayload) {
+  return apiFetch<SubmitCompletionResponse>(
+    `/api/v1/profile-completion-requests/${encodeURIComponent(token)}/submit`,
+    { method: 'POST', body: payload },
+  );
+}
+
 export const yearsExperienceToNumber: Record<string, number> = {
   'Under 1 year': 0,
   '1-2 years': 2,

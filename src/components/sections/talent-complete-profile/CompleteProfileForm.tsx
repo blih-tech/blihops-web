@@ -19,6 +19,12 @@ import {
   createTalentCompleteProfileSchema,
   type TalentCompleteProfileValues,
 } from '@/lib/forms/talent-complete-profile';
+import {
+  getCompletionRequest,
+  submitTalentCompletion,
+  toTalentSubmitErrorMessage,
+  uploadResumeFile,
+} from '@/lib/api/talent';
 import { cn } from '@/lib/utils';
 import Image from 'next/image';
 
@@ -49,11 +55,19 @@ function formatFileSize(bytes: number) {
   return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
 }
 
-export function CompleteProfileForm() {
+type CompleteProfileFormProps = {
+  token?: string | null;
+};
+
+export function CompleteProfileForm({ token }: CompleteProfileFormProps) {
   const t = useTranslations('TalentCompleteProfilePage.form');
   const [submitted, setSubmitted] = useState(false);
   const successRef = useRef<HTMLDivElement>(null);
   const reduceMotion = useReducedMotion();
+  const [tokenInfo, setTokenInfo] = useState<{ fullName: string; workEmail: string; expiresAt: string } | null>(null);
+  const [tokenLoading, setTokenLoading] = useState<boolean>(Boolean(token));
+  const [tokenError, setTokenError] = useState<string | null>(null);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const schema = createTalentCompleteProfileSchema({
     professionalHeadlineRequired: t('validation.professionalHeadlineRequired'),
@@ -92,10 +106,62 @@ export function CompleteProfileForm() {
     }
   }, [submitted]);
 
+  useEffect(() => {
+    if (!token) return;
+    let cancelled = false;
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setTokenLoading(true);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setTokenError(null);
+    getCompletionRequest(token)
+      .then((res) => {
+        if (!cancelled) setTokenInfo(res.data);
+      })
+      .catch((err: unknown) => {
+        if (!cancelled) {
+          const msg = toTalentSubmitErrorMessage(err, {
+            generic: (err as Error).message || 'Invalid or expired link.',
+            network: 'Network error. Please check your connection.',
+            validation: (err as Error).message || 'Invalid link.',
+            rateLimited: 'Too many attempts. Please try again later.',
+            server: 'Server error. Please try again later.',
+          });
+          setTokenError(msg);
+        }
+      })
+      .finally(() => {
+        if (!cancelled) setTokenLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [token]);
+
   async function onSubmit(data: TalentCompleteProfileValues) {
-    console.info('Talent profile completion submitted:', data);
-    await new Promise((resolve) => setTimeout(resolve, 900));
-    setSubmitted(true);
+    if (!token) {
+      setSubmitError('Missing completion link. Please use the link from your email.');
+      return;
+    }
+    setSubmitError(null);
+    try {
+      const photoFileKey = await uploadResumeFile(data.photo);
+      const combinedBio = `${data.bio.trim()}\n\nAvailability: ${data.availability} | Start: ${data.startDate} | Engagement: ${data.engagement}`.slice(0, 1000);
+      await submitTalentCompletion(token, {
+        photoFileKey,
+        shortBio: combinedBio,
+        professionalHeadline: data.professionalHeadline.trim(),
+      });
+      setSubmitted(true);
+    } catch (err) {
+      const message = toTalentSubmitErrorMessage(err, {
+        generic: (err as Error).message || 'Something went wrong. Please try again.',
+        network: 'Network error. Check your connection.',
+        validation: (err as Error).message || 'Please check your inputs.',
+        rateLimited: 'Too many attempts. Please wait a moment.',
+        server: 'Server error. Please try again later.',
+      });
+      setSubmitError(message);
+    }
   }
 
   function startAnotherApplication() {
@@ -181,6 +247,25 @@ export function CompleteProfileForm() {
           {t('description')}
         </p>
       </div>
+
+      {!token ? (
+        <div role="alert" className="rounded-md border border-amber-500/30 bg-amber-500/10 px-4 py-4 text-sm text-amber-700">
+          No completion token found. Please use the link from your approval email. If you need a new link, contact support.
+        </div>
+      ) : tokenLoading ? (
+        <div className="flex items-center gap-2 rounded-md border border-border bg-muted/40 px-4 py-3 text-sm text-muted-foreground">
+          <LoaderCircleIcon className="size-4 animate-spin" aria-hidden="true" /> Validating your link...
+        </div>
+      ) : tokenError ? (
+        <div role="alert" className="rounded-md border border-destructive/30 bg-destructive/10 px-4 py-4 text-sm text-destructive">
+          {tokenError}
+        </div>
+      ) : tokenInfo ? (
+        <div className="rounded-md border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-700">
+          Welcome back, <span className="font-semibold">{tokenInfo.fullName}</span> ({tokenInfo.workEmail}) — your link is valid until{' '}
+          {new Date(tokenInfo.expiresAt).toLocaleString('en-GB')}. Complete the form below to submit.
+        </div>
+      ) : null}
 
       <form
         id="talent-complete-profile-form"
@@ -384,11 +469,16 @@ export function CompleteProfileForm() {
           </div>
         </fieldset>
 
+        {submitError ? (
+          <div role="alert" className="rounded-md border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive">
+            {submitError}
+          </div>
+        ) : null}
         <div className="border-t border-border/80 pt-8">
           <Button
             type="submit"
             size="lg"
-            disabled={isSubmitting}
+            disabled={isSubmitting || Boolean(tokenError) || !token}
             className="h-12 w-full justify-between rounded-none px-5"
           >
             {isSubmitting ? t('submitting') : t('submit')}
