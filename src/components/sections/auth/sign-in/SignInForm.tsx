@@ -41,7 +41,7 @@ function workspacePath(
     case 'client':
       return `/client-workspace/${userId ?? 'placeholder'}`;
     case 'talent':
-      return `/talent-portal/${userId ?? 'placeholder'}`;
+      return '/talent-portal';
     default:
       return '/';
   }

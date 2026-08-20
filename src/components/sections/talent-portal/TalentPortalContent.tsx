@@ -40,7 +40,7 @@ function formatFileUrl(url: string): string {
   return url;
 }
 
-export function TalentPortalContent({ portalId, signOutLabel }: { portalId: string; signOutLabel: string }) {
+export function TalentPortalContent({ signOutLabel, portalId }: { signOutLabel: string; portalId?: string }) {
   const [profile, setProfile] = useState<TalentPortalProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -152,7 +152,7 @@ export function TalentPortalContent({ portalId, signOutLabel }: { portalId: stri
     return (
       <main className="flex min-h-svh flex-col items-center justify-center gap-4 bg-background px-4 text-center">
         <p className="max-w-md rounded-md border border-destructive/30 bg-destructive/10 px-4 py-3 text-sm text-destructive">{error}</p>
-        <p className="font-mono text-[10px] tracking-wider text-muted-foreground uppercase">Portal {portalId}</p>
+        {portalId ? <p className="font-mono text-[10px] tracking-wider text-muted-foreground uppercase">Portal {portalId}</p> : null}
         <SignOutButton label={signOutLabel} />
       </main>
     );
@@ -313,7 +313,7 @@ export function TalentPortalContent({ portalId, signOutLabel }: { portalId: stri
           )}
         </div>
 
-        <p className="mt-8 text-center font-mono text-[10px] tracking-wider text-muted-foreground uppercase">Portal {portalId}</p>
+        {portalId ? <p className="mt-8 text-center font-mono text-[10px] tracking-wider text-muted-foreground uppercase">Portal {portalId}</p> : null}
       </div>
     </main>
   );

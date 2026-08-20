@@ -27,8 +27,8 @@ export function SessionAwareCta({
   let href = '/pilot';
   let label = tActions('getPilot');
 
-  if (role === 'talent' && user?.id !== undefined) {
-    href = `/talent-portal/${user.id}`;
+  if (role === 'talent') {
+    href = '/talent-portal';
     label = tActions('goToPortal');
   } else if (role === 'client' && user?.id !== undefined) {
     href = `/client-workspace/${user.id}`;

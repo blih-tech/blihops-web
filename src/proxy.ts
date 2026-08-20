@@ -67,6 +67,7 @@ export default async function proxy(request: NextRequest) {
 
 export const config = {
   matcher: [
+    '/:locale/talent-portal',
     '/:locale/talent-portal/:path*',
     '/:locale/client-workspace/:path*',
   ],
